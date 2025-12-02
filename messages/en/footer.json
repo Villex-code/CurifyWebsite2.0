@@ -1,0 +1,24 @@
+{
+  "imageAlt": "Curify background image",
+  "title": "Experience Curify",
+  "subtitle": "The holistic healthcare management platform",
+  "brand": {
+    "name": "Curify",
+    "description": "Holistic healthcare management platform for clinics and medical practices."
+  },
+  "quickLinks": {
+    "title": "Quick Links",
+    "about": "About",
+    "features": "Features",
+    "useCases": "Use Cases",
+    "contact": "Contact"
+  },
+  "legal": {
+    "title": "Legal",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "copyright": {
+    "text": "© {year} Curify. All rights reserved."
+  }
+}

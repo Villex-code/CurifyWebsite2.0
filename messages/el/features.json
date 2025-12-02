@@ -1,0 +1,12 @@
+{
+  "title": "Χαρακτηριστικά",
+  "subtitle": "Ολοκληρωμένες λύσεις διαχείρισης υγειονομικής περίθαλψης",
+  "panels": {
+    "patientManagement": "Διαχείριση Ασθενών",
+    "staffOrganization": "Οργάνωση Προσωπικού",
+    "taskAutomation": "Αυτοματοποίηση Εργασιών",
+    "medicationStorage": "Αποθήκευση Φαρμάκων",
+    "appointmentSystem": "Σύστημα Ραντεβού",
+    "dataAnalytics": "Ανάλυση Δεδομένων"
+  }
+}

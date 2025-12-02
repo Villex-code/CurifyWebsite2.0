@@ -1,0 +1,142 @@
+"use client";
+import React, { useRef } from "react";
+import { useScroll, useTransform, motion } from "framer-motion";
+import Image from "next/image";
+// import storageImage from "@/public/app/storage_new.png";
+// import analyticsImage from "@/public/app/analytics2.png";
+// import pexImage from "@/public/app/schedule.png";
+
+interface ContainerScrollProps {
+  titleComponent: string | React.ReactNode;
+  children: React.ReactNode;
+}
+
+export const ContainerScroll: React.FC<ContainerScrollProps> = ({
+  titleComponent,
+  children,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
+  // Desktop animations
+  const rotate = useTransform(scrollYProgress, [0, 0.33], [20, 0]);
+  const translateX = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.33, 0.66, 0.66, 1],
+    [0, 0, 0, -500, -500, 500]
+  );
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.33, 0.66, 0.66, 1],
+    [isMobile ? 0.85 : 1.05, 1, 1, 0.7, 0.7, 0.7]
+  );
+
+  // Mobile animations
+  const mobileTranslateY = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66, 1],
+    [0, -50, -100, -150]
+  );
+
+  const mobileOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.33, 0.66, 1],
+    [1, 0.7, 0.4, 0]
+  );
+
+  // Component animations
+  const rightComponentOpacity = useTransform(
+    scrollYProgress,
+    [0.33, 0.4, 0.6, 0.66],
+    [0, 1, 1, 0]
+  );
+  const rightComponentY = useTransform(
+    scrollYProgress,
+    [0.33, 0.4, 0.6, 0.66],
+    ["20vh", "5vh", "-5vh", "-20vh"]
+  );
+
+  const leftComponentOpacity = useTransform(
+    scrollYProgress,
+    [0.66, 0.73, 0.93, 1],
+    [0, 1, 1, 0]
+  );
+  const leftComponentY = useTransform(
+    scrollYProgress,
+    [0.66, 0.73, 0.93, 1],
+    ["20vh", "5vh", "-5vh", "-20vh"]
+  );
+
+  const images: string[] = []; // [storageImage.src, analyticsImage.src, pexImage.src];
+
+  return (
+    <div
+      className={`${isMobile ? "h-[200vh]" : "h-[400vh]"} relative`}
+      ref={containerRef}
+    >
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div
+          className="w-full h-screen relative flex items-center justify-center"
+          style={{ perspective: isMobile ? "none" : "1000px" }}
+        >
+          {/* Components - Hidden on mobile */}
+          {!isMobile && (
+            <>
+              {/* Replaced with children content logic below if needed, but currently using children for card content */}
+            </>
+          )}
+
+          {/* Main Card with 16:9 Aspect Ratio */}
+          <motion.div
+            style={
+              isMobile
+                ? {
+                    scale: 0.9,
+                    y: mobileTranslateY,
+                    opacity: mobileOpacity,
+                  }
+                : {
+                    rotateX: rotate,
+                    scale,
+                    x: translateX,
+                  }
+            }
+            className={`${
+              isMobile ? "w-[90%]" : "w-full max-w-5xl"
+            } -mt-12 mx-auto relative border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl z-30`}
+          >
+            {/* Aspect ratio container */}
+            <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+              {" "}
+              {/* Images and Content */}
+              <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden rounded-2xl bg-zinc-900 md:rounded-2xl md:p-4">
+                {children}
+
+                {/* Overlay effects */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-100/20 to-teal-300/20 backdrop-blur-sm pointer-events-none" />
+                <div className="absolute -right-20 top-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+                <div className="absolute -left-20 bottom-1/4 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};

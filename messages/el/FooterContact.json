@@ -1,0 +1,31 @@
+{
+  "location": {
+    "title": "Τοποθεσία",
+    "address": {
+      "line1": "Ιωάννου Γλύκα 33",
+      "line2": "Βρονταδος",
+      "line3": "Χίος 82200"
+    }
+  },
+  "links": {
+    "enquiries": {
+      "title": "Ερωτήσεις",
+      "email": "vdelik@curifyapp.com"
+    },
+    "business": {
+      "title": "Συνεργασίες",
+      "email": "appcurify@gmail.com"
+    }
+  },
+  "emailForm": {
+    "title": "Εγγραφείτε στο newsletter μας",
+    "titleBreak": "και μείνετε ενημερωμένοι",
+    "placeholder": "Εισάγετε το email σας",
+    "successMessage": "Ευχαριστούμε για την εγγραφή!"
+  },
+  "bottomBar": {
+    "copyright": "© 2026 Curify. Με επιφύλαξη παντός δικαιώματος.",
+    "rd": "R&D",
+    "builtWith": "Κατασκευάστηκε με"
+  }
+}

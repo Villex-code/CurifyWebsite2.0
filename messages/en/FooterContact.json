@@ -1,0 +1,31 @@
+{
+  "location": {
+    "title": "Location",
+    "address": {
+      "line1": "Ioannou Glyka 33",
+      "line2": "Vrondados",
+      "line3": "Chios 82200"
+    }
+  },
+  "links": {
+    "enquiries": {
+      "title": "Enquiries",
+      "email": "vdelik@curifyapp.com"
+    },
+    "business": {
+      "title": "Business",
+      "email": "appcurify@gmail.com"
+    }
+  },
+  "emailForm": {
+    "title": "Subscribe to our newsletter",
+    "titleBreak": "and stay updated",
+    "placeholder": "Enter your email",
+    "successMessage": "Thank you for subscribing!"
+  },
+  "bottomBar": {
+    "copyright": "© 2026 Curify. All rights reserved.",
+    "rd": "R&D",
+    "builtWith": "Built with"
+  }
+}

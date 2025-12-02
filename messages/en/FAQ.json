@@ -1,0 +1,30 @@
+{
+  "title": "Frequently Asked Questions",
+  "questions": {
+    "1": {
+      "question": "What services do you offer?",
+      "answer": "We offer a wide range of web development services..."
+    },
+    "2": {
+      "question": "How much does it cost?",
+      "answer": "Our pricing is flexible and depends on your project needs..."
+    },
+    "3": {
+      "question": "How long does it take?",
+      "answer": "Typically, a project takes between 4 to 8 weeks..."
+    },
+    "4": {
+      "question": "Do you provide support?",
+      "answer": "Yes, we provide ongoing support and maintenance..."
+    },
+    "5": {
+      "question": "Can you redesign my website?",
+      "answer": "Absolutely! We can modernize your existing website..."
+    },
+    "6": {
+      "question": "Do you work with international clients?",
+      "answer": "Yes, we work with clients from all over the world..."
+    }
+  }
+}
+

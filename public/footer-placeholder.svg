@@ -1,0 +1,16 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="footerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#footerGradient)"/>
+  <g opacity="0.1">
+    <circle cx="960" cy="540" r="300" fill="#14b8a6"/>
+    <circle cx="1200" cy="400" r="150" fill="#06b6d4"/>
+    <circle cx="720" cy="680" r="200" fill="#0891b2"/>
+  </g>
+  <text x="960" y="550" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="24" font-weight="300">Curify Footer Background</text>
+</svg>

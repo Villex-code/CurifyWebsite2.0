@@ -1,0 +1,12 @@
+{
+  "title": "Features",
+  "subtitle": "Comprehensive healthcare management solutions",
+  "panels": {
+    "patientManagement": "Patient Management",
+    "staffOrganization": "Staff Organization",
+    "taskAutomation": "Task Automation",
+    "medicationStorage": "Medication Storage",
+    "appointmentSystem": "Appointment System",
+    "dataAnalytics": "Data Analytics"
+  }
+}

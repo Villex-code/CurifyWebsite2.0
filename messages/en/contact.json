@@ -1,0 +1,77 @@
+{
+  "title": "Let's Transform Healthcare Together",
+  "subtitle": "Every innovation begins with a conversation. We're excited to start one with you.",
+  "location": {
+    "title": "Visit Us",
+    "address": {
+      "line1": "Ioannou Glyka 33",
+      "line2": "Vrondados",
+      "line3": "Chios 82200"
+    }
+  },
+  "social": {
+    "title": "Connect With Us",
+    "linkedin": "Connect with us on LinkedIn",
+    "twitter": "Follow us on Twitter",
+    "email": "Email us"
+  },
+  "divider": "or",
+  "callUs": {
+    "title": "Call Us"
+  },
+  "bookCall": {
+    "title": "Book a Call",
+    "subtitle": "Schedule via Calendly"
+  },
+  "form": {
+    "successMessage": "Success! We'll get back to you within 24 hours.",
+    "recaptchaError": "Unable to load reCAPTCHA. You can still submit the form, but it may not be processed immediately.",
+    "title": "Fill in the Details",
+    "subtitle": "Our team will get back to you within 24 hours",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Your email",
+    "companyName": "Organization name",
+    "message": "Optional message",
+    "submit": "Send Message",
+    "companySize": {
+      "label": "Company Size",
+      "placeholder": "Select company size",
+      "sizes": {
+        "small": "1-10 employees",
+        "medium": "11-50 employees",
+        "large": "51-200 employees",
+        "enterprise": "201+ employees"
+      }
+    },
+    "companyType": {
+      "label": "Organization Type",
+      "hospital": "Hospital",
+      "clinic": "Clinic",
+      "privatePractice": "Private Practice",
+      "medicalCenter": "Medical Center",
+      "pharmacy": "Pharmacy",
+      "lab": "Lab",
+      "other": "Other"
+    },
+    "sizeDropdown": {
+      "placeholder": "Select company size",
+      "small": {
+        "label": "Small",
+        "range": "1-10"
+      },
+      "medium": {
+        "label": "Medium",
+        "range": "11-50"
+      },
+      "large": {
+        "label": "Large",
+        "range": "51-200"
+      },
+      "enterprise": {
+        "label": "Enterprise",
+        "range": "201+"
+      }
+    }
+  }
+}

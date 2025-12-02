@@ -1,0 +1,11 @@
+{
+  "navbar_dropdown_title": "Products",
+  "crm_solution": {
+    "title": "CRM Solution",
+    "description": "Comprehensive customer relationship management"
+  },
+  "medical_wardrobe": {
+    "title": "Medical Wardrobe",
+    "description": "Digital medical inventory management"
+  }
+}
