@@ -2,8 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-// Remove NumberCount if not used or replace with compatible version
-// import NumberCount from "@/components/ui/text/NumberCount";
 
 const CircleProgress = ({ percentage }: { percentage: number }) => {
   const circumference = 2 * Math.PI * 40;
@@ -44,7 +42,7 @@ const CircleProgress = ({ percentage }: { percentage: number }) => {
 };
 
 const HeroRightContent = () => {
-  const t = useTranslations("Hero");
+  const t = useTranslations("home");
 
   return (
     <motion.div
@@ -60,10 +58,12 @@ const HeroRightContent = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {t("right.title.part1")}
+          {t("heroRight.title.part1")}
           <br />
-          <span className="text-teal-600">{t("right.title.part2")}</span>{" "}
-          {t("right.title.part3")}
+          <span className="text-teal-600">
+            {t("heroRight.title.part2")}
+          </span>{" "}
+          {t("heroRight.title.part3")}
         </motion.h1>
         <motion.p
           className="text-xl md:text-2xl text-neutral-600 max-w-2xl"
@@ -71,7 +71,7 @@ const HeroRightContent = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          {t("right.description")}
+          {t("heroRight.description")}
         </motion.p>
       </div>
 
@@ -86,10 +86,10 @@ const HeroRightContent = () => {
           <CircleProgress percentage={87} />
           <div className="space-y-2">
             <h3 className="text-2xl font-semibold text-neutral-900">
-              {t("right.timeCard.title")}
+              {t("heroRight.timeCard.title")}
             </h3>
             <p className="text-neutral-600">
-              {t("right.timeCard.description")}
+              {t("heroRight.timeCard.description")}
             </p>
           </div>
         </div>
@@ -104,17 +104,19 @@ const HeroRightContent = () => {
         <div className="text-center">
           <div className="text-3xl font-bold text-teal-600 mb-2">10,000 +</div>
           <div className="text-neutral-600">
-            {t("right.stats.medicines.label")}
+            {t("heroRight.stats.medicines.label")}
           </div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-teal-600 mb-2">14,350 +</div>
-          <div className="text-neutral-600">{t("right.stats.tasks.label")}</div>
+          <div className="text-neutral-600">
+            {t("heroRight.stats.tasks.label")}
+          </div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-teal-600 mb-2">24/7</div>
           <div className="text-neutral-600">
-            {t("right.stats.support.label")}
+            {t("heroRight.stats.support.label")}
           </div>
         </div>
       </motion.div>

@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "title": "Simplifying Healthcare",
+    "subtitle": "Smart Healthcare Platform",
+    "description": "An all-in-one platform for healthcare professionals and patients.",
+    "cta": {
+      "getStarted": "Get Started",
+      "watchDemo": "Watch Demo"
+    }
+  },
+  "heroLeft": {
+    "title": {
+      "part1": "Transform",
+      "part2": "Healthcare"
+    },
+    "subtitle": "Revolutionary healthcare management solution",
+    "features": {
+      "first": "AI-powered patient care",
+      "second": "Real-time medication tracking",
+      "third": "Seamless clinic integration",
+      "fourth": "24/7 support available"
+    }
+  },
+  "heroRight": {
+    "title": {
+      "part1": "Manage",
+      "part2": "Health",
+      "part3": "Better"
+    },
+    "description": "Streamline your medical practice with our advanced tools.",
+    "timeCard": {
+      "title": "Time Saved",
+      "description": "Average weekly time saved by clinics using our platform"
+    },
+    "stats": {
+      "medicines": {
+        "label": "Medicines Managed"
+      },
+      "tasks": {
+        "label": "Tasks Completed"
+      },
+      "support": {
+        "label": "Support Available"
+      }
+    }
+  }
+}
+

@@ -5,17 +5,17 @@ import { SparklesCore } from "@/components/ui/background/Particles";
 import { Play, X } from "lucide-react";
 import Image from "next/image";
 import AnimatedButton from "@/components/ui/small/AnimatedButton";
-import { useTranslation } from "react-i18next";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export function UseCaseCTA() {
-  const { t } = useTranslation();
+  const t = useTranslations("HomePage");
   const [isPlaying, setIsPlaying] = useState(false);
   const vimeoId = "1028569515";
   const embedUrl = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&muted=0&controls=1`;
 
   return (
-    <div className="min-h-screen w-full bg-[#f3f4f6] flex flex-col items-center justify-center overflow-hidden relative py-20">
+    <div className="min-h-screen w-full   flex flex-col items-center justify-center overflow-hidden relative py-20">
       {/* Background subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-teal-50/30 to-transparent" />
 
@@ -118,7 +118,6 @@ export function UseCaseCTA() {
 
           {/* Sparkles effect */}
           <SparklesCore
-            background="#f3f4f6"
             minSize={0.4}
             maxSize={1}
             particleDensity={1000}
@@ -128,7 +127,7 @@ export function UseCaseCTA() {
           />
 
           {/* Radial mask for smooth fade */}
-          <div className="absolute inset-0 w-full h-full bg-[#f3f4f6] [mask-image:radial-gradient(350px_200px_at_top,transparent_30%,#f3f4f6)]" />
+          <div className="absolute inset-0 w-full h-full bg-[#ffffff] [mask-image:radial-gradient(350px_200px_at_top,transparent_30%,#ffffff)]" />
         </div>
 
         {/* Subtitle and CTA */}

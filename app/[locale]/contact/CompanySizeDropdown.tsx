@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronDown, Users, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { NumberOfEmployees } from "./ContactRight";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface CompanySize {
   value: NumberOfEmployees;
@@ -17,6 +18,7 @@ interface CompanySizeDropdownProps {
 const CompanySizeDropdown = ({ value, onChange }: CompanySizeDropdownProps) => {
   const t = useTranslations("contact");
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const companySizes: CompanySize[] = [
     {
@@ -43,58 +45,104 @@ const CompanySizeDropdown = ({ value, onChange }: CompanySizeDropdownProps) => {
 
   const selectedSize = companySizes.find((size) => size.value === value);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="relative group">
-      <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-teal-700 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+    <div className="relative" ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-2 bg-transparent border-b border-gray-200 flex items-center justify-between text-left focus:outline-none group"
-      >
-        {selectedSize ? (
-          <span className="text-teal-700">
-            {selectedSize.label} - ({selectedSize.range})
-          </span>
-        ) : (
-          <span className="text-gray-400">
-            {t("form.sizeDropdown.placeholder")}
-          </span>
-        )}
-        <ChevronDown
-          className={`w-4 h-4 text-gray-400 transition-all duration-200 ${
+        className={`w-full px-4 py-3.5 rounded-xl border text-left flex items-center justify-between transition-all duration-300 outline-none
+          ${
             isOpen
-              ? "transform rotate-180 text-teal-700"
-              : "text-gray-400 group-hover:text-teal-700"
+              ? "bg-white border-teal-500 ring-2 ring-teal-500/20"
+              : "bg-gray-50 border-gray-100 hover:bg-white hover:border-gray-300"
+          }
+        `}
+      >
+        <div className="flex items-center gap-3">
+          <Users
+            className={`w-5 h-5 transition-colors ${
+              isOpen ? "text-teal-600" : "text-gray-400"
+            }`}
+          />
+          <div className="flex flex-col items-start">
+            {selectedSize ? (
+              <span className="text-gray-900 font-medium text-sm">
+                {selectedSize.label}{" "}
+                <span className="text-gray-400 ml-1 font-normal">
+                  ({selectedSize.range})
+                </span>
+              </span>
+            ) : (
+              <span className="text-gray-400 text-sm">
+                {t("form.sizeDropdown.placeholder")}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <ChevronDown
+          className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${
+            isOpen ? "rotate-180 text-teal-600" : ""
           }`}
         />
       </button>
-      {isOpen && (
-        <div className="absolute z-10 w-full mt-2 py-1 bg-white rounded-md shadow-lg border border-gray-100 overflow-hidden">
-          {companySizes.map((size) => (
-            <div
-              key={size.value}
-              onClick={() => {
-                onChange(size.value);
-                setIsOpen(false);
-              }}
-              className={`px-4 py-2 cursor-pointer transition-colors flex items-center justify-between
-                ${
-                  value === size.value
-                    ? "text-teal-700 bg-teal-50"
-                    : "text-gray-600 hover:text-teal-700 hover:bg-gray-50"
-                }
-              `}
-            >
-              <span className="font-medium">
-                {size.label} - ({size.range})
-              </span>
-              {value === size.value && (
-                <div className="w-1.5 h-1.5 rounded-full bg-teal-700" />
-              )}
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute z-50 w-full mt-2 bg-white rounded-xl shadow-xl shadow-teal-900/10 border border-gray-100 overflow-hidden"
+          >
+            <div className="p-1.5">
+              {companySizes.map((size) => {
+                const isSelected = value === size.value;
+                return (
+                  <button
+                    key={size.value}
+                    type="button"
+                    onClick={() => {
+                      onChange(size.value);
+                      setIsOpen(false);
+                    }}
+                    className={`w-full px-3 py-2.5 rounded-lg flex items-center justify-between text-sm transition-colors
+                      ${
+                        isSelected
+                          ? "bg-teal-50 text-teal-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      }
+                    `}
+                  >
+                    <span className="flex items-center gap-2">
+                      {size.label}{" "}
+                      <span className="opacity-60 text-xs">({size.range})</span>
+                    </span>
+
+                    {isSelected && <Check className="w-4 h-4 text-teal-600" />}
+                  </button>
+                );
+              })}
             </div>
-          ))}
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

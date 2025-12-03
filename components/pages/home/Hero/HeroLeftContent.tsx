@@ -3,14 +3,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Check } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
-// Import images
-import appleStore from "@/public/images/apple.png";
-import googlePlay from "@/public/images/google.png";
+// Images are loaded from public directory
 
 const HeroLeftContent = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("home");
 
   return (
     <motion.div
@@ -55,7 +53,7 @@ const HeroLeftContent = () => {
             className="transition-transform hover:scale-105"
           >
             <Image
-              src={appleStore}
+              src="/images/graphics/apple.png"
               alt="Download on App Store"
               width={180}
               height={60}
@@ -69,7 +67,7 @@ const HeroLeftContent = () => {
             className="transition-transform hover:scale-105"
           >
             <Image
-              src={googlePlay}
+              src="/images/graphics/google.png"
               alt="Get it on Google Play"
               width={200}
               height={60}

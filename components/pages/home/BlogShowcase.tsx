@@ -2,9 +2,8 @@
 
 import React from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useRouter, Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -43,10 +42,10 @@ interface BlogShowcaseProps {
 const BlogShowcase = ({ initialPosts }: BlogShowcaseProps) => {
   const t = useTranslations("blog");
   const router = useRouter();
-  const currentLang = useLocale();
+  const locale = useLocale();
 
-  // Get only the latest 3 posts
-  const posts = initialPosts.slice(0, 3);
+  // Handle undefined/null posts and get only the latest 3 posts
+  const posts = (initialPosts || []).slice(0, 3);
 
   // Function to create SEO-friendly short slugs
   const createShortSlug = (originalSlug: string, title: string): string => {
@@ -66,7 +65,7 @@ const BlogShowcase = ({ initialPosts }: BlogShowcaseProps) => {
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString(
-      currentLang === "el" ? "el-GR" : "en-US",
+      locale === "el" ? "el-GR" : "en-US",
       {
         year: "numeric",
         month: "long",
@@ -77,7 +76,7 @@ const BlogShowcase = ({ initialPosts }: BlogShowcaseProps) => {
 
   const handleBlogClick = (slug: string, title: string) => {
     const shortSlug = createShortSlug(slug, title);
-    router.push(`/${currentLang}/blog/${shortSlug}`);
+    router.push(`/blog/${shortSlug}`);
   };
 
   if (posts.length === 0) {
@@ -111,7 +110,7 @@ const BlogShowcase = ({ initialPosts }: BlogShowcaseProps) => {
               onClick={() => handleBlogClick(post.slug.current, post.title)}
             >
               <div className="relative h-52 sm:h-64 w-full">
-                {post.mainImage ? (
+                {post.mainImage?.asset ? (
                   <Image
                     src={urlFor(post.mainImage).url()}
                     alt={post.mainImage.alt || post.title}
@@ -147,7 +146,10 @@ const BlogShowcase = ({ initialPosts }: BlogShowcaseProps) => {
                     </span>
                   </div>
                   <Link
-                    href={`/${currentLang}/blog/${createShortSlug(post.slug.current, post.title)}`}
+                    href={`/blog/${createShortSlug(
+                      post.slug.current,
+                      post.title
+                    )}`}
                     className="text-primary hover:text-primary-dark transition-colors duration-200 inline-flex items-center font-medium"
                     onClick={(e) => e.stopPropagation()}
                     aria-label={`${t("read_more")}: ${post.title}`}
@@ -178,7 +180,7 @@ const BlogShowcase = ({ initialPosts }: BlogShowcaseProps) => {
 
         <div className="text-center mt-12">
           <Link
-            href={`/${currentLang}/blog`}
+            href="/blog"
             className="inline-flex items-center bg-primary hover:bg-primary-dark bg-teal-500 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg"
           >
             {t("view_all_posts")}

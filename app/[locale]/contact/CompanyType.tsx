@@ -7,6 +7,7 @@ import {
   Users,
   Pill,
   MoreHorizontal,
+  Check,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { OrganizationType } from "./ContactRight";
@@ -33,10 +34,10 @@ const container: Variants = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, scale: 0.95 },
   show: {
     opacity: 1,
-    y: 0,
+    scale: 1,
     transition: {
       type: "spring",
       stiffness: 300,
@@ -75,101 +76,72 @@ const CompanyTypeSelector = ({
   ];
 
   return (
-    <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-400">
-        {t("form.companyType.label")}
-      </label>
-      <motion.div
-        className="grid grid-cols-2 gap-3"
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        {companyTypes.map((type) => (
+    <motion.div
+      className="grid grid-cols-2 gap-3"
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      {companyTypes.map((type) => {
+        const isSelected = selectedType === type.id;
+        return (
           <motion.button
             key={type.id}
             variants={item}
             type="button"
             onClick={() => onChange(type.id)}
-            className={`relative flex items-center gap-3 p-3 w-full rounded-lg group overflow-hidden
+            className={`group relative flex items-center gap-3 px-4 py-3 w-full rounded-xl border transition-all duration-300 overflow-hidden text-left outline-none
               ${
-                selectedType === type.id
-                  ? "bg-teal-50 text-teal-700"
-                  : "hover:bg-gray-50 text-gray-600"
+                isSelected
+                  ? "bg-white border-teal-500 shadow-md shadow-teal-900/5 ring-1 ring-teal-500"
+                  : "bg-gray-50 border-gray-100 hover:bg-white hover:border-teal-200"
               }
             `}
           >
-            {/* Selection Shine Effect */}
-            {selectedType === type.id && (
-              <motion.div
-                className="absolute inset-0 pointer-events-none"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/40 to-transparent"
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "100%" }}
-                  transition={{
-                    duration: 0.7,
-                    ease: "easeInOut",
-                    delay: 0.2,
-                  }}
-                />
-              </motion.div>
+            {/* Background Gradient for selected state */}
+            {isSelected && (
+              <div className="absolute inset-0 bg-gradient-to-r from-teal-50/50 to-transparent pointer-events-none" />
             )}
 
-            {/* Checkbox */}
-            <motion.div
-              className={`
-                relative w-5 h-5 rounded-full border-2 transition-colors duration-200 flex items-center justify-center
-                ${
-                  selectedType === type.id
-                    ? "border-teal-700 bg-teal-700"
-                    : "border-gray-300 group-hover:border-teal-700"
-                }
-              `}
-              whileTap={{ scale: 0.95 }}
-            >
-              {/* Checkmark */}
-              <motion.div
-                className="w-2 h-2 rounded-full bg-white"
-                initial={false}
-                animate={{
-                  scale: selectedType === type.id ? 1 : 0,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 25,
-                }}
-              />
-            </motion.div>
-
-            {/* Icon */}
-            <motion.div
-              className={`transition-colors duration-200
-                ${
-                  selectedType === type.id
-                    ? "text-teal-700"
-                    : "text-gray-400 group-hover:text-teal-700"
-                }
-              `}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+            {/* Icon Container */}
+            <div
+              className={`relative z-10 p-2 rounded-lg transition-colors duration-300
+              ${
+                isSelected
+                  ? "bg-teal-100 text-teal-700"
+                  : "bg-white text-gray-400 group-hover:text-teal-600 group-hover:bg-teal-50"
+              }`}
             >
               {type.icon}
-            </motion.div>
+            </div>
 
-            {/* Label */}
-            <span className="text-sm font-medium flex-1 text-left">
-              {type.label}
-            </span>
+            {/* Label & Checkmark */}
+            <div className="relative z-10 flex-1 flex justify-between items-center">
+              <span
+                className={`text-sm font-medium transition-colors ${
+                  isSelected
+                    ? "text-teal-900"
+                    : "text-gray-600 group-hover:text-gray-900"
+                }`}
+              >
+                {type.label}
+              </span>
+
+              {/* Animated Checkmark */}
+              {isSelected && (
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="bg-teal-600 rounded-full p-0.5"
+                >
+                  <Check className="w-3 h-3 text-white" />
+                </motion.div>
+              )}
+            </div>
           </motion.button>
-        ))}
-      </motion.div>
-    </div>
+        );
+      })}
+    </motion.div>
   );
 };
 

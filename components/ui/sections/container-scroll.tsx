@@ -2,18 +2,23 @@
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
-// import storageImage from "@/public/app/storage_new.png";
-// import analyticsImage from "@/public/app/analytics2.png";
-// import pexImage from "@/public/app/schedule.png";
+
+// Placeholder images - replace with actual images when available
+const images = [
+  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2070&auto=format&fit=crop",
+];
 
 interface ContainerScrollProps {
-  titleComponent: string | React.ReactNode;
-  children: React.ReactNode;
+  rightComponent: React.FC;
+  leftComponent: React.FC;
+  children?: React.ReactNode;
 }
 
 export const ContainerScroll: React.FC<ContainerScrollProps> = ({
-  titleComponent,
-  children,
+  rightComponent: RightComponent,
+  leftComponent: LeftComponent,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -83,8 +88,6 @@ export const ContainerScroll: React.FC<ContainerScrollProps> = ({
     ["20vh", "5vh", "-5vh", "-20vh"]
   );
 
-  const images: string[] = []; // [storageImage.src, analyticsImage.src, pexImage.src];
-
   return (
     <div
       className={`${isMobile ? "h-[200vh]" : "h-[400vh]"} relative`}
@@ -98,7 +101,25 @@ export const ContainerScroll: React.FC<ContainerScrollProps> = ({
           {/* Components - Hidden on mobile */}
           {!isMobile && (
             <>
-              {/* Replaced with children content logic below if needed, but currently using children for card content */}
+              <motion.div
+                style={{
+                  opacity: rightComponentOpacity,
+                  y: rightComponentY,
+                }}
+                className="absolute right-20 w-1/3 z-10 hidden md:block"
+              >
+                <RightComponent />
+              </motion.div>
+
+              <motion.div
+                style={{
+                  opacity: leftComponentOpacity,
+                  y: leftComponentY,
+                }}
+                className="absolute left-8 w-1/3 z-10 hidden md:block"
+              >
+                <LeftComponent />
+              </motion.div>
             </>
           )}
 
@@ -124,14 +145,46 @@ export const ContainerScroll: React.FC<ContainerScrollProps> = ({
             {/* Aspect ratio container */}
             <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
               {" "}
-              {/* Images and Content */}
+              {/* 16:9 Aspect Ratio */}
               <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden rounded-2xl bg-zinc-900 md:rounded-2xl md:p-4">
-                {children}
+                {/* Images */}
+                {images.map((src, index) => (
+                  <motion.div
+                    key={src}
+                    className="absolute inset-0 w-full h-full"
+                    style={{
+                      opacity: useTransform(
+                        scrollYProgress,
+                        [
+                          index * 0.33 - 0.05,
+                          index * 0.33,
+                          (index + 1) * 0.33,
+                          (index + 1) * 0.33 + 0.05,
+                        ],
+                        [0, 1, 1, 0],
+                        { clamp: false }
+                      ),
+                      zIndex: useTransform(scrollYProgress, (value) =>
+                        value >= index * 0.33 && value < (index + 1) * 0.33
+                          ? 2
+                          : 1
+                      ),
+                    }}
+                  >
+                    <Image
+                      src={src}
+                      alt={`Phase ${index + 1}`}
+                      fill
+                      className="object-cover rounded-xl"
+                      priority
+                    />
+                  </motion.div>
+                ))}
 
                 {/* Overlay effects */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-100/20 to-teal-300/20 backdrop-blur-sm pointer-events-none" />
-                <div className="absolute -right-20 top-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
-                <div className="absolute -left-20 bottom-1/4 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-100/20 to-teal-300/20 backdrop-blur-sm" />
+                <div className="absolute -right-20 top-1/4 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute -left-20 bottom-1/4 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl animate-pulse" />
               </div>
             </div>
           </motion.div>

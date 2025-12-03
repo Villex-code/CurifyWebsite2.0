@@ -7,19 +7,28 @@ import HeroLeftContent from "@/components/pages/home/Hero/HeroLeftContent";
 import HeroTopContent from "@/components/pages/home/Hero/HeroTopContent";
 import { motion } from "framer-motion";
 
-// Import optimized images
-// import curveImg from "@/public/art/curve_thick.webp";
-// import curveImgFallback from "@/public/art/curve_thick_optimized.png";
+// Images are loaded from public directory
 
 export default function Hero() {
   return (
-    <div className="flex flex-col bg-background">
-      <div className="relative w-full h-[20rem] sm:h-[24rem] md:h-[27rem]">
+    <div className="flex flex-col bg-background ">
+      {/* Mobile: HeroTopContent in normal flow */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="md:hidden my-20"
+      >
+        <HeroTopContent />
+      </motion.div>
+
+      {/* Desktop: HeroTopContent with absolute positioning and curve background */}
+      <div className="hidden md:block relative w-full h-[22rem]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="absolute top-[100%] sm:top-[90%] md:top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10"
+          className="absolute top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10"
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -28,11 +37,14 @@ export default function Hero() {
           >
             <HeroTopContent />
           </motion.div>
-          {/* <div className="absolute inset-0 top-0 left-0 w-screen h-[50vh] z-[-1]">
+          <div className="absolute inset-0 top-0 left-0 w-screen h-[50vh] z-[-1]">
             <picture>
-              <source srcSet={curveImg.src} type="image/webp" />
+              <source
+                srcSet="/images/graphics/curve_thick.webp"
+                type="image/webp"
+              />
               <Image
-                src={curveImgFallback}
+                src="/images/graphics/curve_thick.webp"
                 alt="Curve image"
                 fill
                 quality={85}
@@ -40,22 +52,19 @@ export default function Hero() {
                 priority
               />
             </picture>
-          </div> */}
+          </div>
         </motion.div>
       </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="pt-8 sm:pt-12 md:pt-20"
+        className="hidden md:block pt-8 sm:pt-12 md:pt-20"
       >
         <ContainerScroll
-          titleComponent={<HeroTopContent />}
-        >
-          <div className="flex h-full items-center justify-center bg-white dark:bg-black p-20">
-             <HeroRightContent />
-          </div>
-        </ContainerScroll>
+          rightComponent={HeroRightContent}
+          leftComponent={HeroLeftContent}
+        />
       </motion.div>
     </div>
   );

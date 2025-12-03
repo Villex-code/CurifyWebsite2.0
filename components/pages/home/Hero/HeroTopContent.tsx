@@ -6,7 +6,7 @@ import TextBlur from "@/components/ui/text/TextBlur";
 import TextBlurH1 from "@/components/ui/text/TextBlurH1";
 
 const HeroTopContent = () => {
-  const t = useTranslations("Hero");
+  const t = useTranslations("home");
 
   const scrollToDemo = () => {
     const demoElement = document.getElementById("demo");
@@ -24,7 +24,7 @@ const HeroTopContent = () => {
       id="hero"
     >
       <TextBlur
-        text={t("subtitle")}
+        text={t("hero.subtitle")}
         speed={1.5}
         animation={{
           hidden: { filter: "blur(8px)", opacity: 0 },
@@ -35,7 +35,7 @@ const HeroTopContent = () => {
 
       <div className="text-4xl md:text-[6rem] font-bold mt-1 leading-tight">
         <TextBlurH1
-          text={t("title")}
+          text={t("hero.title")}
           speed={1.5}
           animation={{
             hidden: { filter: "blur(8px)", opacity: 0 },
@@ -51,27 +51,31 @@ const HeroTopContent = () => {
         transition={{ delay: 0.6 }}
         className="text-base md:text-xl text-black mt-8 max-w-2xl"
       >
-        {t("description")}
+        {t("hero.description")}
       </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        className="flex flex-row gap-4 mt-8"
+        className="flex flex-wrap gap-4 mt-8"
       >
         <Link
           href="/contact"
-          className="px-8 py-4 bg-teal-950 text-white rounded-full font-semibold hover:bg-teal-900 transition-all duration-300 transform hover:scale-105 text-center"
+          className="group relative px-8 py-4 bg-[#148D98] text-white font-semibold rounded-full overflow-hidden shadow-lg shadow-[#148D98]/30 transition-all hover:shadow-[#148D98]/50 hover:-translate-y-1"
         >
-          {t("cta.getStarted")}
+          <span className="relative z-10 flex items-center gap-2">
+            {t("hero.cta.getStarted")}
+          </span>
+          {/* Shine Effect */}
+          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 ease-in-out" />
         </Link>
         <Link
           href="https://portal-staging.curifyapp.com/"
           target="_blank"
-          className="px-8 py-4 bg-background border-2 border-teal-950 text-teal-950 rounded-full font-semibold hover:bg-teal-50 transition-all duration-300 transform hover:scale-105"
+          className="px-8 py-4 bg-white text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-[#148D98] hover:text-[#148D98] transition-all flex items-center gap-2"
         >
-          {t("cta.watchDemo")}
+          {t("hero.cta.watchDemo")}
         </Link>
       </motion.div>
     </motion.div>

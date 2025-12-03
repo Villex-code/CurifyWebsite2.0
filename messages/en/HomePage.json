@@ -1,4 +1,12 @@
 {
   "title": "Hello world!",
-  "about": "Go to the about it "
+  "about": "Go to the about it ",
+  "useCase": {
+    "title": {
+      "line1": "See Curify in Action",
+      "line2": "Transform Your Healthcare Workflow"
+    },
+    "subtitle": "Ready to revolutionize your healthcare operations? Get started today and experience the future of medical management.",
+    "videoAlt": "Curify app demonstration video"
+  }
 }

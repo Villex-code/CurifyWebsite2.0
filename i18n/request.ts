@@ -23,6 +23,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
         .default,
       FAQ: (await import(`../messages/${locale}/FAQ.json`)).default,
       Hero: (await import(`../messages/${locale}/Hero.json`)).default,
+      home: (await import(`../messages/${locale}/home.json`)).default,
       footer: (await import(`../messages/${locale}/footer.json`)).default,
       nav: (await import(`../messages/${locale}/nav.json`)).default,
       products: (await import(`../messages/${locale}/products.json`)).default,
