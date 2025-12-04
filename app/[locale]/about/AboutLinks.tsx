@@ -1,100 +1,195 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/i18n/routing"; // Ensure this matches your routing setup
+import {
+  Layers,
+  Newspaper,
+  MessageCircle,
+  ArrowRight,
+  Sparkles,
+} from "lucide-react";
 
 const AboutLinks = () => {
-  const links = [
-    {
-      title: "Our Solutions",
-      description: "Explore our comprehensive healthcare management solutions",
-      href: "/features",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      )
-    },
-    {
-      title: "Blog & Insights",
-      description: "Stay updated with the latest healthcare technology trends",
-      href: "/blog",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      )
-    },
-    {
-      title: "Contact Us",
-      description: "Get in touch to learn how we can help your organization",
-      href: "/contact",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      )
-    }
-  ];
-
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 md:mb-8">
-            Explore More
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Discover more about our solutions, stay informed with our latest insights,
-            or get in touch to discuss your healthcare technology needs.
-          </p>
-        </motion.div>
+    <section className="relative w-full py-24 bg-white overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-50/40 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-50/60 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {links.map((link, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Link
-                href={link.href}
-                className="block bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-teal-200 transition-colors">
-                  <div className="text-teal-600">
-                    {link.icon}
-                  </div>
-                </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <div className="mb-16 md:mb-24 max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 mb-4"
+          >
+            <div className="h-px w-8 bg-teal-600" />
+            <span className="text-teal-600 font-bold uppercase tracking-widest text-xs">
+              What's Next
+            </span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight"
+          >
+            Explore the ecosystem.
+          </motion.h2>
+        </div>
 
-                <h3 className="text-xl md:text-2xl font-semibold mb-3 group-hover:text-teal-600 transition-colors">
-                  {link.title}
-                </h3>
+        {/* --- LINKS GRID --- */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* 1. SOLUTIONS / FEATURES */}
+          <NavCard
+            title="Our Solutions"
+            description="Deep dive into our comprehensive healthcare OS. From IoT pharmacy to AI clinical support."
+            href="/features"
+            icon={Layers}
+            delay={0}
+          />
 
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  {link.description}
-                </p>
+          {/* 2. BLOG & INSIGHTS */}
+          <NavCard
+            title="News & Insights"
+            description="Read about the latest trends in digital health, case studies, and Curify updates."
+            href="/blog"
+            icon={Newspaper}
+            delay={0.1}
+          />
 
-                <div className="flex items-center text-teal-600 font-medium group-hover:text-teal-700">
-                  Learn More
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+          {/* 3. CONTACT US */}
+          <NavCard
+            title="Get in Touch"
+            description="Ready to transform your facility? Let's discuss your specific needs and pricing."
+            href="/contact"
+            icon={MessageCircle}
+            delay={0.2}
+            highlight // Special style for contact
+          />
         </div>
       </div>
     </section>
+  );
+};
+
+// --- SUB-COMPONENT: NAVIGATION CARD ---
+const NavCard = ({
+  title,
+  description,
+  href,
+  icon: Icon,
+  delay,
+  highlight,
+}: any) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="h-full"
+    >
+      <Link href={href} className="block h-full group outline-none">
+        <div
+          className={`
+          relative h-full overflow-hidden rounded-[2rem] p-8 flex flex-col justify-between
+          border transition-all duration-500 ease-out
+          ${
+            highlight
+              ? "bg-slate-900 border-slate-800 hover:border-teal-500/50"
+              : "bg-white border-slate-200 hover:border-teal-400 hover:shadow-2xl hover:shadow-teal-900/5"
+          }
+        `}
+        >
+          {/* Background Gradient Hover Effect */}
+          <div
+            className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700
+             ${
+               highlight
+                 ? "bg-gradient-to-br from-teal-900/20 to-transparent"
+                 : "bg-gradient-to-br from-teal-50/50 to-transparent"
+             }
+          `}
+          />
+
+          {/* Top Content */}
+          <div className="relative z-10">
+            <div
+              className={`
+              w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300
+              ${
+                highlight
+                  ? "bg-white/10 text-teal-400 group-hover:bg-teal-500 group-hover:text-white"
+                  : "bg-teal-50 text-teal-600 group-hover:bg-teal-600 group-hover:text-white"
+              }
+            `}
+            >
+              <Icon className="w-6 h-6" />
+            </div>
+
+            <h3
+              className={`text-2xl font-bold mb-3 ${
+                highlight ? "text-white" : "text-slate-900"
+              }`}
+            >
+              {title}
+            </h3>
+            <p
+              className={`text-sm leading-relaxed ${
+                highlight ? "text-slate-400" : "text-slate-500"
+              }`}
+            >
+              {description}
+            </p>
+          </div>
+
+          {/* Bottom Action Area */}
+          <div className="relative z-10 mt-10 flex items-center gap-2">
+            <span
+              className={`text-sm font-bold tracking-wide transition-colors duration-300
+               ${
+                 highlight
+                   ? "text-teal-400 group-hover:text-white"
+                   : "text-slate-900 group-hover:text-teal-600"
+               }
+            `}
+            >
+              {highlight ? "Start Conversation" : "Explore"}
+            </span>
+
+            {/* Animated Arrow */}
+            <div className="relative overflow-hidden w-6 h-6 flex items-center">
+              <ArrowRight
+                className={`absolute w-5 h-5 transition-all duration-300 
+                  -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100
+                  ${highlight ? "text-white" : "text-teal-600"}
+               `}
+              />
+              <ArrowRight
+                className={`absolute w-5 h-5 transition-all duration-300 
+                  translate-x-0 opacity-100 group-hover:translate-x-4 group-hover:opacity-0
+                  ${highlight ? "text-teal-400" : "text-slate-300"}
+               `}
+              />
+            </div>
+          </div>
+
+          {/* Giant Decorative Watermark Icon (Moves on Hover) */}
+          <Icon
+            className={`
+              absolute -bottom-8 -right-8 w-48 h-48 stroke-1 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:-rotate-12
+              ${highlight ? "text-white/5" : "text-slate-100"}
+            `}
+          />
+        </div>
+      </Link>
+    </motion.div>
   );
 };
 

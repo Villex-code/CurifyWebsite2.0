@@ -13,7 +13,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen w-full bg-background">
       {/* Main container with responsive padding */}
-      <div className=" lg:max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36 sm:pt-20">
+      <div className=" lg:max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-20">
         {/*<SvgBackground />*/}
         {/* Grid container with responsive columns */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">

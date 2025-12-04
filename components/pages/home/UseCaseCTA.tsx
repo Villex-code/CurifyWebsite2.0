@@ -145,9 +145,6 @@ export function UseCaseCTA() {
           </motion.div>
         </Link>
       </div>
-
-      {/* Bottom decoration */}
-      <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#f3f4f6] to-transparent" />
     </div>
   );
 }

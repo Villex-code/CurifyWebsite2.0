@@ -15,7 +15,7 @@ const partners: Partner[] = [
     id: "forbes",
     name: "Forbes",
     logo: "/images/partners/forbes.png",
-    description: "Recognized as a Top 10 Healthcare Startup to watch in 2025.",
+    description: "Recognized as a Top 10 Healthcare Startup to watch in 2026.",
     category: "Media Feature",
     // Placeholder cover image - replace with your own assets if available
     coverImage:

@@ -8,6 +8,7 @@ import AboutGrowth from "./AboutGrowth";
 import AboutTeam from "./AboutTeam";
 import AboutCTA from "./AboutCTA";
 import AboutLinks from "./AboutLinks";
+import UseCaseCTA from "@/components/pages/home/UseCaseCTA";
 
 const AboutPage = () => {
   useEffect(() => {
@@ -24,7 +25,7 @@ const AboutPage = () => {
         <AboutVision />
         <AboutGrowth />
         <AboutTeam />
-        <AboutCTA />
+        <UseCaseCTA />
         <AboutLinks />
       </div>
     </div>
