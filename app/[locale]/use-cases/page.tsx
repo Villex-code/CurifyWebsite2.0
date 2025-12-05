@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import UseCaseHero from "./UseCaseHero";
+import UseCaseIndividual from "./UseCaseIndividual";
 import UseCaseComparison from "./UseCaseComparison";
 import UseCaseValue from "./UseCaseValue";
 import UseCaseROI from "./UseCaseROI";
@@ -21,6 +22,9 @@ const UseCasesPage = () => {
         activeSegment={activeSegment}
         onSegmentChange={setActiveSegment}
       />
+      <div id="use-case-content">
+        <UseCaseIndividual segment={activeSegment} />
+      </div>
       <UseCaseComparison segment={activeSegment} />
       <UseCaseValue segment={activeSegment} />
       <UseCaseROI segment={activeSegment} />
@@ -30,4 +34,3 @@ const UseCasesPage = () => {
 };
 
 export default UseCasesPage;
-
