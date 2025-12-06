@@ -1,49 +1,46 @@
-"use client";
-import { useEffect, useState } from "react";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import React from "react";
-import FeaturesHero from "./FeaturesHero";
-import FeaturesSidebar from "./FeaturesSidebar";
-import FeaturesContent from "./FeaturesContent";
-import { featuresData } from "./featuresData";
+import FeaturesPageContent from "./FeaturesPageContent";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.features" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    alternates: {
+      canonical: `https://www.curify.app/${locale}/features`,
+      languages: {
+        en: "https://www.curify.app/en/features",
+        el: "https://www.curify.app/el/features",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      url: `https://www.curify.app/${locale}/features`,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Curify Healthcare OS",
+        },
+      ],
+    },
+  };
+}
 
 const FeaturesPage = () => {
-  const [activeFeature, setActiveFeature] = useState(featuresData[0]?.id || "");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    // Instantly set scroll position to top
-    window.scrollTo(0, 0);
-  }, []);
-
-  // Sync search input from hero with sidebar
-  useEffect(() => {
-    const searchInput = document.getElementById(
-      "feature-search"
-    ) as HTMLInputElement;
-    if (searchInput) {
-      searchInput.addEventListener("input", (e) => {
-        const target = e.target as HTMLInputElement;
-        setSearchQuery(target.value);
-      });
-    }
-  }, []);
-
-  return (
-    <div className="min-h-screen w-full ">
-      <FeaturesHero />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col lg:flex-row gap-8">
-          <FeaturesSidebar
-            activeFeature={activeFeature}
-            onFeatureSelect={setActiveFeature}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-          />
-          <FeaturesContent featureId={activeFeature} />
-        </div>
-      </div>
-    </div>
-  );
+  return <FeaturesPageContent />;
 };
 
 export default FeaturesPage;

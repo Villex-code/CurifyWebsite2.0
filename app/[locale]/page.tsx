@@ -1,5 +1,5 @@
-import { useTranslations } from "next-intl";
-import { Link } from "../../i18n/routing";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Footer from "@/components/layout/footer";
 import Hero from "@/components/pages/home/Hero/Hero";
 import BrandRecognition from "@/components/pages/home/BrandRecognition";
@@ -10,7 +10,45 @@ import UserSegments from "@/components/pages/home/UserSegments/UserSegments";
 import Faq from "@/components/pages/home/FAQ";
 import UseCaseCTA from "@/components/pages/home/UseCaseCTA";
 import BlogShowcase from "@/components/pages/home/BlogShowcase";
-import { client } from "@/sanity/lib/client";
+import { useTranslations } from "next-intl";
+
+// Dynamic Metadata Generator for SEO
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      locale: locale,
+      url: "https://www.curify.app", // Replace with your actual URL
+      siteName: "Curify",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    alternates: {
+      canonical: `https://www.curify.app/${locale}`,
+      languages: {
+        en: "https://www.curify.app/en",
+        el: "https://www.curify.app/el",
+      },
+    },
+  };
+}
 
 export default function Home() {
   const t = useTranslations("HomePage");

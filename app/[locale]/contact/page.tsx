@@ -1,33 +1,46 @@
-"use client";
-import { useEffect } from "react";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import React from "react";
-import ContactLeft from "./ContactLeft";
-import ContactRight from "./ContactRight";
-import SvgBackground from "@/components/ui/background/SvgBackground";
+import ContactPageContent from "./ContactPageContent";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.contact" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    alternates: {
+      canonical: `https://www.curify.app/${locale}/contact`,
+      languages: {
+        en: "https://www.curify.app/en/contact",
+        el: "https://www.curify.app/el/contact",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      url: `https://www.curify.app/${locale}/contact`,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Curify Healthcare OS",
+        },
+      ],
+    },
+  };
+}
 
 const ContactPage = () => {
-  useEffect(() => {
-    // Instantly set scroll position to top
-    window.scrollTo(0, 0);
-  }, []);
-  return (
-    <div className="min-h-screen w-full bg-background">
-      {/* Main container with responsive padding */}
-      <div className=" lg:max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-20">
-        {/*<SvgBackground />*/}
-        {/* Grid container with responsive columns */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-          {/* On mobile, components stack vertically */}
-          <div className="w-full order-2 lg:order-1">
-            <ContactLeft />
-          </div>
-          <div className="w-full order-1 lg:order-2">
-            <ContactRight />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return <ContactPageContent />;
 };
 
 export default ContactPage;

@@ -14,6 +14,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale,
     messages: {
       HomePage: (await import(`../messages/${locale}/HomePage.json`)).default,
+      Metadata: (await import(`../messages/${locale}/Metadata.json`)).default,
       blog: (await import(`../messages/${locale}/blog.json`)).default,
       NotFoundPage: (await import(`../messages/${locale}/NotFoundPage.json`))
         .default,

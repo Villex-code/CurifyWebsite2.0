@@ -1,13 +1,13 @@
 import React from "react";
 
-// Interface for our partner data
 interface Partner {
   id: string;
   name: string;
   logo: string;
   description: string;
-  coverImage: string; // The "Main Image" you requested
+  coverImage: string;
   category: string;
+  since: string; // Added to replace the 'link' empty space
 }
 
 const partners: Partner[] = [
@@ -17,9 +17,9 @@ const partners: Partner[] = [
     logo: "/images/partners/forbes.png",
     description: "Recognized as a Top 10 Healthcare Startup to watch in 2026.",
     category: "Media Feature",
-    // Placeholder cover image - replace with your own assets if available
     coverImage:
       "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop",
+    since: "Featured 2024",
   },
   {
     id: "nbg",
@@ -30,6 +30,7 @@ const partners: Partner[] = [
     category: "Strategic Partner",
     coverImage:
       "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop",
+    since: "Partner since 2023",
   },
   {
     id: "iaso",
@@ -39,6 +40,7 @@ const partners: Partner[] = [
     category: "Clinical Partner",
     coverImage:
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2653&auto=format&fit=crop",
+    since: "Partner since 2022",
   },
   {
     id: "egg",
@@ -48,6 +50,7 @@ const partners: Partner[] = [
     category: "Accelerator",
     coverImage:
       "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2670&auto=format&fit=crop",
+    since: "Cohort 2023",
   },
   {
     id: "eleutho",
@@ -57,106 +60,112 @@ const partners: Partner[] = [
     category: "Security",
     coverImage:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
+    since: "Audited 2024",
+  },
+  {
+    id: "microsoft",
+    name: "Microsoft",
+    logo: "/images/partners/microsoft.png", // Placeholder path
+    description: "Powered by Azure Cloud Infrastructure for 99.99% uptime.",
+    category: "Tech Infrastructure",
+    coverImage:
+      "https://images.unsplash.com/photo-1633419461186-7d75e1684ebe?q=80&w=2532&auto=format&fit=crop",
+    since: "Cloud Partner",
   },
 ];
 
 const BrandRecognition = () => {
   return (
-    <section className="relative w-full py-24 bg-white overflow-hidden">
-      {/* Decorative Background Elements (Teal Touches) */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-teal-50 rounded-full blur-3xl opacity-60" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-teal-50/50 rounded-full blur-3xl opacity-60" />
-      </div>
-
+    <section className="relative w-full py-24 md:py-32  overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-teal-600 font-semibold tracking-wide uppercase text-sm mb-3">
-            Trusted Ecosystem
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-teal-100 shadow-sm mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+            </span>
+            <span className="text-xs font-bold text-teal-700 tracking-wide uppercase">
+              Trusted Ecosystem
+            </span>
+          </div>
+
+          <h3 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-6">
             Recognized by Industry Leaders
           </h3>
-          <p className="text-lg text-gray-500">
-            We work with the best to ensure reliability, security, and
-            innovation. Proudly backed and recognized by these organizations.
+          <p className="text-lg text-slate-600 leading-relaxed">
+            We collaborate with the best to ensure reliability, security, and
+            innovation. Our ecosystem is built on trust and proven partnerships.
           </p>
         </div>
 
-        {/* The "Apple Style" Grid */}
+        {/* The Modern Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {partners.map((partner) => (
             <div
               key={partner.id}
-              className="group flex flex-col h-full bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-xl hover:shadow-teal-900/5 transition-all duration-300 ease-out overflow-hidden"
+              className="group relative flex flex-col h-full bg-white rounded-[2rem] border border-slate-200/60 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-teal-900/10 hover:border-teal-200 hover:-translate-y-2 transition-all duration-500 ease-out overflow-hidden"
             >
               {/* Card: Main Image Area */}
-              <div className="relative h-48 w-full overflow-hidden">
-                <div className="absolute inset-0 bg-gray-900/10 group-hover:bg-gray-900/0 transition-colors duration-300 z-10" />
+              <div className="relative h-56 w-full overflow-hidden">
+                <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/0 transition-colors duration-500 z-10" />
                 <img
                   src={partner.coverImage}
                   alt={`${partner.name} background`}
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                  className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
 
                 {/* Category Badge */}
-                <span className="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur-md text-teal-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                  {partner.category}
-                </span>
+                <div className="absolute top-4 right-4 z-20">
+                  <span className="bg-white/90 backdrop-blur-md text-teal-800 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm border border-white/50">
+                    {partner.category}
+                  </span>
+                </div>
               </div>
 
-              {/* Card: Content Area */}
-              <div className="flex flex-col flex-grow p-6 md:p-8 relative">
-                {/* Logo Container - Overlapping the image slightly */}
-                <div className="absolute -top-10 left-6 md:left-8 bg-white p-3 rounded-2xl shadow-md border border-gray-50 w-20 h-20 flex items-center justify-center z-20">
+              {/* Overlapping Logo Container */}
+              <div className="absolute top-44 left-6 z-20">
+                <div className="bg-white p-3 rounded-2xl shadow-xl shadow-slate-200 border border-slate-100 w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                   <img
                     src={partner.logo}
                     alt={`${partner.name} logo`}
                     className="w-full h-full object-contain p-1"
                   />
                 </div>
+              </div>
 
-                {/* Spacer for the overlapping logo */}
-                <div className="mt-8 mb-2">
-                  <h4 className="text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors">
+              {/* Card: Content Area */}
+              <div className="flex flex-col flex-grow pt-14 px-8 pb-8">
+                <div className="flex justify-between items-start mb-3">
+                  <h4 className="text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
                     {partner.name}
                   </h4>
                 </div>
 
-                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
                   {partner.description}
                 </p>
 
-                {/* 'Read More' style link (Visual only) */}
-                <div className="mt-auto pt-4 border-t border-gray-100 flex items-center text-teal-600 font-medium text-sm group-hover:gap-2 transition-all cursor-pointer">
-                  <span>Learn more</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                {/* Footer: Timeline / Status */}
+                <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    Relation
+                  </span>
+                  <span className="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-1 rounded-md">
+                    {partner.since}
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA / Trust text */}
-        <div className="mt-20 text-center border-t border-gray-100 pt-10">
-          <p className="text-gray-400 text-sm">
-            Join 500+ healthcare professionals who trust Curify.
-            <span className="text-teal-600 underline ml-1 cursor-pointer hover:text-teal-700">
-              View our certifications
+        {/* Bottom Trust text */}
+        <div className="mt-24 text-center">
+          <p className="text-slate-400 text-sm font-medium">
+            Want to become a partner?
+            <span className="text-teal-600 underline decoration-teal-300 underline-offset-4 ml-1 cursor-pointer hover:text-teal-800 transition-colors">
+              Contact our partnership team
             </span>
           </p>
         </div>

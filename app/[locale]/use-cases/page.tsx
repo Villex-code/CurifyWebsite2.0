@@ -1,36 +1,46 @@
-"use client";
-import { useEffect, useState } from "react";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import React from "react";
-import UseCaseHero from "./UseCaseHero";
-import UseCaseIndividual from "./UseCaseIndividual";
-import UseCaseComparison from "./UseCaseComparison";
-import UseCaseValue from "./UseCaseValue";
-import UseCaseROI from "./UseCaseROI";
-import UseCaseFAQ from "./UseCaseFAQ";
+import UseCasesPageContent from "./UseCasesPageContent";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.useCases" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    alternates: {
+      canonical: `https://www.curify.app/${locale}/use-cases`,
+      languages: {
+        en: "https://www.curify.app/en/use-cases",
+        el: "https://www.curify.app/el/use-cases",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      url: `https://www.curify.app/${locale}/use-cases`,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Curify Healthcare OS",
+        },
+      ],
+    },
+  };
+}
 
 const UseCasesPage = () => {
-  const [activeSegment, setActiveSegment] = useState("medical-office");
-
-  useEffect(() => {
-    // Instantly set scroll position to top
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <div className="min-h-screen w-full bg-background">
-      <UseCaseHero
-        activeSegment={activeSegment}
-        onSegmentChange={setActiveSegment}
-      />
-      <div id="use-case-content">
-        <UseCaseIndividual segment={activeSegment} />
-      </div>
-      <UseCaseComparison segment={activeSegment} />
-      <UseCaseValue segment={activeSegment} />
-      <UseCaseROI segment={activeSegment} />
-      <UseCaseFAQ segment={activeSegment} />
-    </div>
-  );
+  return <UseCasesPageContent />;
 };
 
 export default UseCasesPage;

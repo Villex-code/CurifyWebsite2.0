@@ -1,35 +1,46 @@
-"use client";
-import { useEffect } from "react";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import React from "react";
-import AboutHero from "./AboutHero";
-import AboutMission from "./AboutMission";
-import AboutVision from "./AboutVision";
-import AboutGrowth from "./AboutGrowth";
-import AboutTeam from "./AboutTeam";
-import AboutCTA from "./AboutCTA";
-import AboutLinks from "./AboutLinks";
-import UseCaseCTA from "@/components/pages/home/UseCaseCTA";
+import AboutPageContent from "./AboutPageContent";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata.about" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
+    alternates: {
+      canonical: `https://www.curify.app/${locale}/about`,
+      languages: {
+        en: "https://www.curify.app/en/about",
+        el: "https://www.curify.app/el/about",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      url: `https://www.curify.app/${locale}/about`,
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Curify Healthcare OS",
+        },
+      ],
+    },
+  };
+}
 
 const AboutPage = () => {
-  useEffect(() => {
-    // Instantly set scroll position to top
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <div className="min-h-screen w-full bg-background">
-      {/* Main container with responsive padding */}
-      <div className="lg:max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8">
-        <AboutHero />
-        <AboutMission />
-        <AboutVision />
-        <AboutGrowth />
-        <AboutTeam />
-        <UseCaseCTA />
-        <AboutLinks />
-      </div>
-    </div>
-  );
+  return <AboutPageContent />;
 };
 
 export default AboutPage;

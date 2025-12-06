@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
@@ -52,8 +53,54 @@ export default async function LocaleLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  // Structured Data for Organization & Software Application
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        name: "Curify",
+        url: "https://www.curify.app",
+        logo: "https://www.curify.app/logo.png",
+        sameAs: [
+          "https://www.linkedin.com/company/curify",
+          "https://twitter.com/curify",
+          "https://www.facebook.com/curify",
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+30-210-XXXXXXX", // Add your phone number
+          contactType: "customer service",
+          areaServed: ["GR", "US", "GB"],
+          availableLanguage: ["Greek", "English"],
+        },
+      },
+      {
+        "@type": "SoftwareApplication",
+        name: "Curify",
+        applicationCategory: "MedicalApplication",
+        operatingSystem: "Web, iOS, Android",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "EUR",
+        },
+        description:
+          "Integrated healthcare management system for clinics and hospitals.",
+      },
+    ],
+  };
+
   return (
     <html lang={locale}>
+      <head>
+        {/* JSON-LD Structured Data */}
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${facultyGlyphic.variable} ${playfairDisplay.variable} antialiased`}
       >

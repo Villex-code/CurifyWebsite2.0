@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const AboutVision = () => {
   const visionPoints = [
@@ -13,7 +13,7 @@ const AboutVision = () => {
   ];
 
   return (
-    <section className="py-24 md:py-32 relative">
+    <section className="py-24 md:py-32 relative overflow-visible">
       <div className="max-w-7xl mx-auto px-6">
         {/* --- THE CARD --- */}
         <motion.div
@@ -21,84 +21,99 @@ const AboutVision = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="bg-white rounded-[2.5rem] border border-slate-100 relative z-10 overflow-visible"
+          className="bg-white rounded-[3rem] border border-slate-100 relative z-10"
           style={{
-            // Custom Teal Shadow
             boxShadow:
               "0 25px 50px -12px rgba(13, 148, 136, 0.15), 0 0 0 1px rgba(13, 148, 136, 0.05)",
           }}
         >
-          <div className="relative flex flex-col lg:flex-row items-center p-8 md:p-12 lg:p-16 min-h-[500px]">
-            {/* --- LEFT: CONTENT --- */}
-            {/* z-20 ensures text is always clickable/selectable over the image */}
-            <div className="w-full lg:w-1/2 relative z-20 space-y-8 lg:pr-12">
+          {/* Subtle Background Blob inside card */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-[3rem] z-0">
+            <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-50/50 rounded-full blur-[100px]" />
+          </div>
+
+          <div className="relative w-full p-8 md:p-14 lg:p-20 flex flex-col lg:flex-row items-center lg:items-start">
+            {/* --- LEFT: CONTENT AREA --- */}
+            <div className="w-full lg:w-3/5 relative z-20">
+              {/* Artistic Header */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
+                className="mb-8"
               >
-                <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-                  Let's know about our <br />
-                  <span className="text-teal-600">main goal</span>
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <Sparkles className="w-4 h-4 text-teal-500" />
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+                    The Vision
+                  </span>
+                </div>
+                <h2 className="text-5xl md:text-7xl text-slate-900 leading-[0.95] tracking-tight">
+                  <span className="font-bold block">Let's redefine</span>
+                  <span className="font-serif italic font-light text-teal-600 block pl-2 md:pl-12 mt-2">
+                    our main goal.
+                  </span>
                 </h2>
               </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-lg text-slate-600 leading-relaxed max-w-lg"
+              {/* Description */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="flex gap-6 mb-12 pl-2"
               >
-                We provide clear, accessible information about our programs so
-                students and parents can make confident choices.
-              </motion.p>
+                <div className="w-px h-auto bg-gradient-to-b from-teal-500 to-transparent" />
+                <p className="text-lg md:text-xl text-slate-500 font-light leading-relaxed max-w-md">
+                  We provide clear, accessible information about our programs so
+                  students and parents can make confident choices.
+                </p>
+              </motion.div>
 
-              {/* Checkmarks Grid */}
-              <div className="grid sm:grid-cols-2 gap-y-4 gap-x-2">
+              {/* Floating Pills */}
+              <div className="flex flex-wrap gap-3 max-w-xl">
                 {visionPoints.map((point, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.4 + index * 0.1,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-3"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium shadow-sm hover:border-teal-200 hover:text-teal-700 hover:shadow-md transition-all cursor-default"
                   >
-                    <div className="flex-shrink-0 w-6 h-6 bg-teal-500 rounded-full flex items-center justify-center mt-0.5 shadow-sm shadow-teal-200">
-                      <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
-                    </div>
-                    <span className="text-slate-700 font-medium text-sm sm:text-base leading-tight">
-                      {point}
-                    </span>
+                    {point}
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* --- RIGHT: IMAGE (Anchored Bottom Right) --- */}
+            {/* --- RIGHT: POP-OUT IMAGE --- */}
             {/* 
-                On Mobile: It's a relative block below text.
-                On Desktop (lg): It's absolute bottom-right, ignoring text flow height.
+                Positioned Absolute on Desktop to break out of the container bounds.
+                Negative margins (-right, -bottom) allow it to overflow.
             */}
-            <div className="relative w-full h-[350px] lg:absolute lg:bottom-[40px] lg:right-[100px] lg:w-[50%] lg:h-auto lg:top-auto flex items-end justify-center lg:justify-end z-10 pointer-events-none">
+            <div className="relative mt-12 lg:mt-0 lg:absolute lg:bottom-[79px] lg:right-0 w-full lg:w-[45%] pointer-events-none z-30 flex justify-center lg:block">
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                initial={{ opacity: 0, scale: 0.9, y: 40 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: "backOut" }}
                 viewport={{ once: true }}
-                className="relative w-full h-full flex items-end justify-center lg:justify-end"
+                // These negative margins create the "Pop Out" effect
+                className="lg:-mr-12 lg:-mb-16 xl:-mr-20 xl:-mb-20"
               >
                 <img
                   src="/images/graphics/flower.png"
-                  alt="Our Goal Visualization"
-                  className="w-auto h-full max-h-[400px] lg:max-h-[650px] object-contain object-bottom lg:-mr-10 lg:-mb-10 drop-shadow-2xl"
+                  alt="Artistic Vision"
+                  className="w-auto h-auto max-h-[400px] lg:max-h-[700px] object-contain drop-shadow-2xl"
                 />
               </motion.div>
-
-              {/* Decorative Blur (Behind Image) */}
-              <div className="absolute right-10 bottom-0 w-[300px] h-[300px] bg-teal-500/10 rounded-full blur-[80px] -z-10" />
             </div>
           </div>
         </motion.div>

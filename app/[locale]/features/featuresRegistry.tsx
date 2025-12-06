@@ -9,6 +9,20 @@ import {
   Server,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import TaskManagementFeature from "./FeaturesRegistry/TaskManagementFeature";
+import StorageFeature from "./FeaturesRegistry/StorageFeature";
+import FinancialFeature from "./FeaturesRegistry/FinancialFeature";
+import AnalyticsFeature from "./FeaturesRegistry/AnalyticsFeature";
+import PersonnelFeature from "./FeaturesRegistry/PersonnelFeature";
+import AppointmentFeature from "./FeaturesRegistry/AppointmentFeature";
+import PatientDashboardFeature from "./FeaturesRegistry/PatientDashboardFeature";
+import PatientProfileFeature from "./FeaturesRegistry/PatientProfileFeature";
+import ReportingFeature from "./FeaturesRegistry/ReportingFeature";
+import AuditLogFeature from "./FeaturesRegistry/AuditLogFeature";
+import AdmissionsFeature from "./FeaturesRegistry/AdmissionsFeature";
+import ClinicsFeature from "./FeaturesRegistry/ClinicsFeature";
+import FileManagerFeature from "./FeaturesRegistry/FileManagerFeature";
+import ProtocolsFeature from "./FeaturesRegistry/ProtocolsFeature";
 
 // --- TYPE DEFINITION ---
 export type FeatureRegistryItem = {
@@ -18,148 +32,91 @@ export type FeatureRegistryItem = {
   component: React.ReactNode; // This holds the actual UI
 };
 
-// --- CUSTOM COMPONENT 1: SMART PHARMACY (Visual Heavy) ---
-const SmartPharmacyFeature = () => (
-  <div className="space-y-8">
-    <div className="relative h-64 bg-slate-900 rounded-3xl overflow-hidden flex items-center justify-center p-8">
-      {/* Background Grid */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: "radial-gradient(#2dd4bf 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
-        }}
-      />
-
-      <div className="relative z-10 text-center">
-        <div className="inline-flex p-4 bg-teal-500/20 rounded-full mb-4 ring-1 ring-teal-500/50">
-          <Pill className="w-8 h-8 text-teal-400" />
-        </div>
-        <h3 className="text-2xl font-bold text-white mb-2">
-          IoT Cabinet Integration
-        </h3>
-        <p className="text-slate-400">Real-time inventory tracking</p>
-      </div>
-    </div>
-
-    <div className="prose prose-lg max-w-none text-slate-600">
-      <p>
-        Our <strong>Smart Pharmacy</strong> module connects directly to
-        IoT-enabled cabinets. When a nurse dispenses a medication, the inventory
-        is updated instantly in the cloud.
-      </p>
-      <h3>Key Capabilities</h3>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
-        {[
-          "Automatic Re-ordering",
-          "Expiration Alerts",
-          "Batch Tracking",
-          "Narcotics Control",
-        ].map((item) => (
-          <li
-            key={item}
-            className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-sm m-0"
-          >
-            <CheckCircle2 className="w-5 h-5 text-teal-500" />
-            <span className="font-medium">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
-// --- CUSTOM COMPONENT 2: AI DIAGNOSTICS (Data Heavy) ---
-const AiDiagnosticsFeature = () => (
-  <div className="space-y-8">
-    <div className="bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 rounded-3xl p-8">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="p-3 bg-indigo-600 rounded-xl text-white">
-          <BrainCircuit className="w-6 h-6" />
-        </div>
-        <div>
-          <h3 className="text-xl font-bold text-slate-900">
-            Clinical Decision Support
-          </h3>
-          <p className="text-sm text-slate-500">
-            Powered by Curify Neural Engine
-          </p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-indigo-50 text-center">
-          <div className="text-2xl font-bold text-indigo-600 mb-1">99.8%</div>
-          <div className="text-xs font-bold text-slate-400 uppercase">
-            Interaction Detection
-          </div>
-        </div>
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-indigo-50 text-center">
-          <div className="text-2xl font-bold text-indigo-600 mb-1">
-            &lt; 0.2s
-          </div>
-          <div className="text-xs font-bold text-slate-400 uppercase">
-            Latency
-          </div>
-        </div>
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-indigo-50 text-center">
-          <div className="text-2xl font-bold text-indigo-600 mb-1">24/7</div>
-          <div className="text-xs font-bold text-slate-400 uppercase">
-            Monitoring
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="prose prose-lg max-w-none text-slate-600">
-      <p>
-        Reduce diagnostic errors by up to 40%. Our AI scans patient history
-        against current prescriptions to flag contraindications immediately.
-      </p>
-    </div>
-  </div>
-);
-
 // --- THE REGISTRY ---
 export const FEATURE_REGISTRY: FeatureRegistryItem[] = [
   {
-    id: "smart-pharmacy",
-    category: "Inventory",
-    title: "Smart Pharmacy",
-    component: <SmartPharmacyFeature />,
-  },
-  {
-    id: "ai-diagnostics",
+    id: "task-management",
     category: "Clinical",
-    title: "AI Diagnostics",
-    component: <AiDiagnosticsFeature />,
+    title: "Task & Prescription Workflow",
+    component: <TaskManagementFeature />,
   },
   {
-    id: "telehealth",
-    category: "Patient Care",
-    title: "Telehealth Suite",
-    // Placeholder for future custom component
-    component: (
-      <div className="p-12 border-2 border-dashed border-slate-200 rounded-3xl text-center text-slate-400">
-        <Activity className="w-12 h-12 mx-auto mb-4 opacity-50" />
-        <h3 className="font-bold text-lg">Telehealth Component Coming Soon</h3>
-        <p>You can build a custom layout here.</p>
-      </div>
-    ),
+    id: "smart-storage",
+    category: "Inventory",
+    title: "Storage & Inventory",
+    component: <StorageFeature />,
   },
   {
-    id: "security-core",
-    category: "Infrastructure",
-    title: "Security Core",
-    component: (
-      <div className="bg-slate-900 text-white p-8 rounded-3xl">
-        <ShieldCheck className="w-12 h-12 text-green-400 mb-4" />
-        <h3 className="text-2xl font-bold mb-4">Enterprise Grade Security</h3>
-        <p className="text-slate-400">
-          AES-256 Encryption standard across all endpoints.
-        </p>
-      </div>
-    ),
+    id: "financial-management",
+    category: "Financials",
+    title: "Financial Management & Payments",
+    component: <FinancialFeature />,
+  },
+  {
+    id: "personnel-management",
+    category: "Administration",
+    title: "Personnel & Staff Management",
+    component: <PersonnelFeature />,
+  },
+  {
+    id: "analytics-bi",
+    category: "Clinical", // or Admin
+    title: "Advanced Analytics & Reporting",
+    component: <AnalyticsFeature />,
+  },
+  {
+    id: "appointment-calendar",
+    category: "Administration",
+    title: "Appointment & Calendar Management",
+    component: <AppointmentFeature />,
+  },
+  {
+    id: "patient-dashboard",
+    category: "Clinical",
+    title: "Patient Dashboard & Search",
+    component: <PatientDashboardFeature />,
+  },
+  {
+    id: "patient-profile",
+    category: "Clinical",
+    title: "Patient Profile & Clinical Management",
+    component: <PatientProfileFeature />,
+  },
+  {
+    id: "reporting-privacy",
+    category: "Administrative", // or Security
+    title: "Reporting & Privacy Controls",
+    component: <ReportingFeature />,
+  },
+  {
+    id: "audit-log",
+    category: "Security",
+    title: "Personnel Actions & Audit Log",
+    component: <AuditLogFeature />,
+  },
+  {
+    id: "admissions-referrals",
+    category: "Administrative",
+    title: "Admissions & Referrals",
+    component: <AdmissionsFeature />,
+  },
+  {
+    id: "clinics-infrastructure",
+    category: "Administration",
+    title: "Clinics & Infrastructure",
+    component: <ClinicsFeature />,
+  },
+  {
+    id: "file-manager",
+    category: "Administrative",
+    title: "Global File Manager",
+    component: <FileManagerFeature />,
+  },
+  {
+    id: "protocols-templates",
+    category: "Clinical", // or Configuration
+    title: "Protocols & Templates",
+    component: <ProtocolsFeature />,
   },
 ];
 

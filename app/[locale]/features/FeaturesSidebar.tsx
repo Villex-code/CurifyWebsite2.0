@@ -109,7 +109,7 @@ const FeaturesSidebar = ({
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden space-y-1"
+                    className=" space-y-1"
                   >
                     {categoryFeatures.map((feature) => {
                       const isActive = activeFeature === feature.id;

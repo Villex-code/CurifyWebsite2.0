@@ -1,0 +1,40 @@
+{
+  "title": "Curify | All-in-One Medical Practice Management Software (Cloud EHR)",
+  "description": "The ultimate healthcare OS. Manage appointments, electronic health records (EHR), e-prescriptions, and clinic operations in one cloud platform. Streamline your medical practice today.",
+  "keywords": "medical practice management, clinic software, EHR, hospital management system, e-prescription, healthcare CRM, medical software, electronic health records, practice management software",
+  "about": {
+    "title": "About Curify | Revolutionizing Healthcare Management",
+    "description": "Learn about Curify's mission to transform medical operations. The unified operating system for modern doctors, clinics, and hospitals.",
+    "keywords": "about curify, healthcare technology, medical software company, digital health Greece"
+  },
+  "useCases": {
+    "title": "Solutions for Clinics, Offices & Hospitals | Curify",
+    "description": "Discover how Curify adapts to your scale. Tailored management software for private practitioners, polyclinics, and enterprise hospitals.",
+    "keywords": "clinic software, hospital management system, medical office os, healthcare solutions"
+  },
+  "features": {
+    "title": "Features | E-Prescription, EHR & Medical CRM",
+    "description": "Explore Curify's capabilities: IoT Inventory, Smart Scheduling, IDIKA Integration, and AI Clinical Support. The complete medical toolset.",
+    "keywords": "medical crm, electronic health records, e-prescribing, medical inventory, patient scheduling"
+  },
+  "blog": {
+    "title": "Curify Blog | Digital Health Insights & News",
+    "description": "Stay updated with the latest trends in medical technology, digital health regulations, and practice management tips.",
+    "keywords": "medical blog, digital health news, healthcare tech trends, medical practice tips"
+  },
+  "contact": {
+    "title": "Contact Us | Book a Demo & Support",
+    "description": "Ready to upgrade your medical practice? Contact Curify for a free demo, pricing information, or technical support.",
+    "keywords": "contact curify, medical software demo, healthcare support, clinic software pricing"
+  },
+  "privacy": {
+    "title": "Privacy Policy | Curify",
+    "description": "How we protect patient data. Fully GDPR and HIPAA compliant medical data processing.",
+    "keywords": "privacy policy, medical data security, GDPR healthcare, patient privacy"
+  },
+  "terms": {
+    "title": "Terms and Conditions | Curify",
+    "description": "User agreements and terms of service for the Curify healthcare platform.",
+    "keywords": "terms of service, medical software license, user agreement"
+  }
+}
