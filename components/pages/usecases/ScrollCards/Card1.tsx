@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { Building2, Users2, Brain, Clock } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import hospitalImage from "@/public/images/futuristic_hospital.jpg";
 
 const Card1 = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("card1");
 
   const benefits = [
     {

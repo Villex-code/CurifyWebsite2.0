@@ -53,7 +53,7 @@ const Faq = () => {
   };
 
   return (
-    <section className="relative w-full py-24 bg-white overflow-hidden">
+    <section className="relative w-full py-24 bg-white">
       <StructuredData data={faqStructuredData} id="faq-schema" />
 
       {/* Background Decor (Teal Touches) */}

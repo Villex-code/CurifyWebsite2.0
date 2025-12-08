@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion, useInView } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 // Import the same images used in the desktop version
 // import patients from "@/public/app/vitals.png";
@@ -12,7 +12,7 @@ import { useRef } from "react";
 // import analytics from "@/public/app/analytics2.png";
 
 const FeaturesMobile = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("features");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 

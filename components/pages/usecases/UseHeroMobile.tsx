@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 // Import images
 import pex1 from "@/public/images/pex1.jpg";
@@ -19,7 +19,7 @@ interface UseHeroMobileProps {
 const UseHeroMobile = ({
   containerHeight = "h-[200px]",
 }: UseHeroMobileProps) => {
-  const { t } = useTranslation();
+  const t = useTranslations("useHero");
 
   const images = [
     {

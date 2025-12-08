@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 const UseTitle = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("useTitle");
 
   return (
     <div className="relative w-screen flex justify-center items-center text-center">

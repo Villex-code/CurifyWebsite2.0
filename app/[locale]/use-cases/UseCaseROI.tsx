@@ -40,7 +40,13 @@ const getConfig = (t: any) => ({
   },
 });
 
-const UseCaseROI = ({ segment }: { segment: string }) => {
+const UseCaseROI = ({
+  segment,
+  onSegmentChange,
+}: {
+  segment: string;
+  onSegmentChange: (segment: SegmentType) => void;
+}) => {
   const t = useTranslations("useCases.roi");
   const CONFIG = getConfig(t);
 
@@ -111,7 +117,7 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
               {(Object.keys(CONFIG) as SegmentType[]).map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setCurrentTab(tab)}
+                  onClick={() => onSegmentChange(tab)}
                   className={`relative z-10 flex-1 px-2 py-3 text-xs md:text-sm font-bold transition-colors ${
                     currentTab === tab
                       ? CONFIG[tab].color

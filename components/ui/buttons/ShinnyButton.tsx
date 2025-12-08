@@ -2,7 +2,6 @@
 import React from "react";
 import {
   motion,
-  type AnimationProps,
   type HTMLMotionProps,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -13,11 +12,11 @@ const animationProps = {
   whileTap: { scale: 0.95 },
   transition: {
     repeat: Infinity,
-    repeatType: "loop",
+    repeatType: "loop" as const,
     repeatDelay: 1,
     duration: 2,
   },
-} as AnimationProps;
+};
 
 interface ShinyButtonProps extends HTMLMotionProps<"button"> {
   children: React.ReactNode;

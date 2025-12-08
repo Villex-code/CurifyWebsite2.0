@@ -115,7 +115,7 @@ const TrophyRoom = () => {
             </div>
             <div className="h-10 w-px bg-gray-200" />
             <div className="text-left">
-              <div className="text-3xl font-bold text-gray-900">10M+</div>
+              <div className="text-3xl font-bold text-gray-900">50K+</div>
               <div className="text-xs text-gray-400 uppercase font-bold tracking-wide">
                 {t("header.stats.records")}
               </div>

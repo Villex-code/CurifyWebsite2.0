@@ -130,8 +130,8 @@ const AboutHero = () => {
           </div>
 
           <div className="flex gap-12 md:gap-24">
-            <StatItem number="500+" label={t("stats.clinics")} />
-            <StatItem number="12M" label={t("stats.records")} />
+            <StatItem number="50K+" label={t("stats.tasks")} />
+            <StatItem number="1K+" label={t("stats.users")} />
             <StatItem number="99.9%" label={t("stats.uptime")} />
           </div>
         </div>

@@ -2,10 +2,10 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 const UseWords = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("useWords");
 
   return (
     <div className="w-[95vw] md:w-[80vw] mx-auto py-32 md:py-40">

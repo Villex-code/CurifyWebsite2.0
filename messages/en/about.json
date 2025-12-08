@@ -14,8 +14,8 @@
     "stats": {
       "badge": "IMPACT",
       "subtitle": "Real numbers, real trust.",
-      "clinics": "Clinics Partnered",
-      "records": "Patient Records",
+      "tasks": "Tasks Automated",
+      "users": "Active Users",
       "uptime": "System Uptime"
     }
   },

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import HeroSection from "./segments/HeroSection";
 import OfficeSegment from "./segments/OfficeSegment";
@@ -9,6 +9,17 @@ import HospitalSegment from "./segments/HospitalSegment";
 
 const UserSegments = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [targetPadding, setTargetPadding] = useState("40px");
+
+  useEffect(() => {
+    const updatePadding = () => {
+      setTargetPadding(window.innerWidth < 768 ? "10px" : "40px");
+    };
+
+    updatePadding();
+    window.addEventListener("resize", updatePadding);
+    return () => window.removeEventListener("resize", updatePadding);
+  }, []);
 
   // Track scroll progress relative to the viewport
   const { scrollYProgress } = useScroll({
@@ -17,7 +28,11 @@ const UserSegments = () => {
   });
 
   // Container Transform Animations
-  const paddingValue = useTransform(scrollYProgress, [0, 1], ["0px", "40px"]);
+  const paddingValue = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0px", targetPadding]
+  );
   const radiusValue = useTransform(scrollYProgress, [0, 1], ["0px", "48px"]);
   const borderValue = useTransform(scrollYProgress, [0, 1], ["0px", "1px"]);
 

@@ -29,7 +29,7 @@ const UseCasesPageContent = () => {
       </div>
       <UseCaseComparison segment={activeSegment} />
       <UseCaseValue segment={activeSegment} />
-      <UseCaseROI segment={activeSegment} />
+      <UseCaseROI segment={activeSegment} onSegmentChange={setActiveSegment} />
       <UseCaseFAQ segment={activeSegment} />
       {/* <Testing /> */}
     </div>

@@ -7,12 +7,13 @@ import DotPattern from "@/components/ui/background/DotPattern";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { RainbowButton } from "@/components/ui/buttons/RainbowButton";
-import { TextHoverEffect } from "@/components/ui/text/TextHoverEffect";
-import { useTranslation } from "react-i18next";
+import TextAnimation from "@/components/ui/text/TextAnimation";
+import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 
 const UseCTA = () => {
-  const { t, i18n } = useTranslation();
+  const t = useTranslations("useCTA");
+  const locale = useLocale();
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-background px-4">
@@ -31,14 +32,14 @@ const UseCTA = () => {
           <p className="mt-8 text-xl text-muted-foreground md:text-2xl text-gray-500">
             {t("useCTA.subtitle")}
           </p>
-          <Link href={`/${i18n.language}/contact`}>
+          <Link href={`/${locale}/contact`}>
             <button className="mt-12 rounded-lg bg-teal-600 px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-teal-700">
               {t("useCTA.contactButton")}
             </button>
           </Link>
         </div>
         <div className="h-[40rem] flex items-center justify-center">
-          <TextHoverEffect text="CURIFY" />
+          <TextAnimation text="CURIFY" />
         </div>
       </div>
     </div>

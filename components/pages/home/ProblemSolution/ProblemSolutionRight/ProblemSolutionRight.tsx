@@ -123,7 +123,7 @@ const ProblemSolutionRight = () => {
             Curify AI Agent
           </span>
         </div>
-        <div className="text-xs font-mono text-gray-100">v2.4.0</div>
+        <div className="text-xs font-mono text-gray-100">v2</div>
       </div>
 
       {/* --- MAIN STAGE --- */}

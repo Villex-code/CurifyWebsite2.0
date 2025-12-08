@@ -27,10 +27,7 @@ const WorkflowAutomationCard = () => {
   const color = "blue";
   const index = 1;
 
-  const alignmentClass =
-    align === "left"
-      ? "mr-auto md:ml-10 lg:ml-12"
-      : "ml-auto md:mr-10 lg:mr-12";
+  const alignmentClass = "ml-auto md:mr-10 lg:mr-12";
 
   const colors: any = {
     teal: "text-teal-600 bg-teal-50 border-teal-100",
@@ -58,7 +55,7 @@ const WorkflowAutomationCard = () => {
                   {year}
                 </span>
                 {/* Stat Badge */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 hidden md:flex">
                   <span className="text-[10px] font-bold uppercase text-slate-400">
                     Impact
                   </span>

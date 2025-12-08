@@ -122,6 +122,7 @@ function Card({ url, scale = 1, ...props }: CardProps) {
       onPointerOut={() => hover(false)}
       {...props}
     >
+      {/* @ts-ignore */}
       <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
     </Image>
   );

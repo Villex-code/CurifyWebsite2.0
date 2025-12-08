@@ -51,7 +51,7 @@ const IoTSaverCard = () => {
                   {year}
                 </span>
                 {/* Stat Badge */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 hidden md:flex">
                   <span className="text-[10px] font-bold uppercase text-slate-400">
                     Impact
                   </span>

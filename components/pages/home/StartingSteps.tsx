@@ -2,14 +2,14 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 // import step1 from "@/public/images/Appi1SS.webp";
 // import step2 from "@/public/images/curify_org.webp";
 // import step3 from "@/public/images/training_med.webp";
 // import step4 from "@/public/images/analytics2.webp";
 
 const StartingSteps = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("startingSteps");
   const containerRef = useRef<HTMLDivElement>(null);
 
   const steps: any[] = [

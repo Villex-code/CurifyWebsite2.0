@@ -59,7 +59,9 @@
         "description": "Our AI understands context. It creates the file, prepares the prescription, and updates the calendar simultaneously, in seconds."
       }
     },
-    "ctaButton": "Try AI automation"
+    "ctaButton": "Try AI automation",
+    "demoCommand": "Create a profile for George Katsaros, open an admission and then prescribe Amoxicillin 500mg for 7 days",
+    "systemGreeting": "Good morning, Dr. Katsaros. Ready to assist."
   },
   "coreCapabilities": {
     "title": "A complete ecosystem <br />under one roof.",
@@ -231,6 +233,48 @@
       "verifiedData": "Verified Data",
       "bookDemo": "Book a Demo",
       "viewCaseStudy": "View Case Study"
+    }
+  },
+  "brandRecognition": {
+    "badge": "Trusted Ecosystem",
+    "title": "Recognized by Industry Leaders",
+    "description": "We collaborate with the best to ensure reliability, security, and innovation. Our ecosystem is built on trust and proven partnerships.",
+    "partners": {
+      "forbes": {
+        "name": "Forbes",
+        "description": "Featured as one of the top 30 most innovative people in Greece for year 2025.",
+        "category": "Media Feature",
+        "since": "Featured"
+      },
+      "nbg": {
+        "name": "NBG",
+        "description": "Our idea was validated through their innovation competition where we were finalists.",
+        "category": "Validation Partner",
+        "since": "Competition Finalist"
+      },
+      "iaso": {
+        "name": "IASO",
+        "description": "We collaborated to build a feature that saved 2 weeks of research time.",
+        "category": "Collaboration",
+        "since": "Research Partner"
+      },
+      "egg": {
+        "name": "Eurobank egg",
+        "description": "Incubator that fully approved our business plan and accelerated our company growth.",
+        "category": "Incubator",
+        "since": "Accelerated"
+      },
+      "eleutho": {
+        "name": "Eleutho",
+        "description": "Main partners and collaborators that drive our growth and innovation.",
+        "category": "Strategic Partner",
+        "since": "Growth Partner"
+      }
+    },
+    "relation": "Relation",
+    "footer": {
+      "text": "Want to become a partner?",
+      "link": "Contact our partnership team"
     }
   }
 }

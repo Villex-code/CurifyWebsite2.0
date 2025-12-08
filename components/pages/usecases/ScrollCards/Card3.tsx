@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import privateImage from "@/public/images/futuristic_private.jpg";
 
 const Card3 = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("card3");
 
   const dailyBenefits = [
     {

@@ -26,7 +26,7 @@ const AboutGrowth = () => {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal-100/40 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto md:px-6 relative z-10">
         {/* --- HEADER --- */}
         <div className="grid lg:grid-cols-12 gap-12 mb-32 items-end">
           <div className="lg:col-span-7">

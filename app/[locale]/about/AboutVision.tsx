@@ -11,7 +11,7 @@ const AboutVision = () => {
 
   return (
     <section className="py-24 md:py-32 relative overflow-visible">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto md:px-6">
         {/* --- THE CARD --- */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -29,7 +29,7 @@ const AboutVision = () => {
             <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-50/50 rounded-full blur-[100px]" />
           </div>
 
-          <div className="relative w-full p-8 md:p-14 lg:p-20 flex flex-col lg:flex-row items-center lg:items-start">
+          <div className="relative w-full p-8 md:p-14 lg:p-20 flex flex-col lg:flex-row items-center lg:items-start pb-0 md:pb-0 lg:pb-20">
             {/* --- LEFT: CONTENT AREA --- */}
             <div className="w-full lg:w-3/5 relative z-20">
               {/* Artistic Header */}
@@ -69,7 +69,7 @@ const AboutVision = () => {
 
               {/* Floating Pills */}
               <div className="flex flex-wrap gap-3 max-w-xl">
-                {visionPoints.map((point, index) => (
+                {visionPoints.map((point: string, index: number) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -107,7 +107,7 @@ const AboutVision = () => {
                 <img
                   src="/images/graphics/flower.png"
                   alt="Artistic Vision"
-                  className="w-auto h-auto max-h-[400px] lg:max-h-[700px] object-contain drop-shadow-2xl"
+                  className="w-[80%] md:w-[60%] lg:w-auto h-auto max-h-[300px] md:max-h-[400px] lg:max-h-[700px] object-contain drop-shadow-2xl mx-auto lg:mx-0 translate-y-8 lg:translate-y-0"
                 />
               </motion.div>
             </div>

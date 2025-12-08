@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 // --- TRANSLATED DATA CONFIGURATION ---
 
@@ -108,42 +109,44 @@ const BlurRevealImage = ({ src, alt }: { src: string; alt: string }) => {
 // --- COMPONENT: COSMIC BUTTON (Teal Version) ---
 const CosmicButton = ({ text }: { text: string }) => {
   return (
-    <div className="relative inline-block group text-sm rounded-full">
-      <button
-        className="group relative inline-flex min-w-[160px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[3px] hover:scale-[1.05] text-white tracking-tight rounded-full py-4 px-8 items-center justify-center overflow-hidden"
-        style={{
-          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.2)",
-          background:
-            "radial-gradient(ellipse at bottom, #0f766e 0%, #0d9488 100%)", // Teal-700 to Teal-600
-        }}
-      >
-        <span className="relative z-10 font-semibold text-sm flex items-center gap-2">
-          {text}{" "}
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </span>
+    <Link href="/contact">
+      <div className="relative inline-block group text-sm rounded-full cursor-pointer">
+        <button
+          className="group relative inline-flex min-w-[160px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[3px] hover:scale-[1.05] text-white tracking-tight rounded-full py-4 px-8 items-center justify-center overflow-hidden"
+          style={{
+            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.2)",
+            background:
+              "radial-gradient(ellipse at bottom, #0f766e 0%, #0d9488 100%)", // Teal-700 to Teal-600
+          }}
+        >
+          <span className="relative z-10 font-semibold text-sm flex items-center gap-2">
+            {text}{" "}
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </span>
 
-        {/* Shine effect on hover */}
+          {/* Shine effect on hover */}
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)",
+            }}
+          ></span>
+        </button>
+
+        {/* Bottom Glow */}
         <span
-          aria-hidden="true"
-          className="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 opacity-20 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 rounded-full"
+          className="pointer-events-none absolute -bottom-3 left-1/2 z-0 h-6 w-44 -translate-x-1/2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 rounded-full text-sm"
           style={{
             background:
-              "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)",
+              "radial-gradient(60% 100% at 50% 50%, rgba(20, 184, 166, 0.6), rgba(20, 184, 166, 0.3) 35%, transparent 70%)", // Teal Glow
+            filter: "blur(10px) saturate(120%)",
           }}
+          aria-hidden="true"
         ></span>
-      </button>
-
-      {/* Bottom Glow */}
-      <span
-        className="pointer-events-none absolute -bottom-3 left-1/2 z-0 h-6 w-44 -translate-x-1/2 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 rounded-full text-sm"
-        style={{
-          background:
-            "radial-gradient(60% 100% at 50% 50%, rgba(20, 184, 166, 0.6), rgba(20, 184, 166, 0.3) 35%, transparent 70%)", // Teal Glow
-          filter: "blur(10px) saturate(120%)",
-        }}
-        aria-hidden="true"
-      ></span>
-    </div>
+      </div>
+    </Link>
   );
 };
 
@@ -198,7 +201,7 @@ const AboutTeam = () => {
 
         {/* --- Team Grid --- */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-          {TEAM_MEMBERS.map((member, index) => (
+          {TEAM_MEMBERS.map((member: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}

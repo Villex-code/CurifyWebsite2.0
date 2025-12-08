@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { ShieldCheck, TrendingUp, Sparkles, BarChart3 } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import teamImage from "@/public/images/happy.jpg";
 
 const Card4 = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("card4");
 
   const metrics = [
     {

@@ -6,11 +6,11 @@ import {
   MessageSquare,
   HeartPulse,
 } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import clinicImage from "@/public/images/futuristic_clinic.jpg";
 
 const Card2 = () => {
-  const { t } = useTranslation();
+  const t = useTranslations("card2");
 
   const benefits = [
     {

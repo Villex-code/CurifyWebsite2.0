@@ -7,7 +7,7 @@ import Card1 from "./ScrollCards/Card1";
 import Card2 from "./ScrollCards/Card2";
 import Card3 from "./ScrollCards/Card3";
 import Card4 from "./ScrollCards/Card4";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 
 const UseScrollCards = () => {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ const UseScrollCards = () => {
     target: containerRef,
     offset: ["start start", "end end"],
   });
-  const { t } = useTranslation();
+  const t = useTranslations("scrollCards");
 
   const titleProgress = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
