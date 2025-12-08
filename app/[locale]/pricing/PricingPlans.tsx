@@ -7,7 +7,7 @@ import { Check, Sparkles, Building2, User, Users } from "lucide-react";
 
 const PricingPlans = () => {
   const t = useTranslations("useCases.pricing.plans");
-  const plans = t.raw("plans");
+  const plans = t.raw("items");
   const [isYearly, setIsYearly] = useState(false);
 
   return (

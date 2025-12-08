@@ -199,8 +199,7 @@
       }
     },
     "seeDetails": "See Feature Details"
-  }
-},
+  },
   "pricing": {
     "metadata": {
       "title": "Pricing | Curify Healthcare OS",
@@ -227,7 +226,7 @@
       "contactCustom": "Contact for Custom Quote",
       "addOnsTitle": "Need hardware or extra limits?",
       "addOnsDesc": "Contact us for options.",
-      "plans": [
+      "items": [
         {
           "id": "starter",
           "name": "Starter",
@@ -459,167 +458,348 @@
         }
       ]
     },
-  "comparison": {
-    "title": "Compare All Features",
-    "description": "See exactly what's included in each plan to make the right choice for your organization.",
-    "feature": "Feature",
-    "perMonth": "month",
-    "mostPopular": "Most Popular",
-    "ctaNote": "Ready to get started?",
-    "plans": [
-      {
-        "id": "starter",
-        "name": "Starter",
-        "price": "99",
-        "popular": false,
-        "features": ["patients", "basic-emr", "appointments", "patient-portal", "basic-reporting", "email-support"],
-        "cta": "Get Started"
-      },
-      {
-        "id": "professional",
-        "name": "Professional",
-        "price": "299",
-        "popular": true,
-        "features": ["patients-5000", "advanced-emr", "multi-location", "integrations", "analytics", "priority-support", "custom-workflows"],
-        "cta": "Start Professional"
-      },
-      {
-        "id": "enterprise",
-        "name": "Enterprise",
-        "price": "599",
-        "popular": false,
-        "features": ["unlimited-patients", "full-emr", "multi-hospital", "custom-integrations", "ai-analytics", "white-label", "dedicated-manager", "phone-support", "custom-dev"],
-        "cta": "Contact Sales"
-      }
-    ],
-    "features": [
-      {
-        "id": "patients",
-        "name": "Patient Management",
-        "description": "Up to 500 patients"
-      },
-      {
-        "id": "patients-5000",
-        "name": "Patient Management",
-        "description": "Up to 5,000 patients"
-      },
-      {
-        "id": "unlimited-patients",
-        "name": "Patient Management",
-        "description": "Unlimited patients"
-      },
-      {
-        "id": "basic-emr",
-        "name": "Basic EMR"
-      },
-      {
-        "id": "advanced-emr",
-        "name": "Advanced EMR with Templates"
-      },
-      {
-        "id": "full-emr",
-        "name": "Complete EMR Suite"
-      },
-      {
-        "id": "appointments",
-        "name": "Appointment Scheduling"
-      },
-      {
-        "id": "patient-portal",
-        "name": "Patient Portal"
-      },
-      {
-        "id": "basic-reporting",
-        "name": "Basic Reporting"
-      },
-      {
-        "id": "analytics",
-        "name": "Analytics Dashboard"
-      },
-      {
-        "id": "ai-analytics",
-        "name": "AI-Powered Analytics"
-      },
-      {
-        "id": "multi-location",
-        "name": "Multi-Location Support"
-      },
-      {
-        "id": "multi-hospital",
-        "name": "Multi-Hospital Support"
-      },
-      {
-        "id": "integrations",
-        "name": "Standard Integrations (HL7, FHIR)"
-      },
-      {
-        "id": "custom-integrations",
-        "name": "Custom Integrations"
-      },
-      {
-        "id": "priority-support",
-        "name": "Priority Support"
-      },
-      {
-        "id": "phone-support",
-        "name": "24/7 Phone Support"
-      },
-      {
-        "id": "email-support",
-        "name": "Email Support"
-      },
-      {
-        "id": "custom-workflows",
-        "name": "Custom Workflows"
-      },
-      {
-        "id": "white-label",
-        "name": "White-Label Option"
-      },
-      {
-        "id": "dedicated-manager",
-        "name": "Dedicated Success Manager"
-      },
-      {
-        "id": "custom-dev",
-        "name": "Custom Development"
-      }
-    ]
-  },
-  "cta": {
-    "badge": "Ready to Transform?",
-    "title": "Join 500+ Healthcare",
-    "titleHighlight": "Organizations",
-    "description": "Experience the difference Curify makes in healthcare management. Start your free trial today and see why leading healthcare providers choose Curify.",
-    "primaryCTA": "Start Free Trial",
-    "secondaryCTA": "Book a Demo",
-    "trust": {
-      "enterprise": "Enterprise Security",
-      "enterpriseDesc": "Bank-level encryption and GDPR compliance for all data.",
-      "support": "24/7 Expert Support",
-      "supportDesc": "Healthcare specialists available whenever you need them.",
-      "uptime": "99.9% Uptime SLA",
-      "uptimeDesc": "Reliable service you can count on for critical operations."
+    "comparison_legacy": {
+      "title": "Compare All Features",
+      "description": "See exactly what's included in each plan to make the right choice for your organization.",
+      "feature": "Feature",
+      "perMonth": "month",
+      "mostPopular": "Most Popular",
+      "ctaNote": "Ready to get started?",
+      "plans": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "price": "99",
+          "popular": false,
+          "features": [
+            "patients",
+            "basic-emr",
+            "appointments",
+            "patient-portal",
+            "basic-reporting",
+            "email-support"
+          ],
+          "cta": "Get Started"
+        },
+        {
+          "id": "professional",
+          "name": "Professional",
+          "price": "299",
+          "popular": true,
+          "features": [
+            "patients-5000",
+            "advanced-emr",
+            "multi-location",
+            "integrations",
+            "analytics",
+            "priority-support",
+            "custom-workflows"
+          ],
+          "cta": "Start Professional"
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "price": "599",
+          "popular": false,
+          "features": [
+            "unlimited-patients",
+            "full-emr",
+            "multi-hospital",
+            "custom-integrations",
+            "ai-analytics",
+            "white-label",
+            "dedicated-manager",
+            "phone-support",
+            "custom-dev"
+          ],
+          "cta": "Contact Sales"
+        }
+      ],
+      "categories": [
+        {
+          "title": "Core Platform",
+          "features": [
+            {
+              "name": "Monthly Price",
+              "starter": "€79",
+              "pro": "€450",
+              "ent": "€1,800",
+              "plus": "Custom"
+            },
+            {
+              "name": "User Accounts",
+              "starter": "5",
+              "pro": "35",
+              "ent": "Unlimited",
+              "plus": "Unlimited"
+            },
+            {
+              "name": "Cloud Storage",
+              "starter": "100GB",
+              "pro": "1TB",
+              "ent": "5TB",
+              "plus": "Custom"
+            },
+            {
+              "name": "Active Patients",
+              "starter": "Unlimited",
+              "pro": "Unlimited",
+              "ent": "Unlimited",
+              "plus": "Unlimited"
+            }
+          ]
+        },
+        {
+          "title": "Clinical Features",
+          "features": [
+            {
+              "name": "IDIKA E-Prescription",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Patient Vitals Tracking",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "AI Drug Interactions",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Custom Medical Forms",
+              "starter": "5",
+              "pro": "25",
+              "ent": "100",
+              "plus": "Unlimited"
+            },
+            {
+              "name": "Visit Models",
+              "starter": "2D Only",
+              "pro": "2D & 3D",
+              "ent": "2D & 3D",
+              "plus": "2D & 3D"
+            }
+          ]
+        },
+        {
+          "title": "Operations & Inventory",
+          "features": [
+            {
+              "name": "Appointment Calendar",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Pharmacy / Inventory",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Multi-Department Support",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Online DICOM Viewer",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "PACS / Lab Integration",
+              "starter": false,
+              "pro": false,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "IoT Cabinet Integration",
+              "starter": false,
+              "pro": false,
+              "ent": "Optional",
+              "plus": true
+            }
+          ]
+        },
+        {
+          "title": "Support & Security",
+          "features": [
+            {
+              "name": "Support Level",
+              "starter": "Email",
+              "pro": "Priority Email/Chat",
+              "ent": "24/7 Priority",
+              "plus": "24/7 Dedicated"
+            },
+            {
+              "name": "Onboarding Training",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Dedicated Account Manager",
+              "starter": false,
+              "pro": false,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Custom Feature Dev",
+              "starter": false,
+              "pro": false,
+              "ent": false,
+              "plus": true
+            }
+          ]
+        }
+      ],
+      "features": [
+        {
+          "id": "patients",
+          "name": "Patient Management",
+          "description": "Up to 500 patients"
+        },
+        {
+          "id": "patients-5000",
+          "name": "Patient Management",
+          "description": "Up to 5,000 patients"
+        },
+        {
+          "id": "unlimited-patients",
+          "name": "Patient Management",
+          "description": "Unlimited patients"
+        },
+        {
+          "id": "basic-emr",
+          "name": "Basic EMR"
+        },
+        {
+          "id": "advanced-emr",
+          "name": "Advanced EMR with Templates"
+        },
+        {
+          "id": "full-emr",
+          "name": "Complete EMR Suite"
+        },
+        {
+          "id": "appointments",
+          "name": "Appointment Scheduling"
+        },
+        {
+          "id": "patient-portal",
+          "name": "Patient Portal"
+        },
+        {
+          "id": "basic-reporting",
+          "name": "Basic Reporting"
+        },
+        {
+          "id": "analytics",
+          "name": "Analytics Dashboard"
+        },
+        {
+          "id": "ai-analytics",
+          "name": "AI-Powered Analytics"
+        },
+        {
+          "id": "multi-location",
+          "name": "Multi-Location Support"
+        },
+        {
+          "id": "multi-hospital",
+          "name": "Multi-Hospital Support"
+        },
+        {
+          "id": "integrations",
+          "name": "Standard Integrations (HL7, FHIR)"
+        },
+        {
+          "id": "custom-integrations",
+          "name": "Custom Integrations"
+        },
+        {
+          "id": "priority-support",
+          "name": "Priority Support"
+        },
+        {
+          "id": "phone-support",
+          "name": "24/7 Phone Support"
+        },
+        {
+          "id": "email-support",
+          "name": "Email Support"
+        },
+        {
+          "id": "custom-workflows",
+          "name": "Custom Workflows"
+        },
+        {
+          "id": "white-label",
+          "name": "White-Label Option"
+        },
+        {
+          "id": "dedicated-manager",
+          "name": "Dedicated Success Manager"
+        },
+        {
+          "id": "custom-dev",
+          "name": "Custom Development"
+        }
+      ]
     },
-    "contact": {
-      "title": "Still have questions?",
-      "description": "Our healthcare experts are here to help you choose the perfect plan.",
-      "demo": {
-        "title": "Book a Demo",
-        "description": "See Curify in action with a personalized demo."
+    "cta": {
+      "badge": "Ready to Transform?",
+      "title": "Join 500+ Healthcare",
+      "titleHighlight": "Organizations",
+      "description": "Experience the difference Curify makes in healthcare management. Start your free trial today and see why leading healthcare providers choose Curify.",
+      "primaryCTA": "Start Free Trial",
+      "secondaryCTA": "Book a Demo",
+      "trust": {
+        "enterprise": "Enterprise Security",
+        "enterpriseDesc": "Bank-level encryption and GDPR compliance for all data.",
+        "support": "24/7 Expert Support",
+        "supportDesc": "Healthcare specialists available whenever you need them.",
+        "uptime": "99.9% Uptime SLA",
+        "uptimeDesc": "Reliable service you can count on for critical operations."
       },
-      "email": {
-        "title": "Email Support",
-        "description": "Get answers to your questions via email."
+      "contact": {
+        "title": "Still have questions?",
+        "description": "Our healthcare experts are here to help you choose the perfect plan.",
+        "demo": {
+          "title": "Book a Demo",
+          "description": "See Curify in action with a personalized demo."
+        },
+        "email": {
+          "title": "Email Support",
+          "description": "Get answers to your questions via email."
+        },
+        "phone": {
+          "title": "Call Us",
+          "description": "Speak directly with our healthcare specialists."
+        }
       },
-      "phone": {
-        "title": "Call Us",
-        "description": "Speak directly with our healthcare specialists."
+      "faq": {
+        "question": "Have questions about our plans?",
+        "link": "Check our FAQ"
       }
-    },
-    "faq": {
-      "question": "Have questions about our plans?",
-      "link": "Check our FAQ"
     }
   }
 }
