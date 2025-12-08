@@ -120,22 +120,38 @@ const PricingComparison = () => {
             <div className="grid grid-cols-5 border-t border-slate-200 bg-slate-50">
               <div className="p-6" />
               <div className="p-6 px-4">
-                <button className="w-full py-3 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-white hover:border-slate-400 transition-all text-sm">
+                <button
+                  onClick={() =>
+                    window.open("https://portal-staging.curifyapp.com/")
+                  }
+                  className="w-full py-3 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-white hover:border-slate-400 transition-all text-sm"
+                >
                   {t("chooseStarter")}
                 </button>
               </div>
               <div className="p-6 px-4 bg-teal-50/30 border-x border-teal-100">
-                <button className="w-full py-3 rounded-xl bg-teal-600 text-white font-bold shadow-lg shadow-teal-600/20 hover:bg-teal-700 transition-all text-sm">
+                <button
+                  onClick={() =>
+                    window.open("https://portal-staging.curifyapp.com/")
+                  }
+                  className="w-full py-3 rounded-xl bg-teal-600 text-white font-bold shadow-lg shadow-teal-600/20 hover:bg-teal-700 transition-all text-sm"
+                >
                   {t("choosePro")}
                 </button>
               </div>
               <div className="p-6 px-4 border-r border-slate-200">
-                <button className="w-full py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-black transition-all text-sm">
+                <button
+                  onClick={() => (window.location.href = "/contact")}
+                  className="w-full py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-black transition-all text-sm"
+                >
                   {t("contactSales")}
                 </button>
               </div>
               <div className="p-6 px-4">
-                <button className="w-full py-3 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-white transition-all text-sm">
+                <button
+                  onClick={() => (window.location.href = "/contact")}
+                  className="w-full py-3 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-white transition-all text-sm"
+                >
                   {t("contactUs")}
                 </button>
               </div>

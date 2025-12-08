@@ -202,13 +202,14 @@ const PriceCard = ({
         </div>
         <div className="text-xs text-slate-400 mt-2 font-medium h-4">
           {isYearly
-            ? t("billedYearly", { amount: plan.billedYearly.toLocaleString() })
-            : "Billed monthly"}
+            ? t("billedYearly", { amount: plan.billedYearly })
+            : t("billedMonthly")}
         </div>
       </div>
 
       {/* CTA Button */}
       <button
+        onClick={() => window.open("https://portal-staging.curifyapp.com/")}
         className={`
          w-full py-4 rounded-xl font-bold transition-all duration-200 mb-8
          ${

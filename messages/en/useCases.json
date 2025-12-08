@@ -220,6 +220,7 @@
       "mostPopular": "Most Popular",
       "perMonth": "/mo",
       "billedYearly": "Billed €{{amount}} yearly",
+      "billedMonthly": "Billed monthly",
       "whatsIncluded": "What's included",
       "enterprisePlus": "Enterprise Plus",
       "enterprisePlusDesc": "Need a custom solution for a large hospital network or university medical center? We offer tailored development and dedicated infrastructure.",
