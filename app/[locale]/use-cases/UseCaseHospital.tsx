@@ -47,49 +47,98 @@ const UseCaseHospital = () => {
           </motion.div>
         </div>
 
-        {/* --- THE BENTO GRID (Visuals) --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {/* CARD 1: EMERGENCY COORDINATION */}
-          <VisualCard delay={0}>
-            <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-slate-600 uppercase">
-                Emergency Center
-              </span>
-            </div>
-            <VisualEmergencyCoordination />
-          </VisualCard>
+        {/* --- THE VISUAL EVIDENCE & DESCRIPTIONS --- */}
+        {/* Desktop: Cards then descriptions */}
+        <div className="hidden lg:block">
+          {/* THE BENTO GRID (Visuals) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+            {/* CARD 1: EMERGENCY COORDINATION */}
+            <VisualCard delay={0}>
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                <span className="text-[10px] font-bold text-slate-600 uppercase">
+                  Emergency Center
+                </span>
+              </div>
+              <VisualEmergencyCoordination />
+            </VisualCard>
 
-          {/* CARD 2: AI COMMAND CENTER */}
-          <VisualCard delay={0.1}>
-            <VisualAIHospital />
-          </VisualCard>
+            {/* CARD 2: AI COMMAND CENTER */}
+            <VisualCard delay={0.1}>
+              <VisualAIHospital />
+            </VisualCard>
 
-          {/* CARD 3: MULTI-DEPT ALERTS */}
-          <VisualCard delay={0.2}>
-            <VisualHospitalAlerts />
-          </VisualCard>
+            {/* CARD 3: MULTI-DEPT ALERTS */}
+            <VisualCard delay={0.2}>
+              <VisualHospitalAlerts />
+            </VisualCard>
+          </div>
+
+          {/* TEXT DESCRIPTIONS (Below Grid) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <DescriptionCol
+              title="Emergency Coordination"
+              desc="Real-time tracking of emergency room capacity, ambulance dispatch, and critical care unit availability across the entire hospital campus."
+              delay={0.3}
+            />
+
+            <DescriptionCol
+              title="Multi-Department Sync"
+              desc="Seamlessly coordinate between ER, ICU, surgery, radiology, and pharmacy departments with instant communication and resource sharing."
+              delay={0.4}
+            />
+
+            <DescriptionCol
+              title="Critical Alerts"
+              desc="Instant notifications for code situations, equipment failures, staffing shortages, or supply chain disruptions that require immediate action."
+              delay={0.5}
+            />
+          </div>
         </div>
 
-        {/* --- TEXT DESCRIPTIONS (Below Grid) --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          <DescriptionCol
-            title="Emergency Coordination"
-            desc="Real-time tracking of emergency room capacity, ambulance dispatch, and critical care unit availability across the entire hospital campus."
-            delay={0.3}
-          />
+        {/* Mobile: Card + Description stacked */}
+        <div className="block lg:hidden space-y-12">
+          {/* CARD 1 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0}>
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                <span className="text-[10px] font-bold text-slate-600 uppercase">
+                  Emergency Center
+                </span>
+              </div>
+              <VisualEmergencyCoordination />
+            </VisualCard>
+            <DescriptionCol
+              title="Emergency Coordination"
+              desc="Real-time tracking of emergency room capacity, ambulance dispatch, and critical care unit availability across the entire hospital campus."
+              delay={0.3}
+            />
+          </div>
 
-          <DescriptionCol
-            title="Multi-Department Sync"
-            desc="Seamlessly coordinate between ER, ICU, surgery, radiology, and pharmacy departments with instant communication and resource sharing."
-            delay={0.4}
-          />
+          {/* CARD 2 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0.1}>
+              <VisualAIHospital />
+            </VisualCard>
+            <DescriptionCol
+              title="Multi-Department Sync"
+              desc="Seamlessly coordinate between ER, ICU, surgery, radiology, and pharmacy departments with instant communication and resource sharing."
+              delay={0.4}
+            />
+          </div>
 
-          <DescriptionCol
-            title="Critical Alerts"
-            desc="Instant notifications for code situations, equipment failures, staffing shortages, or supply chain disruptions that require immediate action."
-            delay={0.5}
-          />
+          {/* CARD 3 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0.2}>
+              <VisualHospitalAlerts />
+            </VisualCard>
+            <DescriptionCol
+              title="Critical Alerts"
+              desc="Instant notifications for code situations, equipment failures, staffing shortages, or supply chain disruptions that require immediate action."
+              delay={0.5}
+            />
+          </div>
         </div>
       </div>
     </section>

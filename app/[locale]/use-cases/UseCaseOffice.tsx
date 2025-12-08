@@ -53,49 +53,98 @@ const UseCaseOffice = () => {
           </motion.div>
         </div>
 
-        {/* --- 2. THE VISUAL EVIDENCE (Bento Grid) --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {/* CARD 1: E-PRESCRIPTION (IDIKA) */}
-          <VisualCard delay={0}>
-            <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-slate-600 uppercase">
-                Sync Active
-              </span>
-            </div>
-            <VisualPrescription />
-          </VisualCard>
+        {/* --- 2. THE VISUAL EVIDENCE & DESCRIPTIONS --- */}
+        {/* Desktop: Cards then descriptions */}
+        <div className="hidden lg:block">
+          {/* THE VISUAL EVIDENCE (Bento Grid) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+            {/* CARD 1: E-PRESCRIPTION (IDIKA) */}
+            <VisualCard delay={0}>
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-[10px] font-bold text-slate-600 uppercase">
+                  Sync Active
+                </span>
+              </div>
+              <VisualPrescription />
+            </VisualCard>
 
-          {/* CARD 2: INTEGRATED PAYMENTS */}
-          <VisualCard delay={0.1}>
-            <VisualPayments />
-          </VisualCard>
+            {/* CARD 2: INTEGRATED PAYMENTS */}
+            <VisualCard delay={0.1}>
+              <VisualPayments />
+            </VisualCard>
 
-          {/* CARD 3: AI SCRIBE */}
-          <VisualCard delay={0.2}>
-            <VisualAIScribe />
-          </VisualCard>
+            {/* CARD 3: AI SCRIBE */}
+            <VisualCard delay={0.2}>
+              <VisualAIScribe />
+            </VisualCard>
+          </div>
+
+          {/* FEATURE DETAILS (Text Descriptions) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <DescriptionCol
+              title="Native E-Prescription"
+              desc="Direct 2-way integration with national systems (IDIKA / EOPYY). Prescribe medications and referrals instantly without logging into external portals."
+              delay={0.3}
+            />
+
+            <DescriptionCol
+              title="Automated Billing"
+              desc="Convert a clinical visit into a compliant invoice in one click. Connects with myData/AADE to track revenue and outstanding balances effortlessly."
+              delay={0.4}
+            />
+
+            <DescriptionCol
+              title="AI Clinical Assistant"
+              desc="Don't type. Just speak. Our AI Scribe listens to your consultation and auto-drafts structured SOAP notes and patient histories in seconds."
+              delay={0.5}
+            />
+          </div>
         </div>
 
-        {/* --- 3. FEATURE DETAILS (Text Descriptions) --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          <DescriptionCol
-            title="Native E-Prescription"
-            desc="Direct 2-way integration with national systems (IDIKA / EOPYY). Prescribe medications and referrals instantly without logging into external portals."
-            delay={0.3}
-          />
+        {/* Mobile: Card + Description stacked */}
+        <div className="block lg:hidden space-y-12">
+          {/* CARD 1 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0}>
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-[10px] font-bold text-slate-600 uppercase">
+                  Sync Active
+                </span>
+              </div>
+              <VisualPrescription />
+            </VisualCard>
+            <DescriptionCol
+              title="Native E-Prescription"
+              desc="Direct 2-way integration with national systems (IDIKA / EOPYY). Prescribe medications and referrals instantly without logging into external portals."
+              delay={0.3}
+            />
+          </div>
 
-          <DescriptionCol
-            title="Automated Billing"
-            desc="Convert a clinical visit into a compliant invoice in one click. Connects with myData/AADE to track revenue and outstanding balances effortlessly."
-            delay={0.4}
-          />
+          {/* CARD 2 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0.1}>
+              <VisualPayments />
+            </VisualCard>
+            <DescriptionCol
+              title="Automated Billing"
+              desc="Convert a clinical visit into a compliant invoice in one click. Connects with myData/AADE to track revenue and outstanding balances effortlessly."
+              delay={0.4}
+            />
+          </div>
 
-          <DescriptionCol
-            title="AI Clinical Assistant"
-            desc="Don't type. Just speak. Our AI Scribe listens to your consultation and auto-drafts structured SOAP notes and patient histories in seconds."
-            delay={0.5}
-          />
+          {/* CARD 3 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0.2}>
+              <VisualAIScribe />
+            </VisualCard>
+            <DescriptionCol
+              title="AI Clinical Assistant"
+              desc="Don't type. Just speak. Our AI Scribe listens to your consultation and auto-drafts structured SOAP notes and patient histories in seconds."
+              delay={0.5}
+            />
+          </div>
         </div>
       </div>
     </section>

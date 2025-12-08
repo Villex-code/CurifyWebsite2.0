@@ -73,49 +73,98 @@ const UseCaseClinic = () => {
           </motion.div>
         </div>
 
-        {/* --- THE BENTO GRID (Visuals) --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {/* CARD 1: LIVE MONITORING */}
-          <VisualCard delay={0}>
-            <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-slate-600 uppercase">
-                Live Floor Plan
-              </span>
-            </div>
-            <VisualFloorPlan />
-          </VisualCard>
+        {/* --- THE VISUAL EVIDENCE & DESCRIPTIONS --- */}
+        {/* Desktop: Cards then descriptions */}
+        <div className="hidden lg:block">
+          {/* THE BENTO GRID (Visuals) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+            {/* CARD 1: LIVE MONITORING */}
+            <VisualCard delay={0}>
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-[10px] font-bold text-slate-600 uppercase">
+                  Live Floor Plan
+                </span>
+              </div>
+              <VisualFloorPlan />
+            </VisualCard>
 
-          {/* CARD 2: AI CORE */}
-          <VisualCard delay={0.1}>
-            <VisualAICore />
-          </VisualCard>
+            {/* CARD 2: AI CORE */}
+            <VisualCard delay={0.1}>
+              <VisualAICore />
+            </VisualCard>
 
-          {/* CARD 3: NOTIFICATIONS */}
-          <VisualCard delay={0.2}>
-            <VisualNotifications />
-          </VisualCard>
+            {/* CARD 3: NOTIFICATIONS */}
+            <VisualCard delay={0.2}>
+              <VisualNotifications />
+            </VisualCard>
+          </div>
+
+          {/* TEXT DESCRIPTIONS (Below Grid) */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <DescriptionCol
+              title="Total Visibility"
+              desc="See exactly which rooms are occupied, which need cleaning, and where the bottlenecks are in real-time. Manage patient flow effortlessly."
+              delay={0.3}
+            />
+
+            <DescriptionCol
+              title="AI-Powered Triage"
+              desc="Our algorithms analyze patient intake forms to prioritize urgency automatically, ensuring critical cases are seen first."
+              delay={0.4}
+            />
+
+            <DescriptionCol
+              title="Instant Action"
+              desc="Get immediate notifications for low inventory, waiting room overflow, or staff requests directly to your device."
+              delay={0.5}
+            />
+          </div>
         </div>
 
-        {/* --- TEXT DESCRIPTIONS (Below Grid) --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          <DescriptionCol
-            title="Total Visibility"
-            desc="See exactly which rooms are occupied, which need cleaning, and where the bottlenecks are in real-time. Manage patient flow effortlessly."
-            delay={0.3}
-          />
+        {/* Mobile: Card + Description stacked */}
+        <div className="block lg:hidden space-y-12">
+          {/* CARD 1 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0}>
+              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-[10px] font-bold text-slate-600 uppercase">
+                  Live Floor Plan
+                </span>
+              </div>
+              <VisualFloorPlan />
+            </VisualCard>
+            <DescriptionCol
+              title="Total Visibility"
+              desc="See exactly which rooms are occupied, which need cleaning, and where the bottlenecks are in real-time. Manage patient flow effortlessly."
+              delay={0.3}
+            />
+          </div>
 
-          <DescriptionCol
-            title="AI-Powered Triage"
-            desc="Our algorithms analyze patient intake forms to prioritize urgency automatically, ensuring critical cases are seen first."
-            delay={0.4}
-          />
+          {/* CARD 2 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0.1}>
+              <VisualAICore />
+            </VisualCard>
+            <DescriptionCol
+              title="AI-Powered Triage"
+              desc="Our algorithms analyze patient intake forms to prioritize urgency automatically, ensuring critical cases are seen first."
+              delay={0.4}
+            />
+          </div>
 
-          <DescriptionCol
-            title="Instant Action"
-            desc="Get immediate notifications for low inventory, waiting room overflow, or staff requests directly to your device."
-            delay={0.5}
-          />
+          {/* CARD 3 + DESCRIPTION */}
+          <div className="flex flex-col gap-6">
+            <VisualCard delay={0.2}>
+              <VisualNotifications />
+            </VisualCard>
+            <DescriptionCol
+              title="Instant Action"
+              desc="Get immediate notifications for low inventory, waiting room overflow, or staff requests directly to your device."
+              delay={0.5}
+            />
+          </div>
         </div>
       </div>
     </section>
