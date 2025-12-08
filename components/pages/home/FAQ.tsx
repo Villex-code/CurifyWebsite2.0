@@ -6,21 +6,35 @@ import StructuredData from "@/components/SEO/StructuredData";
 import { Plus, Minus } from "lucide-react";
 
 const Faq = () => {
-  const t = useTranslations("FAQ");
+  const t = useTranslations("faq");
   const [activeId, setActiveId] = useState<number>(1);
 
-  // Memoize data
-  const faqs = useMemo(
-    () => [
-      { id: 1, q: t("questions.1.question"), a: t("questions.1.answer") },
-      { id: 2, q: t("questions.2.question"), a: t("questions.2.answer") },
-      { id: 3, q: t("questions.3.question"), a: t("questions.3.answer") },
-      { id: 4, q: t("questions.4.question"), a: t("questions.4.answer") },
-      { id: 5, q: t("questions.5.question"), a: t("questions.5.answer") },
-      { id: 6, q: t("questions.6.question"), a: t("questions.6.answer") },
-    ],
-    [t]
-  );
+  // Memoize data - flatten all segments into a single array
+  const faqs = useMemo(() => {
+    const medicalOffice = t
+      .raw("segments.medical-office")
+      .map((item: any, index: number) => ({
+        id: index + 1,
+        q: item.question,
+        a: item.answer,
+      }));
+
+    const clinic = t.raw("segments.clinic").map((item: any, index: number) => ({
+      id: medicalOffice.length + index + 1,
+      q: item.question,
+      a: item.answer,
+    }));
+
+    const hospital = t
+      .raw("segments.hospital")
+      .map((item: any, index: number) => ({
+        id: medicalOffice.length + clinic.length + index + 1,
+        q: item.question,
+        a: item.answer,
+      }));
+
+    return [...medicalOffice, ...clinic, ...hospital];
+  }, [t]);
 
   const activeFaq = faqs.find((f) => f.id === activeId);
 
@@ -58,15 +72,13 @@ const Faq = () => {
             transition={{ duration: 0.5 }}
           >
             <span className="text-teal-600 font-semibold uppercase text-sm px-3 py-1 rounded-full">
-              Support & Knowledge
+              {t("header.badge")}
             </span>
             <h2 className="mt-6 text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
-              {t("title")}
+              {t("header.title")}
             </h2>
             <p className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
-              Everything you need to know about the product and billing. Can’t
-              find the answer you’re looking for? Please chat to our friendly
-              team.
+              {t("header.subtitle")}
             </p>
           </motion.div>
         </div>

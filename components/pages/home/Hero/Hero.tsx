@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="flex flex-col bg-background ">
+    <main className="flex flex-col bg-background">
       {/* Mobile: HeroTopContent in normal flow */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -45,7 +45,7 @@ export default function Hero() {
               />
               <Image
                 src="/images/graphics/curve_thick.webp"
-                alt="Curve image"
+                alt="Decorative curve background pattern"
                 fill
                 quality={85}
                 className="opacity-40"
@@ -66,6 +66,6 @@ export default function Hero() {
           leftComponent={HeroLeftContent}
         />
       </motion.div>
-    </div>
+    </main>
   );
 }

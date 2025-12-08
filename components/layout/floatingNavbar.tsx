@@ -48,7 +48,7 @@ export const FloatingNav = ({
         className={cn(
           "fixed inset-x-0 flex items-center justify-between z-[5000]",
           // Mobile styles
-          "md:w-[90vw] md:mx-auto md:top-10 rounded-b-xl",
+          "md:w-[90vw] md:mx-auto md:top-6 rounded-b-xl",
           // Base styles that change between mobile and desktop
           "bg-teal-600 backdrop-blur-sm shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]",
           // Mobile-first padding

@@ -1,0 +1,624 @@
+{
+  "roi": {
+    "title": "ROI Calculator",
+    "headline": "See the magic numbers.",
+    "segments": {
+      "medicalOffice": "Medical Office",
+      "clinic": "Private Clinic",
+      "hospital": "Hospital"
+    },
+    "inputs": {
+      "totalBeds": "Total Beds",
+      "monthlyPatients": "Monthly Patients",
+      "departments": "Departments",
+      "staffMembers": "Staff Members"
+    },
+    "estimation": {
+      "title": "Estimation Basis",
+      "description": "Calculations based on average admin load reduction observed across",
+      "enterprisePartners": "enterprise",
+      "clinicalPartners": "clinical",
+      "suffix": "partners using Curify v2.4."
+    },
+    "revenue": {
+      "subtitle": "Potential Change in Revenue",
+      "description": "Estimated additional yearly revenue through efficiency.",
+      "roiBadge": "That's a 3.5x ROI"
+    },
+    "costEfficiency": {
+      "title": "Cost Efficiency",
+      "old": "Old",
+      "new": "New"
+    },
+    "timeSaved": {
+      "description": "Reclaimed per month",
+      "efficiency": {
+        "title": "Efficiency Boost",
+        "description": "Staff is 40% more productive"
+      }
+    },
+    "cta": {
+      "button": "Get Your Full Report",
+      "description": "Free analysis based on your metrics."
+    }
+  },
+  "faq": {
+    "header": {
+      "badge": "Support Center",
+      "title": "Questions? We have answers.",
+      "subtitle": "Everything you need to know about implementing Curify in your organization."
+    },
+    "segments": {
+      "medical-office": [
+        {
+          "question": "Is Curify fully integrated with IDIKA/EOPYY?",
+          "answer": "Yes. Curify offers native 2-way synchronization with the National E-Prescription System. You can issue prescriptions and referrals directly within the app without logging into the IDIKA portal separately."
+        },
+        {
+          "question": "Does it connect with myData (AADE)?",
+          "answer": "Absolutely. Every receipt or invoice generated triggers an automatic real-time transmission to myData/AADE. Your tax compliance is handled in the background, eliminating accounting errors."
+        },
+        {
+          "question": "Can I access my data from my phone?",
+          "answer": "Yes. Curify is a cloud-native Progressive Web App (PWA). You have full access to patient files, your calendar, and prescribing tools securely from any iOS or Android device."
+        }
+      ],
+      "clinic": [
+        {
+          "question": "Can we restrict what secretaries see?",
+          "answer": "Yes. We utilize strict Role-Based Access Control (RBAC). Reception staff can manage schedules and billing but are technically blocked from viewing sensitive clinical notes or medical history."
+        },
+        {
+          "question": "We use legacy software. Can you migrate our data?",
+          "answer": "Yes. We offer a 'White-Glove Migration Service'. We extract data from legacy systems (e.g., MedExpress, Watson), clean it, and map it into Curify so you retain your complete patient history."
+        },
+        {
+          "question": "Does it support different medical specialties?",
+          "answer": "Yes. Each doctor gets a tailored view. Cardiologists see EKG data fields, while Dermatologists see Body Mapping tools, all within the same unified clinic environment."
+        }
+      ],
+      "hospital": [
+        {
+          "question": "Do you integrate with LIS and PACS?",
+          "answer": "Yes. Curify is built on HL7 and FHIR standards. We build custom bridges to pull Lab Results (LIS) and Imaging (PACS) directly into the central patient timeline automatically."
+        },
+        {
+          "question": "Can we host Curify on our own servers?",
+          "answer": "For Enterprise partners, we offer On-Premise deployment or Private Cloud instances to satisfy specific data sovereignty, low-latency, and internal IT governance requirements."
+        },
+        {
+          "question": "Is the platform GDPR compliant?",
+          "answer": "Fully. We employ military-grade AES-256 encryption, maintain EU-based data centers, and provide granular Audit Logs that track every single data interaction for compliance reporting."
+        }
+      ]
+    },
+    "supportCards": {
+      "chat": {
+        "title": "Live Chat",
+        "desc": "Mon-Fri, 9am-6pm",
+        "cta": "Start Chat"
+      },
+      "email": {
+        "title": "Email Support",
+        "desc": "Response < 24h",
+        "cta": "Contact Us"
+      },
+      "docs": {
+        "title": "Documentation",
+        "desc": "Guides & API",
+        "cta": "View Docs"
+      }
+    }
+  },
+  "hero": {
+    "badge": "Select your scale",
+    "title": "Precision tools for",
+    "titleHighlight": "every stage of care.",
+    "description": "Curify adapts its interface and capabilities to fit your specific environment.",
+    "viewDetails": "Viewing Details",
+    "select": "Select",
+    "segments": {
+      "medicalOffice": {
+        "title": "Medical Office",
+        "subtitle": "Solo Practitioners & Small Teams",
+        "description": "Automated admin for individual care."
+      },
+      "clinic": {
+        "title": "Private Clinic",
+        "subtitle": "Multi-Specialty & Mid-Size",
+        "description": "Unified workflows across departments."
+      },
+      "hospital": {
+        "title": "Hospital",
+        "subtitle": "Enterprise & Large Scale",
+        "description": "Infrastructure for complex ecosystems."
+      }
+    }
+  },
+  "value": {
+    "badge": "Core Value Proposition",
+    "title": "Everything you need to",
+    "titleHighlight": "run on autopilot.",
+    "description": "Curify replaces fragmented tools with a single, cohesive operating system. Integrated payments, holistic management, and smart workflows.",
+    "cards": {
+      "integratedPayments": {
+        "title": "Integrated Payments",
+        "description": "Invoices generated automatically. Payments reconciled instantly. Reduce accounts receivable by 40%."
+      },
+      "holisticManagement": {
+        "title": "Holistic Management",
+        "description": "A God-mode view of your entire facility. Track patients, staff, and inventory from a single dashboard."
+      },
+      "smartWorkflows": {
+        "title": "Smart Workflows",
+        "description": "Notifications that actually matter. Trigger tasks based on real-time events like 'Low Stock' or 'Patient Arrival'."
+      },
+      "instantRoi": {
+        "title": "Instant ROI",
+        "description": "See value from Day 1. Most clinics save 15+ hours/week."
+      }
+    },
+    "workflowSteps": {
+      "lowStockAlert": "Low Stock Alert",
+      "autoReorder": "Auto-Reorder",
+      "sent": "SENT"
+    }
+  },
+  "comparison": {
+    "title": "The difference between",
+    "fragmentation": "fragmentation",
+    "and": "and",
+    "unity": "unity.",
+    "oldWay": {
+      "badge": "The Old Way",
+      "title": "The Data Labyrinth",
+      "description": "Patient history in paper files. Billing in a separate app. Inventory on a spreadsheet. Connecting the dots takes weeks.",
+      "syncingBadge": "Syncing... (Forever)"
+    },
+    "curifyWay": {
+      "badge": "The Curify Way",
+      "title": "Everything Connected",
+      "description": "Curify acts as the central nervous system. Billing, EMR, and Inventory talk to each other instantly in one unified dashboard.",
+      "unifiedBadge": "Data Unified"
+    },
+    "metrics": {
+      "searchTime": {
+        "label": "Search Time",
+        "before": "14 Days",
+        "after": "< 1 Sec"
+      },
+      "errorRate": {
+        "label": "Error Rate",
+        "before": "18%",
+        "after": "0.1%"
+      },
+      "staffLoad": {
+        "label": "Staff Load",
+        "before": "Heavy",
+        "after": "Automated"
+      }
+    },
+    "seeDetails": "See Feature Details"
+  }
+},
+  "pricing": {
+    "metadata": {
+      "title": "Pricing | Curify Healthcare OS",
+      "description": "Choose the perfect plan for your healthcare organization. From solo practitioners to enterprise hospitals, Curify scales with your needs.",
+      "keywords": "healthcare pricing, medical software pricing, clinic management pricing, hospital software pricing, Curify pricing",
+      "ogTitle": "Curify Pricing Plans",
+      "ogDescription": "Transparent, scalable pricing for healthcare organizations of all sizes.",
+      "ogImageAlt": "Curify pricing page"
+    },
+    "plans": {
+      "title": "Simple, transparent pricing",
+      "titleHighlight": "for every stage.",
+      "description": "Choose the plan that fits your facility. Scale up or down at any time.",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "savePercent": "Save 10%",
+      "mostPopular": "Most Popular",
+      "perMonth": "/mo",
+      "billedYearly": "Billed €{{amount}} yearly",
+      "whatsIncluded": "What's included",
+      "enterprisePlus": "Enterprise Plus",
+      "enterprisePlusDesc": "Need a custom solution for a large hospital network or university medical center? We offer tailored development and dedicated infrastructure.",
+      "contactCustom": "Contact for Custom Quote",
+      "addOnsTitle": "Need hardware or extra limits?",
+      "addOnsDesc": "Contact us for options.",
+      "plans": [
+        {
+          "id": "starter",
+          "name": "Starter",
+          "subtitle": "Solo Practice",
+          "description": "Perfect for independent practitioners and small medical offices.",
+          "priceMonthly": 79,
+          "priceYearly": 71,
+          "billedYearly": 853,
+          "features": [
+            "Unlimited Patient Records",
+            "5 User Accounts",
+            "100GB Secure Storage",
+            "IDIKA Integration (E-Prescription)",
+            "Basic Patient & Staff Management",
+            "Appointment Reminders",
+            "Basic Analytics"
+          ],
+          "cta": "Get Started"
+        },
+        {
+          "id": "professional",
+          "name": "Professional",
+          "subtitle": "Medical Centers",
+          "description": "Designed for growing practices, polyclinics, and medical centers.",
+          "priceMonthly": 450,
+          "priceYearly": 405,
+          "billedYearly": 4860,
+          "features": [
+            "Everything in Starter",
+            "35 User Accounts",
+            "1TB Secure Storage",
+            "Pharmacy & Inventory Management",
+            "DICOM Viewer (PAX)",
+            "AI Drug Interaction Alerts",
+            "Advanced Analytics & Research"
+          ],
+          "cta": "Start Free Trial",
+          "popular": true
+        },
+        {
+          "id": "enterprise",
+          "name": "Enterprise",
+          "subtitle": "Hospitals",
+          "description": "Comprehensive solution for hospitals and large facilities.",
+          "priceMonthly": 1800,
+          "priceYearly": 1620,
+          "billedYearly": 19440,
+          "features": [
+            "Everything in Professional",
+            "Unlimited User Accounts",
+            "5TB Secure Storage",
+            "PACS / Lab Systems Integration",
+            "Custom Feature Development",
+            "Dedicated Account Manager",
+            "24/7 Priority Support"
+          ],
+          "cta": "Contact Sales"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Compare Plans",
+      "description": "Detailed feature breakdown for every stage of growth.",
+      "features": "Features",
+      "soloPractice": "Solo Practice",
+      "medicalCenters": "Medical Centers",
+      "hospitals": "Hospitals",
+      "customScale": "Custom Scale",
+      "professional": "Professional",
+      "enterprise": "Enterprise",
+      "plus": "Plus",
+      "chooseStarter": "Choose Starter",
+      "choosePro": "Choose Pro",
+      "contactSales": "Contact Sales",
+      "contactUs": "Contact Us",
+      "categories": [
+        {
+          "title": "Core Platform",
+          "features": [
+            {
+              "name": "Monthly Price",
+              "starter": "€79",
+              "pro": "€450",
+              "ent": "€1,800",
+              "plus": "Custom"
+            },
+            {
+              "name": "User Accounts",
+              "starter": "5",
+              "pro": "35",
+              "ent": "Unlimited",
+              "plus": "Unlimited"
+            },
+            {
+              "name": "Cloud Storage",
+              "starter": "100GB",
+              "pro": "1TB",
+              "ent": "5TB",
+              "plus": "Custom"
+            },
+            {
+              "name": "Active Patients",
+              "starter": "Unlimited",
+              "pro": "Unlimited",
+              "ent": "Unlimited",
+              "plus": "Unlimited"
+            }
+          ]
+        },
+        {
+          "title": "Clinical Features",
+          "features": [
+            {
+              "name": "IDIKA E-Prescription",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Patient Vitals Tracking",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "AI Drug Interactions",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Custom Medical Forms",
+              "starter": "5",
+              "pro": "25",
+              "ent": "100",
+              "plus": "Unlimited"
+            },
+            {
+              "name": "Visit Models",
+              "starter": "2D Only",
+              "pro": "2D & 3D",
+              "ent": "2D & 3D",
+              "plus": "2D & 3D"
+            }
+          ]
+        },
+        {
+          "title": "Operations & Inventory",
+          "features": [
+            {
+              "name": "Appointment Calendar",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Pharmacy / Inventory",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Multi-Department Support",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Online DICOM Viewer",
+              "starter": true,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "PACS / Lab Integration",
+              "starter": false,
+              "pro": false,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "IoT Cabinet Integration",
+              "starter": false,
+              "pro": false,
+              "ent": "Optional",
+              "plus": true
+            }
+          ]
+        },
+        {
+          "title": "Support & Security",
+          "features": [
+            {
+              "name": "Support Level",
+              "starter": "Email",
+              "pro": "Priority Email/Chat",
+              "ent": "24/7 Priority",
+              "plus": "24/7 Dedicated"
+            },
+            {
+              "name": "Onboarding Training",
+              "starter": false,
+              "pro": true,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Dedicated Account Manager",
+              "starter": false,
+              "pro": false,
+              "ent": true,
+              "plus": true
+            },
+            {
+              "name": "Custom Feature Dev",
+              "starter": false,
+              "pro": false,
+              "ent": false,
+              "plus": true
+            }
+          ]
+        }
+      ]
+    },
+  "comparison": {
+    "title": "Compare All Features",
+    "description": "See exactly what's included in each plan to make the right choice for your organization.",
+    "feature": "Feature",
+    "perMonth": "month",
+    "mostPopular": "Most Popular",
+    "ctaNote": "Ready to get started?",
+    "plans": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "price": "99",
+        "popular": false,
+        "features": ["patients", "basic-emr", "appointments", "patient-portal", "basic-reporting", "email-support"],
+        "cta": "Get Started"
+      },
+      {
+        "id": "professional",
+        "name": "Professional",
+        "price": "299",
+        "popular": true,
+        "features": ["patients-5000", "advanced-emr", "multi-location", "integrations", "analytics", "priority-support", "custom-workflows"],
+        "cta": "Start Professional"
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "price": "599",
+        "popular": false,
+        "features": ["unlimited-patients", "full-emr", "multi-hospital", "custom-integrations", "ai-analytics", "white-label", "dedicated-manager", "phone-support", "custom-dev"],
+        "cta": "Contact Sales"
+      }
+    ],
+    "features": [
+      {
+        "id": "patients",
+        "name": "Patient Management",
+        "description": "Up to 500 patients"
+      },
+      {
+        "id": "patients-5000",
+        "name": "Patient Management",
+        "description": "Up to 5,000 patients"
+      },
+      {
+        "id": "unlimited-patients",
+        "name": "Patient Management",
+        "description": "Unlimited patients"
+      },
+      {
+        "id": "basic-emr",
+        "name": "Basic EMR"
+      },
+      {
+        "id": "advanced-emr",
+        "name": "Advanced EMR with Templates"
+      },
+      {
+        "id": "full-emr",
+        "name": "Complete EMR Suite"
+      },
+      {
+        "id": "appointments",
+        "name": "Appointment Scheduling"
+      },
+      {
+        "id": "patient-portal",
+        "name": "Patient Portal"
+      },
+      {
+        "id": "basic-reporting",
+        "name": "Basic Reporting"
+      },
+      {
+        "id": "analytics",
+        "name": "Analytics Dashboard"
+      },
+      {
+        "id": "ai-analytics",
+        "name": "AI-Powered Analytics"
+      },
+      {
+        "id": "multi-location",
+        "name": "Multi-Location Support"
+      },
+      {
+        "id": "multi-hospital",
+        "name": "Multi-Hospital Support"
+      },
+      {
+        "id": "integrations",
+        "name": "Standard Integrations (HL7, FHIR)"
+      },
+      {
+        "id": "custom-integrations",
+        "name": "Custom Integrations"
+      },
+      {
+        "id": "priority-support",
+        "name": "Priority Support"
+      },
+      {
+        "id": "phone-support",
+        "name": "24/7 Phone Support"
+      },
+      {
+        "id": "email-support",
+        "name": "Email Support"
+      },
+      {
+        "id": "custom-workflows",
+        "name": "Custom Workflows"
+      },
+      {
+        "id": "white-label",
+        "name": "White-Label Option"
+      },
+      {
+        "id": "dedicated-manager",
+        "name": "Dedicated Success Manager"
+      },
+      {
+        "id": "custom-dev",
+        "name": "Custom Development"
+      }
+    ]
+  },
+  "cta": {
+    "badge": "Ready to Transform?",
+    "title": "Join 500+ Healthcare",
+    "titleHighlight": "Organizations",
+    "description": "Experience the difference Curify makes in healthcare management. Start your free trial today and see why leading healthcare providers choose Curify.",
+    "primaryCTA": "Start Free Trial",
+    "secondaryCTA": "Book a Demo",
+    "trust": {
+      "enterprise": "Enterprise Security",
+      "enterpriseDesc": "Bank-level encryption and GDPR compliance for all data.",
+      "support": "24/7 Expert Support",
+      "supportDesc": "Healthcare specialists available whenever you need them.",
+      "uptime": "99.9% Uptime SLA",
+      "uptimeDesc": "Reliable service you can count on for critical operations."
+    },
+    "contact": {
+      "title": "Still have questions?",
+      "description": "Our healthcare experts are here to help you choose the perfect plan.",
+      "demo": {
+        "title": "Book a Demo",
+        "description": "See Curify in action with a personalized demo."
+      },
+      "email": {
+        "title": "Email Support",
+        "description": "Get answers to your questions via email."
+      },
+      "phone": {
+        "title": "Call Us",
+        "description": "Speak directly with our healthcare specialists."
+      }
+    },
+    "faq": {
+      "question": "Have questions about our plans?",
+      "link": "Check our FAQ"
+    }
+  }
+}

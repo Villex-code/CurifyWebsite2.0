@@ -1,19 +1,16 @@
 {
   "hero": {
-    "title": "Simplifying Healthcare",
-    "subtitle": "Smart Healthcare Platform",
-    "description": "An all-in-one platform for healthcare professionals and patients.",
+    "title": "The All-in-One Medical Practice Management Software",
+    "subtitle": "Manage Patients, Appointments & E-Prescriptions in one Cloud Platform.",
+    "description": "Curify streamlines your clinic's operations. From electronic health records (EHR) to smart IoT inventory, we provide the tools modern doctors need to focus on patient care.",
     "cta": {
       "getStarted": "Get Started",
       "watchDemo": "Watch Demo"
     }
   },
   "heroLeft": {
-    "title": {
-      "part1": "Transform",
-      "part2": "Healthcare"
-    },
-    "subtitle": "Revolutionary healthcare management solution",
+    "title": "Your Clinic in Your Pocket",
+    "subtitle": "Access patient records and manage appointments on the go with our native iOS and Android medical app.",
     "features": {
       "first": "AI-powered patient care",
       "second": "Real-time medication tracking",
@@ -23,9 +20,9 @@
   },
   "heroRight": {
     "title": {
-      "part1": "Manage",
-      "part2": "Health",
-      "part3": "Better"
+      "part1": "Trusted by",
+      "part2": "Healthcare",
+      "part3": "Providers"
     },
     "description": "Streamline your medical practice with our advanced tools.",
     "timeCard": {
@@ -34,15 +31,206 @@
     },
     "stats": {
       "medicines": {
-        "label": "Medicines Managed"
+        "label": "Prescriptions Issued"
       },
       "tasks": {
-        "label": "Tasks Completed"
+        "label": "Tasks Automated"
       },
       "support": {
-        "label": "Support Available"
+        "label": "Live Support"
       }
+    }
+  },
+  "problemSolution": {
+    "challengeBadge": "The Challenge",
+    "headline": {
+      "part1": "Manual data entry is",
+      "part2": "slowing you down."
+    },
+    "description": "Healthcare professionals spend 40% of their time clicking through tabs, opening files, and cross-referencing schedules. It's tedious, exhausting, and prone to error.",
+    "solutionHeader": "One command. Done.",
+    "features": {
+      "naturalLanguage": {
+        "title": "Natural Language Action",
+        "description": "Forget navigating menus. Just tell Curify: \"Register new patient George P. and prescribe antibiotics.\""
+      },
+      "multiStep": {
+        "title": "Multi-Step Execution",
+        "description": "Our AI understands context. It creates the file, prepares the prescription, and updates the calendar simultaneously, in seconds."
+      }
+    },
+    "ctaButton": "Try AI automation"
+  },
+  "coreCapabilities": {
+    "title": "A complete ecosystem <br />under one roof.",
+    "description": "From IoT-enabled pharmacy management to integrated billing. Curify unifies every aspect of your healthcare organization into one cohesive operating system.",
+    "financialOs": {
+      "badge": "Financial OS",
+      "title": "Integrated Payments & Revenue Cycle",
+      "description": "Stop losing revenue to administrative errors. Automate billing, process insurance claims instantly, and track real-time financial health across all departments.",
+      "netRevenue": "Net Revenue",
+      "growthPercent": "+12%"
+    },
+    "smartPharmacy": {
+      "title": "Smart Pharmacy",
+      "description": "IoT-enabled cabinets with automatic inventory tracking. Prevent stockouts and eliminate manual counting forever."
+    },
+    "aiDiagnostics": {
+      "title": "AI Diagnostics",
+      "description": "Clinical decision support with automated drug interaction alerts and patient anomaly detection."
+    },
+    "facilityOperations": {
+      "title": "Facility Operations",
+      "description": "Manage capacity effortlessly. Real-time room occupancy, smart shift scheduling, and staff allocation in one view.",
+      "room101": "Room 101: Occupied",
+      "room102": "Room 102: Cleaning",
+      "room103": "Room 103: Occupied"
+    }
+  },
+  "userSegments": {
+    "hero": {
+      "titlePrefix": "One platform for your",
+      "titleHighlight": "entire practice",
+      "description": "Manage patients, appointments, and prescriptions with Curify's all-in-one healthcare solution. Streamline your workflow and focus on patient care.",
+      "cta": "Start free trial"
+    },
+    "segments": {
+      "office": {
+        "badge": "For Solo Practitioners",
+        "title": "Medical Office",
+        "headline": "Focus on care, not paperwork.",
+        "description": "Curify acts as your always-on digital scribe. It listens, transcribes, and organizes patient data instantly, saving you 2+ hours of admin work daily.",
+        "features": {
+          "scribe": "Digital Scribe",
+          "scheduling": "Quick Scheduling",
+          "rx": "E-Prescriptions"
+        },
+        "cta": "Explore Doctor Tools"
+      },
+      "clinic": {
+        "badge": "For Private Clinics",
+        "title": "Private Clinic",
+        "headline": "Unified patient flow system.",
+        "description": "Stop the fragmentation. From the reception desk to the exam room, ensure every team member views the same real-time patient status.",
+        "features": {
+          "iot": "Inventory IoT",
+          "portal": "Patient Portal",
+          "multi": "Multi-Doctor Support"
+        },
+        "cta": "See Clinic Features"
+      },
+      "hospital": {
+        "badge": "For Enterprise Hospitals",
+        "title": "Hospital",
+        "headline": "Scale without the friction.",
+        "description": "Military-grade security, full API interoperability, and IoT inventory tracking designed for high-volume, multi-wing healthcare environments.",
+        "features": {
+          "api": "API Access",
+          "roles": "Role Management",
+          "analytics": "Advanced Analytics"
+        },
+        "cta": "View Enterprise Solutions"
+      }
+    },
+    "stickers": {
+      "note": "Take notes to keep track of crucial details.",
+      "reminderTitle": "Reminders",
+      "reminderBody": "Team Meeting",
+      "tasksTitle": "Today's tasks",
+      "integrations": "System Connections"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Our Story",
+      "title": {
+        "part1": "Designed for efficiency,",
+        "part2": "built for care."
+      },
+      "description": "We started Curify with a simple belief: Healthcare professionals should spend time on patients, not paperwork.",
+      "cta": "Explore our journey",
+      "video": {
+        "caption": "The Curify HQ",
+        "description": "See how our engineers and doctors collaborate to build the future."
+      },
+      "stats": {
+        "badge": "IMPACT",
+        "subtitle": "Real numbers, real trust.",
+        "clinics": "Clinics Partnered",
+        "records": "Patient Records",
+        "uptime": "System Uptime"
+      }
+    }
+  },
+  "trophyRoom": {
+    "header": {
+      "badge": "Proven Impact",
+      "title": {
+        "part1": "Measurable results.",
+        "part2": "Exponential growth."
+      },
+      "stats": {
+        "workflows": "Automated Workflows",
+        "records": "Patient Records"
+      }
+    },
+    "achievements": {
+      "efficiency": {
+        "metric": "2 Weeks",
+        "subtitle": "Saved Per Month",
+        "title": "Research Time",
+        "description": "Replaced manual history digging with AI-powered instant search retrieval.",
+        "longDescription": "Before Curify, the average clinician at Partner Clinic A spent ~15 hours a month manually cross-referencing patient history, lab results, and paper archives. By implementing our Semantic AI Search, we indexed 50,000+ documents.",
+        "keyResults": [
+          "Instant keyword retrieval across 10 years of records.",
+          "Automated summarization of patient history.",
+          "Zero time spent locating physical files."
+        ]
+      },
+      "safety": {
+        "metric": "87%",
+        "subtitle": "Error Reduction",
+        "title": "Patient Safety",
+        "description": "IoT cabinets and AI cross-checks eliminated critical medication errors.",
+        "longDescription": "Medication errors are the leading cause of preventable harm. We deployed IoT-connected cabinets that only unlock for the specific nurse, patient, and dosage time. Coupled with AI contraindication checks, safety skyrocketed.",
+        "keyResults": [
+          "Real-time alerts for drug-drug interactions.",
+          "Biometric access control for narcotics.",
+          "Digital audit trail for every milligram dispensed."
+        ]
+      },
+      "operations": {
+        "metric": "100%",
+        "subtitle": "Traceability",
+        "title": "Inventory Tracking",
+        "description": "End-to-end digital tracking from warehouse to patient administration.",
+        "longDescription": "Stockouts and expiration waste cost clinics thousands. Curify introduced a 'Pixel-to-Pill' tracking system. We now track inventory levels in real-time, automatically reordering supplies before they run out.",
+        "keyResults": [
+          "Automated procurement orders.",
+          "Expiration date alerts 30 days in advance.",
+          "Reduction in medical waste by 40%."
+        ]
+      },
+      "growth": {
+        "metric": "3.5x",
+        "subtitle": "Faster Intake",
+        "title": "Patient Throughput",
+        "description": "Automated admissions allow clinics to scale without adding admin staff.",
+        "longDescription": "Scaling usually means hiring more admin staff. Curify changed the equation by automating the intake process. Patients fill forms digitally before arrival, and AI pre-populates the clinical chart.",
+        "keyResults": [
+          "Waiting room times reduced by 60%.",
+          "Admin staff refocused on patient experience.",
+          "Capacity increased without new real estate."
+        ]
+      }
+    },
+    "modal": {
+      "badge": "Case Study",
+      "impact": "Impact",
+      "keyResults": "Key Results",
+      "verifiedData": "Verified Data",
+      "bookDemo": "Book a Demo",
+      "viewCaseStudy": "View Case Study"
     }
   }
 }
-

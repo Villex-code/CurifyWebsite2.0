@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import {
   AlertOctagon,
   Home,
@@ -15,6 +16,8 @@ import {
 } from "lucide-react";
 
 export default function NotFoundPage() {
+  const t = useTranslations("NotFoundPage");
+
   return (
     <section className="min-h-screen py-24 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto font-sans flex flex-col justify-center relative overflow-hidden">
       {/* Subtle Background Blobs */}
@@ -32,7 +35,7 @@ export default function NotFoundPage() {
         >
           {/* Abstract Image */}
           <img
-            src="https://images.unsplash.com/photo-1504333638930-c8787321eee0?q=80&w=2070&auto=format&fit=crop"
+            src="/images/graphics/404.jpg"
             alt="System Abstract"
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
           />
@@ -45,7 +48,7 @@ export default function NotFoundPage() {
             <div className="flex items-center gap-2 bg-black/30 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full">
               <WifiOff className="w-3.5 h-3.5 text-slate-300" />
               <span className="text-xs font-medium text-slate-300 uppercase tracking-wider">
-                Signal Lost
+                {t("signalLost")}
               </span>
             </div>
           </div>
@@ -58,14 +61,14 @@ export default function NotFoundPage() {
               </div>
               <div>
                 <p className="text-xs text-slate-300 font-semibold uppercase tracking-wider mb-0.5">
-                  Error Code
+                  {t("errorCode")}
                 </p>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl font-bold text-white tracking-tight">
                     404
                   </span>
                   <span className="text-sm font-medium text-slate-200">
-                    Not Found
+                    {t("notFound")}
                   </span>
                 </div>
               </div>
@@ -87,22 +90,20 @@ export default function NotFoundPage() {
                 <Search className="w-4 h-4" />
               </div>
               <span className="text-sm font-bold text-[#148D98] uppercase tracking-wider">
-                System Notification
+                {t("tag")}
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
-              Page not <br />
+              {t("title.line1")} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#148D98] to-teal-600">
-                Found.
+                {t("title.line2")}
               </span>
             </h1>
 
             <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg">
-              It looks like you've stumbled upon a broken link or a page that
-              has been moved. Don't worry, all your patient data is safe — you
-              just took a wrong turn.
+              {t("description")}
             </p>
 
             {/* Primary Actions */}
@@ -112,7 +113,7 @@ export default function NotFoundPage() {
                 className="group relative px-8 py-4 bg-[#148D98] text-white font-semibold rounded-full overflow-hidden shadow-lg shadow-[#148D98]/30 transition-all hover:shadow-[#148D98]/50 hover:-translate-y-1"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Go Home
+                  {t("goHome")}
                   <Home className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </span>
                 {/* Shine Effect */}
@@ -123,7 +124,7 @@ export default function NotFoundPage() {
                 onClick={() => window.history.back()}
                 className="px-8 py-4 bg-white text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-[#148D98] hover:text-[#148D98] transition-all flex items-center gap-2"
               >
-                Go Back
+                {t("goBack")}
               </button>
             </div>
 
@@ -135,12 +136,12 @@ export default function NotFoundPage() {
               >
                 <div className="flex items-center justify-between mb-2">
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider group-hover:text-[#148D98] transition-colors">
-                    Need Help?
+                    {t("needHelp")}
                   </p>
                   <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#148D98] -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </div>
                 <p className="text-lg font-bold text-slate-900">
-                  Contact Support
+                  {t("contactSupport")}
                 </p>
               </Link>
 
@@ -150,11 +151,13 @@ export default function NotFoundPage() {
               >
                 <div className="flex items-center justify-between mb-2">
                   <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider group-hover:text-[#148D98] transition-colors">
-                    Curious?
+                    {t("curious")}
                   </p>
                   <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#148D98] -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                 </div>
-                <p className="text-lg font-bold text-slate-900">About Curify</p>
+                <p className="text-lg font-bold text-slate-900">
+                  {t("aboutCurify")}
+                </p>
               </Link>
             </div>
           </div>
@@ -173,8 +176,8 @@ export default function NotFoundPage() {
           >
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1576091160550-217358c7e618?q=80&w=2070&auto=format&fit=crop"
-              alt="Medical Tech"
+              src="/images/graphics/waves.jpg"
+              alt="Curify Blog Image - Providing value"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Premium Gradient */}
@@ -189,11 +192,10 @@ export default function NotFoundPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-teal-200 transition-colors">
-                    Read our Blog
+                    {t("readBlog")}
                   </h3>
                   <p className="text-sm text-slate-300 leading-relaxed max-w-sm group-hover:text-white transition-colors">
-                    While you're here, check out the latest insights on
-                    healthcare technology and patient care.
+                    {t("blogDescription")}
                   </p>
                 </div>
               </div>
@@ -211,8 +213,8 @@ export default function NotFoundPage() {
           >
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2070&auto=format&fit=crop"
-              alt="Features"
+              src="/images/graphics/blobs.jpg"
+              alt="Curify Features Image - Streamlining workflows"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Premium Gradient */}
@@ -227,11 +229,10 @@ export default function NotFoundPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors">
-                    Explore Features
+                    {t("exploreFeatures")}
                   </h3>
                   <p className="text-sm text-slate-300 leading-relaxed max-w-sm group-hover:text-white transition-colors">
-                    Discover the powerful tools available on the Curify platform
-                    to streamline your clinic.
+                    {t("featuresDescription")}
                   </p>
                 </div>
               </div>

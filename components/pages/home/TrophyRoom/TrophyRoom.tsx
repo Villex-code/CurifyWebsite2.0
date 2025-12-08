@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Trophy,
   ArrowUpRight,
@@ -15,80 +16,58 @@ import {
 } from "lucide-react";
 
 // --- DATA: ACHIEVEMENTS WITH DETAILED CONTENT ---
-const ACHIEVEMENTS = [
+const ACHIEVEMENTS = (t: any) => [
   {
     id: "efficiency",
-    metric: "2 Weeks",
-    subtitle: "Saved Per Month",
-    title: "Research Time",
-    description:
-      "Replaced manual history digging with AI-powered instant search retrieval.",
+    metric: t("achievements.efficiency.metric"),
+    subtitle: t("achievements.efficiency.subtitle"),
+    title: t("achievements.efficiency.title"),
+    description: t("achievements.efficiency.description"),
     visual: <VisualEfficiency />,
     // Popup Details
-    longDescription:
-      "Before Curify, the average clinician at Partner Clinic A spent ~15 hours a month manually cross-referencing patient history, lab results, and paper archives. By implementing our Semantic AI Search, we indexed 50,000+ documents.",
-    keyResults: [
-      "Instant keyword retrieval across 10 years of records.",
-      "Automated summarization of patient history.",
-      "Zero time spent locating physical files.",
-    ],
+    longDescription: t("achievements.efficiency.longDescription"),
+    keyResults: t.raw("achievements.efficiency.keyResults"),
   },
   {
     id: "safety",
-    metric: "87%",
-    subtitle: "Error Reduction",
-    title: "Patient Safety",
-    description:
-      "IoT cabinets and AI cross-checks eliminated critical medication errors.",
+    metric: t("achievements.safety.metric"),
+    subtitle: t("achievements.safety.subtitle"),
+    title: t("achievements.safety.title"),
+    description: t("achievements.safety.description"),
     visual: <VisualSafety />,
     // Popup Details
-    longDescription:
-      "Medication errors are the leading cause of preventable harm. We deployed IoT-connected cabinets that only unlock for the specific nurse, patient, and dosage time. Coupled with AI contraindication checks, safety skyrocketed.",
-    keyResults: [
-      "Real-time alerts for drug-drug interactions.",
-      "Biometric access control for narcotics.",
-      "Digital audit trail for every milligram dispensed.",
-    ],
+    longDescription: t("achievements.safety.longDescription"),
+    keyResults: t.raw("achievements.safety.keyResults"),
   },
   {
     id: "operations",
-    metric: "100%",
-    subtitle: "Traceability",
-    title: "Inventory Tracking",
-    description:
-      "End-to-end digital tracking from warehouse to patient administration.",
+    metric: t("achievements.operations.metric"),
+    subtitle: t("achievements.operations.subtitle"),
+    title: t("achievements.operations.title"),
+    description: t("achievements.operations.description"),
     visual: <VisualTracking />,
     // Popup Details
-    longDescription:
-      "Stockouts and expiration waste cost clinics thousands. Curify introduced a 'Pixel-to-Pill' tracking system. We now track inventory levels in real-time, automatically reordering supplies before they run out.",
-    keyResults: [
-      "Automated procurement orders.",
-      "Expiration date alerts 30 days in advance.",
-      "Reduction in medical waste by 40%.",
-    ],
+    longDescription: t("achievements.operations.longDescription"),
+    keyResults: t.raw("achievements.operations.keyResults"),
   },
   {
     id: "growth",
-    metric: "3.5x",
-    subtitle: "Faster Intake",
-    title: "Patient Throughput",
-    description:
-      "Automated admissions allow clinics to scale without adding admin staff.",
+    metric: t("achievements.growth.metric"),
+    subtitle: t("achievements.growth.subtitle"),
+    title: t("achievements.growth.title"),
+    description: t("achievements.growth.description"),
     visual: <VisualGrowth />,
     // Popup Details
-    longDescription:
-      "Scaling usually means hiring more admin staff. Curify changed the equation by automating the intake process. Patients fill forms digitally before arrival, and AI pre-populates the clinical chart.",
-    keyResults: [
-      "Waiting room times reduced by 60%.",
-      "Admin staff refocused on patient experience.",
-      "Capacity increased without new real estate.",
-    ],
+    longDescription: t("achievements.growth.longDescription"),
+    keyResults: t.raw("achievements.growth.keyResults"),
   },
 ];
 
 const TrophyRoom = () => {
+  const t = useTranslations("home.trophyRoom");
+  const achievements = ACHIEVEMENTS(t);
   const [selectedStudy, setSelectedStudy] = useState<
-    (typeof ACHIEVEMENTS)[0] | null
+    (typeof achievements)[0] | null
   >(null);
 
   return (
@@ -113,12 +92,12 @@ const TrophyRoom = () => {
                 <Trophy className="w-5 h-5" />
               </span>
               <span className="text-sm font-bold tracking-widest text-gray-400 uppercase">
-                Proven Impact
+                {t("header.badge")}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
-              Measurable results. <br />
-              <span className="text-teal-600">Exponential growth.</span>
+              {t("header.title.part1")} <br />
+              <span className="text-teal-600">{t("header.title.part2")}</span>
             </h2>
           </motion.div>
 
@@ -129,16 +108,16 @@ const TrophyRoom = () => {
             className="flex items-center gap-4"
           >
             <div className="text-right">
-              <div className="text-3xl font-bold text-gray-900">500+</div>
+              <div className="text-3xl font-bold text-gray-900">25,000+</div>
               <div className="text-xs text-gray-400 uppercase font-bold tracking-wide">
-                Clinics Optimized
+                {t("header.stats.workflows")}
               </div>
             </div>
             <div className="h-10 w-px bg-gray-200" />
             <div className="text-left">
               <div className="text-3xl font-bold text-gray-900">10M+</div>
               <div className="text-xs text-gray-400 uppercase font-bold tracking-wide">
-                Patient Records
+                {t("header.stats.records")}
               </div>
             </div>
           </motion.div>
@@ -146,12 +125,13 @@ const TrophyRoom = () => {
 
         {/* --- CARDS GRID --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {ACHIEVEMENTS.map((item, index) => (
+          {achievements.map((item, index) => (
             <AchievementCard
               key={item.id}
               data={item}
               delay={index * 0.1}
               onOpen={() => setSelectedStudy(item)}
+              t={t}
             />
           ))}
         </div>
@@ -162,6 +142,7 @@ const TrophyRoom = () => {
         isOpen={!!selectedStudy}
         onClose={() => setSelectedStudy(null)}
         data={selectedStudy}
+        t={t}
       />
     </section>
   );
@@ -172,10 +153,12 @@ const AchievementCard = ({
   data,
   delay,
   onOpen,
+  t,
 }: {
   data: any;
   delay: number;
   onOpen: () => void;
+  t: any;
 }) => {
   return (
     <motion.div
@@ -185,7 +168,7 @@ const AchievementCard = ({
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -8 }}
       onClick={onOpen}
-      className="group relative h-full min-h-[480px] rounded-[2rem] bg-white border border-gray-200 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-teal-900/10 transition-all duration-300 overflow-hidden flex flex-col cursor-pointer"
+      className="group relative h-full min-h-[480px] rounded-4xl bg-white border border-gray-200 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-teal-900/10 transition-all duration-300 overflow-hidden flex flex-col cursor-pointer"
     >
       {/* 1. VISUAL STAGE */}
       <div className="h-[220px] bg-slate-50/50 border-b border-gray-100 relative overflow-hidden flex items-center justify-center group-hover:bg-teal-50/30 transition-colors duration-500">
@@ -212,7 +195,7 @@ const AchievementCard = ({
         </div>
 
         <div className="mt-6 flex items-center text-xs font-bold text-gray-400 group-hover:text-teal-600 transition-colors">
-          View Case Study <ArrowUpRight className="w-3 h-3 ml-1" />
+          {t("modal.viewCaseStudy")} <ArrowUpRight className="w-3 h-3 ml-1" />
         </div>
       </div>
     </motion.div>
@@ -224,12 +207,20 @@ const CaseStudyModal = ({
   isOpen,
   onClose,
   data,
+  t,
 }: {
   isOpen: boolean;
   onClose: () => void;
   data: any;
+  t: any;
 }) => {
   if (!data) return null;
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -240,8 +231,8 @@ const CaseStudyModal = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/40 backdrop-blur-md z-[60] flex items-center justify-center p-4"
+            onClick={handleBackdropClick}
+            className="fixed inset-0 bg-black/40 backdrop-blur-md z-60 flex items-center justify-center p-4"
           />
 
           {/* Modal Card */}
@@ -249,21 +240,22 @@ const CaseStudyModal = ({
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed z-[70] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col max-h-[90vh]"
+            className="fixed z-70 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden flex flex-col max-h-[90vh]"
           >
             {/* Modal Header */}
             <div className="relative bg-slate-50 p-6 md:p-8 border-b border-gray-100 flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
-                    Case Study
+                    {t("modal.badge")}
                   </span>
                   <span className="text-slate-400 text-xs font-bold uppercase tracking-wide">
                     {data.subtitle}
                   </span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  {data.metric} <span className="text-teal-600">Impact</span>
+                  {data.metric}{" "}
+                  <span className="text-teal-600">{t("modal.impact")}</span>
                 </h3>
               </div>
 
@@ -286,7 +278,8 @@ const CaseStudyModal = ({
 
               <div className="bg-slate-50 rounded-2xl p-6 border border-gray-100">
                 <h5 className="text-sm font-bold text-gray-900 uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-teal-500" /> Key Results
+                  <Activity className="w-4 h-4 text-teal-500" />{" "}
+                  {t("modal.keyResults")}
                 </h5>
                 <ul className="space-y-3">
                   {data.keyResults.map((result: string, i: number) => (
@@ -309,11 +302,11 @@ const CaseStudyModal = ({
                   <FileText className="w-4 h-4 text-gray-400" />
                 </div>
                 <span className="text-xs font-medium text-gray-500">
-                  Verified Data
+                  {t("modal.verifiedData")}
                 </span>
               </div>
               <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-colors shadow-lg shadow-teal-600/20">
-                Book a Demo
+                {t("modal.bookDemo")}
               </button>
             </div>
           </motion.div>
@@ -400,7 +393,7 @@ function VisualGrowth() {
           initial={{ height: "10%" }}
           whileInView={{ height: `${h}%` }}
           transition={{ duration: 1, delay: i * 0.1, ease: "backOut" }}
-          className="w-full bg-gradient-to-t from-teal-500 to-emerald-400 rounded-t-lg relative overflow-hidden group opacity-80 hover:opacity-100 transition-opacity"
+          className="w-full bg-linear-to-t from-teal-500 to-emerald-400 rounded-t-lg relative overflow-hidden group opacity-80 hover:opacity-100 transition-opacity"
         >
           <div className="absolute top-0 w-full h-full bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity" />
         </motion.div>

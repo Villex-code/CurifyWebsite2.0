@@ -5,9 +5,9 @@ import Image from "next/image";
 
 // Placeholder images - replace with actual images when available
 const images = [
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2070&auto=format&fit=crop",
+  "/images/application/patients.png",
+  "/images/application/storage.png",
+  "/images/graphics/phones.png",
 ];
 
 interface ContainerScrollProps {

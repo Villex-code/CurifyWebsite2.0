@@ -83,6 +83,13 @@ export function Navbar() {
                 <span className="absolute inset-x-0 w-full mx-auto -bottom-1 bg-gradient-to-r from-transparent via-teal-300 to-transparent h-[1px] opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
               <Link
+                href="/pricing"
+                className="text-white hover:text-teal-100 text-sm font-semibold transition-colors relative group"
+              >
+                {t("pricing")}
+                <span className="absolute inset-x-0 w-full mx-auto -bottom-1 bg-gradient-to-r from-transparent via-teal-300 to-transparent h-[1px] opacity-0 group-hover:opacity-100 transition-opacity" />
+              </Link>
+              <Link
                 href="/features"
                 className="text-white hover:text-teal-100 text-sm font-semibold transition-colors relative group"
               >

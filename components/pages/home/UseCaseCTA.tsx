@@ -32,10 +32,6 @@ export function UseCaseCTA() {
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-teal-700 to-teal-800 pb-2">
               {t("useCase.title.line1")}
             </span>
-
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-700 via-teal-800 to-teal-900 pb-2">
-              {t("useCase.title.line2")}
-            </span>
           </h2>
         </motion.div>
 

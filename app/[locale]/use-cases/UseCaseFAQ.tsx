@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Plus,
   Minus,
@@ -12,67 +13,15 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// --- DATA CONFIGURATION ---
-const FAQ_DATA: Record<string, { question: string; answer: string }[]> = {
-  "medical-office": [
-    {
-      question: "Is Curify too complex for a single practitioner?",
-      answer:
-        "Not at all. We have a specific 'Solo Mode' that hides enterprise features. You get a streamlined dashboard focused purely on your calendar, patient notes, and billing.",
-    },
-    {
-      question: "Can I migrate my existing patient Excel sheets?",
-      answer:
-        "Yes. Our onboarding team provides a free migration service. We clean, format, and import your existing CSV/Excel data into Curify securely within 24 hours.",
-    },
-    {
-      question: "Does the digital scribe work with my accent?",
-      answer:
-        "Curify's AI is trained on diverse medical datasets and accents. It achieves 98.5% accuracy in clinical transcription regardless of dialect.",
-    },
-  ],
-  clinic: [
-    {
-      question: "How does multi-specialty scheduling work?",
-      answer:
-        "We use 'Resource-Based Scheduling.' You can link specific rooms or equipment (e.g., MRI machine) to appointment types, preventing double-booking across departments.",
-    },
-    {
-      question: "Can I restrict access for reception staff?",
-      answer:
-        "Yes. Our Role-Based Access Control (RBAC) is granular. Receptionists can see schedules and demographics but cannot access clinical notes or sensitive history.",
-    },
-    {
-      question: "What hardware do I need for the Inventory system?",
-      answer:
-        "None, initially. You can start with our mobile app scanning. Later, you can upgrade to our IoT Smart Cabinets for automated dispensing tracking.",
-    },
-  ],
-  hospital: [
-    {
-      question: "Do you support HL7 and FHIR standards?",
-      answer:
-        "Yes, Curify is built on FHIR resources. We support bi-directional HL7 v2/v3 messaging to integrate seamlessly with your existing RIS, PACS, and LIS systems.",
-    },
-    {
-      question: "Can we host this on-premise?",
-      answer:
-        "For enterprise tiers, we offer on-premise deployment or a dedicated private cloud instance to meet specific data sovereignty and security requirements.",
-    },
-    {
-      question: "How do you handle downtime/SLAs?",
-      answer:
-        "We offer a 99.99% uptime SLA backed by financial guarantees. Our architecture uses redundant failover clusters across multiple availability zones.",
-    },
-  ],
-};
-
 const UseCaseFAQ = ({ segment }: { segment: string }) => {
+  const t = useTranslations("useCases.faq");
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  // Safe fallback
+  // Get questions based on segment
+  // Using t.raw() to get the array of objects for the specific segment
+  // The segment prop from parent matches the JSON keys (medical-office, clinic, hospital)
   const questions =
-    FAQ_DATA[segment as keyof typeof FAQ_DATA] || FAQ_DATA["medical-office"];
+    t.raw(`segments.${segment}`) || t.raw("segments.medical-office");
 
   return (
     <section className="relative w-full py-24 md:py-32 bg-[#F8FAFC] overflow-hidden">
@@ -90,35 +39,34 @@ const UseCaseFAQ = ({ segment }: { segment: string }) => {
               viewport={{ once: true }}
             >
               <div className="inline-flex items-center gap-2 text-teal-600 font-bold uppercase tracking-widest text-xs mb-4">
-                <HelpCircle className="w-4 h-4" /> Support Center
+                <HelpCircle className="w-4 h-4" /> {t("header.badge")}
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                Questions? <br /> We have answers.
+                {t("header.title")}
               </h2>
               <p className="text-slate-500 mb-8 leading-relaxed">
-                Everything you need to know about implementing Curify in your{" "}
-                {segment.replace("-", " ")}.
+                {t("header.subtitle")}
               </p>
 
               {/* Support Cards */}
               <div className="space-y-4">
                 <SupportCard
                   icon={MessageCircle}
-                  title="Live Chat"
-                  desc="Available Mon-Fri, 9am-6pm"
-                  action="Start Chat"
+                  title={t("supportCards.chat.title")}
+                  desc={t("supportCards.chat.desc")}
+                  action={t("supportCards.chat.cta")}
                 />
                 <SupportCard
                   icon={Mail}
-                  title="Email Support"
-                  desc="Response within 24 hours"
-                  action="Contact Us"
+                  title={t("supportCards.email.title")}
+                  desc={t("supportCards.email.desc")}
+                  action={t("supportCards.email.cta")}
                 />
                 <SupportCard
                   icon={FileText}
-                  title="Documentation"
-                  desc="Technical guides & API docs"
-                  action="View Docs"
+                  title={t("supportCards.docs.title")}
+                  desc={t("supportCards.docs.desc")}
+                  action={t("supportCards.docs.cta")}
                 />
               </div>
             </motion.div>
@@ -127,7 +75,7 @@ const UseCaseFAQ = ({ segment }: { segment: string }) => {
           {/* --- RIGHT: INTERACTIVE FAQ LIST --- */}
           <div className="lg:col-span-8">
             <div className="space-y-4">
-              {questions.map((item, index) => {
+              {questions?.map((item: any, index: number) => {
                 const isOpen = openIndex === index;
                 return (
                   <motion.div

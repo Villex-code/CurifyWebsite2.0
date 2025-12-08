@@ -2,36 +2,11 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-// --- DATA CONFIGURATION ---
-const TEAM_MEMBERS = [
-  {
-    name: "Konstantinos Mavrelis",
-    role: "CEO & Founder",
-    // User provided path
-    image: "/images/team/mavrelis.jpeg",
-  },
-  {
-    name: "Vasilis Delikouras",
-    role: "Chief Operating Officer",
-    // User provided path (assuming this corresponds to Vasilis)
-    image: "/images/team/vasilis.JPG",
-  },
-  {
-    name: "George Andreadakis",
-    role: "Chief Engineer",
-    // User provided path
-    image: "/images/team/george.jpg",
-  },
-  {
-    name: "Andreas Fwtopoulos",
-    role: "Lead Product Engineer",
-    // User provided path
-    image: "/images/team/fwtopoulos.jpg",
-  },
-];
+// --- TRANSLATED DATA CONFIGURATION ---
 
 // --- COMPONENT: TEXT ANIMATION (Reused) ---
 const TextAnimation = ({
@@ -174,6 +149,19 @@ const CosmicButton = ({ text }: { text: string }) => {
 
 // --- MAIN COMPONENT ---
 const AboutTeam = () => {
+  const t = useTranslations("about.team");
+  const teamMembers = t.raw("members");
+
+  // Add image paths to the translated data
+  const TEAM_MEMBERS = teamMembers.map((member: any, index: number) => ({
+    ...member,
+    image: [
+      "/images/team/mavrelis.jpeg",
+      "/images/team/vasilis.JPG",
+      "/images/team/george.jpg",
+      "/images/team/fwtopoulos.jpg",
+    ][index],
+  }));
   return (
     <section className="py-24 md:py-32  text-slate-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -186,11 +174,11 @@ const AboutTeam = () => {
               viewport={{ once: true }}
               className="inline-block px-4 py-2 rounded-full bg-teal-50 border border-teal-100 text-sm font-bold text-teal-700 uppercase tracking-widest mb-6"
             >
-              Our Leadership
+              {t("badge")}
             </motion.div>
 
             <TextAnimation
-              text="Meet the minds behind Curify."
+              text={t("title")}
               className="text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.1] text-slate-900"
             />
           </div>
@@ -203,9 +191,7 @@ const AboutTeam = () => {
             className="max-w-md"
           >
             <p className="text-lg text-gray-500 leading-relaxed">
-              No layers of management. You work directly with the specialists
-              who understand your business and build your automation from start
-              to finish.
+              {t("description")}
             </p>
           </motion.div>
         </div>
@@ -251,21 +237,20 @@ const AboutTeam = () => {
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
               <h3 className="text-2xl md:text-3xl font-bold text-slate-800">
-                Want to be part of the team?
+                {t("recruitment.title")}
               </h3>
               <span className="inline-flex items-center justify-center px-3 py-1 bg-white rounded-full text-xs font-bold text-teal-700 shadow-sm border border-teal-100">
                 <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mr-2 animate-pulse" />
-                3 vacancies available
+                {t("recruitment.vacancies")}
               </span>
             </div>
             <p className="text-slate-500 max-w-xl text-lg">
-              We&apos;re always looking for talented people who want to help
-              businesses cut through AI overwhelm and build systems that work.
+              {t("recruitment.description")}
             </p>
           </div>
 
           {/* Custom Cosmic Button */}
-          <CosmicButton text="Apply now" />
+          <CosmicButton text={t("recruitment.cta")} />
         </motion.div>
       </div>
     </section>

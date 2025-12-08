@@ -1,30 +1,68 @@
 {
-  "title": "Frequently Asked Questions",
-  "questions": {
-    "1": {
-      "question": "What services do you offer?",
-      "answer": "We offer a wide range of web development services..."
+  "header": {
+    "badge": "Support Center",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about implementing Curify in your organization."
+  },
+  "segments": {
+    "medical-office": [
+      {
+        "question": "Is there integration with e-Prescription systems?",
+        "answer": "Yes. Curify offers full, bidirectional integration. You can issue prescriptions and referrals directly within the application, without accessing the e-Prescription portal."
+      },
+      {
+        "question": "Does it automatically connect with tax authorities?",
+        "answer": "Absolutely. With every receipt or invoice issued, Curify automatically transmits the documents to the tax system, ensuring your tax compliance without accounting errors."
+      },
+      {
+        "question": "Can I use it from my mobile phone?",
+        "answer": "Yes. Curify is a Cloud application. You have access to patient files and your schedule from any mobile or tablet, wherever you are."
+      }
+    ],
+    "clinic": [
+      {
+        "question": "Can I hide medical data from reception staff?",
+        "answer": "Yes. With the role-based access control (RBAC) system, reception has access only to appointments and financial data, while medical history remains locked and visible only to doctors."
+      },
+      {
+        "question": "We have an old system. Do we lose our data?",
+        "answer": "No. We handle data migration. We safely transfer your historical data from legacy systems to Curify."
+      },
+      {
+        "question": "Does it support different medical specialties?",
+        "answer": "Yes. The system adapts. The Cardiologist sees fields for ECG, while the Dermatologist sees body mapping, all within the same unified platform."
+      }
+    ],
+    "hospital": [
+      {
+        "question": "Does it connect with laboratories (LIS) and PACS?",
+        "answer": "Yes. We support HL7 and FHIR standards. We create bridges so laboratory tests and imaging automatically appear in the patient's file."
+      },
+      {
+        "question": "Can it be installed on our own server?",
+        "answer": "For large facilities (Enterprise), we offer on-premise installation or Private Cloud options to meet strict IT security requirements."
+      },
+      {
+        "question": "Are we covered for GDPR compliance?",
+        "answer": "Fully. We use AES-256 encryption and maintain detailed audit logs for every user, ensuring compliance with EU regulations."
+      }
+    ]
+  },
+  "supportCards": {
+    "chat": {
+      "title": "Live Chat",
+      "desc": "Mon-Fri, 9am-6pm",
+      "cta": "Start Chat"
     },
-    "2": {
-      "question": "How much does it cost?",
-      "answer": "Our pricing is flexible and depends on your project needs..."
+    "email": {
+      "title": "Email Support",
+      "desc": "Response < 24h",
+      "cta": "Contact Us"
     },
-    "3": {
-      "question": "How long does it take?",
-      "answer": "Typically, a project takes between 4 to 8 weeks..."
-    },
-    "4": {
-      "question": "Do you provide support?",
-      "answer": "Yes, we provide ongoing support and maintenance..."
-    },
-    "5": {
-      "question": "Can you redesign my website?",
-      "answer": "Absolutely! We can modernize your existing website..."
-    },
-    "6": {
-      "question": "Do you work with international clients?",
-      "answer": "Yes, we work with clients from all over the world..."
+    "docs": {
+      "title": "User Guides",
+      "desc": "Documentation & API",
+      "cta": "Read Here"
     }
   }
 }
-

@@ -19,16 +19,14 @@ const HeroLeftContent = () => {
     >
       {/* Title Section */}
       <div className="space-y-6">
-        <motion.h1
+        <motion.h2
           className="text-5xl md:text-7xl font-bold text-neutral-900"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {t("heroLeft.title.part1")}
-          <br />
-          <span className="text-teal-600">{t("heroLeft.title.part2")}</span>
-        </motion.h1>
+          {t("heroLeft.title")}
+        </motion.h2>
         <motion.p
           className="text-xl md:text-2xl text-neutral-600"
           initial={{ opacity: 0, y: 20 }}
@@ -45,36 +43,40 @@ const HeroLeftContent = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <div className="flex justify-start items-center gap-4">
-          <a
-            href="https://apps.apple.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-transform hover:scale-105"
-          >
-            <Image
-              src="/images/graphics/apple.png"
-              alt="Download on App Store"
-              width={180}
-              height={60}
-              className="object-contain"
-            />
-          </a>
-          <a
-            href="https://play.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-transform hover:scale-105"
-          >
-            <Image
-              src="/images/graphics/google.png"
-              alt="Get it on Google Play"
-              width={200}
-              height={60}
-              className="object-contain"
-            />
-          </a>
-        </div>
+        <aside aria-label="Download Curify Medical App">
+          <div className="flex justify-start items-center gap-4">
+            <a
+              href="https://apps.apple.com/in/app/curify/id6743257211"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+            >
+              <Image
+                src="/images/graphics/apple.png"
+                alt="Download Curify Medical App on Apple App Store"
+                width={180}
+                height={60}
+                className="object-contain"
+                priority
+              />
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.curifyapp.mobile&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+            >
+              <Image
+                src="/images/graphics/google.png"
+                alt="Download Curify Medical App on Google Play Store"
+                width={200}
+                height={60}
+                className="object-contain"
+                priority
+              />
+            </a>
+          </div>
+        </aside>
       </motion.div>
 
       {/* Features List */}

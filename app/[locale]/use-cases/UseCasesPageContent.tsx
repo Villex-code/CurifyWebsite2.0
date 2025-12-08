@@ -31,10 +31,9 @@ const UseCasesPageContent = () => {
       <UseCaseValue segment={activeSegment} />
       <UseCaseROI segment={activeSegment} />
       <UseCaseFAQ segment={activeSegment} />
-      <Testing />
+      {/* <Testing /> */}
     </div>
   );
 };
 
 export default UseCasesPageContent;
-

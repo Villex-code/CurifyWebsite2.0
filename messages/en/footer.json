@@ -4,21 +4,37 @@
   "subtitle": "The holistic healthcare management platform",
   "brand": {
     "name": "Curify",
-    "description": "Holistic healthcare management platform for clinics and medical practices."
+    "description": "The Healthcare Platform—",
+    "location": "We are currently deploying healthcare infrastructure globally and operating remotely from Athens.",
+    "timezone": "Athens Time (EET)"
   },
   "quickLinks": {
     "title": "Quick Links",
+    "home": "Home",
     "about": "About",
     "features": "Features",
     "useCases": "Use Cases",
+    "pricing": "Pricing",
+    "blog": "Blog",
     "contact": "Contact"
   },
   "legal": {
     "title": "Legal",
-    "termsOfUse": "Terms of Use",
+    "termsOfUse": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
   },
+  "newsletter": {
+    "title": "Stay Connected",
+    "description": "Receive product updates, healthcare insights, and new feature drops directly to your inbox.",
+    "placeholder": "Your email address",
+    "success": "Received!",
+    "successMessage": "We'll be in touch shortly!"
+  },
+  "contactLinks": {
+    "bookCall": "Book a Call"
+  },
   "copyright": {
-    "text": "© {year} Curify. All rights reserved."
+    "text": "© {year} Curify Inc. All rights reserved.",
+    "builtWith": "Built With"
   }
 }

@@ -126,18 +126,17 @@ export default function FooterInfo() {
               Curify<span className="text-teal-main">.</span>
             </h2>
             <p className="mt-4 text-xl md:text-2xl text-slate-500 italic font-medium tracking-tight">
-              The Healthcare Platform—
+              {t("brand.description")}
             </p>
           </div>
 
           <div className="text-right flex flex-col items-end">
             <p className="max-w-md text-lg text-slate-600 mb-6 font-medium leading-relaxed">
-              We are currently deploying healthcare infrastructure globally and
-              operating remotely from Athens.
+              {t("brand.location")}
             </p>
             <div className="flex items-center gap-2 text-slate-400 font-mono text-sm uppercase tracking-widest mb-1">
               <Clock className="w-4 h-4" />
-              <span>Athens Time (EET)</span>
+              <span>{t("brand.timezone")}</span>
             </div>
             <div className="text-5xl md:text-6xl font-mono font-light text-slate-900 tracking-tighter tabular-nums">
               {time || "00:00:00"}
@@ -154,52 +153,58 @@ export default function FooterInfo() {
                 href="/"
                 className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
               >
-                Home
+                {t("quickLinks.home")}
               </Link>
               <Link
                 href="/about"
                 className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
               >
-                About
+                {t("quickLinks.about")}
               </Link>
               <Link
                 href="/features"
                 className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
               >
-                Features
+                {t("quickLinks.features")}
               </Link>
               <Link
                 href="/use-cases"
                 className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
               >
-                Use Cases
+                {t("quickLinks.useCases")}
               </Link>
             </div>
             <div className="space-y-4">
               <Link
+                href="/pricing"
+                className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
+              >
+                {t("quickLinks.pricing")}
+              </Link>
+              <Link
                 href="/blog"
                 className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
               >
-                Blog
+                {t("quickLinks.blog")}
               </Link>
               <Link
                 href="/contact"
                 className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
               >
-                Contact
+                {t("quickLinks.contact")}
               </Link>
               <div className="h-4" /> {/* Spacer */}
               <Link
                 href="/privacy-policy"
                 className="block text-lg font-medium text-slate-400 hover:text-slate-600 transition-colors"
               >
-                Privacy Policy
+                {t("legal.privacyPolicy")}
               </Link>
               <Link
                 href="/terms-and-conditions"
                 className="block text-lg font-medium text-slate-400 hover:text-slate-600 transition-colors"
               >
-                Terms of Service
+                {t("legal.termsOfUse")}
               </Link>
             </div>
           </div>
@@ -209,11 +214,10 @@ export default function FooterInfo() {
             <div className="bg-white rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col justify-between h-full min-h-[320px]">
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                  Stay Connected
+                  {t("newsletter.title")}
                 </h3>
                 <p className="text-slate-500 leading-relaxed mb-6">
-                  Receive product updates, healthcare insights, and new feature
-                  drops directly to your inbox.
+                  {t("newsletter.description")}
                 </p>
               </div>
 
@@ -224,7 +228,9 @@ export default function FooterInfo() {
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={status === "loading" || status === "success"}
                   placeholder={
-                    status === "success" ? "Received!" : "Your email address"
+                    status === "success"
+                      ? t("newsletter.success")
+                      : t("newsletter.placeholder")
                   }
                   className="w-full bg-slate-50 border-b-2 border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-teal-main transition-all rounded-t-lg disabled:opacity-70 disabled:cursor-not-allowed"
                 />
@@ -251,7 +257,7 @@ export default function FooterInfo() {
                 {/* Success Message Pop */}
                 {status === "success" && (
                   <p className="absolute -bottom-8 left-0 text-sm font-semibold text-teal-main animate-in fade-in slide-in-from-top-1">
-                    We'll be in touch shortly!
+                    {t("newsletter.successMessage")}
                   </p>
                 )}
               </form>
@@ -308,7 +314,7 @@ export default function FooterInfo() {
                 >
                   <FaPhoneAlt className="w-4 h-4 text-slate-400 group-hover:text-teal-main transition-colors" />
                   <span className="font-semibold text-slate-700 group-hover:text-slate-900">
-                    Book a Call
+                    {t("contactLinks.bookCall")}
                   </span>
                 </a>
               </div>
@@ -319,12 +325,12 @@ export default function FooterInfo() {
         {/* --- Bottom Section: Copyright & Badges --- */}
         <div className="mt-24 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 font-medium">
-            © {new Date().getFullYear()} Curify Inc. All rights reserved.
+            {t("copyright.text", { year: new Date().getFullYear() })}
           </p>
 
           <div className="flex items-center gap-6">
             <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">
-              Built With
+              {t("copyright.builtWith")}
             </span>
             <div className="flex items-center gap-4 text-2xl">💚</div>
           </div>

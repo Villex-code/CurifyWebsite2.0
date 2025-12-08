@@ -2,9 +2,11 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Quote } from "lucide-react";
 
 const AboutMission = () => {
+  const t = useTranslations("about.mission");
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -44,7 +46,7 @@ const AboutMission = () => {
         >
           <div className="h-px w-12 bg-teal-600" />
           <span className="text-sm font-bold uppercase tracking-[0.2em] text-teal-700">
-            Our Mission
+            {t("badge")}
           </span>
         </motion.div>
 
@@ -52,13 +54,16 @@ const AboutMission = () => {
         <div className="space-y-12">
           <RevealText delay={0.1}>
             <span className="text-4xl md:text-6xl lg:text-7xl font-serif text-slate-900 leading-[1.1]">
-              To empower the hands
+              {t("manifesto.line1")}
             </span>
           </RevealText>
 
           <RevealText delay={0.2}>
             <span className="text-4xl md:text-6xl lg:text-7xl font-serif text-slate-900 leading-[1.1] ml-8 md:ml-24 block">
-              that <span className="italic text-teal-600">heal others.</span>
+              {t("manifesto.line2")}{" "}
+              <span className="italic text-teal-600">
+                {t("manifesto.highlight")}
+              </span>
             </span>
           </RevealText>
 
@@ -77,19 +82,16 @@ const AboutMission = () => {
               className="max-w-2xl"
             >
               <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-light">
-                We believe healthcare technology shouldn't just be a tool—it
-                should be an extension of the practitioner's intent. By removing
-                the friction of administration, we return the most valuable
-                resource to medicine:
+                {t("description")}
                 <strong className="text-slate-900 font-semibold ml-2">
-                  Time for the patient.
+                  {t("emphasis")}
                 </strong>
               </p>
 
               <div className="mt-12 flex flex-wrap gap-4">
-                <PillBadge text="Efficiency" delay={0.5} />
-                <PillBadge text="Empathy" delay={0.6} />
-                <PillBadge text="Innovation" delay={0.7} />
+                <PillBadge text={t("badges.efficiency")} delay={0.5} />
+                <PillBadge text={t("badges.empathy")} delay={0.6} />
+                <PillBadge text={t("badges.innovation")} delay={0.7} />
               </div>
             </motion.div>
           </div>

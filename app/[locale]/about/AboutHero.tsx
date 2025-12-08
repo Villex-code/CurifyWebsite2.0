@@ -2,9 +2,11 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Play, ArrowDownRight } from "lucide-react";
 
 const AboutHero = () => {
+  const t = useTranslations("about.hero");
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Parallax effect for the video container
@@ -37,13 +39,13 @@ const AboutHero = () => {
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-2 h-2 rounded-full bg-teal-600" />
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
-                  Our Story
+                  {t("badge")}
                 </span>
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium text-slate-900 tracking-tight leading-[1.1]">
-                Designed for efficiency, <br />
+              <h1 className="text-5xl md:text-7xl lg:text-6xl font-medium text-slate-900 tracking-tight leading-[1.1]">
+                {t("title.part1")} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 to-teal-500 italic font-serif pr-2">
-                  built for care.
+                  {t("title.part2")}
                 </span>
               </h1>
             </motion.div>
@@ -62,12 +64,11 @@ const AboutHero = () => {
               className="flex flex-col gap-6"
             >
               <p className="text-lg text-slate-600 leading-relaxed">
-                We started Curify with a simple belief: Healthcare professionals
-                should spend time on patients, not paperwork.
+                {t("description")}
               </p>
 
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-teal-700 cursor-pointer group">
-                Explore our journey
+                {t("cta")}
                 <ArrowDownRight className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
               </div>
             </motion.div>
@@ -110,10 +111,10 @@ const AboutHero = () => {
 
           {/* Video Caption */}
           <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 text-white max-w-md hidden md:block">
-            <p className="text-sm font-medium opacity-80 mb-2">The Curify HQ</p>
-            <p className="text-xl font-light">
-              See how our engineers and doctors collaborate to build the future.
+            <p className="text-sm font-medium opacity-80 mb-2">
+              {t("video.caption")}
             </p>
+            <p className="text-xl font-light">{t("video.description")}</p>
           </div>
         </motion.div>
 
@@ -121,17 +122,17 @@ const AboutHero = () => {
         <div className="mt-20 border-t border-slate-200 pt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div className="flex gap-4 items-center">
             <div className="bg-teal-50 px-3 py-1 rounded-full text-xs font-bold text-teal-700">
-              IMPACT
+              {t("stats.badge")}
             </div>
             <span className="text-slate-500 text-sm">
-              Real numbers, real trust.
+              {t("stats.subtitle")}
             </span>
           </div>
 
           <div className="flex gap-12 md:gap-24">
-            <StatItem number="500+" label="Clinics Partnered" />
-            <StatItem number="12M" label="Patient Records" />
-            <StatItem number="99.9%" label="System Uptime" />
+            <StatItem number="500+" label={t("stats.clinics")} />
+            <StatItem number="12M" label={t("stats.records")} />
+            <StatItem number="99.9%" label={t("stats.uptime")} />
           </div>
         </div>
       </div>

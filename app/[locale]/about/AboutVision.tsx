@@ -2,15 +2,12 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Sparkles } from "lucide-react";
 
 const AboutVision = () => {
-  const visionPoints = [
-    "Providing Accessible Education",
-    "Building Trust",
-    "Enhancing Student Engagement",
-    "Community Involvement",
-  ];
+  const t = useTranslations("about.vision");
+  const visionPoints = t.raw("points");
 
   return (
     <section className="py-24 md:py-32 relative overflow-visible">
@@ -46,13 +43,13 @@ const AboutVision = () => {
                 <div className="inline-flex items-center gap-2 mb-4">
                   <Sparkles className="w-4 h-4 text-teal-500" />
                   <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
-                    The Vision
+                    {t("badge")}
                   </span>
                 </div>
                 <h2 className="text-5xl md:text-7xl text-slate-900 leading-[0.95] tracking-tight">
-                  <span className="font-bold block">Let's redefine</span>
+                  <span className="font-bold block">{t("title.line1")}</span>
                   <span className="font-serif italic font-light text-teal-600 block pl-2 md:pl-12 mt-2">
-                    our main goal.
+                    {t("title.line2")}
                   </span>
                 </h2>
               </motion.div>
@@ -66,8 +63,7 @@ const AboutVision = () => {
               >
                 <div className="w-px h-auto bg-gradient-to-b from-teal-500 to-transparent" />
                 <p className="text-lg md:text-xl text-slate-500 font-light leading-relaxed max-w-md">
-                  We provide clear, accessible information about our programs so
-                  students and parents can make confident choices.
+                  {t("description")}
                 </p>
               </motion.div>
 

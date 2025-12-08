@@ -1,0 +1,8 @@
+{
+  "buttons": {
+    "animatedButton": {
+      "primary": "Make the change",
+      "secondary": "Schedule a Demo"
+    }
+  }
+}

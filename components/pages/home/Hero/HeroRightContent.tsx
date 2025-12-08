@@ -52,7 +52,7 @@ const HeroRightContent = () => {
       transition={{ duration: 0.8 }}
     >
       <div className="space-y-6">
-        <motion.h1
+        <motion.h2
           className="text-5xl md:text-7xl font-bold text-neutral-900"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ const HeroRightContent = () => {
             {t("heroRight.title.part2")}
           </span>{" "}
           {t("heroRight.title.part3")}
-        </motion.h1>
+        </motion.h2>
         <motion.p
           className="text-xl md:text-2xl text-neutral-600 max-w-2xl"
           initial={{ opacity: 0, y: 20 }}

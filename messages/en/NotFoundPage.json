@@ -1,5 +1,22 @@
 {
-  "title": "Page not found",
-  "description": "Please double check the url and try again."
+  "tag": "System Notification",
+  "title": {
+    "line1": "Page not",
+    "line2": "Found."
+  },
+  "description": "It looks like you've stumbled upon a broken link or a page that has been moved. Don't worry, all your patient data is safe — you just took a wrong turn.",
+  "goHome": "Go Home",
+  "goBack": "Go Back",
+  "signalLost": "Signal Lost",
+  "errorCode": "Error Code",
+  "notFound": "Not Found",
+  "needHelp": "Need Help?",
+  "contactSupport": "Contact Support",
+  "curious": "Curious?",
+  "aboutCurify": "About Curify",
+  "readBlog": "Read our Blog",
+  "blogDescription": "While you're here, check out the latest insights on healthcare technology and patient care.",
+  "exploreFeatures": "Explore Features",
+  "featuresDescription": "Discover the powerful tools available on the Curify platform to streamline your clinic."
 }
 

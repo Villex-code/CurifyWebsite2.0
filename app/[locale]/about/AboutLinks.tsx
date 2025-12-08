@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing"; // Ensure this matches your routing setup
 import {
   Layers,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 
 const AboutLinks = () => {
+  const t = useTranslations("about.links");
   return (
     <section className="relative w-full py-24 bg-white overflow-hidden">
       {/* Background Decor */}
@@ -29,7 +31,7 @@ const AboutLinks = () => {
           >
             <div className="h-px w-8 bg-teal-600" />
             <span className="text-teal-600 font-bold uppercase tracking-widest text-xs">
-              What's Next
+              {t("badge")}
             </span>
           </motion.div>
           <motion.h2
@@ -39,7 +41,7 @@ const AboutLinks = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight"
           >
-            Explore the ecosystem.
+            {t("title")}
           </motion.h2>
         </div>
 
@@ -47,30 +49,33 @@ const AboutLinks = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {/* 1. SOLUTIONS / FEATURES */}
           <NavCard
-            title="Our Solutions"
-            description="Deep dive into our comprehensive healthcare OS. From IoT pharmacy to AI clinical support."
+            title={t("cards.solutions.title")}
+            description={t("cards.solutions.description")}
             href="/features"
             icon={Layers}
             delay={0}
+            actionText={t("cards.solutions.action")}
           />
 
           {/* 2. BLOG & INSIGHTS */}
           <NavCard
-            title="News & Insights"
-            description="Read about the latest trends in digital health, case studies, and Curify updates."
+            title={t("cards.blog.title")}
+            description={t("cards.blog.description")}
             href="/blog"
             icon={Newspaper}
             delay={0.1}
+            actionText={t("cards.blog.action")}
           />
 
           {/* 3. CONTACT US */}
           <NavCard
-            title="Get in Touch"
-            description="Ready to transform your facility? Let's discuss your specific needs and pricing."
+            title={t("cards.contact.title")}
+            description={t("cards.contact.description")}
             href="/contact"
             icon={MessageCircle}
             delay={0.2}
             highlight // Special style for contact
+            actionText={t("cards.contact.action")}
           />
         </div>
       </div>
@@ -86,6 +91,7 @@ const NavCard = ({
   icon: Icon,
   delay,
   highlight,
+  actionText,
 }: any) => {
   return (
     <motion.div
@@ -160,7 +166,7 @@ const NavCard = ({
                }
             `}
             >
-              {highlight ? "Start Conversation" : "Explore"}
+              {actionText}
             </span>
 
             {/* Animated Arrow */}

@@ -2,8 +2,11 @@
 import React from "react";
 import { HiArrowRight } from "react-icons/hi";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const AnimatedButton = () => {
+  const t = useTranslations("ui.buttons.animatedButton");
+
   return (
     <motion.button
       className="group relative px-8 py-4 bg-teal-600 hover:bg-teal-700 rounded-full text-lg font-medium overflow-hidden flex items-center gap-4 transition-all shadow-lg shadow-[#148D98]/30 hover:shadow-[#148D98]/50 hover:-translate-y-1"
@@ -22,8 +25,8 @@ const AnimatedButton = () => {
           initial={false}
           whileHover={{ y: 0 }}
         >
-          <span className="h-7 text-white">Make the change</span>
-          <span className="h-7 text-white">Schedule a Demo</span>
+          <span className="h-7 text-white">{t("primary")}</span>
+          <span className="h-7 text-white">{t("secondary")}</span>
         </motion.div>
       </div>
 

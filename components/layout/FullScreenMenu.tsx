@@ -16,6 +16,7 @@ const FullScreenMenu: React.FC<FullScreenMenuProps> = ({ isOpen, toggle }) => {
     { name: t("about"), route: "/about" },
     { name: t("features"), route: "/features" },
     { name: t("useCases"), route: "/use-cases" },
+    { name: t("pricing"), route: "/pricing" },
     // { name: t("proposition"), route: "/docs/Curify_Proposition.pdf", external: true },
     { name: t("contact"), route: "/contact" },
   ];

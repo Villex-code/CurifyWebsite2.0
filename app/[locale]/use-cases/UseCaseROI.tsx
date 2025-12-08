@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, animate, useMotionValue, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Calculator,
   DollarSign,
@@ -17,43 +18,39 @@ import {
 // --- CONFIGURATION ---
 type SegmentType = "medical-office" | "clinic" | "hospital";
 
-const CONFIG: Record<
-  SegmentType,
-  { label: string; multiplier: number; color: string; bg: string }
-> = {
+// Translation function for CONFIG - we need to get translations outside component
+const getConfig = (t: any) => ({
   "medical-office": {
-    label: "Medical Office",
+    label: t("segments.medicalOffice"),
     multiplier: 1.2,
     color: "text-blue-600",
     bg: "bg-blue-600",
   },
   clinic: {
-    label: "Private Clinic",
+    label: t("segments.clinic"),
     multiplier: 2.5,
     color: "text-teal-600",
     bg: "bg-teal-600",
   },
   hospital: {
-    label: "Hospital",
+    label: t("segments.hospital"),
     multiplier: 5.0,
     color: "text-purple-600",
     bg: "bg-purple-600",
   },
-};
+});
 
 const UseCaseROI = ({ segment }: { segment: string }) => {
+  const t = useTranslations("useCases.roi");
+  const CONFIG = getConfig(t);
+
   // Safe default
-  const activeSegment = (
+  const currentTab = (
     CONFIG[segment as SegmentType] ? segment : "medical-office"
   ) as SegmentType;
 
   const [patients, setPatients] = useState(500);
   const [staff, setStaff] = useState(5);
-  const [currentTab, setCurrentTab] = useState<SegmentType>(activeSegment);
-
-  useEffect(() => {
-    if (CONFIG[segment as SegmentType]) setCurrentTab(segment as SegmentType);
-  }, [segment]);
 
   // --- LOGIC ---
   const multiplier = CONFIG[currentTab].multiplier;
@@ -77,11 +74,12 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
           <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-200 mb-6">
             <Calculator className="w-4 h-4 text-slate-500" />
             <span className="text-xs font-bold uppercase tracking-widest text-slate-500">
-              ROI Calculator
+              {t("title")}
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
-            See the magic <span className={themeColor}>numbers.</span>
+            {t("headline").replace("numbers.", "")}
+            <span className={themeColor}>numbers.</span>
           </h2>
         </div>
 
@@ -135,8 +133,8 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                   <label className="flex items-center gap-2 font-bold text-slate-700 text-lg">
                     <Users className={`w-5 h-5 ${themeColor}`} />
                     {currentTab === "hospital"
-                      ? "Total Beds"
-                      : "Monthly Patients"}
+                      ? t("inputs.totalBeds")
+                      : t("inputs.monthlyPatients")}
                   </label>
                   <div className="text-2xl font-bold text-slate-900">
                     {patients.toLocaleString()}
@@ -162,8 +160,8 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                       <Stethoscope className={`w-5 h-5 ${themeColor}`} />
                     )}
                     {currentTab === "hospital"
-                      ? "Departments"
-                      : "Staff Members"}
+                      ? t("inputs.departments")
+                      : t("inputs.staffMembers")}
                   </label>
                   <div className="text-2xl font-bold text-slate-900">
                     {staff}
@@ -182,12 +180,10 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
               {/* Info Box */}
               <div className="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
                 <h4 className="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wide">
-                  Estimation Basis
+                  {t("estimation.title")}
                 </h4>
                 <p className="text-sm text-slate-500 leading-relaxed">
-                  Calculations based on average admin load reduction observed
-                  across {currentTab === "hospital" ? "enterprise" : "clinical"}{" "}
-                  partners using Curify v2.4.
+                  {t("estimation.description")} {currentTab === "hospital" ? t("estimation.enterprisePartners") : t("estimation.clinicalPartners")} {t("estimation.suffix")}
                 </p>
               </div>
             </div>
@@ -210,20 +206,19 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 text-white/80 font-bold uppercase tracking-wider text-xs mb-3">
-                    <TrendingUp className="w-4 h-4" /> Potential Change in
-                    Revenue
+                    <TrendingUp className="w-4 h-4" /> {t("revenue.subtitle")}
                   </div>
                   <div className="text-5xl md:text-7xl font-bold tracking-tight">
                     $<AnimatedNumber value={revenueIncrease} />
                   </div>
                   <p className="text-white/60 mt-2 font-medium">
-                    Estimated additional yearly revenue through efficiency.
+                    {t("revenue.description")}
                   </p>
                 </div>
 
                 <div className="relative z-10">
                   <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-sm font-bold border border-white/20">
-                    <ArrowRight className="w-4 h-4" /> That's a 3.5x ROI
+                    <ArrowRight className="w-4 h-4" /> {t("revenue.roiBadge")}
                   </div>
                 </div>
               </motion.div>
@@ -235,7 +230,7 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                     <BarChart3 className="w-5 h-5 text-slate-500" />
                   </div>
                   <h4 className="font-bold text-slate-700 text-sm uppercase">
-                    Cost Efficiency
+                    {t("costEfficiency.title")}
                   </h4>
                 </div>
 
@@ -252,7 +247,7 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                       transition={{ type: "spring", stiffness: 60 }}
                     >
                       <div className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-slate-400">
-                        Old
+                        {t("costEfficiency.old")}
                       </div>
                     </motion.div>
                   </div>
@@ -269,7 +264,7 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                       transition={{ type: "spring", stiffness: 60, delay: 0.2 }}
                     >
                       <div className="absolute top-2 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white/90">
-                        New
+                        {t("costEfficiency.new")}
                       </div>
                     </motion.div>
                   </div>
@@ -284,7 +279,7 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                     <span className="text-slate-400 text-xl">hrs</span>
                   </h4>
                   <p className="text-slate-500 font-medium text-sm">
-                    Reclaimed per month
+                    {t("timeSaved.description")}
                   </p>
                 </div>
 
@@ -295,10 +290,10 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
                     </div>
                     <div className="text-xs">
                       <span className="block font-bold text-slate-800">
-                        Efficiency Boost
+                        {t("timeSaved.efficiency.title")}
                       </span>
                       <span className="text-slate-500">
-                        Staff is 40% more productive
+                        {t("timeSaved.efficiency.description")}
                       </span>
                     </div>
                   </div>
@@ -312,11 +307,11 @@ const UseCaseROI = ({ segment }: { segment: string }) => {
             <button
               className={`group text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all inline-flex items-center gap-3 ${themeBg}`}
             >
-              Get Your Full Report
+              {t("cta.button")}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <p className="mt-4 text-slate-400 text-sm font-medium">
-              Free analysis based on your metrics.
+              {t("cta.description")}
             </p>
           </div>
         </div>

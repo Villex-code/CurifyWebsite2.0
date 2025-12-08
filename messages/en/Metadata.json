@@ -10,7 +10,8 @@
   "useCases": {
     "title": "Solutions for Clinics, Offices & Hospitals | Curify",
     "description": "Discover how Curify adapts to your scale. Tailored management software for private practitioners, polyclinics, and enterprise hospitals.",
-    "keywords": "clinic software, hospital management system, medical office os, healthcare solutions"
+    "keywords": "clinic software, hospital management system, medical office os, healthcare solutions",
+    "ogImageAlt": "Curify Healthcare OS"
   },
   "features": {
     "title": "Features | E-Prescription, EHR & Medical CRM",

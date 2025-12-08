@@ -17,6 +17,9 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+import { FEATURE_REGISTRY } from "./featuresRegistry";
+import { useRouter } from "next/navigation";
+
 // --- MAIN COMPONENT ---
 const FeaturesHero = () => {
   return (
@@ -58,7 +61,7 @@ const FeaturesHero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl text-slate-900 tracking-tight leading-[1] mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl text-slate-900 tracking-tight leading-none mb-8">
             <span className="font-serif italic font-light text-slate-400 block mb-2">
               Total control over
             </span>
@@ -266,34 +269,36 @@ const VisualAutomation = () => (
 // COMPONENT: SEARCH INTERFACE
 // ============================================================================
 
-const categories = [
-  {
-    id: "clinical",
-    label: "Clinical Tools",
-    icon: Stethoscope,
-    desc: "SOAP notes, Vitals",
-  },
-  {
-    id: "inventory",
-    label: "Smart Inventory",
-    icon: Pill,
-    desc: "IoT Cabinets, Stock",
-  },
-  {
-    id: "finance",
-    label: "Financials",
-    icon: CreditCard,
-    desc: "Billing, Claims",
-  },
-  { id: "admin", label: "Administration", icon: Users, desc: "Staff, Shifts" },
-];
-
 const SearchInterface = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Filter features based on query
+  const filteredFeatures = query.trim()
+    ? FEATURE_REGISTRY.filter(
+        (f) =>
+          f.title.toLowerCase().includes(query.toLowerCase()) ||
+          f.category.toLowerCase().includes(query.toLowerCase())
+      ).slice(0, 5) // Limit to top 5 results
+    : [];
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // CMD+K or CTRL+K
+      if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+        event.preventDefault();
+        setIsOpen(true);
+        inputRef.current?.focus();
+      }
+      // Escape to close
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        inputRef.current?.blur();
+      }
+    };
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
@@ -302,9 +307,30 @@ const SearchInterface = () => {
         setIsOpen(false);
       }
     };
+
+    document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
+
+  const handleSelect = (featureId: string) => {
+    setIsOpen(false);
+    setQuery("");
+
+    // Dispatch custom event to notify parent page
+    window.dispatchEvent(
+      new CustomEvent("featureSelected", { detail: { featureId } })
+    );
+
+    // Smooth scroll to the content section
+    const element = document.getElementById("features-content-section");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div ref={dropdownRef} className="relative w-full z-50">
@@ -327,6 +353,7 @@ const SearchInterface = () => {
           />
         </div>
         <input
+          ref={inputRef}
           type="text"
           value={query}
           onFocus={() => setIsOpen(true)}
@@ -353,28 +380,36 @@ const SearchInterface = () => {
           >
             <div className="p-3">
               <div className="px-4 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Categories
+                {query ? "Search Results" : "Suggested Features"}
               </div>
               <div className="grid grid-cols-1 gap-1">
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    className="flex items-center gap-4 p-4 rounded-2xl hover:bg-teal-50/50 group transition-all text-left border border-transparent hover:border-teal-100"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 group-hover:text-teal-600 group-hover:shadow-md transition-all">
-                      <cat.icon className="w-5 h-5" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-sm font-bold text-slate-800 group-hover:text-teal-900">
-                        {cat.label}
-                      </h4>
-                      <p className="text-xs text-slate-500 group-hover:text-teal-700/70">
-                        {cat.desc}
-                      </p>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-teal-500 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                ))}
+                {(query ? filteredFeatures : FEATURE_REGISTRY.slice(0, 5)).map(
+                  (feature) => (
+                    <button
+                      key={feature.id}
+                      onClick={() => handleSelect(feature.id)}
+                      className="flex items-center gap-4 p-4 rounded-2xl hover:bg-teal-50/50 group transition-all text-left border border-transparent hover:border-teal-100"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 group-hover:text-teal-600 group-hover:shadow-md transition-all">
+                        <Sparkles className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-sm font-bold text-slate-800 group-hover:text-teal-900">
+                          {feature.title}
+                        </h4>
+                        <p className="text-xs text-slate-500 group-hover:text-teal-700/70">
+                          {feature.category}
+                        </p>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-teal-500 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  )
+                )}
+                {query && filteredFeatures.length === 0 && (
+                  <div className="p-8 text-center text-slate-500">
+                    No features found matching "{query}"
+                  </div>
+                )}
               </div>
             </div>
             <div className="bg-slate-50/80 px-6 py-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">

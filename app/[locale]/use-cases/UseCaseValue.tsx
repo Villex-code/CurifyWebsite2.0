@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   CreditCard,
   Layers,
@@ -13,6 +14,8 @@ import {
 } from "lucide-react";
 
 const UseCaseValue = ({ segment }: { segment: string }) => {
+  const t = useTranslations("useCases.value");
+
   return (
     <section className="relative w-full py-24  overflow-hidden">
       {/* Background Decor */}
@@ -28,18 +31,16 @@ const UseCaseValue = ({ segment }: { segment: string }) => {
             viewport={{ once: true }}
           >
             <span className="text-teal-600 font-bold uppercase tracking-widest text-xs mb-4 block">
-              Core Value Proposition
+              {t("badge")}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
-              Everything you need to <br />
+              {t("title")} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">
-                run on autopilot.
+                {t("titleHighlight")}
               </span>
             </h2>
             <p className="text-lg text-slate-500 leading-relaxed">
-              Curify replaces fragmented tools with a single, cohesive operating
-              system. Integrated payments, holistic management, and smart
-              workflows.
+              {t("description")}
             </p>
           </motion.div>
         </div>
@@ -48,8 +49,8 @@ const UseCaseValue = ({ segment }: { segment: string }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* 1. PAYMENTS (Visual Top) */}
           <ValueCard
-            title="Integrated Payments"
-            desc="Invoices generated automatically. Payments reconciled instantly. Reduce accounts receivable by 40%."
+            title={t("cards.integratedPayments.title")}
+            desc={t("cards.integratedPayments.description")}
             delay={0.1}
             className="md:col-span-1"
           >
@@ -58,8 +59,8 @@ const UseCaseValue = ({ segment }: { segment: string }) => {
 
           {/* 2. HOLISTIC MANAGEMENT (Large Center) */}
           <ValueCard
-            title="Holistic Management"
-            desc="A God-mode view of your entire facility. Track patients, staff, and inventory from a single dashboard."
+            title={t("cards.holisticManagement.title")}
+            desc={t("cards.holisticManagement.description")}
             delay={0.2}
             className="md:col-span-2 bg-gradient-to-br from-slate-900 to-slate-800 text-white"
             dark
@@ -69,18 +70,18 @@ const UseCaseValue = ({ segment }: { segment: string }) => {
 
           {/* 3. WORKFLOWS (Wide Bottom Left) */}
           <ValueCard
-            title="Smart Workflows"
-            desc="Notifications that actually matter. Trigger tasks based on real-time events like 'Low Stock' or 'Patient Arrival'."
+            title={t("cards.smartWorkflows.title")}
+            desc={t("cards.smartWorkflows.description")}
             delay={0.3}
             className="md:col-span-2"
           >
-            <VisualWorkflows />
+            <VisualWorkflows t={t} />
           </ValueCard>
 
           {/* 4. ROI (Small Bottom Right) */}
           <ValueCard
-            title="Instant ROI"
-            desc="See value from Day 1. Most clinics save 15+ hours/week."
+            title={t("cards.instantRoi.title")}
+            desc={t("cards.instantRoi.description")}
             delay={0.4}
             className="md:col-span-1 bg-teal-50 border-teal-100"
           >
@@ -217,7 +218,7 @@ const VisualHolistic = () => (
   </div>
 );
 
-const VisualWorkflows = () => (
+const VisualWorkflows = ({ t }: { t: any }) => (
   <div className="w-full max-w-sm flex flex-col gap-3">
     {/* Step 1 */}
     <motion.div
@@ -231,7 +232,7 @@ const VisualWorkflows = () => (
           <Bell className="w-4 h-4" />
         </div>
         <span className="text-sm font-bold text-slate-700">
-          Low Stock Alert
+          {t("workflowSteps.lowStockAlert")}
         </span>
       </div>
       <ArrowRight className="w-4 h-4 text-slate-300" />
@@ -251,10 +252,10 @@ const VisualWorkflows = () => (
         <div className="p-2 bg-blue-50 rounded-lg text-blue-500">
           <Zap className="w-4 h-4" />
         </div>
-        <span className="text-sm font-bold text-slate-700">Auto-Reorder</span>
+        <span className="text-sm font-bold text-slate-700">{t("workflowSteps.autoReorder")}</span>
       </div>
       <div className="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded">
-        SENT
+        {t("workflowSteps.sent")}
       </div>
     </motion.div>
   </div>
