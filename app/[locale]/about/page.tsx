@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server";
 import React from "react";
 import AboutPageContent from "./AboutPageContent";
 
+// should work now
+
 export async function generateMetadata({
   params,
 }: {
