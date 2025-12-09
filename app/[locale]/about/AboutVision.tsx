@@ -46,7 +46,7 @@ const AboutVision = () => {
                     {t("badge")}
                   </span>
                 </div>
-                <h2 className="text-5xl md:text-7xl text-slate-900 leading-[0.95] tracking-tight">
+                <h2 className="text-4xl md:text-7xl text-slate-900 leading-[0.95] tracking-tight">
                   <span className="font-bold block">{t("title.line1")}</span>
                   <span className="font-serif italic font-light text-teal-600 block pl-2 md:pl-12 mt-2">
                     {t("title.line2")}

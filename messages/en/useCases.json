@@ -94,9 +94,9 @@
     },
     "supportCards": {
       "chat": {
-        "title": "Live Chat",
-        "desc": "Mon-Fri, 9am-6pm",
-        "cta": "Start Chat"
+        "title": "Book a Call",
+        "desc": "Schedule a personalized demo",
+        "cta": "Book Now"
       },
       "email": {
         "title": "Email Support",
@@ -104,9 +104,9 @@
         "cta": "Contact Us"
       },
       "docs": {
-        "title": "Documentation",
-        "desc": "Guides & API",
-        "cta": "View Docs"
+        "title": "Terms & Conditions",
+        "desc": "Legal information",
+        "cta": "Read Terms"
       }
     }
   },
@@ -218,7 +218,7 @@
       "savePercent": "Save 10%",
       "mostPopular": "Most Popular",
       "perMonth": "/mo",
-      "billedYearly": "Billed €{{amount}} yearly",
+      "billedYearly": "Billed €{amount} yearly",
       "billedMonthly": "Billed monthly",
       "whatsIncluded": "What's included",
       "enterprisePlus": "Enterprise Plus",

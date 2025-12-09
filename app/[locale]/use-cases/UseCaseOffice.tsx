@@ -34,7 +34,7 @@ const UseCaseOffice = () => {
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
               Run your practice <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-600 to-blue-500">
                 without the busywork.
               </span>
             </h2>
@@ -254,7 +254,7 @@ const VisualAIScribe = () => (
       {[...Array(12)].map((_, i) => (
         <motion.div
           key={i}
-          className="w-1.5 bg-gradient-to-t from-teal-500 to-teal-300 rounded-full"
+          className="w-1.5 bg-linear-to-t from-teal-500 to-teal-300 rounded-full"
           animate={{ height: ["20%", "100%", "20%"] }}
           transition={{
             duration: 1,
@@ -262,7 +262,7 @@ const VisualAIScribe = () => (
             delay: i * 0.1,
             ease: "easeInOut",
           }}
-          style={{ height: Math.random() * 100 + "%" }}
+          style={{ height: "50%" }}
         />
       ))}
     </div>

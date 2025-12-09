@@ -45,7 +45,14 @@ const HospitalSegment = () => {
         </p>
 
         <div className="mt-8 flex justify-center">
-          <button className="group flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-indigo-600 transition-colors">
+          <button
+            onClick={() => {
+              // Store the segment preference and navigate to use-cases
+              localStorage.setItem('selectedSegment', 'hospital');
+              window.location.href = '/use-cases';
+            }}
+            className="group flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-indigo-600 transition-colors cursor-pointer"
+          >
             {t("cta")}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>

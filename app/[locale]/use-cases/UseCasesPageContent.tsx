@@ -16,6 +16,17 @@ const UseCasesPageContent = () => {
   useEffect(() => {
     // Instantly set scroll position to top
     window.scrollTo(0, 0);
+
+    // Check if there's a stored segment preference from navigation
+    const storedSegment = localStorage.getItem("selectedSegment");
+    if (
+      storedSegment &&
+      ["medical-office", "clinic", "hospital"].includes(storedSegment)
+    ) {
+      setActiveSegment(storedSegment);
+      // Clear the stored preference after applying it
+      localStorage.removeItem("selectedSegment");
+    }
   }, []);
 
   return (

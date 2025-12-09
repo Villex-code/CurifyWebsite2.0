@@ -22,7 +22,7 @@ const PricingPlans = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-6"
           >
             {t("title")} <br />
             <span className="text-teal-600">{t("titleHighlight")}</span>
@@ -39,9 +39,9 @@ const PricingPlans = () => {
           </motion.p>
 
           {/* --- Toggle Switch --- */}
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-3 md:gap-4">
             <span
-              className={`text-sm font-semibold ${
+              className={`text-xs md:text-sm font-semibold ${
                 !isYearly ? "text-slate-900" : "text-slate-400"
               }`}
             >
@@ -50,22 +50,22 @@ const PricingPlans = () => {
 
             <button
               onClick={() => setIsYearly(!isYearly)}
-              className="relative w-16 h-8 bg-slate-200 rounded-full p-1 transition-colors hover:bg-slate-300 focus:outline-none"
+              className="relative w-14 h-7 md:w-16 md:h-8 bg-slate-200 rounded-full p-1 transition-colors hover:bg-slate-300 focus:outline-none"
             >
               <motion.div
-                className="w-6 h-6 bg-white rounded-full shadow-md"
-                animate={{ x: isYearly ? 32 : 0 }}
+                className="w-5 h-5 md:w-6 md:h-6 bg-white rounded-full shadow-md"
+                animate={{ x: isYearly ? 28 : 0 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             </button>
 
             <span
-              className={`text-sm font-semibold ${
+              className={`text-xs md:text-sm font-semibold ${
                 isYearly ? "text-slate-900" : "text-slate-400"
               }`}
             >
               {t("yearly")}
-              <span className="ml-2 inline-block bg-teal-100 text-teal-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+              <span className="ml-1 md:ml-2 inline-block bg-teal-100 text-teal-700 text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 rounded-full uppercase tracking-wide">
                 {t("savePercent")}
               </span>
             </span>
@@ -90,15 +90,21 @@ const PricingPlans = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-16 bg-slate-900 rounded-3xl p-8 md:p-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl"
+          className="mt-12 md:mt-16 bg-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 text-center flex flex-col items-center gap-6 md:gap-8 shadow-xl"
         >
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-2">
-              <Building2 className="text-teal-400" /> {t("enterprisePlus")}
+          <div className="max-w-2xl">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
+              <Building2 className="text-teal-400 w-5 h-5 md:w-6 md:h-6" />{" "}
+              {t("enterprisePlus")}
             </h3>
-            <p className="text-slate-400 max-w-xl">{t("enterprisePlusDesc")}</p>
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+              {t("enterprisePlusDesc")}
+            </p>
           </div>
-          <button className="bg-white text-slate-900 px-8 py-3.5 rounded-xl font-bold hover:bg-teal-50 transition-colors shadow-lg whitespace-nowrap">
+          <button
+            onClick={() => (window.location.href = "/contact")}
+            className="bg-white text-slate-900 px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-bold hover:bg-teal-50 transition-colors shadow-lg text-sm md:text-base whitespace-nowrap cursor-pointer"
+          >
             {t("contactCustom")}
           </button>
         </motion.div>
@@ -155,7 +161,7 @@ const PriceCard = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`
-        relative p-8 rounded-[2.5rem] border flex flex-col h-full transition-all duration-300
+        relative p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] border flex flex-col h-full transition-all duration-300
         ${
           plan.popular
             ? "bg-white border-teal-500 shadow-2xl shadow-teal-900/10 scale-105 z-10"
@@ -164,41 +170,48 @@ const PriceCard = ({
       `}
     >
       {plan.popular && (
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg">
-          <Sparkles className="w-3 h-3 fill-white" /> {t("mostPopular")}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-teal-600 text-white px-3 md:px-4 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg">
+          <Sparkles className="w-2.5 h-2.5 md:w-3 md:h-3 fill-white" />{" "}
+          {t("mostPopular")}
         </div>
       )}
 
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-4 md:mb-6">
         <div
-          className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${
+          className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center mb-3 md:mb-4 ${
             plan.popular
               ? "bg-teal-50 text-teal-600"
               : "bg-slate-50 text-slate-500"
           }`}
         >
-          <Icon className="w-6 h-6" />
+          <Icon className="w-5 h-5 md:w-6 md:h-6" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-900">{plan.name}</h3>
-        <p className="text-slate-500 text-sm mt-2 leading-relaxed h-10">
+        <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+          {plan.name}
+        </h3>
+        <p className="text-slate-500 text-sm mt-2 leading-relaxed h-8 md:h-10">
           {plan.description}
         </p>
       </div>
 
       {/* Price */}
-      <div className="mb-8">
+      <div className="mb-6 md:mb-8">
         <div className="flex items-baseline gap-1">
-          <span className="text-4xl font-bold text-slate-900">€</span>
+          <span className="text-3xl md:text-4xl font-bold text-slate-900">
+            €
+          </span>
           <motion.span
             key={isYearly ? "year" : "month"}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl font-extrabold text-slate-900 tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight"
           >
             {isYearly ? plan.priceYearly : plan.priceMonthly}
           </motion.span>
-          <span className="text-slate-400 font-medium">{t("perMonth")}</span>
+          <span className="text-slate-400 font-medium text-sm md:text-base">
+            {t("perMonth")}
+          </span>
         </div>
         <div className="text-xs text-slate-400 mt-2 font-medium h-4">
           {isYearly
@@ -211,7 +224,7 @@ const PriceCard = ({
       <button
         onClick={() => window.open("https://portal-staging.curifyapp.com/")}
         className={`
-         w-full py-4 rounded-xl font-bold transition-all duration-200 mb-8
+         w-full py-3 md:py-4 rounded-xl font-bold transition-all duration-200 mb-6 md:mb-8 text-sm md:text-base
          ${
            plan.popular
              ? "bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-600/20"
@@ -224,14 +237,14 @@ const PriceCard = ({
 
       {/* Features List */}
       <div className="flex-1">
-        <p className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-4">
+        <p className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 md:mb-4">
           {t("whatsIncluded")}
         </p>
-        <ul className="space-y-3">
+        <ul className="space-y-2 md:space-y-3">
           {plan.features.map((feature: string, i: number) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-slate-600"
+              className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-slate-600"
             >
               <div
                 className={`mt-0.5 p-0.5 rounded-full ${
@@ -240,9 +253,9 @@ const PriceCard = ({
                     : "bg-slate-100 text-slate-500"
                 }`}
               >
-                <Check className="w-3 h-3" strokeWidth={3} />
+                <Check className="w-2.5 h-2.5 md:w-3 md:h-3" strokeWidth={3} />
               </div>
-              <span className="flex-1">{feature}</span>
+              <span className="flex-1 leading-relaxed">{feature}</span>
             </li>
           ))}
         </ul>

@@ -311,6 +311,13 @@ const CtaButton = ({ color, text }: any) => {
     teal: "hover:text-teal-600",
     blue: "hover:text-blue-600",
   };
+
+  const handleClick = () => {
+    // Store the segment preference and navigate to use-cases
+    localStorage.setItem('selectedSegment', 'medical-office');
+    window.location.href = '/use-cases';
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -319,9 +326,10 @@ const CtaButton = ({ color, text }: any) => {
       className="mt-8 flex justify-center lg:justify-start"
     >
       <button
+        onClick={handleClick}
         className={`group flex items-center gap-2 text-sm font-bold text-slate-900 ${
           hoverColors[color] || hoverColors.blue
-        } transition-colors`}
+        } transition-colors cursor-pointer`}
       >
         {text}
         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -94,9 +94,9 @@
     },
     "supportCards": {
       "chat": {
-        "title": "Live Chat",
-        "desc": "Δευ-Παρ, 9πμ-6μμ",
-        "cta": "Συνομιλία"
+        "title": "Κλείστε Ραντεβού",
+        "desc": "Προσωπική επίδειξη",
+        "cta": "Κλείστε Τώρα"
       },
       "email": {
         "title": "Email Support",
@@ -104,9 +104,9 @@
         "cta": "Επικοινωνία"
       },
       "docs": {
-        "title": "Οδηγίες Χρήσης",
-        "desc": "Documentation & API",
-        "cta": "Διαβάστε εδώ"
+        "title": "Όροι & Προϋποθέσεις",
+        "desc": "Νομικές πληροφορίες",
+        "cta": "Διαβάστε Όρους"
       }
     }
   },
@@ -183,19 +183,19 @@
     },
     "metrics": {
       "searchTime": {
-        "label": "Χρόνος Αναζήτησης",
-        "before": "14 Ημέρες",
-        "after": "< 1 Δευτ"
+        "label": "Αναζήτηση",
+        "before": "14 ημ.",
+        "after": "< 1 δευτ."
       },
       "errorRate": {
-        "label": "Ποσοστό Σφαλμάτων",
+        "label": "Σφάλματα",
         "before": "18%",
         "after": "0.1%"
       },
       "staffLoad": {
-        "label": "Φόρτος Προσωπικού",
+        "label": "Φόρτος",
         "before": "Βαρύς",
-        "after": "Αυτοματοποιημένος"
+        "after": "Αυτόματος"
       }
     },
     "seeDetails": "Δείτε Λεπτομέρειες Χαρακτηριστικών"
@@ -218,7 +218,7 @@
       "savePercent": "Εξοικονομήστε 10%",
       "mostPopular": "Πιο Δημοφιλές",
       "perMonth": "/μήνα",
-      "billedYearly": "Χρεώνεται €{{amount}} ετησίως",
+      "billedYearly": "Χρεώνεται €{amount} ετησίως",
       "billedMonthly": "Χρεώνεται μηνιαίως",
       "whatsIncluded": "Τι περιλαμβάνεται",
       "enterprisePlus": "Enterprise Plus",

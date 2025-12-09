@@ -34,7 +34,10 @@ const HeroSection = () => {
         {t("description")}
       </p>
 
-      <button className="bg-teal-600 text-white px-10 py-4 rounded-2xl text-lg font-semibold shadow-xl shadow-teal-600/20 hover:bg-teal-700 transition-colors relative z-20">
+      <button
+        onClick={() => window.location.href = '/contact'}
+        className="bg-teal-600 text-white px-10 py-4 rounded-2xl text-lg font-semibold shadow-xl shadow-teal-600/20 hover:bg-teal-700 transition-colors relative z-20 cursor-pointer"
+      >
         {t("cta")}
       </button>
     </div>

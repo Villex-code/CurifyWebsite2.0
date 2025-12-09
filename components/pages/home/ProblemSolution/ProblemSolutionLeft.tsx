@@ -80,7 +80,10 @@ const ProblemSolutionLeft = () => {
 
         {/* CTA */}
         <div className="mt-10">
-          <button className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-semibold text-white bg-teal-600 rounded-full hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-900/20 transition-all duration-300 group">
+          <button
+            onClick={() => window.location.href = '/contact'}
+            className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-semibold text-white bg-teal-600 rounded-full hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-900/20 transition-all duration-300 group cursor-pointer"
+          >
             {t("problemSolution.ctaButton")}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>

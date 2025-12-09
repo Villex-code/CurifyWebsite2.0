@@ -20,20 +20,20 @@ const FacilityOperationsCard = ({ t }: FacilityOperationsCardProps) => {
       </div>
 
       {/* Visual: Isometric Room Cards */}
-      <div className="absolute right-[-20px] top-1/2 -translate-y-1/2 w-64 flex flex-col gap-3 opacity-80 group-hover:opacity-100 group-hover:translate-x-[-10px] transition-all duration-500">
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-3 transform translate-x-4">
+      <div className="absolute right-[-60px] md:right-[-20px] bottom-4 top-[180px] md:top-1/2 md:-translate-y-1/2 w-64 flex flex-col gap-3 opacity-80 group-hover:opacity-100 group-hover:translate-x-[-10px] md:group-hover:translate-x-[-10px] transition-all duration-500">
+        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-3 transform translate-x-2 md:translate-x-4">
           <div className="w-2 h-2 rounded-full bg-green-500" />
           <span className="text-xs font-bold text-slate-600">
             {t("coreCapabilities.facilityOperations.room101")}
           </span>
         </div>
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-3 transform">
+        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-3 transform translate-x-1 md:translate-x-0">
           <div className="w-2 h-2 rounded-full bg-red-500" />
           <span className="text-xs font-bold text-slate-600">
             {t("coreCapabilities.facilityOperations.room102")}
           </span>
         </div>
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-3 transform translate-x-8">
+        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-md flex items-center gap-3 transform translate-x-4 md:translate-x-8">
           <div className="w-2 h-2 rounded-full bg-green-500" />
           <span className="text-xs font-bold text-slate-600">
             {t("coreCapabilities.facilityOperations.room103")}

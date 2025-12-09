@@ -5,7 +5,7 @@
     "description": "Curify streamlines your clinic's operations. From electronic health records (EHR) to smart IoT inventory, we provide the tools modern doctors need to focus on patient care.",
     "cta": {
       "getStarted": "Get Started",
-      "watchDemo": "Watch Demo"
+      "watchDemo": "Watch it Live"
     }
   },
   "heroLeft": {
@@ -78,8 +78,8 @@
       "description": "IoT-enabled cabinets with automatic inventory tracking. Prevent stockouts and eliminate manual counting forever."
     },
     "aiDiagnostics": {
-      "title": "AI Diagnostics",
-      "description": "Clinical decision support with automated drug interaction alerts and patient anomaly detection."
+      "title": "AI Acceleration",
+      "description": "Perform operations quicker and easier than ever before using our own Curify agent."
     },
     "facilityOperations": {
       "title": "Facility Operations",

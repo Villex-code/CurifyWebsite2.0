@@ -19,6 +19,7 @@ const AboutMission = () => {
 
   return (
     <section
+      id="mission"
       ref={containerRef}
       className="relative py-32 md:py-48 bg-white overflow-hidden"
     >

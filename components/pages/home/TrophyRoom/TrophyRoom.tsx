@@ -305,7 +305,10 @@ const CaseStudyModal = ({
                   {t("modal.verifiedData")}
                 </span>
               </div>
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-colors shadow-lg shadow-teal-600/20">
+              <button
+                onClick={() => (window.location.href = "/contact")}
+                className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-colors shadow-lg shadow-teal-600/20 cursor-pointer"
+              >
                 {t("modal.bookDemo")}
               </button>
             </div>

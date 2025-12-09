@@ -67,7 +67,18 @@ const AboutHero = () => {
                 {t("description")}
               </p>
 
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-teal-700 cursor-pointer group">
+              <div
+                className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-teal-700 cursor-pointer group"
+                onClick={() => {
+                  const missionSection = document.getElementById('mission');
+                  if (missionSection) {
+                    missionSection.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }}
+              >
                 {t("cta")}
                 <ArrowDownRight className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
               </div>

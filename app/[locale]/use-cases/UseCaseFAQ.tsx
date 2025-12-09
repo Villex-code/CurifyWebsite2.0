@@ -55,18 +55,21 @@ const UseCaseFAQ = ({ segment }: { segment: string }) => {
                   title={t("supportCards.chat.title")}
                   desc={t("supportCards.chat.desc")}
                   action={t("supportCards.chat.cta")}
+                  type="chat"
                 />
                 <SupportCard
                   icon={Mail}
                   title={t("supportCards.email.title")}
                   desc={t("supportCards.email.desc")}
                   action={t("supportCards.email.cta")}
+                  type="email"
                 />
                 <SupportCard
                   icon={FileText}
                   title={t("supportCards.docs.title")}
                   desc={t("supportCards.docs.desc")}
                   action={t("supportCards.docs.cta")}
+                  type="docs"
                 />
               </div>
             </motion.div>
@@ -156,9 +159,31 @@ const UseCaseFAQ = ({ segment }: { segment: string }) => {
 };
 
 // --- SUB-COMPONENT: SUPPORT CONTACT CARD ---
-const SupportCard = ({ icon: Icon, title, desc, action }: any) => {
+const SupportCard = ({ icon: Icon, title, desc, action, type }: any) => {
+  const handleClick = () => {
+    switch (type) {
+      case 'chat':
+        // Open Calendly booking link
+        window.open('https://calendly.com/appcurify/15-minute-meeting-curify', '_blank');
+        break;
+      case 'email':
+        // Open email client
+        window.location.href = 'mailto:support@curifyapp.com';
+        break;
+      case 'docs':
+        // Navigate to terms and conditions page
+        window.location.href = '/terms-and-conditions';
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
-    <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-100 hover:border-teal-100 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+    <div
+      onClick={handleClick}
+      className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-100 hover:border-teal-100 hover:shadow-lg transition-all duration-300 group cursor-pointer"
+    >
       <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-teal-50 transition-colors">
         <Icon className="w-5 h-5 text-slate-400 group-hover:text-teal-600" />
       </div>

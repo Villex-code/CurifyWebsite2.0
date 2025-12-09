@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface Partner {
   id: string;
@@ -216,9 +217,12 @@ const BrandRecognition = () => {
         <div className="mt-24 text-center">
           <p className="text-slate-400 text-sm font-medium">
             {t("footer.text")}
-            <span className="text-teal-600 underline decoration-teal-300 underline-offset-4 ml-1 cursor-pointer hover:text-teal-800 transition-colors">
+            <Link
+              href="/contact"
+              className="text-teal-600 underline decoration-teal-300 underline-offset-4 ml-1 hover:text-teal-800 transition-colors"
+            >
               {t("footer.link")}
-            </span>
+            </Link>
           </p>
         </div>
       </div>

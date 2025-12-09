@@ -250,6 +250,13 @@ const CtaButton = ({ color, text }: any) => {
     blue: "hover:text-blue-600",
     indigo: "hover:text-indigo-600",
   };
+
+  const handleClick = () => {
+    // Store the segment preference and navigate to use-cases
+    localStorage.setItem('selectedSegment', 'clinic');
+    window.location.href = '/use-cases';
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -258,7 +265,8 @@ const CtaButton = ({ color, text }: any) => {
       className="mt-8 flex justify-center lg:justify-start"
     >
       <button
-        className={`group flex items-center gap-2 text-sm font-bold text-slate-900 ${hoverColors[color]} transition-colors`}
+        onClick={handleClick}
+        className={`group flex items-center gap-2 text-sm font-bold text-slate-900 ${hoverColors[color]} transition-colors cursor-pointer`}
       >
         {text}
         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
