@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Play, ArrowDownRight } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 
 const AboutHero = () => {
   const t = useTranslations("about.hero");
@@ -89,44 +89,17 @@ const AboutHero = () => {
         {/* --- MIDDLE ROW: VIDEO / MEDIA CONTAINER --- */}
         <motion.div
           style={{ y: yVideo, scale: scaleVideo }}
-          className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200"
+          className="relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200"
         >
-          {/* Placeholder for Video/Image */}
-          <div className="absolute inset-0 bg-slate-900">
-            {/* 
-                REPLACE THIS IMG WITH YOUR VIDEO OR IMAGE.
-                If using a video tag: <video autoPlay muted loop playsInline className="w-full h-full object-cover" />
-             */}
-            <img
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2940&auto=format&fit=crop"
-              alt="Team collaborating"
-              className="w-full h-full object-cover opacity-80"
-            />
-
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-          </div>
-
-          {/* Play Button Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.button
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="group relative flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-md border border-white/20 rounded-full hover:scale-110 transition-transform duration-300"
-            >
-              <div className="absolute inset-0 bg-white/20 rounded-full animate-ping opacity-0 group-hover:opacity-100 duration-1000" />
-              <Play className="w-8 h-8 text-white fill-white ml-1" />
-            </motion.button>
-          </div>
-
-          {/* Video Caption */}
-          <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 text-white max-w-md hidden md:block">
-            <p className="text-sm font-medium opacity-80 mb-2">
-              {t("video.caption")}
-            </p>
-            <p className="text-xl font-light">{t("video.description")}</p>
-          </div>
+          {/* YouTube Video */}
+          <iframe
+            src={`https://www.youtube.com/embed/tBu5gykmNl0?autoplay=1&mute=1&loop=1&playlist=tBu5gykmNl0&rel=0`}
+            title="Company Video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+          />
         </motion.div>
 
         {/* --- BOTTOM ROW: STATS --- */}
