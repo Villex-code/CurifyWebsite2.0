@@ -108,7 +108,7 @@ const ContactLeft = () => {
 
         {/* Book a Call Option */}
         <a
-          href="https://calendly.com/appcurify/30min"
+          href="https://calendly.com/appcurify/15-minute-meeting-curify"
           target="_blank"
           rel="noopener noreferrer"
           className="group w-full flex items-center justify-between p-4 sm:p-5 bg-gradient-to-l from-teal-500 to-teal-600 rounded-xl transition-all shadow-md hover:shadow-lg hover:from-teal-600 hover:to-teal-700"
