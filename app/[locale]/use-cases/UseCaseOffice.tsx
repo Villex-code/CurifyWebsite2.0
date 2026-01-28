@@ -14,7 +14,11 @@ import {
   Database,
 } from "lucide-react";
 
+import { useTranslations } from "next-intl";
+
 const UseCaseOffice = () => {
+  const t = useTranslations("useCases.modules.office");
+
   return (
     <section
       className="relative w-full py-24 bg-white overflow-hidden"
@@ -30,12 +34,12 @@ const UseCaseOffice = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-teal-600 font-bold uppercase tracking-widest text-xs mb-4 block">
-              Solo Practitioner OS
+              {t("badge")}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
-              Run your practice <br />
+              {t("title")} <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-600 to-blue-500">
-                without the busywork.
+                {t("titleHighlight")}
               </span>
             </h2>
             <motion.p
@@ -43,13 +47,8 @@ const UseCaseOffice = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-lg text-slate-500 leading-relaxed"
-            >
-              You became a doctor to treat patients, not to wrestle with
-              government portals or accounting. Curify acts as your{" "}
-              <strong>digital partner</strong>, handling compliance (IDIKA),
-              financial tracking, and clinical documentation automatically in
-              the background.
-            </motion.p>
+              dangerouslySetInnerHTML={{ __html: t.raw("description").replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+            />
           </motion.div>
         </div>
 
@@ -63,15 +62,15 @@ const UseCaseOffice = () => {
               <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-bold text-slate-600 uppercase">
-                  Sync Active
+                  {t("features.prescription.visual.syncActive")}
                 </span>
               </div>
-              <VisualPrescription />
+              <VisualPrescription t={t} />
             </VisualCard>
 
             {/* CARD 2: INTEGRATED PAYMENTS */}
             <VisualCard delay={0.1}>
-              <VisualPayments />
+              <VisualPayments t={t} />
             </VisualCard>
 
             {/* CARD 3: AI SCRIBE */}
@@ -83,20 +82,20 @@ const UseCaseOffice = () => {
           {/* FEATURE DETAILS (Text Descriptions) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <DescriptionCol
-              title="Native E-Prescription"
-              desc="Direct 2-way integration with national systems (IDIKA / EOPYY). Prescribe medications and referrals instantly without logging into external portals."
+              title={t("features.prescription.title")}
+              desc={t("features.prescription.description")}
               delay={0.3}
             />
 
             <DescriptionCol
-              title="Automated Billing"
-              desc="Convert a clinical visit into a compliant invoice in one click. Connects with myData/AADE to track revenue and outstanding balances effortlessly."
+              title={t("features.billing.title")}
+              desc={t("features.billing.description")}
               delay={0.4}
             />
 
             <DescriptionCol
-              title="AI Clinical Assistant"
-              desc="Don't type. Just speak. Our AI Scribe listens to your consultation and auto-drafts structured SOAP notes and patient histories in seconds."
+              title={t("features.scribe.title")}
+              desc={t("features.scribe.description")}
               delay={0.5}
             />
           </div>
@@ -110,14 +109,14 @@ const UseCaseOffice = () => {
               <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-bold text-slate-600 uppercase">
-                  Sync Active
+                  {t("features.prescription.visual.syncActive")}
                 </span>
               </div>
-              <VisualPrescription />
+              <VisualPrescription t={t} />
             </VisualCard>
             <DescriptionCol
-              title="Native E-Prescription"
-              desc="Direct 2-way integration with national systems (IDIKA / EOPYY). Prescribe medications and referrals instantly without logging into external portals."
+              title={t("features.prescription.title")}
+              desc={t("features.prescription.description")}
               delay={0.3}
             />
           </div>
@@ -125,11 +124,11 @@ const UseCaseOffice = () => {
           {/* CARD 2 + DESCRIPTION */}
           <div className="flex flex-col gap-6">
             <VisualCard delay={0.1}>
-              <VisualPayments />
+              <VisualPayments t={t} />
             </VisualCard>
             <DescriptionCol
-              title="Automated Billing"
-              desc="Convert a clinical visit into a compliant invoice in one click. Connects with myData/AADE to track revenue and outstanding balances effortlessly."
+              title={t("features.billing.title")}
+              desc={t("features.billing.description")}
               delay={0.4}
             />
           </div>
@@ -140,8 +139,8 @@ const UseCaseOffice = () => {
               <VisualAIScribe />
             </VisualCard>
             <DescriptionCol
-              title="AI Clinical Assistant"
-              desc="Don't type. Just speak. Our AI Scribe listens to your consultation and auto-drafts structured SOAP notes and patient histories in seconds."
+              title={t("features.scribe.title")}
+              desc={t("features.scribe.description")}
               delay={0.5}
             />
           </div>
@@ -153,7 +152,7 @@ const UseCaseOffice = () => {
 
 // --- VISUAL CARDS (Abstract UI) ---
 
-const VisualPrescription = () => (
+const VisualPrescription = ({ t }: { t: any }) => (
   <div className="w-full h-full flex flex-col items-center justify-center relative">
     {/* Connection Line */}
     <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-200 border-t border-dashed border-slate-300" />
@@ -193,14 +192,14 @@ const VisualPrescription = () => (
           IDIKA <br /> E-Rx
         </div>
         <div className="mt-2 bg-green-100 text-green-700 px-2 py-0.5 rounded text-[8px] font-bold border border-green-200">
-          VERIFIED
+          {t("features.prescription.visual.verified")}
         </div>
       </motion.div>
     </div>
   </div>
 );
 
-const VisualPayments = () => (
+const VisualPayments = ({ t }: { t: any }) => (
   <div className="w-full h-full flex flex-col items-center justify-center pt-4">
     <div className="relative">
       {/* The Invoice */}
@@ -215,18 +214,18 @@ const VisualPayments = () => (
               <Receipt className="w-4 h-4" />
             </div>
             <span className="text-xs font-bold text-slate-700">
-              Receipt #402
+              {t("features.billing.visual.receipt")} #402
             </span>
           </div>
           <span className="text-xs font-bold text-slate-900">€80.00</span>
         </div>
         <div className="space-y-2">
           <div className="flex justify-between text-[10px] text-slate-500">
-            <span>Consultation</span>
+            <span>{t("features.billing.visual.consultation")}</span>
             <span>€50</span>
           </div>
           <div className="flex justify-between text-[10px] text-slate-500">
-            <span>Ultrasound</span>
+            <span>{t("features.billing.visual.ultrasound")}</span>
             <span>€30</span>
           </div>
         </div>
@@ -235,7 +234,7 @@ const VisualPayments = () => (
         <div className="mt-4 flex items-center justify-center gap-1.5 bg-green-50 text-green-700 py-1.5 rounded-lg border border-green-100">
           <CheckCircle2 className="w-3 h-3" />
           <span className="text-[10px] font-bold uppercase">
-            Payment Complete
+            {t("features.billing.visual.paymentComplete")}
           </span>
         </div>
       </motion.div>

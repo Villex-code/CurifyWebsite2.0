@@ -49,6 +49,11 @@ const config: Config = {
       "teal-accent": "#e7fcf9",
       "text-main": "#27272A",
       "text-secondary": "#71717A",
+      "background-main": "#FFFFFF",
+      "background-secondary": "#F6FEFF",
+      "alert-red": "#E11D48",
+      "warning-yellow": "#dabd2c",
+      "success-green": "#2ba488",
 
       foreground: "",
 

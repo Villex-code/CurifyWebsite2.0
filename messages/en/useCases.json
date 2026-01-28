@@ -135,6 +135,123 @@
       }
     }
   },
+  "modules": {
+    "office": {
+      "badge": "Solo Practitioner OS",
+      "title": "Run your practice",
+      "titleHighlight": "without the busywork.",
+      "description": "You became a doctor to treat patients, not to wrestle with government portals or accounting. Curify acts as your **digital partner**, handling compliance (IDIKA), financial tracking, and clinical documentation automatically in the background.",
+      "features": {
+        "prescription": {
+          "title": "Native E-Prescription",
+          "description": "Direct 2-way integration with national systems (IDIKA / EOPYY). Prescribe medications and referrals instantly without logging into external portals.",
+          "visual": {
+            "syncActive": "Sync Active",
+            "verified": "VERIFIED"
+          }
+        },
+        "billing": {
+          "title": "Automated Billing",
+          "description": "Convert a clinical visit into a compliant invoice in one click. Connects with myData/AADE to track revenue and outstanding balances effortlessly.",
+          "visual": {
+            "receipt": "Receipt",
+            "consultation": "Consultation",
+            "ultrasound": "Ultrasound",
+            "paymentComplete": "Payment Complete"
+          }
+        },
+        "scribe": {
+          "title": "AI Clinical Assistant",
+          "description": "Don't type. Just speak. Our AI Scribe listens to your consultation and auto-drafts structured SOAP notes and patient histories in seconds."
+        }
+      }
+    },
+    "clinic": {
+      "badge": "Clinic Operations",
+      "title": "Monitor, detect, and respond",
+      "titleHighlight": "in real-time.",
+      "quote": {
+        "text": "Clinics are living organisms, not just buildings.",
+        "description": "Complexity grows exponentially with every new room and staff member. Curify acts as the **central nervous system**, turning the chaos of patient flow, inventory consumption, and shift changes into a synchronized, predictable rhythm."
+      },
+      "features": {
+        "monitoring": {
+          "title": "Total Visibility",
+          "description": "See exactly which rooms are occupied, which need cleaning, and where the bottlenecks are in real-time. Manage patient flow effortlessly.",
+          "visual": {
+            "liveFloorPlan": "Live Floor Plan",
+            "occupied": "Occupied",
+            "ready": "Ready",
+            "cleaning": "Cleaning"
+          }
+        },
+        "ai": {
+          "title": "AI-Powered Triage",
+          "description": "Our algorithms analyze patient intake forms to prioritize urgency automatically, ensuring critical cases are seen first.",
+          "visual": {
+            "triageLvl1": "Triage Lvl 1",
+            "rxCheck": "Rx Check"
+          }
+        },
+        "notifications": {
+          "title": "Instant Action",
+          "description": "Get immediate notifications for low inventory, waiting room overflow, or staff requests directly to your device.",
+          "visual": {
+            "roomCleaned": "Room 104 Cleaned",
+            "justNow": "Just now",
+            "lowStock": "Low Stock: Panadol",
+            "actionRequired": "Action Required",
+            "shiftChange": "Shift Change",
+            "in15Mins": "In 15 mins"
+          }
+        }
+      }
+    },
+    "hospital": {
+      "badge": "Hospital Operations",
+      "title": "Coordinate critical care and",
+      "titleHighlight": "emergency response.",
+      "description": "Comprehensive hospital management system that coordinates across multiple departments, manages emergency response, and ensures critical care delivery at scale.",
+      "features": {
+        "emergency": {
+          "title": "Emergency Coordination",
+          "description": "Real-time tracking of emergency room capacity, ambulance dispatch, and critical care unit availability across the entire hospital campus.",
+          "visual": {
+            "emergencyCenter": "Emergency Center",
+            "traumaBay1": "TRAUMA BAY 1",
+            "critical": "Critical",
+            "erBay2": "ER BAY 2",
+            "stable": "Stable",
+            "icuRoom5": "ICU ROOM 5",
+            "monitoring": "Monitoring",
+            "ambulance": "AMBULANCE",
+            "available": "Available"
+          }
+        },
+        "sync": {
+          "title": "Multi-Department Sync",
+          "description": "Seamlessly coordinate between ER, ICU, surgery, radiology, and pharmacy departments with instant communication and resource sharing.",
+          "visual": {
+             "codeBlue": "Code Blue",
+             "erStatus": "ER Status",
+             "icuBeds": "ICU Beds"
+          }
+        },
+        "alerts": {
+          "title": "Critical Alerts",
+          "description": "Instant notifications for code situations, equipment failures, staffing shortages, or supply chain disruptions that require immediate action.",
+          "visual": {
+            "codeBlueRoom": "CODE BLUE - Room 204",
+            "immediateResponse": "IMMEDIATE RESPONSE",
+            "icuCapacity": "ICU at 95% Capacity",
+            "transferProtocol": "Transfer Protocol",
+            "bloodBank": "Blood Bank Restocked",
+            "allAvailable": "All types available"
+          }
+        }
+      }
+    }
+  },
   "value": {
     "badge": "Core Value Proposition",
     "title": "Everything you need to",
@@ -237,8 +354,8 @@
           "billedYearly": 853,
           "features": [
             "Unlimited Patient Records",
-            "5 User Accounts",
-            "100GB Secure Storage",
+            "15 User Accounts",
+            "50GB Secure Storage",
             "IDIKA Integration (E-Prescription)",
             "Basic Patient & Staff Management",
             "Appointment Reminders",
@@ -257,7 +374,7 @@
           "features": [
             "Everything in Starter",
             "35 User Accounts",
-            "1TB Secure Storage",
+            "250GB Secure Storage",
             "Pharmacy & Inventory Management",
             "DICOM Viewer (PAX)",
             "AI Drug Interaction Alerts",
@@ -277,7 +394,7 @@
           "features": [
             "Everything in Professional",
             "Unlimited User Accounts",
-            "5TB Secure Storage",
+            "1TB Secure Storage",
             "PACS / Lab Systems Integration",
             "Custom Feature Development",
             "Dedicated Account Manager",
@@ -285,7 +402,14 @@
           ],
           "cta": "Contact Sales"
         }
-      ]
+      ],
+      "scarcity": {
+        "partnership": "Partnership",
+        "earlyAdopter": "Early Adopter",
+        "exclusive": "Exclusive",
+        "slotsLeft": "slots left",
+        "disclaimer": "*Contract price locked for the first {slots} partners. We guarantee your price will not increase later."
+      }
     },
     "comparison": {
       "title": "Compare Plans",
@@ -322,9 +446,9 @@
             },
             {
               "name": "Cloud Storage",
-              "starter": "100GB",
-              "pro": "1TB",
-              "ent": "5TB",
+              "starter": "50GB",
+              "pro": "250GB",
+              "ent": "1TB",
               "plus": "Custom"
             },
             {
@@ -362,7 +486,7 @@
             },
             {
               "name": "Custom Medical Forms",
-              "starter": "5",
+              "starter": "15",
               "pro": "25",
               "ent": "100",
               "plus": "Unlimited"
@@ -536,9 +660,9 @@
             },
             {
               "name": "Cloud Storage",
-              "starter": "100GB",
-              "pro": "1TB",
-              "ent": "5TB",
+              "starter": "50GB",
+              "pro": "250GB",
+              "ent": "1TB",
               "plus": "Custom"
             },
             {

@@ -13,7 +13,11 @@ import {
   Quote,
 } from "lucide-react";
 
+import { useTranslations } from "next-intl";
+
 const UseCaseClinic = () => {
+  const t = useTranslations("useCases.modules.clinic");
+
   return (
     <section
       className="relative w-full py-24 bg-white overflow-hidden"
@@ -28,12 +32,12 @@ const UseCaseClinic = () => {
             viewport={{ once: true }}
           >
             <span className="text-teal-600 font-bold uppercase tracking-widest text-xs mb-4 block">
-              Clinic Operations
+              {t("badge")}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight mb-6">
-              Monitor, detect, and respond <br />
+              {t("title")} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-500">
-                in real-time.
+                {t("titleHighlight")}
               </span>
             </h2>
           </motion.div>
@@ -57,17 +61,11 @@ const UseCaseClinic = () => {
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-medium text-slate-900 leading-snug">
-                  Clinics are living organisms, not just buildings.
+                  {t("quote.text")}
                 </h3>
-                <p className="text-lg text-slate-500 font-light leading-relaxed">
-                  Complexity grows exponentially with every new room and staff
-                  member. Curify acts as the{" "}
-                  <strong className="text-teal-700 font-semibold">
-                    central nervous system
-                  </strong>
-                  , turning the chaos of patient flow, inventory consumption,
-                  and shift changes into a synchronized, predictable rhythm.
-                </p>
+                <p className="text-lg text-slate-500 font-light leading-relaxed"
+                   dangerouslySetInnerHTML={{ __html: t.raw("quote.description").replace(/\*\*(.*?)\*\*/g, '<strong class="text-teal-700 font-semibold">$1</strong>') }}
+                />
               </div>
             </div>
           </motion.div>
@@ -83,40 +81,40 @@ const UseCaseClinic = () => {
               <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-bold text-slate-600 uppercase">
-                  Live Floor Plan
+                  {t("features.monitoring.visual.liveFloorPlan")}
                 </span>
               </div>
-              <VisualFloorPlan />
+              <VisualFloorPlan t={t} />
             </VisualCard>
 
             {/* CARD 2: AI CORE */}
             <VisualCard delay={0.1}>
-              <VisualAICore />
+              <VisualAICore t={t} />
             </VisualCard>
 
             {/* CARD 3: NOTIFICATIONS */}
             <VisualCard delay={0.2}>
-              <VisualNotifications />
+              <VisualNotifications t={t} />
             </VisualCard>
           </div>
 
           {/* TEXT DESCRIPTIONS (Below Grid) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <DescriptionCol
-              title="Total Visibility"
-              desc="See exactly which rooms are occupied, which need cleaning, and where the bottlenecks are in real-time. Manage patient flow effortlessly."
+              title={t("features.monitoring.title")}
+              desc={t("features.monitoring.description")}
               delay={0.3}
             />
 
             <DescriptionCol
-              title="AI-Powered Triage"
-              desc="Our algorithms analyze patient intake forms to prioritize urgency automatically, ensuring critical cases are seen first."
+              title={t("features.ai.title")}
+              desc={t("features.ai.description")}
               delay={0.4}
             />
 
             <DescriptionCol
-              title="Instant Action"
-              desc="Get immediate notifications for low inventory, waiting room overflow, or staff requests directly to your device."
+              title={t("features.notifications.title")}
+              desc={t("features.notifications.description")}
               delay={0.5}
             />
           </div>
@@ -130,14 +128,14 @@ const UseCaseClinic = () => {
               <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur px-2 py-1 rounded-md shadow-sm border border-slate-100 flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-[10px] font-bold text-slate-600 uppercase">
-                  Live Floor Plan
+                  {t("features.monitoring.visual.liveFloorPlan")}
                 </span>
               </div>
-              <VisualFloorPlan />
+              <VisualFloorPlan t={t} />
             </VisualCard>
             <DescriptionCol
-              title="Total Visibility"
-              desc="See exactly which rooms are occupied, which need cleaning, and where the bottlenecks are in real-time. Manage patient flow effortlessly."
+              title={t("features.monitoring.title")}
+              desc={t("features.monitoring.description")}
               delay={0.3}
             />
           </div>
@@ -145,11 +143,11 @@ const UseCaseClinic = () => {
           {/* CARD 2 + DESCRIPTION */}
           <div className="flex flex-col gap-6">
             <VisualCard delay={0.1}>
-              <VisualAICore />
+              <VisualAICore t={t} />
             </VisualCard>
             <DescriptionCol
-              title="AI-Powered Triage"
-              desc="Our algorithms analyze patient intake forms to prioritize urgency automatically, ensuring critical cases are seen first."
+              title={t("features.ai.title")}
+              desc={t("features.ai.description")}
               delay={0.4}
             />
           </div>
@@ -157,11 +155,11 @@ const UseCaseClinic = () => {
           {/* CARD 3 + DESCRIPTION */}
           <div className="flex flex-col gap-6">
             <VisualCard delay={0.2}>
-              <VisualNotifications />
+              <VisualNotifications t={t} />
             </VisualCard>
             <DescriptionCol
-              title="Instant Action"
-              desc="Get immediate notifications for low inventory, waiting room overflow, or staff requests directly to your device."
+              title={t("features.notifications.title")}
+              desc={t("features.notifications.description")}
               delay={0.5}
             />
           </div>
@@ -229,7 +227,7 @@ const DescriptionCol = ({
 // VISUALS (Existing code preserved)
 // ============================================================================
 
-const VisualFloorPlan = () => (
+const VisualFloorPlan = ({ t }: { t: any }) => (
   <div className="w-full h-full flex flex-col gap-3 justify-center pt-6">
     {/* Room Row 1 */}
     <div className="flex gap-3 w-full">
@@ -240,7 +238,9 @@ const VisualFloorPlan = () => (
         </div>
         <div className="flex items-center gap-2">
           <Users className="w-4 h-4 text-slate-600" />
-          <span className="text-xs font-medium text-slate-700">Occupied</span>
+          <span className="text-xs font-medium text-slate-700">
+            {t("features.monitoring.visual.occupied")}
+          </span>
         </div>
       </div>
       <div className="flex-1 bg-white p-3 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-2 opacity-60">
@@ -250,7 +250,9 @@ const VisualFloorPlan = () => (
         </div>
         <div className="flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-slate-400" />
-          <span className="text-xs font-medium text-slate-500">Ready</span>
+          <span className="text-xs font-medium text-slate-500">
+             {t("features.monitoring.visual.ready")}
+          </span>
         </div>
       </div>
     </div>
@@ -264,7 +266,9 @@ const VisualFloorPlan = () => (
         </div>
         <div className="flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-slate-400" />
-          <span className="text-xs font-medium text-slate-500">Ready</span>
+          <span className="text-xs font-medium text-slate-500">
+             {t("features.monitoring.visual.ready")}
+          </span>
         </div>
       </div>
       <motion.div
@@ -278,7 +282,9 @@ const VisualFloorPlan = () => (
         </div>
         <div className="flex items-center gap-2 relative z-10">
           <Clock className="w-4 h-4 text-teal-600" />
-          <span className="text-xs font-bold text-teal-700">Cleaning</span>
+          <span className="text-xs font-bold text-teal-700">
+             {t("features.monitoring.visual.cleaning")}
+          </span>
         </div>
         {/* Progress Bar background */}
         <motion.div
@@ -292,7 +298,7 @@ const VisualFloorPlan = () => (
   </div>
 );
 
-const VisualAICore = () => (
+const VisualAICore = ({ t }: { t: any }) => (
   <div className="relative w-full h-full flex items-center justify-center">
     {/* The Brain Core */}
     <div className="relative z-10 w-24 h-24 bg-white rounded-3xl shadow-xl shadow-teal-900/10 border border-slate-100 flex items-center justify-center">
@@ -317,15 +323,15 @@ const VisualAICore = () => (
 
     {/* Data Points */}
     <div className="absolute top-8 left-10 bg-white px-2 py-1 rounded shadow-sm text-[10px] font-bold text-slate-400 border border-slate-100">
-      Triage Lvl 1
+      {t("features.ai.visual.triageLvl1")}
     </div>
     <div className="absolute bottom-8 right-10 bg-teal-50 px-2 py-1 rounded shadow-sm text-[10px] font-bold text-teal-600 border border-teal-100">
-      Rx Check
+      {t("features.ai.visual.rxCheck")}
     </div>
   </div>
 );
 
-const VisualNotifications = () => (
+const VisualNotifications = ({ t }: { t: any }) => (
   <div className="w-full h-full flex flex-col justify-center items-center gap-3 w-full max-w-[260px] mx-auto">
     {/* Alert 1 */}
     <motion.div
@@ -338,8 +344,12 @@ const VisualNotifications = () => (
         <CheckCircle2 className="w-4 h-4 text-teal-600" />
       </div>
       <div>
-        <div className="text-xs font-bold text-slate-700">Room 104 Cleaned</div>
-        <div className="text-[10px] text-slate-400">Just now</div>
+        <div className="text-xs font-bold text-slate-700">
+          {t("features.notifications.visual.roomCleaned")}
+        </div>
+        <div className="text-[10px] text-slate-400">
+          {t("features.notifications.visual.justNow")}
+        </div>
       </div>
     </motion.div>
 
@@ -355,10 +365,10 @@ const VisualNotifications = () => (
       </div>
       <div>
         <div className="text-xs font-bold text-slate-700">
-          Low Stock: Panadol
+          {t("features.notifications.visual.lowStock")}
         </div>
         <div className="text-[10px] text-red-400 font-bold">
-          Action Required
+          {t("features.notifications.visual.actionRequired")}
         </div>
       </div>
     </motion.div>
@@ -374,8 +384,12 @@ const VisualNotifications = () => (
         <Activity className="w-4 h-4 text-blue-500" />
       </div>
       <div>
-        <div className="text-xs font-bold text-slate-700">Shift Change</div>
-        <div className="text-[10px] text-slate-400">In 15 mins</div>
+        <div className="text-xs font-bold text-slate-700">
+          {t("features.notifications.visual.shiftChange")}
+        </div>
+        <div className="text-[10px] text-slate-400">
+           {t("features.notifications.visual.in15Mins")}
+        </div>
       </div>
     </motion.div>
   </div>

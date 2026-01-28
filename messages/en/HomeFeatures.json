@@ -1,0 +1,157 @@
+{
+  "title": "Everything you need to run your clinic.",
+  "cards": {
+    "patients": {
+      "category": "Patients",
+      "title": "Complete Patient File",
+      "content": "Keep the complete history, diagnoses and treatments of each patient in a safe and organized place.",
+      "visual": {
+        "header": { "home": "Home", "category": "Patients", "title": "Patients", "simple_search": "Simple Search" },
+        "stats": {
+          "new_patients": "New Patients",
+          "active": "Active",
+          "occupied": "Occupied"
+        },
+        "actions": {
+          "filters": "Filters",
+          "search_placeholder": "Search...",
+          "new_patient": "New Patient"
+        },
+        "list": {
+          "clinical": "Clinic",
+          "diagnosis": "Diagnosis",
+          "vitals": "Vitals",
+          "notes": "Notes",
+          "patients": [
+            { "name": "Pissadaki Mafalita", "clinical": "Oncology", "diag": "Cholera" },
+            { "name": "Zafiroulis Christos", "clinical": "Gynecology", "diag": "Spaceship accident..." },
+            { "name": "Sopadopoulos Orfeas", "clinical": "Cardiology", "diag": "Hypertension" }
+          ]
+        }
+      }
+    },
+    "appointments": {
+       "category": "Appointments",
+       "title": "Quick Appointments",
+       "content": "Book and manage appointments with ease, reducing cancellations and improving clinic flow.",
+       "visual": {
+        "header": { "home": "Home", "category": "Appointments", "title": "Appointments", "week": "Week", "month": "Month", "new_appointment": "New Appointment" },
+        "schedule": {
+          "jan": "Jan",
+          "general_checkup": "General Checkup",
+          "follow_up": "Follow up"
+        }
+      }
+    },
+    "payments": {
+      "category": "Payments",
+      "title": "Integrated Payments",
+      "content": "Automatic invoicing and payment tracking, fully connected to your financial data.",
+      "visual": {
+        "header": { "home": "Home", "category": "Payments", "title": "Payments", "new_transaction": "New Transaction" },
+        "stats": {
+          "total_revenue": "Total Revenue",
+          "net": "Net",
+          "revenue_flow": "Revenue Flow",
+          "live": "Live"
+        },
+        "receipt": {
+          "title": "SUMMARY",
+          "net_amount": "Net Amount",
+          "vat": "VAT",
+          "total": "Total",
+          "receipt_btn": "RECEIPT",
+          "pdf_btn": "PDF",
+          "ok": "OK"
+        }
+      }
+    },
+    "ai": {
+      "category": "Artificial Intelligence",
+      "title": "AI Agent",
+      "content": "Your smart assistant that analyzes data and suggests improvements for your clinical practice.",
+      "visual": {
+        "header": { "home": "Home", "category": "AI", "title": "AI Agent" },
+        "features": {
+          "mic_label": "Start Voice Command",
+          "main_title": "AI Voice Commands",
+          "input_placeholder": "Find appointments for today...",
+          "keyboard": { "send": "to send", "newline": "new line" },
+          "suggestions": {
+            "appointment": { "title": "New Appointment", "desc": "Create an appointment for tomorrow..." },
+            "patient": { "title": "New Patient", "desc": "Create a new patient named..." }
+          }
+        }
+      }
+    },
+    "documents": {
+      "category": "Documents",
+      "title": "File Organization",
+      "content": "Digitize and categorize all your documents for immediate and easy access at any time."
+    },
+    "customization": {
+      "category": "Customization",
+      "title": "Customized Records",
+      "content": "Customize health records to your needs and specialty, for maximum flexibility.",
+      "visual": {
+        "header": { "home": "Home", "category": "Customization", "title": "Customized Records" },
+        "tabs": { "general": "General", "visits": "Visits", "history": "History", "clinical": "Clinical" },
+        "form": {
+          "title": "Basic Details",
+          "surname": "Surname",
+          "name": "Name",
+          "email": "E-mail",
+          "auto_calc": "Auto Calculation",
+          "age_result": "23 Years and 4 Months",
+          "birth": "Birth",
+          "gender": "Gender",
+          "gender_val": "Male"
+        }
+      }
+    },
+    "integrations": {
+      "category": "Integrations",
+      "title": "Integrations With Idika, mydata, EOPYY",
+      "content": "Full synchronization with national health and tax systems for seamless operation.",
+      "visual": {
+        "header": { "home": "Home", "category": "Integrations", "title": "External Sync" },
+        "nodes": {
+           "idika": { "label": "IDIKA / e-Prescription", "status": "Connected" },
+           "mydata": { "label": "AADE / myDATA", "status": "Syncing" },
+           "eopyy": { "label": "EOPYY / Portal", "status": "Active" }
+        },
+        "sync_badge": "Last encrypted sync: 2 mins ago"
+      }
+    },
+    "mobile": {
+      "category": "Mobile",
+      "title": "Mobile Access",
+      "content": "Manage your practice from anywhere, with full access via smartphone and tablet.",
+      "visual": {
+        "header": { "home": "Home", "category": "Mobile", "title": "Mobile Access" },
+        "notification": { "title": "New Message", "subtitle": "From Patient #402" },
+        "screen": {
+           "today": "Today",
+           "appointments_count": "12 Appointments",
+           "up_next": "Up Next",
+           "patients": [
+             { "name": "Maria L." },
+             { "name": "Nick P." },
+             { "name": "Helen S." }
+           ]
+        }
+      }
+    },
+    "data": {
+      "category": "Data",
+      "title": "Analytics",
+      "content": "Detailed reports and statistics tailored to your tracking preferences.",
+      "visual": {
+        "header": { "home": "Home", "category": "Data", "title": "Analytics" },
+        "trend": { "patients_load": "Patient Load", "vs_last_week": "+84.6% vs last week", "occupancy": "Occupancy", "rooms": "Rooms", "shelves": "Shelves" },
+        "staff": { "title": "Staff Actions", "role": { "pathologist": "Pathologist", "cardiologist": "Cardiologist" } },
+        "demographics": { "title": "Admissions / Age" }
+      }
+    }
+  }
+}

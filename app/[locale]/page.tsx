@@ -11,6 +11,7 @@ import Faq from "@/components/pages/home/FAQ";
 import UseCaseCTA from "@/components/pages/home/UseCaseCTA";
 import BlogShowcase from "@/components/pages/home/BlogShowcase";
 import { useTranslations } from "next-intl";
+import { HomeFeatures } from "@/components/pages/home/HomeFeatures/HomeFeatures";
 
 // Dynamic Metadata Generator for SEO
 export async function generateMetadata({
@@ -57,6 +58,7 @@ export default function Home() {
     <div className="">
       <Hero />
       <BrandRecognition />
+      <HomeFeatures />
       <ProblemSolution />
       <CoreCapabilities />
       <TrophyRoom />

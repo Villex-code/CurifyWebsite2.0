@@ -33,6 +33,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
       contact: (await import(`../messages/${locale}/contact.json`)).default,
       ui: (await import(`../messages/${locale}/ui.json`)).default,
       useCases: (await import(`../messages/${locale}/useCases.json`)).default,
+      HomeFeatures: (await import(`../messages/${locale}/HomeFeatures.json`))
+        .default,
     },
   };
 });

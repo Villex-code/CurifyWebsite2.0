@@ -1,0 +1,157 @@
+{
+  "title": "Όλα όσα χρειάζεστε για να λειτουργήσετε το ιατρείο σας.",
+  "cards": {
+    "patients": {
+      "category": "Ασθενείς",
+      "title": "Πλήρης Φάκελος Ασθενή",
+      "content": "Διατηρήστε το πλήρες ιστορικό, τις διαγνώσεις και τις θεραπείες κάθε ασθενούς σε ένα ασφαλές και οργανωμένο μέρος.",
+      "visual": {
+        "header": { "home": "Home", "category": "Ασθενείς", "title": "Ασθενείς", "simple_search": "Απλή Αναζήτηση" },
+        "stats": {
+          "new_patients": "Νέοι Ασθενείς",
+          "active": "Ενεργοί",
+          "occupied": "Κατειλημμένα"
+        },
+        "actions": {
+          "filters": "Φίλτρα",
+          "search_placeholder": "Αναζήτηση...",
+          "new_patient": "Νέος Ασθενής"
+        },
+        "list": {
+          "clinical": "Κλινική",
+          "diagnosis": "Διάγνωση",
+          "vitals": "Ζωτικά",
+          "notes": "Σημ.",
+          "patients": [
+            { "name": "Πισσαδάκη Μαφάλιτα", "clinical": "Ογκολογική", "diag": "Χολέρα" },
+            { "name": "Ζαφυρούλης Κρίστος", "clinical": "Γυναικολογική", "diag": "Ατύχημα διαστημόπλοιου..." },
+            { "name": "Σοπαδόπουλος Ορφέας", "clinical": "Καρδιολογική", "diag": "Υπέρταση" }
+          ]
+        }
+      }
+    },
+    "appointments": {
+       "category": "Ραντεβού",
+       "title": "Γρήγορα Ραντεβού",
+       "content": "Κλείστε και διαχειριστείτε ραντεβού με ευκολία, μειώνοντας τις ακυρώσεις και βελτιώνοντας τη ροή του ιατρείου.",
+       "visual": {
+        "header": { "home": "Home", "category": "Ραντεβού", "title": "Ραντεβού", "week": "Week", "month": "Month", "new_appointment": "Νέο Ραντεβού" },
+        "schedule": {
+          "jan": "JAN",
+           "general_checkup": "General Checkup",
+          "follow_up": "Follow up"
+        }
+      }
+    },
+    "payments": {
+      "category": "Πληρωμές",
+      "title": "Ενσωματομένες Πληρωμές",
+      "content": "Αυτόματη τιμολόγηση και παρακολούθηση πληρωμών, πλήρως συνδεδεμένη με τα οικονομικά σας στοιχεία.",
+      "visual": {
+        "header": { "home": "Home", "category": "Πληρωμές", "title": "Πληρωμές", "new_transaction": "Νέα Συναλλαγή" },
+        "stats": {
+          "total_revenue": "Συνολικά Έσοδα",
+          "net": "Καθαρά",
+          "revenue_flow": "Ροή Εσόδων",
+          "live": "Live"
+        },
+        "receipt": {
+          "title": "ΣΥΝΟΨΗ",
+          "net_amount": "Καθαρό Ποσό",
+          "vat": "ΦΠΑ",
+          "total": "Σύνολο",
+          "receipt_btn": "ΑΠΟΔΕΙΞΗ",
+          "pdf_btn": "PDF",
+          "ok": "OK"
+        }
+      }
+    },
+    "ai": {
+      "category": "Τεχνητή Νοημοσύνη",
+      "title": "AI Agent",
+      "content": "Ο έξυπνος βοηθός σας που αναλύει δεδομένα και προτείνει βελτιώσεις για την κλινική σας πρακτική.",
+       "visual": {
+        "header": { "home": "Home", "category": "Τεχνητή Νοημοσύνη", "title": "AI Agent" },
+        "features": {
+          "mic_label": "Έναρξη Φωνητικής Εντολής",
+          "main_title": "Φωνητικές Εντολές AI",
+          "input_placeholder": "Βρες ραντεβού για σήμερα...",
+          "keyboard": { "send": "αποστολή", "newline": "νέα γραμμή" },
+          "suggestions": {
+            "appointment": { "title": "Νέο Ραντεβού", "desc": "Δημιούργησε ραντεβού για αύριο..." },
+            "patient": { "title": "Νέος Ασθενής", "desc": "Δημιούργησε νέο ασθενή με όνομα..." }
+          }
+        }
+      }
+    },
+    "documents": {
+      "category": "Έγγραφα",
+      "title": "Οργάνωση Αρχείων",
+      "content": "Ψηφιοποιήστε και ταξινομήστε όλα τα έγγραφά σας για άμεση και εύκολη πρόσβαση ανά πάσα στιγμή."
+    },
+    "customization": {
+      "category": "Προσαρμογή",
+      "title": "Customized Records",
+      "content": "Προσαρμόστε τους φακέλους υγείας στις δικές σας ανάγκες και ειδικότητα, για μέγιστη ευελιξία.",
+      "visual": {
+        "header": { "home": "Home", "category": "Προσαρμογή", "title": "Customized Records" },
+        "tabs": { "general": "Γενικά", "visits": "Επισκέψεις", "history": "Αναμνηστικό", "clinical": "Κλινική" },
+        "form": {
+          "title": "Βασικά Στοιχεία",
+          "surname": "Επώνυμο",
+          "name": "Όνομα",
+          "email": "E-mail",
+          "auto_calc": "Αυτόματος υπολογισμός",
+          "age_result": "23 Ετών και 4 Μηνών",
+          "birth": "Γέννηση",
+          "gender": "Φύλο",
+          "gender_val": "Άρρεν"
+        }
+      }
+    },
+    "integrations": {
+      "category": "Διασυνδέσεις",
+      "title": "Διασυνδέσεις Με Ηδικα, mydata, ΕOPYY",
+      "content": "Πλήρης συγχρονισμός με τα εθνικά συστήματα υγείας και φορολογίας για απρόσκοπτη λειτουργία.",
+      "visual": {
+        "header": { "home": "Home", "category": "Διασυνδέσεις", "title": "Εξωτερικός Συγχρονισμός" },
+        "nodes": {
+           "idika": { "label": "ΗΔΙΚΑ / e-Prescription", "status": "Συνδεδεμένο" },
+           "mydata": { "label": "ΑΑΔΕ / myDATA", "status": "Συγχρονισμός" },
+           "eopyy": { "label": "ΕΟΠΥΥ / Portal", "status": "Ενεργό" }
+        },
+        "sync_badge": "Κρυπτογραφημένος συγχρονισμός: 2λ πριν"
+      }
+    },
+    "mobile": {
+      "category": "Κινητό",
+      "title": "Πρόσβαση απο κινητό",
+      "content": "Διαχειριστείτε το ιατρείο σας από παντού, με πλήρη πρόσβαση μέσω smartphone και tablet.",
+       "visual": {
+        "header": { "home": "Home", "category": "Κινητό", "title": "Πρόσβαση από Κινητό" },
+        "notification": { "title": "Νέο Μήνυμα", "subtitle": "Από Ασθενή #402" },
+        "screen": {
+           "today": "Σήμερα",
+           "appointments_count": "12 Ραντεβού",
+           "up_next": "Επόμενο",
+           "patients": [
+             { "name": "Μαρία Λ." },
+             { "name": "Νίκος Π." },
+             { "name": "Ελένη Σ." }
+           ]
+        }
+      }
+    },
+    "data": {
+      "category": "Δεδομένα",
+      "title": "Analytics",
+      "content": "Αναλυτικές αναφορές και στατιστικά στοιχεία προσαρμοσμένα στις δικές σας προτιμήσεις παρακολούθησης.",
+      "visual": {
+        "header": { "home": "Home", "category": "Δεδομένα", "title": "Analytics" },
+        "trend": { "patients_load": "Φόρτος Ασθενών", "vs_last_week": "+84.6% vs last week", "occupancy": "Πληρότητα", "rooms": "Δωμάτια", "shelves": "Ράφια" },
+        "staff": { "title": "Ενέργειες Προσωπικού", "role": { "pathologist": "Παθολόγος", "cardiologist": "Καρδιολόγος" } },
+        "demographics": { "title": "Εισαγωγές / Ηλικία" }
+      }
+    }
+  }
+}

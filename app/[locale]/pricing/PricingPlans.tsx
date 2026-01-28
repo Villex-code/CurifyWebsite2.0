@@ -1,14 +1,102 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Check, Sparkles, Building2, User, Users } from "lucide-react";
+import { Check, Sparkles, Building2, User, Users, Flame } from "lucide-react";
 
 const PricingPlans = () => {
   const t = useTranslations("useCases.pricing.plans");
-  const plans = t.raw("items");
-  const [isYearly, setIsYearly] = useState(false);
+  const rawPlans = t.raw("items");
+  const [isYearly, setIsYearly] = useState(true); // Default to yearly as requested
+
+  // Transform plans with scarcity logic and price overrides
+  const plans = Array.isArray(rawPlans)
+    ? rawPlans.map((plan: any, index: number) => {
+        // Essential Plan (Index 0)
+        if (index === 0) {
+          return {
+            ...plan,
+            name: "Essential",
+            // Keep original strings for reference if needed, but we override heavily
+            originalPriceMonthly: "80", // Hardcode original price to 80 as requested
+            originalPriceYearly: "858", // 519 is ~40% off, so 858/12 ~ 71.5. If monthly is 80, yearly orig ~ 960? adjusting to user request "crossed out 80"
+            // Actually, if cross out is 80 monthly, let's just ensure display logic handles it.
+
+            // New Campaign Prices
+            priceMonthly: "49",
+            priceYearlyTotal: "519", // The full billed amount
+            priceYearlyMonthlyEquivalent: "43", // 519 / 12 approx
+            
+            billedYearlyDesc: "519",
+            
+            isScarcity: true,
+            slotsTotal: 50,
+            slotsLeft: 24,
+            scarcityLabelKey: "partnership", // Changed to key for translation
+            scarcityColor: "amber", // Shared color theme
+            
+            // Override features to update user count if it's dynamic, else we rely on t() keys
+            // Since features come from t(), we might need to map them if we cant change en.json
+            // But usually we just render what's there. 
+            // If the user wants to say "15 user accounts", we might need to string replace the specific feature
+            features: plan.features.map((f: string) => f.includes("5") && f.includes("user") ? "15 user accounts" : f) 
+          };
+        }
+
+        // Professional Plan (Index 1)
+        if (index === 1) {
+          return {
+            ...plan,
+            // name: "Professional", // Assumed from JSON
+            originalPriceMonthly: plan.priceMonthly,
+            originalPriceYearly: plan.priceYearly,
+
+            // "Like 279" - reverting to 449 as requested
+            priceMonthly: "449",
+            priceYearlyTotal: "4490", 
+            priceYearlyMonthlyEquivalent: "374", // 4490 / 12 approx
+            
+            billedYearlyDesc: "4,490",
+            
+            // Scarcity removed as requested
+            // isScarcity: true,
+            // slotsTotal: 9,
+            // slotsLeft: 9, 
+            // scarcityLabelKey: "earlyAdopter",
+            // scarcityColor: "amber",
+          };
+        }
+
+        // Enterprise/Hospital Plan (Index 2)
+        if (index === 2) {
+          return {
+            ...plan,
+            // name: "Hospital", // Assumed from JSON
+            
+            // Enterprise usually custom, but we add scarcity
+            // isScarcity: true, // Removed as requested
+            // slotsTotal: 3,
+            // slotsLeft: 2,
+            // scarcityLabelKey: "exclusive",
+            // scarcityColor: "amber",
+
+            // Keep original pricing or "Custom" if it's contact sales
+            // If the original plan has prices, we can use them. 
+            // If original was "Contact Us", we might need to handle numbers if intended.
+            // Assuming we keep existing logic for Enterprise price display unless overridden.
+            // But let's add a fallback if it was text-based.
+            priceMonthly: "1800", // As per user request "monthly correct 1800"
+            priceYearlyTotal: "19440", // 1620 * 12
+            priceYearlyMonthlyEquivalent: "1620", // 1800 - 10% = 1620
+            
+            billedYearlyDesc: "19,440",
+          };
+        }
+
+        return plan;
+      })
+    : [];
 
   return (
     <section className="relative w-full py-24 ">
@@ -153,6 +241,14 @@ const PriceCard = ({
   };
 
   const Icon = getIcon(plan.id);
+  const isScarcity = plan.isScarcity;
+  
+  // Calculate display price (Monthly Equivalent for Yearly View)
+  const displayPrice = isYearly 
+    ? (plan.priceYearlyMonthlyEquivalent || plan.priceYearly || "Custom") 
+    : (plan.priceMonthly || "Custom");
+    
+  const isCustomPrice = displayPrice === "Custom" || isNaN(parseFloat(displayPrice));
 
   return (
     <motion.div
@@ -165,6 +261,8 @@ const PriceCard = ({
         ${
           plan.popular
             ? "bg-white border-teal-500 shadow-2xl shadow-teal-900/10 scale-105 z-10"
+            : isScarcity
+            ? "bg-white border-teal-600/40 shadow-xl shadow-teal-900/5 ring-1 ring-teal-500/20"
             : "bg-white border-slate-200 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:border-teal-200"
         }
       `}
@@ -176,12 +274,22 @@ const PriceCard = ({
         </div>
       )}
 
+      {/* Scarcity Banner (Unified Style) */}
+      {isScarcity && (
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white px-3 md:px-4 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg whitespace-nowrap">
+          <Flame className="w-3 h-3 md:w-3.5 md:h-3.5 fill-white" />
+          Limited {t(`scarcity.${plan.scarcityLabelKey}`)}
+        </div>
+      )}
+
       {/* Header */}
-      <div className="mb-4 md:mb-6">
+      <div className="mb-4 md:mb-6 mt-2">
         <div
           className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center mb-3 md:mb-4 ${
             plan.popular
               ? "bg-teal-50 text-teal-600"
+              : isScarcity
+              ? "bg-amber-50 text-amber-600"
               : "bg-slate-50 text-slate-500"
           }`}
         >
@@ -197,26 +305,40 @@ const PriceCard = ({
 
       {/* Price */}
       <div className="mb-6 md:mb-8">
-        <div className="flex items-baseline gap-1">
-          <span className="text-3xl md:text-4xl font-bold text-slate-900">
-            €
-          </span>
+        <div className="flex items-baseline gap-1 flew-wrap">
+          {!isCustomPrice && (
+             <span className="text-3xl md:text-4xl font-bold text-slate-900">€</span>
+          )}
+          
+          {/* Strikethrough Original Price */}
+          {isScarcity && !isCustomPrice && (
+            <span className="text-xl md:text-2xl font-semibold text-slate-400 line-through decoration-slate-400/50 mr-2">
+              {isYearly 
+                 ? "71" // 858/12 roughly. If user wants strictly 80 crossed out in monthly:
+                 : plan.originalPriceMonthly}
+            </span>
+          )}
+
           <motion.span
             key={isYearly ? "year" : "month"}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight"
           >
-            {isYearly ? plan.priceYearly : plan.priceMonthly}
+            {displayPrice}
           </motion.span>
-          <span className="text-slate-400 font-medium text-sm md:text-base">
-            {t("perMonth")}
-          </span>
+          
+          {!isCustomPrice && (
+             <span className="text-slate-400 font-medium text-sm md:text-base">
+               {t("perMonth")}
+             </span>
+          )}
         </div>
-        <div className="text-xs text-slate-400 mt-2 font-medium h-4">
-          {isYearly
-            ? t("billedYearly", { amount: plan.billedYearly })
-            : t("billedMonthly")}
+        
+        <div className="text-xs text-slate-400 mt-2 font-medium min-h-[16px]">
+          {!isCustomPrice && isYearly
+            ? t("billedYearly", { amount: plan.billedYearlyDesc || plan.billedYearly })
+            : !isCustomPrice ? t("billedMonthly") : ""}
         </div>
       </div>
 
@@ -228,12 +350,35 @@ const PriceCard = ({
          ${
            plan.popular
              ? "bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-600/20"
+             : isScarcity
+             ? "bg-slate-900 text-white hover:bg-slate-800 shadow-lg shadow-slate-900/10"
              : "bg-slate-100 text-slate-900 hover:bg-slate-200"
          }
       `}
       >
         {plan.cta}
       </button>
+
+      {/* Scarcity Slots & Disclaimer - Moved Below CTA */}
+      {isScarcity && plan.slotsTotal && (
+        <div className="mb-6">
+          <div className="mb-2 p-2 bg-amber-50 rounded-lg border border-amber-100">
+            <div className="flex justify-between items-center text-xs font-semibold text-amber-800 mb-1.5">
+              <span>{plan.slotsLeft} {t("scarcity.slotsLeft")}</span>
+              <span className="text-amber-600/70">{t(`scarcity.${plan.scarcityLabelKey}`)}</span>
+            </div>
+            <div className="w-full h-1.5 bg-amber-200/50 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-amber-500 rounded-full transition-all duration-1000"
+                style={{ width: `${(plan.slotsLeft / plan.slotsTotal) * 100}%` }} 
+              />
+            </div>
+          </div>
+          <p className="text-[10px] md:text-[11px] leading-tight text-amber-700/80 font-medium">
+             {t("scarcity.disclaimer", { slots: plan.slotsTotal })}
+          </p>
+        </div>
+      )}
 
       {/* Features List */}
       <div className="flex-1">
@@ -250,6 +395,8 @@ const PriceCard = ({
                 className={`mt-0.5 p-0.5 rounded-full ${
                   plan.popular
                     ? "bg-teal-100 text-teal-600"
+                    : isScarcity
+                    ? "bg-amber-100 text-amber-600"
                     : "bg-slate-100 text-slate-500"
                 }`}
               >
