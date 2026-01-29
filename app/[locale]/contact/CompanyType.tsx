@@ -54,19 +54,19 @@ const CompanyTypeSelector = ({
 
   const companyTypes: CompanyType[] = [
     {
-      id: OrganizationType.HOSPITAL,
-      label: t("form.companyType.hospital"),
-      icon: <Hospital className="w-5 h-5" />,
+      id: OrganizationType.PRIVATE_PRACTICE,
+      label: t("form.companyType.privatePractice"),
+      icon: <Users className="w-5 h-5" />,
     },
     {
-      id: OrganizationType.LAB,
-      label: t("form.companyType.lab"),
+      id: OrganizationType.CLINIC,
+      label: t("form.companyType.clinic"),
       icon: <Stethoscope className="w-5 h-5" />,
     },
     {
-      id: OrganizationType.PHARMACY,
-      label: t("form.companyType.pharmacy"),
-      icon: <Pill className="w-5 h-5" />,
+      id: OrganizationType.HOSPITAL,
+      label: t("form.companyType.hospital"),
+      icon: <Hospital className="w-5 h-5" />,
     },
     {
       id: OrganizationType.OTHER,

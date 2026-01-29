@@ -7,7 +7,7 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { Send, AlertCircle, CheckCircle2, Building2, User } from "lucide-react";
+import { Send, AlertCircle, CheckCircle2, Building2, User, Phone } from "lucide-react";
 import CompanyTypeSelector from "./CompanyType";
 import CompanySizeDropdown from "./CompanySizeDropdown";
 import { useTranslations } from "next-intl";
@@ -22,9 +22,9 @@ export enum NumberOfEmployees {
 }
 
 export enum OrganizationType {
+  PRIVATE_PRACTICE = "PRIVATE_PRACTICE",
+  CLINIC = "CLINIC",
   HOSPITAL = "HOSPITAL",
-  PHARMACY = "PHARMACY",
-  LAB = "LAB",
   OTHER = "OTHER",
 }
 
@@ -32,6 +32,7 @@ interface FormData {
   firstName: string;
   lastName: string;
   email: string;
+  phoneNumber?: string;
   companySize: NumberOfEmployees;
   companyName: string;
   companyType: OrganizationType;
@@ -104,9 +105,10 @@ const ContactRight = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phoneNumber: "",
     companySize: NumberOfEmployees.SMALL,
     companyName: "",
-    companyType: OrganizationType.OTHER,
+    companyType: OrganizationType.PRIVATE_PRACTICE,
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -179,24 +181,42 @@ const ContactRight = () => {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
-        organizationName: formData.companyName,
+        companyName: formData.companyName,
         companySize: formData.companySize as NumberOfEmployees,
-        organizationType: formData.companyType as OrganizationType,
+        companyType: formData.companyType as OrganizationType,
+        phoneNumber: formData.phoneNumber,
         message: formData.message,
         recaptchaToken,
       };
+      
+      // Update payload keys to match what the server might expect if they differed from local state
+      // The previous code sent 'organizationName' and 'organizationType', sticking to that where possible but user might have changed backend requirements.
+      // Based on previous code:
+      const apiPayload = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        organizationName: formData.companyName,
+        companySize: formData.companySize,
+        organizationType: formData.companyType,
+        phoneNumber: formData.phoneNumber,
+        message: formData.message,
+        recaptchaToken
+      };
+
       await axios.post(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/contact-forms`,
-        payload
+        apiPayload
       );
       setShowSuccess(true);
       setFormData({
         firstName: "",
         lastName: "",
         email: "",
+        phoneNumber: "",
         companySize: NumberOfEmployees.SMALL,
         companyName: "",
-        companyType: OrganizationType.OTHER,
+        companyType: OrganizationType.PRIVATE_PRACTICE,
         message: "",
       });
     } catch (error: any) {
@@ -309,6 +329,15 @@ const ContactRight = () => {
                     />
                   </svg>
                 )}
+              />
+
+              <FloatingInput
+                name="phoneNumber"
+                type="tel"
+                label={t("form.phoneNumber")} // Ensure this key exists in translations
+                value={formData.phoneNumber || ""}
+                onChange={handleChange}
+                icon={Phone}
               />
             </div>
 
