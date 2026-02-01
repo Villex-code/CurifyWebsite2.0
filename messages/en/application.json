@@ -1,0 +1,161 @@
+{
+  "title": "Join the Team",
+  "subtitle": "We are looking for exceptional talent to build the future of healthcare.",
+  "backButton": "Back to Selection",
+  "targetRole": "Target Role",
+  "header": {
+    "eliteSelection": "Elite Selection Active",
+    "title": "Built for the Obsessed.",
+    "quote": "\"We aren't building a company. We are building the undisputed gold standard for healthcare AI. If you want balance, look elsewhere. If you want a legacy, stay.\"",
+    "standardTitle": "The Curify Standard",
+    "standardText1": "We operate with a",
+    "standardTextHighlight": "Zero-Failure mentality",
+    "standardText2": ". At our current stage, we are not looking for employees. We are looking for pilots.",
+    "standardText3": "This is a high-stakes, high-intensity environment. We work late, we think fast, and we push beyond our limits to find out what it takes to be the best in the world.",
+    "standardText4": "The growth is vertical. The upside is massive. The work is hardcore.",
+    "disclaimer": "* By applying, you acknowledge that you are ready to work harder than you ever have."
+  },
+  "select": {
+    "applyNow": "Apply Now",
+    "mostWanted": "Most Wanted",
+    "wildcardTitle": "The Wildcard Application",
+    "wildcardDescription": "Don't fit into a standard box? Prove you have the multidisciplinary skills to reshape the future. This path is for the exceptional.",
+    "wildcardButton": "Apply as Wildcard"
+  },
+  "sections": {
+    "identity": {
+      "title": "Identity",
+      "subtitle": "Basic logistics. Ensure your contact details are perfect.",
+      "nameLabel": "Full Legal Name",
+      "namePlaceholder": "John Doe",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "phoneLabel": "Phone (WhatsApp)",
+      "phonePlaceholder": "+30 ..."
+    },
+    "hustle": {
+      "title": "The Hustle",
+      "subtitle": "Prove you belong in a high-intensity environment. No corporate fluff."
+    },
+    "gate": {
+      "title": "The Gate",
+      "subtitle": "This is where 99% of applicants drop off. Show us your work, not your resume.",
+      "tip": "Tip: Keep it under 2 minutes. Be raw. Be real.",
+      "attachmentsLabel": "Attachments (Resume / CV / Pitch Deck)",
+      "dropfiles": "Drop files here or click to upload",
+      "addLinkPlaceholder": "Add link..."
+    }
+  },
+  "questions": {
+    "role": {
+      "label": "Role Applying For",
+      "placeholder": "Select a role",
+      "options": {
+        "frontend": "Frontend Engineer (React & Redux)",
+        "ai": "AI Engineer (Deep Agents)",
+        "marketing": "Marketing Specialist",
+        "sales": "Sales Representative",
+        "other": "Other"
+      }
+    },
+    "fullName": {
+      "label": "Full Name",
+      "placeholder": "John Doe"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "john@example.com"
+    },
+    "phone": {
+      "label": "Phone Number",
+      "placeholder": "+30 691 234 5678"
+    },
+    "linkedin": {
+      "label": "LinkedIn Profile / Portfolio",
+      "placeholder": "https://linkedin.com/in/johndoe"
+    },
+    "experience": {
+      "label": "Years of Experience",
+      "placeholder": "Select experience",
+      "options": {
+        "0-1": "0-1 years",
+        "1-3": "1-3 years",
+        "3-5": "3-5 years",
+        "5+": "5+ years",
+        "startup": "Start-up Veteran"
+      }
+    },
+    "about": {
+      "label": "Tell us about yourself",
+      "placeholder": "Briefly describe your background and why you want to join us..."
+    }
+  },
+  "roles": {
+    "frontend": {
+      "hustleLabel": "Show us your code",
+      "hustlePlaceholder": "Link to your most complex GitHub repo or a live project where you solved a difficult UI/UX challenge. Explain the challenge.",
+      "goalsLabel": "UI/UX Philosophy",
+      "goalsPlaceholder": "What is a UI detail that drives you crazy on most websites? How would you fix it?",
+      "gateLabel": "Loom Video: Code Walkthrough",
+      "portfolioLabel": "Attachment Links"
+    },
+    "ai": {
+      "hustleLabel": "Engineering Feats",
+      "hustlePlaceholder": "Describe a time you optimized an inference pipeline, designed a novel agentic workflow, or hacked a model to do something unexpected.",
+      "goalsLabel": "The Future of AI",
+      "goalsPlaceholder": "What is the biggest bottleneck in current LLM applications, and how do we solve it?",
+      "gateLabel": "Loom Video: Architecture Explainer",
+      "portfolioLabel": "Attachment Links"
+    },
+    "marketing": {
+      "hustleLabel": "Proof of Growth",
+      "hustlePlaceholder": "Show us a campaign you ran that generated real ROI. Numbers speak louder than words. What was your strategy?",
+      "goalsLabel": "Brand Analysis",
+      "goalsPlaceholder": "Which B2B brand do you admire most right now and why? What are they doing that others aren't?",
+      "gateLabel": "Loom Video: Pitch Curify",
+      "portfolioLabel": "Attachment Links"
+    },
+    "sales": {
+      "hustleLabel": "The Closer",
+      "hustlePlaceholder": "What's the hardest deal you've ever closed? Walk us through the negotiation and how you won.",
+      "goalsLabel": "Outreach Strategy",
+      "goalsPlaceholder": "How do you cut through the noise when prospecting high-value medical directors?",
+      "gateLabel": "Loom Video: Sell us a Pen",
+      "portfolioLabel": "Attachment Links"
+    },
+    "default": {
+      "hustleLabel": "The Hustle",
+      "hustlePlaceholder": "What is the most impressive thing you've built, achieved, or solved? (Don't be modest)",
+      "goalsLabel": "Ambition",
+      "goalsPlaceholder": "What specific problem do you want to solve at Curify?",
+      "gateLabel": "Loom Video: Introduction",
+      "portfolioLabel": "Attachment Links"
+    }
+  },
+  "messages": {
+    "successTitle": "ENTRY INITIATED",
+    "successText": "We really hope you are the one. We will reach back to you.",
+    "returnHome": "Return to Hub",
+    "submitButton": "Initiate Selection",
+    "submitting": "Projecting...",
+    "disclaimer": "This is a permanent entry into the Curify talent pool."
+  },
+  "rolesDescriptions": {
+    "frontend": {
+      "subtitle": "React & Redux Expert",
+      "description": "Craft high-performance, complex user interfaces. You live and breathe React ecosystem."
+    },
+    "ai": {
+      "subtitle": "Deep Agents & LLMs",
+      "description": "Build the brain of Curify. Create agents that understand context and act autonomously."
+    },
+    "marketing": {
+      "subtitle": "Brand & Growth",
+      "description": "Scale our modern identity. You know how to tell stories that convert and resonate."
+    },
+    "sales": {
+      "subtitle": "Closer & Strategist",
+      "description": "Handle high-stakes client cases. You turn medical practice interest into lasting partnerships."
+    }
+  }
+}

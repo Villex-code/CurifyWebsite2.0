@@ -109,7 +109,7 @@ const BlurRevealImage = ({ src, alt }: { src: string; alt: string }) => {
 // --- COMPONENT: COSMIC BUTTON (Teal Version) ---
 const CosmicButton = ({ text }: { text: string }) => {
   return (
-    <Link href="/contact">
+    <Link href="/about/apply">
       <div className="relative inline-block group text-sm rounded-full cursor-pointer">
         <button
           className="group relative inline-flex min-w-[160px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[3px] hover:scale-[1.05] text-white tracking-tight rounded-full py-4 px-8 items-center justify-center overflow-hidden"

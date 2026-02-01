@@ -35,6 +35,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
       useCases: (await import(`../messages/${locale}/useCases.json`)).default,
       HomeFeatures: (await import(`../messages/${locale}/HomeFeatures.json`))
         .default,
+      application: (await import(`../messages/${locale}/application.json`))
+        .default,
     },
   };
 });

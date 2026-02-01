@@ -12,6 +12,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { getFeatureById } from "./featuresRegistry";
+import { useRouter } from "next/navigation";
 
 interface FeaturesContentProps {
   featureId: string;
@@ -19,6 +20,7 @@ interface FeaturesContentProps {
 
 const FeaturesContent = ({ featureId }: FeaturesContentProps) => {
   const feature = getFeatureById(featureId);
+  const router = useRouter();
 
   // --- 1. EMPTY STATE: IDLE SYSTEM HUB ---
   if (!feature) {
@@ -142,7 +144,10 @@ const FeaturesContent = ({ featureId }: FeaturesContentProps) => {
                   Start using {feature.title} in your workflow.
                 </p>
               </div>
-              <button className="group bg-slate-900 hover:bg-teal-600 text-white px-8 py-3.5 rounded-2xl font-bold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-teal-500/20 hover:-translate-y-1">
+              <button
+                onClick={() => router.push("/contact")}
+                className="group bg-slate-900 hover:bg-teal-600 text-white px-8 py-3.5 rounded-2xl font-bold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-teal-500/20 hover:-translate-y-1"
+              >
                 Book a Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>

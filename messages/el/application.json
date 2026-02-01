@@ -1,0 +1,161 @@
+{
+  "title": "Γίνετε Μέλος της Ομάδας",
+  "subtitle": "Αναζητούμε εξαιρετικά ταλέντα για να χτίσουμε το μέλλον της υγειονομικής περίθαλψης.",
+  "backButton": "Επιστροφή στην Επιλογή",
+  "targetRole": "Ρόλος Στόχος",
+  "header": {
+    "eliteSelection": "Ενεργή Επιλογή Elite",
+    "title": "Χτισμένο για Παθιασμένους.",
+    "quote": "\"Δεν χτίζουμε μια εταιρεία. Χτίζουμε το αδιαμφισβήτητο χρυσό πρότυπο για το AI στην υγεία. Αν θέλετε ισορροπία, κοιτάξτε αλλού. Αν θέλετε μια κληρονομιά, μείνετε.\"",
+    "standardTitle": "Το Πρότυπο Curify",
+    "standardText1": "Λειτουργούμε με μια",
+    "standardTextHighlight": "νοοτροπία Μηδενικής Αποτυχίας",
+    "standardText2": ". Στο τρέχον στάδιο μας, δεν ψάχνουμε για υπαλλήλους. Ψάχνουμε για πιλότους.",
+    "standardText3": "Αυτό είναι ένα περιβάλλον υψηλού κινδύνου και υψηλής έντασης. Δουλεύουμε αργά, σκεφτόμαστε γρήγορα και πιέζουμε πέρα από τα όριά μας για να μάθουμε τι χρειάζεται για να είμαστε οι καλύτεροι στον κόσμο.",
+    "standardText4": "Η ανάπτυξη είναι κάθετη. Το όφελος είναι τεράστιο. Η δουλειά είναι σκληροπυρηνική.",
+    "disclaimer": "* Κάνοντας αίτηση, αναγνωρίζετε ότι είστε έτοιμοι να εργαστείτε πιο σκληρά από ποτέ."
+  },
+  "select": {
+    "applyNow": "Κάντε Αίτηση Τώρα",
+    "mostWanted": "Περιζήτητο",
+    "wildcardTitle": "Η Wildcard Αίτηση",
+    "wildcardDescription": "Δεν ταιριάζετε σε ένα τυπικό κουτί; Αποδείξτε ότι έχετε τις πολυδιάστατες δεξιότητες για να αναδιαμορφώσετε το μέλλον. Αυτό το μονοπάτι είναι για τους εξαιρετικούς.",
+    "wildcardButton": "Αίτηση ως Wildcard"
+  },
+  "sections": {
+    "identity": {
+      "title": "Ταυτότητα",
+      "subtitle": "Βασικά στοιχεία. Βεβαιωθείτε ότι τα στοιχεία επικοινωνίας σας είναι τέλεια.",
+      "nameLabel": "Ονοματεπώνυμο",
+      "namePlaceholder": "Γιάννης Παπαδόπουλος",
+      "emailLabel": "Διεύθυνση Email",
+      "emailPlaceholder": "john@example.com",
+      "phoneLabel": "Τηλέφωνο (WhatsApp)",
+      "phonePlaceholder": "+30 ..."
+    },
+    "hustle": {
+      "title": "The Hustle",
+      "subtitle": "Αποδείξτε ότι ανήκετε σε ένα περιβάλλον υψηλής έντασης. Χωρίς εταιρικά κλισέ."
+    },
+    "gate": {
+      "title": "The Gate",
+      "subtitle": "Εδώ είναι που το 99% των αιτούντων εγκαταλείπουν. Δείξτε μας τη δουλειά σας, όχι το βιογραφικό σας.",
+      "tip": "Συμβουλή: Κρατήστε το κάτω από 2 λεπτά. Να είστε αυθεντικοί.",
+      "attachmentsLabel": "Συνημμένα (Βιογραφικό / CV / Pitch Deck)",
+      "dropfiles": "Σύρετε αρχεία εδώ ή κάντε κλικ για μεταφόρτωση",
+      "addLinkPlaceholder": "Προσθήκη συνδέσμου..."
+    }
+  },
+  "questions": {
+    "role": {
+      "label": "Ρόλος",
+      "placeholder": "Επιλέξτε ρόλο",
+      "options": {
+        "frontend": "Frontend Engineer (React & Redux)",
+        "ai": "AI Engineer (Deep Agents)",
+        "marketing": "Marketing Specialist",
+        "sales": "Sales Representative",
+        "other": "Άλλο"
+      }
+    },
+    "fullName": {
+      "label": "Ονοματεπώνυμο",
+      "placeholder": "Γιάννης Παπαδόπουλος"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "john@example.com"
+    },
+    "phone": {
+      "label": "Τηλέφωνο",
+      "placeholder": "+30 691 234 5678"
+    },
+    "linkedin": {
+      "label": "LinkedIn Profile / Portfolio",
+      "placeholder": "https://linkedin.com/in/johndoe"
+    },
+    "experience": {
+      "label": "Έτη Εμπειρίας",
+      "placeholder": "Επιλέξτε εμπειρία",
+      "options": {
+        "0-1": "0-1 έτη",
+        "1-3": "1-3 έτη",
+        "3-5": "3-5 έτη",
+        "5+": "5+ έτη",
+        "startup": "Βετεράνος Start-up"
+      }
+    },
+    "about": {
+      "label": "Πείτε μας για εσάς",
+      "placeholder": "Περιγράψτε σύντομα το υπόβαθρό σας και γιατί θέλετε να συνεργαστείτε μαζί μας..."
+    }
+  },
+  "roles": {
+    "frontend": {
+      "hustleLabel": "Δείξτε μας τον κώδικά σας",
+      "hustlePlaceholder": "Σύνδεσμος στο πιο περίπλοκο GitHub repo σας ή σε ένα live project όπου λύσατε μια δύσκολη πρόκληση UI/UX. Εξηγήστε την πρόκληση.",
+      "goalsLabel": "Φιλοσοφία UI/UX",
+      "goalsPlaceholder": "Ποια λεπτομέρεια UI σας εκνευρίζει στα περισσότερα sites; Πώς θα τη διορθώνατε;",
+      "gateLabel": "Loom Video: Code Walkthrough",
+      "portfolioLabel": "Σύνδεσμοι Συνημμένων"
+    },
+    "ai": {
+      "hustleLabel": "Engineering Feats",
+      "hustlePlaceholder": "Περιγράψτε μια φορά που βελτιστοποιήσατε ένα inference pipeline, σχεδιάσατε ένα νέο agentic workflow ή 'χακάρετε' ένα μοντέλο.",
+      "goalsLabel": "Το Μέλλον του AI",
+      "goalsPlaceholder": "Ποιο είναι το μεγαλύτερο εμπόδιο στις τρέχουσες εφαρμογές LLM και πώς το λύνουμε;",
+      "gateLabel": "Loom Video: Architecture Explainer",
+      "portfolioLabel": "Σύνδεσμοι Συνημμένων"
+    },
+    "marketing": {
+      "hustleLabel": "Proof of Growth",
+      "hustlePlaceholder": "Δείξτε μας μια καμπάνια που τρέξατε και έφερε πραγματικό ROI. Οι αριθμοί μιλούν πιο δυνατά. Ποια ήταν η στρατηγική σας;",
+      "goalsLabel": "Ανάλυση Brand",
+      "goalsPlaceholder": "Ποιο B2B brand θαυμάζετε περισσότερο αυτή τη στιγμή και γιατί; Τι κάνουν που δεν κάνουν οι άλλοι;",
+      "gateLabel": "Loom Video: Pitch Curify",
+      "portfolioLabel": "Σύνδεσμοι Συνημμένων"
+    },
+    "sales": {
+      "hustleLabel": "The Closer",
+      "hustlePlaceholder": "Ποια είναι η πιο δύσκολη συμφωνία που κλείσατε ποτέ; Περιγράψτε μας τη διαπραγμάτευση και πώς κερδίσατε.",
+      "goalsLabel": "Στρατηγική Outreach",
+      "goalsPlaceholder": "Πώς ξεχωρίζετε από το θόρυβο όταν προσεγγίζετε σημαντικούς ιατρικούς διευθυντές;",
+      "gateLabel": "Loom Video: Sell us a Pen",
+      "portfolioLabel": "Σύνδεσμοι Συνημμένων"
+    },
+    "default": {
+      "hustleLabel": "The Hustle",
+      "hustlePlaceholder": "Ποιο είναι το πιο εντυπωσιακό πράγμα που έχετε χτίσει, πετύχει ή λύσει; (Μην είστε μετριοπαθείς)",
+      "goalsLabel": "Φιλοδοξία",
+      "goalsPlaceholder": "Ποιο συγκεκριμένο πρόβλημα θέλετε να λύσετε στην Curify;",
+      "gateLabel": "Loom Video: Παρουσίαση",
+      "portfolioLabel": "Σύνδεσμοι Συνημμένων"
+    }
+  },
+  "messages": {
+    "successTitle": "ΕΝΑΡΞΗ ΕΙΣΟΔΟΥ",
+    "successText": "Ελπίζουμε πραγματικά να είστε εσείς. Θα επικοινωνήσουμε μαζί σας.",
+    "returnHome": "Επιστροφή στο Hub",
+    "submitButton": "Έναρξη Επιλογής",
+    "submitting": "Αποστολή...",
+    "disclaimer": "Αυτή είναι μια μόνιμη εγγραφή στη δεξαμενή ταλέντων της Curify."
+  },
+  "rolesDescriptions": {
+    "frontend": {
+      "subtitle": "Ειδικός React & Redux",
+      "description": "Δημιουργήστε υψηλής απόδοσης, πολύπλοκες διεπαφές χρήστη. Ζείτε και αναπνέετε το οικοσύστημα React."
+    },
+    "ai": {
+      "subtitle": "Deep Agents & LLMs",
+      "description": "Χτίστε τον εγκέφαλο του Curify. Δημιουργήστε πράκτορες που κατανοούν το πλαίσιο και δρουν αυτόνομα."
+    },
+    "marketing": {
+      "subtitle": "Μάρκα & Ανάπτυξη",
+      "description": "Κλιμακώστε τη σύγχρονη ταυτότητά μας. Ξέρετε πώς να λέτε ιστορίες που μετατρέπουν και έχουν απήχηση."
+    },
+    "sales": {
+      "subtitle": "Διαπραγματευτής & Στρατηγικός",
+      "description": "Χειριστείτε υποθέσεις πελατών υψηλού κινδύνου. Μετατρέπετε το ενδιαφέρον ιατρικών πρακτικών σε μακροχρόνιες συνεργασίες."
+    }
+  }
+}
