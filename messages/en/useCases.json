@@ -232,9 +232,9 @@
           "title": "Multi-Department Sync",
           "description": "Seamlessly coordinate between ER, ICU, surgery, radiology, and pharmacy departments with instant communication and resource sharing.",
           "visual": {
-             "codeBlue": "Code Blue",
-             "erStatus": "ER Status",
-             "icuBeds": "ICU Beds"
+            "codeBlue": "Code Blue",
+            "erStatus": "ER Status",
+            "icuBeds": "ICU Beds"
           }
         },
         "alerts": {
@@ -354,7 +354,7 @@
           "billedYearly": 853,
           "features": [
             "Unlimited Patient Records",
-            "15 User Accounts",
+            "5 User Accounts",
             "50GB Secure Storage",
             "IDIKA Integration (E-Prescription)",
             "Basic Patient & Staff Management",

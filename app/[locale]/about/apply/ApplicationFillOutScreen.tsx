@@ -143,38 +143,26 @@ const ApplicationFillOutScreen = ({
         throw new Error("reCAPTCHA is not ready. Please try again later.");
       const recaptchaToken = await executeRecaptcha();
 
-      // Create FormData object for multipart/form-data submission
-      const formDataToSend = new FormData();
-      formDataToSend.append(
-        "role",
-        selectedRole && typeof selectedRole === "string" ? selectedRole : "",
-      );
-      formDataToSend.append("recaptchaToken", recaptchaToken);
+      const finalData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        skills: formData.skills || undefined,
+        goals: formData.goals || undefined,
+        loom: formData.loom || undefined,
+        role:
+          selectedRole && typeof selectedRole === "string"
+            ? selectedRole
+            : undefined,
+        portfolioLinks: portfolioLinks.length > 0 ? portfolioLinks : undefined,
+        recaptchaToken,
+      };
 
-      // Append form fields
-      Object.keys(formData).forEach((key) => {
-        formDataToSend.append(key, formData[key]);
-      });
-
-      // Append portfolio links as JSON string or individual fields depending on backend expectation
-      // Here we append them as a JSON string for simplicity, or we could append each one
-      formDataToSend.append("portfolioLinks", JSON.stringify(portfolioLinks));
-
-      // Append file if selected
-      if (selectedFile) {
-        formDataToSend.append("attachment", selectedFile);
-      }
-
-      console.log("Submitting FormData");
+      console.log("Submitting:", finalData);
 
       await axios.post(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/application`,
-        formDataToSend,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        },
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/contact-forms/talent`,
+        finalData,
       );
 
       setStatus("success");
