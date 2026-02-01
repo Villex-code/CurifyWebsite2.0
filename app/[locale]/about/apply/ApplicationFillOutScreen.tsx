@@ -170,11 +170,20 @@ const ApplicationFillOutScreen = ({
     } catch (error: any) {
       console.error("Submission error:", error);
       setStatus("error");
-      setErrorMessage(
-        error.response?.data?.message ||
-          error.message ||
-          "Something went wrong",
-      );
+
+      let msg = "Something went wrong";
+      if (error?.response?.data?.message) {
+        const m = error.response.data.message;
+        if (typeof m === "string") msg = m;
+        else if (Array.isArray(m))
+          msg = m.join(", "); // Handle arrays (e.g. NestJS validation errors)
+        else if (typeof m === "object") msg = JSON.stringify(m);
+        else msg = String(m);
+      } else if (error?.message) {
+        msg = error.message;
+      }
+
+      setErrorMessage(msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -201,6 +210,32 @@ const ApplicationFillOutScreen = ({
           className="px-10 py-4 bg-white text-slate-950 font-bold rounded-full hover:bg-teal-500 hover:text-white transition-all uppercase tracking-widest text-sm"
         >
           {t("messages.returnHome")}
+        </button>
+      </motion.div>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="bg-slate-950 rounded-[3rem] p-16 shadow-2xl text-center border border-slate-800"
+      >
+        <div className="w-24 h-24 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-red-500/20">
+          <AlertCircle className="w-12 h-12 text-red-500" />
+        </div>
+        <h2 className="text-4xl font-black text-white mb-4 tracking-tight">
+          Oops!
+        </h2>
+        <p className="text-slate-400 text-lg max-w-md mx-auto mb-10 leading-relaxed">
+          {errorMessage || "Something went wrong. Please try again later."}
+        </p>
+        <button
+          onClick={() => setStatus("idle")}
+          className="px-10 py-4 bg-white text-slate-950 font-bold rounded-full hover:bg-red-500 hover:text-white transition-all uppercase tracking-widest text-sm"
+        >
+          Try Again
         </button>
       </motion.div>
     );
@@ -459,13 +494,6 @@ const ApplicationFillOutScreen = ({
               </span>
             )}
           </button>
-
-          {status === "error" && (
-            <div className="mt-4 flex items-center text-red-500 text-sm font-bold">
-              <AlertCircle className="w-4 h-4 mr-2" />
-              {errorMessage}
-            </div>
-          )}
 
           <p className="mt-6 text-[10px] text-center text-slate-400 font-bold uppercase tracking-[0.2em]">
             {t("messages.disclaimer")}
