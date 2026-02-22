@@ -19,28 +19,30 @@ const PricingPlans = () => {
             ...plan,
             name: "Essential",
             // Keep original strings for reference if needed, but we override heavily
-            originalPriceMonthly: "80", // Hardcode original price to 80 as requested
+            originalPriceMonthly: "79", // Hardcode original price to 80 as requested
             originalPriceYearly: "858", // 519 is ~40% off, so 858/12 ~ 71.5. If monthly is 80, yearly orig ~ 960? adjusting to user request "crossed out 80"
             // Actually, if cross out is 80 monthly, let's just ensure display logic handles it.
 
             // New Campaign Prices
             priceMonthly: "49",
-            priceYearlyTotal: "519", // The full billed amount
+            priceYearlyTotal: "516", // The full billed amount
             priceYearlyMonthlyEquivalent: "43", // 519 / 12 approx
-            
-            billedYearlyDesc: "519",
-            
+
+            billedYearlyDesc: "516",
+
             isScarcity: true,
-            slotsTotal: 50,
-            slotsLeft: 24,
+            slotsTotal: 100,
+            slotsLeft: 32,
             scarcityLabelKey: "partnership", // Changed to key for translation
             scarcityColor: "amber", // Shared color theme
-            
+
             // Override features to update user count if it's dynamic, else we rely on t() keys
             // Since features come from t(), we might need to map them if we cant change en.json
-            // But usually we just render what's there. 
+            // But usually we just render what's there.
             // If the user wants to say "15 user accounts", we might need to string replace the specific feature
-            features: plan.features.map((f: string) => f.includes("5") && f.includes("user") ? "15 user accounts" : f) 
+            features: plan.features.map((f: string) =>
+              f.includes("5") && f.includes("user") ? "15 user accounts" : f,
+            ),
           };
         }
 
@@ -54,15 +56,15 @@ const PricingPlans = () => {
 
             // "Like 279" - reverting to 449 as requested
             priceMonthly: "449",
-            priceYearlyTotal: "4490", 
+            priceYearlyTotal: "4490",
             priceYearlyMonthlyEquivalent: "374", // 4490 / 12 approx
-            
+
             billedYearlyDesc: "4,490",
-            
+
             // Scarcity removed as requested
             // isScarcity: true,
             // slotsTotal: 9,
-            // slotsLeft: 9, 
+            // slotsLeft: 9,
             // scarcityLabelKey: "earlyAdopter",
             // scarcityColor: "amber",
           };
@@ -73,7 +75,7 @@ const PricingPlans = () => {
           return {
             ...plan,
             // name: "Hospital", // Assumed from JSON
-            
+
             // Enterprise usually custom, but we add scarcity
             // isScarcity: true, // Removed as requested
             // slotsTotal: 3,
@@ -82,14 +84,14 @@ const PricingPlans = () => {
             // scarcityColor: "amber",
 
             // Keep original pricing or "Custom" if it's contact sales
-            // If the original plan has prices, we can use them. 
+            // If the original plan has prices, we can use them.
             // If original was "Contact Us", we might need to handle numbers if intended.
             // Assuming we keep existing logic for Enterprise price display unless overridden.
             // But let's add a fallback if it was text-based.
             priceMonthly: "1800", // As per user request "monthly correct 1800"
             priceYearlyTotal: "19440", // 1620 * 12
             priceYearlyMonthlyEquivalent: "1620", // 1800 - 10% = 1620
-            
+
             billedYearlyDesc: "19,440",
           };
         }
@@ -242,13 +244,14 @@ const PriceCard = ({
 
   const Icon = getIcon(plan.id);
   const isScarcity = plan.isScarcity;
-  
+
   // Calculate display price (Monthly Equivalent for Yearly View)
-  const displayPrice = isYearly 
-    ? (plan.priceYearlyMonthlyEquivalent || plan.priceYearly || "Custom") 
-    : (plan.priceMonthly || "Custom");
-    
-  const isCustomPrice = displayPrice === "Custom" || isNaN(parseFloat(displayPrice));
+  const displayPrice = isYearly
+    ? plan.priceYearlyMonthlyEquivalent || plan.priceYearly || "Custom"
+    : plan.priceMonthly || "Custom";
+
+  const isCustomPrice =
+    displayPrice === "Custom" || isNaN(parseFloat(displayPrice));
 
   return (
     <motion.div
@@ -262,8 +265,8 @@ const PriceCard = ({
           plan.popular
             ? "bg-white border-teal-500 shadow-2xl shadow-teal-900/10 scale-105 z-10"
             : isScarcity
-            ? "bg-white border-teal-600/40 shadow-xl shadow-teal-900/5 ring-1 ring-teal-500/20"
-            : "bg-white border-slate-200 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:border-teal-200"
+              ? "bg-white border-teal-600/40 shadow-xl shadow-teal-900/5 ring-1 ring-teal-500/20"
+              : "bg-white border-slate-200 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:border-teal-200"
         }
       `}
     >
@@ -289,8 +292,8 @@ const PriceCard = ({
             plan.popular
               ? "bg-teal-50 text-teal-600"
               : isScarcity
-              ? "bg-amber-50 text-amber-600"
-              : "bg-slate-50 text-slate-500"
+                ? "bg-amber-50 text-amber-600"
+                : "bg-slate-50 text-slate-500"
           }`}
         >
           <Icon className="w-5 h-5 md:w-6 md:h-6" />
@@ -307,15 +310,17 @@ const PriceCard = ({
       <div className="mb-6 md:mb-8">
         <div className="flex items-baseline gap-1 flew-wrap">
           {!isCustomPrice && (
-             <span className="text-3xl md:text-4xl font-bold text-slate-900">€</span>
+            <span className="text-3xl md:text-4xl font-bold text-slate-900">
+              €
+            </span>
           )}
-          
+
           {/* Strikethrough Original Price */}
           {isScarcity && !isCustomPrice && (
             <span className="text-xl md:text-2xl font-semibold text-slate-400 line-through decoration-slate-400/50 mr-2">
-              {isYearly 
-                 ? "71" // 858/12 roughly. If user wants strictly 80 crossed out in monthly:
-                 : plan.originalPriceMonthly}
+              {isYearly
+                ? "71" // 858/12 roughly. If user wants strictly 80 crossed out in monthly:
+                : plan.originalPriceMonthly}
             </span>
           )}
 
@@ -327,18 +332,22 @@ const PriceCard = ({
           >
             {displayPrice}
           </motion.span>
-          
+
           {!isCustomPrice && (
-             <span className="text-slate-400 font-medium text-sm md:text-base">
-               {t("perMonth")}
-             </span>
+            <span className="text-slate-400 font-medium text-sm md:text-base">
+              {t("perMonth")}
+            </span>
           )}
         </div>
-        
+
         <div className="text-xs text-slate-400 mt-2 font-medium min-h-[16px]">
           {!isCustomPrice && isYearly
-            ? t("billedYearly", { amount: plan.billedYearlyDesc || plan.billedYearly })
-            : !isCustomPrice ? t("billedMonthly") : ""}
+            ? t("billedYearly", {
+                amount: plan.billedYearlyDesc || plan.billedYearly,
+              })
+            : !isCustomPrice
+              ? t("billedMonthly")
+              : ""}
         </div>
       </div>
 
@@ -351,8 +360,8 @@ const PriceCard = ({
            plan.popular
              ? "bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-600/20"
              : isScarcity
-             ? "bg-slate-900 text-white hover:bg-slate-800 shadow-lg shadow-slate-900/10"
-             : "bg-slate-100 text-slate-900 hover:bg-slate-200"
+               ? "bg-slate-900 text-white hover:bg-slate-800 shadow-lg shadow-slate-900/10"
+               : "bg-slate-100 text-slate-900 hover:bg-slate-200"
          }
       `}
       >
@@ -364,18 +373,24 @@ const PriceCard = ({
         <div className="mb-6">
           <div className="mb-2 p-2 bg-amber-50 rounded-lg border border-amber-100">
             <div className="flex justify-between items-center text-xs font-semibold text-amber-800 mb-1.5">
-              <span>{plan.slotsLeft} {t("scarcity.slotsLeft")}</span>
-              <span className="text-amber-600/70">{t(`scarcity.${plan.scarcityLabelKey}`)}</span>
+              <span>
+                {plan.slotsLeft} {t("scarcity.slotsLeft")}
+              </span>
+              <span className="text-amber-600/70">
+                {t(`scarcity.${plan.scarcityLabelKey}`)}
+              </span>
             </div>
             <div className="w-full h-1.5 bg-amber-200/50 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-amber-500 rounded-full transition-all duration-1000"
-                style={{ width: `${(plan.slotsLeft / plan.slotsTotal) * 100}%` }} 
+                style={{
+                  width: `${(plan.slotsLeft / plan.slotsTotal) * 100}%`,
+                }}
               />
             </div>
           </div>
           <p className="text-[10px] md:text-[11px] leading-tight text-amber-700/80 font-medium">
-             {t("scarcity.disclaimer", { slots: plan.slotsTotal })}
+            {t("scarcity.disclaimer", { slots: plan.slotsTotal })}
           </p>
         </div>
       )}
@@ -396,8 +411,8 @@ const PriceCard = ({
                   plan.popular
                     ? "bg-teal-100 text-teal-600"
                     : isScarcity
-                    ? "bg-amber-100 text-amber-600"
-                    : "bg-slate-100 text-slate-500"
+                      ? "bg-amber-100 text-amber-600"
+                      : "bg-slate-100 text-slate-500"
                 }`}
               >
                 <Check className="w-2.5 h-2.5 md:w-3 md:h-3" strokeWidth={3} />
