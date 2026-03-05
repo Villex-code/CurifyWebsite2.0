@@ -20,7 +20,7 @@ function ShareButtons({ postTitle }: { postTitle: string }) {
     <div className="flex space-x-4">
       <a
         href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-          postTitle
+          postTitle,
         )}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -33,7 +33,7 @@ function ShareButtons({ postTitle }: { postTitle: string }) {
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-          currentUrl
+          currentUrl,
         )}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -46,7 +46,7 @@ function ShareButtons({ postTitle }: { postTitle: string }) {
       </a>
       <a
         href={`https://www.linkedin.com/shareArticle?mini=true&title=${encodeURIComponent(
-          postTitle
+          postTitle,
         )}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -200,6 +200,26 @@ export default function PostPage({ params }: PostPageProps) {
       day: "numeric",
     });
   };
+
+  if (loading) {
+    return (
+      <main className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto flex items-center justify-center min-h-[50vh]">
+          <p className="text-gray-500 text-lg">Loading post...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (error || !post) {
+    return (
+      <main className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto flex items-center justify-center min-h-[50vh]">
+          <p className="text-red-500 text-lg">{error || "Post not found"}</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">

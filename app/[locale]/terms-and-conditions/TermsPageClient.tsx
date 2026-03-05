@@ -3,19 +3,21 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Calendar } from "lucide-react";
+import { useLocale } from "next-intl";
 import { termsData } from "./termsData";
 import TermsSidebar from "./TermsSidebar";
 import TermsContent from "./TermsContent";
 
 const TermsPageClient = () => {
-  const [activeSection, setActiveSection] = useState(termsData.sections[0].id);
+  const locale = useLocale();
+  const data = termsData[locale] || termsData.en;
+
+  const [activeSection, setActiveSection] = useState(data.sections[0].id);
 
   // Scroll Spy Logic to update active section in sidebar
   useEffect(() => {
     const handleScroll = () => {
-      const sections = termsData.sections.map((s) =>
-        document.getElementById(s.id)
-      );
+      const sections = data.sections.map((s) => document.getElementById(s.id));
 
       const scrollPosition = window.scrollY + 200; // Offset for header
 
@@ -32,7 +34,7 @@ const TermsPageClient = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [data.sections]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -56,18 +58,23 @@ const TermsPageClient = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold uppercase tracking-wider mb-6">
               <ShieldCheck className="w-4 h-4" />
-              Legal Documentation
+              {locale === "el" ? "ΝΟΜΙΚΑ ΕΓΓΡΑΦΑ" : "Legal Documentation"}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
-              Terms & Conditions
+              {locale === "el" ? "Όροι & Προϋποθέσεις" : "Terms & Conditions"}
             </h1>
-            <div className="flex items-center gap-4 text-slate-500 text-sm">
+            <div className="flex flex-wrap items-center gap-4 text-slate-500 text-sm">
               <span className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-lg">
-                <Calendar className="w-4 h-4" /> Last Updated:{" "}
-                {termsData.lastUpdated}
+                <Calendar className="w-4 h-4" />{" "}
+                {locale === "el" ? "Τελευταία Ενημέρωση:" : "Last Updated:"}{" "}
+                {data.lastUpdated}
               </span>
-              <span>•</span>
-              <span>Effective immediately for all new users.</span>
+              <span className="hidden md:inline">•</span>
+              <span>
+                {locale === "el"
+                  ? "Άμεση ισχύς για όλους τους νέους χρήστες."
+                  : "Effective immediately for all new users."}
+              </span>
             </div>
           </motion.div>
         </div>

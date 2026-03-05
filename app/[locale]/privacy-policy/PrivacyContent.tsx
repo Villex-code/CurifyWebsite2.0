@@ -1,8 +1,12 @@
 import React from "react";
 import { Shield, Eye } from "lucide-react";
+import { useLocale } from "next-intl";
 import { privacyData } from "./privacyData";
 
 const PrivacyContent = () => {
+  const locale = useLocale();
+  const data = privacyData[locale] || privacyData.en;
+
   return (
     <main className="flex-1 max-w-3xl">
       <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-200">
@@ -12,20 +16,16 @@ const PrivacyContent = () => {
             <Shield className="w-8 h-8" />
           </div>
           <p className="text-lg text-slate-600 leading-relaxed">
-            Your privacy isn't just a compliance requirement—it's the foundation
-            of our healthcare platform. Below we detail exactly how your data
-            flows, is secured, and is managed.
+            {locale === "el"
+              ? "Το απόρρητό σας δεν είναι απλώς μια απαίτηση συμμόρφωσης — είναι το θεμέλιο της πλατφόρμας υγειονομικής περίθαλψης μας. Παρακάτω περιγράφουμε αναλυτικά πώς ρέουν, διασφαλίζονται και διαχειρίζονται τα δεδομένα σας."
+              : "Your privacy isn't just a compliance requirement—it's the foundation of our healthcare platform. Below we detail exactly how your data flows, is secured, and is managed."}
           </p>
         </div>
 
         {/* Sections Loop */}
         <div className="space-y-16">
-          {privacyData.sections.map((section) => (
-            <section
-              key={section.id}
-              id={section.id}
-              className="scroll-mt-32"
-            >
+          {data.sections.map((section) => (
+            <section key={section.id} id={section.id} className="scroll-mt-32">
               <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                 <div className="w-1.5 h-8 bg-teal-500 rounded-full" />
                 {section.title}
@@ -66,18 +66,22 @@ const PrivacyContent = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <h3 className="text-lg font-bold text-slate-900 mb-1">
-                Privacy Concerns?
+                {locale === "el"
+                  ? "Έχετε Απορίες για το Απόρρητο;"
+                  : "Privacy Concerns?"}
               </h3>
               <p className="text-slate-500 text-sm">
-                Our compliance team typically responds within 24 hours.
+                {locale === "el"
+                  ? "Η ομάδα συμμόρφωσής μας συνήθως απαντά εντός 24 ωρών."
+                  : "Our compliance team typically responds within 24 hours."}
               </p>
             </div>
             <a
-              href={`mailto:${privacyData.contactEmail}`}
+              href={`mailto:${data.contactEmail}`}
               className="inline-flex items-center gap-2 bg-white border border-slate-200 px-6 py-3 rounded-full text-slate-900 font-bold hover:border-teal-500 hover:text-teal-600 transition-colors shadow-sm"
             >
               <Eye className="w-4 h-4" />
-              Submit a Request
+              {locale === "el" ? "Υποβολή Αιτήματος" : "Submit a Request"}
             </a>
           </div>
         </div>
@@ -87,4 +91,3 @@ const PrivacyContent = () => {
 };
 
 export default PrivacyContent;
-

@@ -3,21 +3,21 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Lock, Calendar } from "lucide-react";
+import { useLocale } from "next-intl";
 import { privacyData } from "./privacyData";
 import PrivacySidebar from "./PrivacySidebar";
 import PrivacyContent from "./PrivacyContent";
 
 const PrivacyPageClient = () => {
-  const [activeSection, setActiveSection] = useState(
-    privacyData.sections[0].id
-  );
+  const locale = useLocale();
+  const data = privacyData[locale] || privacyData.en;
+
+  const [activeSection, setActiveSection] = useState(data.sections[0].id);
 
   // Scroll Spy Logic
   useEffect(() => {
     const handleScroll = () => {
-      const sections = privacyData.sections.map((s) =>
-        document.getElementById(s.id)
-      );
+      const sections = data.sections.map((s) => document.getElementById(s.id));
 
       const scrollPosition = window.scrollY + 200; // Offset for header
 
@@ -34,7 +34,7 @@ const PrivacyPageClient = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [data.sections]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -58,18 +58,23 @@ const PrivacyPageClient = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold uppercase tracking-wider mb-6">
               <Lock className="w-4 h-4" />
-              Data Protection
+              {locale === "el" ? "ΠΡΟΣΤΑΣΙΑ ΔΕΔΟΜΕΝΩΝ" : "Data Protection"}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
-              Privacy Policy
+              {locale === "el" ? "Πολιτική Απορρήτου" : "Privacy Policy"}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-slate-500 text-sm">
               <span className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-lg">
-                <Calendar className="w-4 h-4" /> Last Updated:{" "}
-                {privacyData.lastUpdated}
+                <Calendar className="w-4 h-4" />{" "}
+                {locale === "el" ? "Τελευταία Ενημέρωση:" : "Last Updated:"}{" "}
+                {data.lastUpdated}
               </span>
               <span className="hidden md:inline">•</span>
-              <span>Committed to GDPR & HIPAA Compliance</span>
+              <span>
+                {locale === "el"
+                  ? "Συμμόρφωση με GDPR & HIPAA"
+                  : "Committed to GDPR & HIPAA Compliance"}
+              </span>
             </div>
           </motion.div>
         </div>
@@ -92,4 +97,3 @@ const PrivacyPageClient = () => {
 };
 
 export default PrivacyPageClient;
-

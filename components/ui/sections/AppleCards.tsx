@@ -241,7 +241,7 @@ export const BlurImage = ({
       className={cn(
         "h-full w-full transition duration-300",
         isLoading ? "blur-sm" : "blur-0",
-        className
+        className,
       )}
       onLoad={() => setLoading(false)}
       src={src}

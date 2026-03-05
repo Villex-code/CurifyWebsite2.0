@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FileText } from "lucide-react";
+import { useLocale } from "next-intl";
 import { termsData } from "./termsData";
 
 interface TermsSidebarProps {
@@ -10,14 +11,17 @@ interface TermsSidebarProps {
 }
 
 const TermsSidebar = ({ activeSection, onSectionClick }: TermsSidebarProps) => {
+  const locale = useLocale();
+  const data = termsData[locale] || termsData.en;
+
   return (
     <aside className="hidden lg:block w-72 flex-shrink-0">
       <div className="sticky top-32">
         <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 px-4">
-          Contents
+          {locale === "el" ? "ΠΕΡΙΕΧΟΜΕΝΑ" : "Contents"}
         </h3>
         <nav className="space-y-1">
-          {termsData.sections.map((section) => (
+          {data.sections.map((section) => (
             <button
               key={section.id}
               onClick={() => onSectionClick(section.id)}
@@ -38,7 +42,7 @@ const TermsSidebar = ({ activeSection, onSectionClick }: TermsSidebarProps) => {
         <div className="mt-10 px-4">
           <button className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-teal-600 transition-colors">
             <FileText className="w-4 h-4" />
-            Download as PDF
+            {locale === "el" ? "Λήψη σε PDF" : "Download as PDF"}
           </button>
         </div>
       </div>
@@ -47,4 +51,3 @@ const TermsSidebar = ({ activeSection, onSectionClick }: TermsSidebarProps) => {
 };
 
 export default TermsSidebar;
-
