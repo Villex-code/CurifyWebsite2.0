@@ -18,8 +18,11 @@ import {
   FileEdit,
   Activity,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const PersonnelFeature = () => {
+  const t = useTranslations("FeatureCards.personnel-management");
+
   return (
     <div className="space-y-12">
       {/* --- HERO VISUAL: THE IDENTITY FORGE --- */}
@@ -44,7 +47,7 @@ const PersonnelFeature = () => {
           >
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-xs font-mono text-slate-300">
-              Admin sending invite to:{" "}
+              {t("hero.invite_action")}{" "}
               <span className="text-teal-400">dr.alex@curify.com</span>
             </span>
             <Mail className="w-3 h-3 text-slate-500" />
@@ -67,7 +70,9 @@ const PersonnelFeature = () => {
             {/* Content */}
             <div className="pt-8 px-4 pb-4">
               <h3 className="text-lg font-bold text-slate-900">Dr. Alex K.</h3>
-              <p className="text-xs text-slate-500 mb-4">ID: #STF-2024-88</p>
+              <p className="text-xs text-slate-500 mb-4">
+                {t("hero.id_label")} #STF-2024-88
+              </p>
 
               {/* Dynamic Tags (Animating In) */}
               <div className="space-y-2">
@@ -79,7 +84,7 @@ const PersonnelFeature = () => {
                 >
                   <Briefcase className="w-3 h-3 text-blue-600" />
                   <span className="text-xs font-bold text-blue-700">
-                    Role: Doctor
+                    {t("hero.role_label")}
                   </span>
                 </motion.div>
 
@@ -91,7 +96,7 @@ const PersonnelFeature = () => {
                 >
                   <Stethoscope className="w-3 h-3 text-purple-600" />
                   <span className="text-xs font-bold text-purple-700">
-                    Specialty: Cardiology
+                    {t("hero.specialty_label")}
                   </span>
                 </motion.div>
 
@@ -103,7 +108,7 @@ const PersonnelFeature = () => {
                 >
                   <Shield className="w-3 h-3 text-orange-600" />
                   <span className="text-xs font-bold text-orange-700">
-                    Access: Level 3 (Full)
+                    {t("hero.access_label")}
                   </span>
                 </motion.div>
               </div>
@@ -112,7 +117,7 @@ const PersonnelFeature = () => {
             {/* Footer */}
             <div className="bg-slate-50 px-4 py-2 border-t border-slate-100 flex justify-between items-center">
               <span className="text-[10px] text-teal-600 font-bold">
-                Active Staff
+                {t("hero.status_label")}
               </span>
               <div className="w-2 h-2 bg-green-500 rounded-full" />
             </div>
@@ -129,29 +134,28 @@ const PersonnelFeature = () => {
               <UserPlus className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Secure Onboarding
+              {t("onboarding.title")}
             </h3>
           </div>
           <p className="text-slate-600 leading-relaxed mb-6">
-            Admins trigger an invite via email. This links the user's unique
-            identity to your facility instantly.
+            {t("onboarding.description")}
           </p>
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
               <span className="text-sm font-bold text-slate-700">
-                1. Input Email
+                {t("onboarding.step1")}
               </span>
               <Check className="w-4 h-4 text-green-500" />
             </div>
             <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
               <span className="text-sm font-bold text-slate-700">
-                2. Assign Clinic
+                {t("onboarding.step2")}
               </span>
               <Check className="w-4 h-4 text-green-500" />
             </div>
             <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
               <span className="text-sm font-bold text-slate-700">
-                3. Define Specialty
+                {t("onboarding.step3")}
               </span>
               <Check className="w-4 h-4 text-green-500" />
             </div>
@@ -164,22 +168,28 @@ const PersonnelFeature = () => {
             <div className="p-2 bg-purple-50 rounded-xl text-purple-600">
               <Stethoscope className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Smart Routing</h3>
+            <h3 className="text-xl font-bold text-slate-900">
+              {t("routing.title")}
+            </h3>
           </div>
           <p className="text-slate-600 leading-relaxed mb-8">
-            Specialties aren't just tags. They dictate workflow. A{" "}
-            <span className="text-purple-600 font-bold">Cardiologist</span>{" "}
-            automatically sees Cardiac patients.
+            {t.rich("routing.description", {
+              strong: (chunks) => (
+                <span className="text-purple-600 font-bold">
+                  {t("routing.cardiologist")}
+                </span>
+              ),
+            })}
           </p>
 
           {/* Visual Logic Flow */}
           <div className="relative h-20 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-around px-4">
             <div className="text-center">
               <div className="text-xs font-bold text-slate-400 uppercase mb-1">
-                Patient
+                {t("routing.patient_label")}
               </div>
               <div className="bg-white border border-slate-200 px-3 py-1 rounded-md text-xs font-bold text-slate-800 shadow-sm">
-                Heart Issue
+                {t("routing.issue_label")}
               </div>
             </div>
 
@@ -193,10 +203,10 @@ const PersonnelFeature = () => {
 
             <div className="text-center">
               <div className="text-xs font-bold text-slate-400 uppercase mb-1">
-                Routed To
+                {t("routing.routed_label")}
               </div>
               <div className="bg-purple-100 border border-purple-200 px-3 py-1 rounded-md text-xs font-bold text-purple-700 shadow-sm">
-                Cardiology
+                {t("routing.specialty_label")}
               </div>
             </div>
           </div>
@@ -207,20 +217,22 @@ const PersonnelFeature = () => {
       <div className="bg-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row gap-12 items-center">
         <div className="flex-1">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider mb-4">
-            <Key className="w-3 h-3" /> Access Control
+            <Key className="w-3 h-3" /> {t("access.badge")}
           </div>
-          <h3 className="text-3xl font-bold mb-4">Granular Permissions</h3>
+          <h3 className="text-3xl font-bold mb-4">{t("access.title")}</h3>
           <p className="text-slate-400 leading-relaxed mb-6">
-            Default roles get you started, but <strong>Admin Overrides</strong>{" "}
-            give you control. Restrict sensitive financial data or enable
-            prescribing rights per user.
+            {t.rich("access.description", {
+              strong: (chunks) => (
+                <strong>{t("access.admin_overrides")}</strong>
+              ),
+            })}
           </p>
           <div className="flex gap-4 text-sm font-bold">
             <div className="flex items-center gap-2 text-green-400">
-              <Check className="w-4 h-4" /> GDPR Compliant
+              <Check className="w-4 h-4" /> {t("access.gdpr")}
             </div>
             <div className="flex items-center gap-2 text-teal-400">
-              <Check className="w-4 h-4" /> Zero-Trust Model
+              <Check className="w-4 h-4" /> {t("access.zero_trust")}
             </div>
           </div>
         </div>
@@ -228,14 +240,25 @@ const PersonnelFeature = () => {
         {/* The Switchboard Visual */}
         <div className="w-full md:w-96 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl">
           <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4 border-b border-white/10 pb-2">
-            Permission Settings
+            {t("access.settings_title")}
           </div>
 
           <div className="space-y-4">
-            <PermissionToggle label="View Medical Files" active={true} />
-            <PermissionToggle label="Create Prescriptions" active={true} />
-            <PermissionToggle label="View Financials" active={false} locked />
-            <PermissionToggle label="Delete Records" active={false} locked />
+            <PermissionToggle label={t("access.view_files")} active={true} />
+            <PermissionToggle
+              label={t("access.create_prescriptions")}
+              active={true}
+            />
+            <PermissionToggle
+              label={t("access.view_financials")}
+              active={false}
+              locked
+            />
+            <PermissionToggle
+              label={t("access.delete_records")}
+              active={false}
+              locked
+            />
           </div>
         </div>
       </div>
@@ -244,18 +267,16 @@ const PersonnelFeature = () => {
       <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
         <div className="text-center mb-8">
           <h3 className="text-xl font-bold text-slate-900">
-            Organization Directory
+            {t("directory.title")}
           </h3>
-          <p className="text-slate-500 text-sm">
-            Smart grouping by Role for instant visibility.
-          </p>
+          <p className="text-slate-500 text-sm">{t("directory.description")}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Group: Doctors */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
             <div className="flex items-center gap-2 mb-3 text-teal-700 font-bold text-sm uppercase tracking-wide">
-              <Stethoscope className="w-4 h-4" /> Doctors
+              <Stethoscope className="w-4 h-4" /> {t("directory.doctors")}
             </div>
             <div className="space-y-2">
               <StaffRow name="Dr. Smith" status="active" />
@@ -267,7 +288,7 @@ const PersonnelFeature = () => {
           {/* Group: Nurses */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
             <div className="flex items-center gap-2 mb-3 text-blue-700 font-bold text-sm uppercase tracking-wide">
-              <Activity className="w-4 h-4" /> Nurses
+              <Activity className="w-4 h-4" /> {t("directory.nurses")}
             </div>
             <div className="space-y-2">
               <StaffRow name="Nurse Anna" status="active" />
@@ -278,7 +299,7 @@ const PersonnelFeature = () => {
           {/* Group: Admins */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
             <div className="flex items-center gap-2 mb-3 text-slate-700 font-bold text-sm uppercase tracking-wide">
-              <Shield className="w-4 h-4" /> Admin
+              <Shield className="w-4 h-4" /> {t("directory.admin")}
             </div>
             <div className="space-y-2">
               <StaffRow name="Admin Sarah" status="active" />

@@ -17,8 +17,11 @@ import {
   ArrowRight,
   ClipboardCheck,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const AdmissionsFeature = () => {
+  const t = useTranslations("FeatureCards.admissions-referrals");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE THROUGHPUT ENGINE --- */}
@@ -32,15 +35,18 @@ const AdmissionsFeature = () => {
 
         <div className="relative z-20 mb-12 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <Activity className="w-3 h-3" /> Global Ledger
+            <Activity className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            The heartbeat of <br />
-            <span className="text-green-400">patient flow.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks) => (
+                <span className="text-green-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            A macro-level view of every hospitalization. Track occupancy,
-            throughput efficiency, and discharge rates in real-time.
+            {t("hero.description")}
           </p>
         </div>
 
@@ -49,7 +55,7 @@ const AdmissionsFeature = () => {
           {/* 1. Inbound */}
           <div className="bg-slate-800/50 border border-slate-700 p-4 rounded-2xl flex flex-col items-center relative overflow-hidden">
             <div className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4">
-              Admissions
+              {t("hero.admissions")}
             </div>
             <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mb-2">
               <LogIn className="w-6 h-6 text-blue-400" />
@@ -67,7 +73,7 @@ const AdmissionsFeature = () => {
           <div className="bg-slate-800 border border-teal-500/30 p-4 rounded-2xl flex flex-col items-center relative shadow-[0_0_30px_rgba(20,184,166,0.1)]">
             <div className="absolute top-2 right-2 w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
             <div className="text-xs font-bold text-teal-400 uppercase tracking-widest mb-4">
-              Active Beds
+              {t("hero.active_beds")}
             </div>
             <div className="w-12 h-12 bg-teal-500/20 rounded-full flex items-center justify-center mb-2">
               <BedDouble className="w-6 h-6 text-teal-400" />
@@ -80,7 +86,7 @@ const AdmissionsFeature = () => {
           {/* 3. Outbound */}
           <div className="bg-slate-800/50 border border-slate-700 p-4 rounded-2xl flex flex-col items-center relative overflow-hidden">
             <div className="text-xs font-bold text-green-400 uppercase tracking-widest mb-4">
-              Discharged
+              {t("hero.discharged")}
             </div>
             <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mb-2">
               <LogOut className="w-6 h-6 text-green-400" />
@@ -101,20 +107,21 @@ const AdmissionsFeature = () => {
         {/* Explanation */}
         <div className="lg:col-span-5 flex flex-col justify-center">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">
-            The Master Register
+            {t("register.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed mb-6">
-            Forget scattered Excel sheets. Every admission event is logged with
-            a status tag. Jump instantly from the log to the specific{" "}
-            <strong>Admission Details</strong> or the{" "}
-            <strong>Patient Master Profile</strong>.
+            {t.rich("register.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
           <div className="flex gap-3">
             <div className="flex items-center gap-2 text-xs font-bold bg-blue-50 text-blue-700 px-3 py-1 rounded-full">
-              <span className="w-2 h-2 bg-blue-500 rounded-full" /> Active
+              <span className="w-2 h-2 bg-blue-500 rounded-full" />{" "}
+              {t("register.active")}
             </div>
             <div className="flex items-center gap-2 text-xs font-bold bg-green-50 text-green-700 px-3 py-1 rounded-full">
-              <span className="w-2 h-2 bg-green-500 rounded-full" /> Discharged
+              <span className="w-2 h-2 bg-green-500 rounded-full" />{" "}
+              {t("register.discharged")}
             </div>
           </div>
         </div>
@@ -133,12 +140,12 @@ const AdmissionsFeature = () => {
                     George Katsaros
                   </div>
                   <div className="text-[10px] text-slate-400 font-mono">
-                    SURG-01 • General Surgery
+                    {t("register.dept_surgery")}
                   </div>
                 </div>
               </div>
               <div className="px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-lg">
-                ACTIVE
+                {t("register.active").toUpperCase()}
               </div>
             </div>
             {/* Row 2 */}
@@ -152,12 +159,12 @@ const AdmissionsFeature = () => {
                     Maria P.
                   </div>
                   <div className="text-[10px] text-slate-400 font-mono">
-                    PATH-03 • Internal Med
+                    {t("register.dept_internal")}
                   </div>
                 </div>
               </div>
               <div className="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-lg">
-                DISCHARGED
+                {t("register.discharged").toUpperCase()}
               </div>
             </div>
             {/* Row 3 */}
@@ -171,12 +178,12 @@ const AdmissionsFeature = () => {
                     John Doe
                   </div>
                   <div className="text-[10px] text-slate-400 font-mono">
-                    ORTHO-02 • Orthopedics
+                    {t("register.dept_ortho")}
                   </div>
                 </div>
               </div>
               <div className="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-lg">
-                DISCHARGED
+                {t("register.discharged").toUpperCase()}
               </div>
             </div>
           </div>
@@ -187,14 +194,13 @@ const AdmissionsFeature = () => {
       <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden">
         <div className="relative z-10 max-w-3xl mb-10">
           <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <Ticket className="w-6 h-6 text-purple-600" /> Referrals & Service
-            Tickets
+            <Ticket className="w-6 h-6 text-purple-600" />{" "}
+            {t("referrals.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed">
-            Not every interaction is a full admission. Referrals track specific
-            services like <strong>Blood Tests</strong> or{" "}
-            <strong>X-Rays</strong> as individual tickets, keeping the main
-            timeline clean.
+            {t.rich("referrals.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -207,13 +213,17 @@ const AdmissionsFeature = () => {
 
             <div className="flex justify-between items-start mb-4 pl-4">
               <div className="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">
-                HEMATOLOGY
+                {t("referrals.hematology")}
               </div>
               <span className="text-[10px] text-slate-400">Today, 10:30</span>
             </div>
             <div className="pl-4">
-              <h4 className="font-bold text-slate-900">Full Blood Count</h4>
-              <p className="text-sm text-slate-500 mt-1">Ref by: Dr. Smith</p>
+              <h4 className="font-bold text-slate-900">
+                {t("referrals.blood_test")}
+              </h4>
+              <p className="text-sm text-slate-500 mt-1">
+                {t("referrals.ref_by", { doctor: "Dr. Smith" })}
+              </p>
             </div>
           </div>
 
@@ -225,13 +235,17 @@ const AdmissionsFeature = () => {
 
             <div className="flex justify-between items-start mb-4 pl-4">
               <div className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">
-                IMAGING
+                {t("referrals.imaging")}
               </div>
               <span className="text-[10px] text-slate-400">Yesterday</span>
             </div>
             <div className="pl-4">
-              <h4 className="font-bold text-slate-900">Chest X-Ray</h4>
-              <p className="text-sm text-slate-500 mt-1">Ref by: Dr. Jones</p>
+              <h4 className="font-bold text-slate-900">
+                {t("referrals.xray")}
+              </h4>
+              <p className="text-sm text-slate-500 mt-1">
+                {t("referrals.ref_by", { doctor: "Dr. Jones" })}
+              </p>
             </div>
           </div>
         </div>
@@ -245,14 +259,18 @@ const AdmissionsFeature = () => {
             <div className="p-2 bg-teal-50 rounded-xl text-teal-600">
               <Filter className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Deep Filtering</h3>
+            <h3 className="text-xl font-bold text-slate-900">
+              {t("filtering.title")}
+            </h3>
           </div>
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 flex flex-col gap-3">
             <div className="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200 shadow-sm text-xs text-slate-600">
-              <Search className="w-3 h-3 text-slate-400" /> "Cardiology"
+              <Search className="w-3 h-3 text-slate-400" />{" "}
+              {t("filtering.desc_query")}
             </div>
             <div className="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200 shadow-sm text-xs text-slate-600">
-              <FileInput className="w-3 h-3 text-slate-400" /> Status: Active
+              <FileInput className="w-3 h-3 text-slate-400" />{" "}
+              {t("filtering.desc_status")}
             </div>
           </div>
         </div>
@@ -262,11 +280,10 @@ const AdmissionsFeature = () => {
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-4">
               <Lock className="w-6 h-6 text-red-400" />
-              <h3 className="text-xl font-bold">Role-Based View</h3>
+              <h3 className="text-xl font-bold">{t("filtering.role_title")}</h3>
             </div>
             <p className="text-slate-400 text-sm mb-6">
-              Receptionists see the admission exists (for billing). Clinical
-              details remain locked without medical clearance.
+              {t("filtering.role_desc")}
             </p>
           </div>
 
@@ -280,7 +297,7 @@ const AdmissionsFeature = () => {
               <div className="bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-600 flex items-center gap-2 shadow-xl">
                 <EyeOff className="w-3 h-3 text-red-400" />
                 <span className="text-[10px] font-bold text-red-400 uppercase">
-                  Restricted
+                  {t("filtering.restricted")}
                 </span>
               </div>
             </div>

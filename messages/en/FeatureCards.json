@@ -1,0 +1,574 @@
+{
+  "task-management": {
+    "hero": {
+      "card1": {
+        "title": "Amoxicillin 500mg",
+        "description": "Administered at 08:00",
+        "status": "DONE"
+      },
+      "card2": {
+        "title": "Insulin (Regular)",
+        "due": "Due: 12:00 PM (Now)",
+        "button": "Complete"
+      },
+      "card3": {
+        "title": "Vitals Check",
+        "scheduled": "Scheduled: 16:00",
+        "status": "PENDING"
+      }
+    },
+    "workflow": {
+      "title": "From Prescription to Task",
+      "description": "Tasks are automatically generated when a Doctor creates a prescription. The system calculates the entire schedule based on the {strong1} and {strong2}.",
+      "admin_rate": "Administration Rate",
+      "duration": "Duration",
+      "input1": "Input: Medicine & Dosage",
+      "input2": "Input: Frequency (e.g. \"Every 8 Hours\")",
+      "result": "Result: Auto-populated Task Queue"
+    },
+    "safety": {
+      "title": "Safety Net & Monitoring",
+      "description": "The system actively monitors timestamps. If a task passes its due time without action, it flags as <strong></strong>.",
+      "neglected": "Neglected",
+      "alert_title": "Neglect Detected",
+      "alert_desc": "Alert sent to Head Nurse regarding missed dose for Patient #1024.",
+      "audit_title": "Full Audit Trail",
+      "audit_desc": "Who performed the action, exact timestamp, and any modifications logged permanently."
+    },
+    "types": {
+      "title": "Supported Workflow Types",
+      "type1_title": "Scheduled Tasks",
+      "type1_desc": "Automatically appear in the queue when their time approaches based on the prescription timeline.",
+      "type2_title": "Stat (One-Time)",
+      "type2_desc": "Immediate administration logic. Allows staff to prescribe and administer \"on the spot\" without future scheduling."
+    }
+  },
+  "smart-storage": {
+    "hero": {
+      "cabinet": "Cabinet: ICU-North-1",
+      "drawer": "Drawer 03 • Ambient Storage",
+      "iot": "IoT Connected",
+      "tooltip": {
+        "amoxicillin": "Amoxicillin",
+        "qty": "Qty: {qty}",
+        "low": "Low",
+        "exp": "Exp: 3 Days"
+      }
+    },
+    "mapping": {
+      "title": "Precision Mapping",
+      "description": "We create a 1-to-1 digital twin of your facility. Every pill has an exact coordinate.",
+      "cabinet": "Cabinet",
+      "drawer": "Drawer",
+      "position": "Position"
+    },
+    "automation": {
+      "title": "Rapid Ingestion",
+      "description": "Skip manual entry. Scan the manufacturer's barcode, and Curify identifies the product instantly."
+    },
+    "logistics": {
+      "badge": "Logistics Automation",
+      "title": "Smart Scheduled Transfers",
+      "step1_title": "Step 1: Analyze",
+      "step1_desc": "System scans all <strong></strong> for the next 24h.",
+      "active_tasks": "Active Tasks",
+      "step2_title": "Step 2: Calculate",
+      "step2_desc": "Calculates exact dosage needed per Ward.",
+      "result_title": "The Result:",
+      "result_desc": "Automatically creates a transfer order from Central Storage to the Ward Cabinet. No manual counting required."
+    },
+    "sync": {
+      "title": "Zero-Touch Deductions",
+      "nurse_action": "Nurse completes task",
+      "administered": "Administered 100mg",
+      "stock_update": "Stock Update",
+      "unit": "-1 Unit"
+    },
+    "safety": {
+      "badge": "Safety First",
+      "title": "Expiry Alerts",
+      "description": "Never administer expired drugs. High-priority warnings for items nearing date.",
+      "item_title": "Insulin Batch A",
+      "item_exp": "Exp: Tomorrow"
+    }
+  },
+  "financial-management": {
+    "hero": {
+      "invoice": "Invoice #4092",
+      "today": "Today",
+      "service_title": "Cardiology Visit",
+      "service_type": "Service",
+      "product_title": "Skincare Cream",
+      "product_type": "Product",
+      "total": "Total",
+      "processing": "Processing...",
+      "reader_active": "Contactless Reader Active",
+      "approved": "Approved"
+    },
+    "steps": {
+      "step1_title": "1. Select Recipient",
+      "step1_desc": "Choose an existing {strong1} or bill a {strong2} entity. Supports VAT/Tax ID entry for corporate clients instantly.",
+      "patient": "Patient",
+      "business": "Business",
+      "step2_title": "2. Mixed Basket",
+      "step2_desc": "Combine {strong1} (Consultations) and {strong2} (Crutches, Creams) on a single unified receipt.",
+      "medical_services": "Medical Services",
+      "physical_products": "Physical Products",
+      "step3_title": "3. Finalize",
+      "step3_desc": "Add comments, apply discounts, and trigger the <strong></strong>. Status updates from {em1} to {em2} instantly.",
+      "pos_terminal": "POS Terminal",
+      "pending": "Pending",
+      "completed": "Completed"
+    },
+    "automation": {
+      "badge": "Speed Feature",
+      "title": "Visit-to-Invoice Automation",
+      "description": "Don't type details twice. Click \"Issue Receipt\" on a patient visit to pull context instantly.",
+      "visit_log": "Visit Log",
+      "auto_invoice": "Auto-Invoice"
+    },
+    "templates": {
+      "title": "Payment Templates",
+      "description": "Save bundles like \"Annual Checkup\" to auto-fill services, prices, and tax rates in one click.",
+      "template1": "Annual Checkup",
+      "template2": "Vaccine Pack"
+    }
+  },
+  "personnel-management": {
+    "hero": {
+      "invite_action": "Admin sending invite to:",
+      "id_label": "ID:",
+      "role_label": "Role: Doctor",
+      "specialty_label": "Specialty: Cardiology",
+      "access_label": "Access: Level 3 (Full)",
+      "status_label": "Active Staff"
+    },
+    "onboarding": {
+      "title": "Secure Onboarding",
+      "description": "Admins trigger an invite via email. This links the user's unique identity to your facility instantly.",
+      "step1": "1. Input Email",
+      "step2": "2. Assign Clinic",
+      "step3": "3. Define Specialty"
+    },
+    "routing": {
+      "title": "Smart Routing",
+      "description": "Specialties aren't just tags. They dictate workflow. A <strong></strong> automatically sees Cardiac patients.",
+      "cardiologist": "Cardiologist",
+      "patient_label": "Patient",
+      "routed_label": "Routed To",
+      "issue_label": "Heart Issue",
+      "specialty_label": "Cardiology"
+    },
+    "access": {
+      "badge": "Access Control",
+      "title": "Granular Permissions",
+      "description": "Default roles get you started, but <strong></strong> give you control. Restrict sensitive financial data or enable prescribing rights per user.",
+      "admin_overrides": "Admin Overrides",
+      "gdpr": "GDPR Compliant",
+      "zero_trust": "Zero-Trust Model",
+      "settings_title": "Permission Settings",
+      "view_files": "View Medical Files",
+      "create_prescriptions": "Create Prescriptions",
+      "view_financials": "View Financials",
+      "delete_records": "Delete Records"
+    },
+    "directory": {
+      "title": "Organization Directory",
+      "description": "Smart grouping by Role for instant visibility.",
+      "doctors": "Doctors",
+      "nurses": "Nurses",
+      "admin": "Admin"
+    }
+  },
+  "advanced-analytics": {
+    "hero": {
+      "badge": "Business Intelligence",
+      "title": "If it happens in Curify, <br></br> <strong>we track it.</strong>",
+      "description": "Curify offers powerful <strong>initial analytics</strong> out of the box. Every task, transaction, and admission is logged to give you instant visibility into your facility's pulse without any setup.",
+      "filter_label": "Filter: Last 30 Days",
+      "kpi1": "Total Admissions",
+      "kpi2": "Bed Occupancy",
+      "kpi3": "Net Revenue"
+    },
+    "operational": {
+      "title": "Standard Operational Intelligence",
+      "description": "Identify {strong1}efficiency blocks{/strong1} and {strong2}revenue leaks{/strong2} immediately. Our standard suite covers the core pillars of your organization: Inventory, Staff, and Finance.",
+      "supply_chain": "Supply Chain",
+      "fast_movers": "Fast Movers",
+      "optimize": "Optimize Bulk Order",
+      "dead_stock": "Dead Stock",
+      "liquidate": "Liquidate",
+      "workforce": "Workforce",
+      "tasks_count": "{count} Tasks",
+      "pl_analysis": "P&L Analysis",
+      "pl_desc": "Real-time calculation of COGS (Cost of Goods Sold) per treatment vs Revenue.",
+      "revenue": "Revenue",
+      "cost": "Cost",
+      "margin": "+40% Margin"
+    },
+    "custom": {
+      "badge": "On-Demand Intelligence",
+      "title": "Custom Metrics Engine",
+      "description": "Every organization has unique pain points. Curify allows you to build <strong>custom workflows and analysis</strong> to find specific blocks.",
+      "research_label": "Research specific patient cohorts (e.g., \"Post-Op complications in Q3\").",
+      "track_label": "Track niche KPIs like \"Stent Success Rate\" or \"Birth Types\".",
+      "birth_stats": "Birth Statistics",
+      "custom_report": "Custom Report",
+      "natural": "Natural",
+      "c_section": "C-Section",
+      "births_count": "{count} Births"
+    }
+  },
+  "clinical-core": {
+    "hero": {
+      "badge": "Clinical Core",
+      "title": "The central nervous system <br></br> <strong>of patient care.</strong>",
+      "description": "One unified card for everything. From demographics and AMKA auto-fill to real-time vitals and admission history.",
+      "admitted": "Admitted",
+      "age": "Age",
+      "age_val": "34 Yrs",
+      "blood": "Blood",
+      "vitals_live": "Vitals (Live)",
+      "active_protocol": "Active Protocol",
+      "bpm": "bpm"
+    },
+    "automation": {
+      "amka_title": "AMKA Integration",
+      "amka_desc": "Entering the 11-digit ID automatically fetches official data from the National Health System. Zero typing errors.",
+      "fetch": "Fetch",
+      "anomaly_title": "Smart Anomaly Detection",
+      "anomaly_desc": "Inputs aren't just numbers. If a vital sign (HR, SpO2) deviates from safety norms, the system triggers an instant alert.",
+      "heart_rate": "Heart Rate"
+    },
+    "templates": {
+      "badge": "Flexible Architecture",
+      "title": "No-Code Clinical Templates",
+      "description": "A Dermatologist needs skin mapping. A Cardiologist needs EKG notes. Create custom forms without writing code.",
+      "cardiology": "Cardiology",
+      "derma": "Derma",
+      "custom_template": "Custom Template",
+      "post_op_check": "Post-Op Check (Cardio)"
+    },
+    "protocols": {
+      "title": "1-Click Protocols",
+      "description": "Don't prescribe items one by one. Apply a <strong>\"Post-Surgery Bundle\"</strong> to instantly add 3 meds, 2 nursing tasks, and diet orders to the schedule.",
+      "bundle_applied": "Bundle Applied",
+      "documents_badge": "Documents",
+      "documents_title": "Hierarchical Files",
+      "documents_desc": "Store X-rays and consents in nested folders, just like on your desktop."
+    }
+  },
+  "appointment-calendar": {
+    "hero": {
+      "badge": "Smart Scheduling",
+      "title": "Not just a calendar. <br></br> <strong>An operational guardrail.</strong>",
+      "description": "Curify's calendar is context-aware. It links patients to records, prevents double-booking via Google Sync, and enforces <strong>Smart Tag Limits</strong> to prevent staff burnout.",
+      "rule_active": "Rule Active: Max 3 Surgeries/Day",
+      "surgery": "Surgery",
+      "add_surgery": "Add Surgery",
+      "limit_reached": "Limit Reached!",
+      "daily_max": "Daily max (3) exceeded."
+    },
+    "reception": {
+      "title": "Reception Command",
+      "description": "Managing high traffic? The <strong>Aggregate View</strong> allows receptionists to overlay multiple doctors' schedules to find open slots instantly.",
+      "multi_select": "Multi-Select:",
+      "multi_select_desc": "Toggle specific doctors on/off.",
+      "split_view": "Split View:",
+      "split_view_desc": "Compare schedules side-by-side."
+    },
+    "sync": {
+      "google_title": "2-Way Google Sync",
+      "google_desc": "Personal commitments block medical slots automatically. No more double-booking.",
+      "reminders_title": "Automated Reminders",
+      "reminders_desc": "Reduce no-shows. We send SMS/Email alerts to patients 24h before their visit automatically.",
+      "system_now": "System • Now",
+      "reminder_msg": "Reminder sent to <strong>George K.</strong> for appointment tomorrow at 10:00 AM."
+    },
+    "linking": {
+      "badge": "Context Aware",
+      "title": "Deep Patient Linking",
+      "description": "Appointments aren't just time slots. They are linked directly to the <strong>Medical File</strong>. Click the event to see history, meds, and notes instantly.",
+      "view_profile": "View Medical Profile →"
+    }
+  },
+  "patient-dashboard": {
+    "hero": {
+      "badge": "Clinical Research",
+      "title": "Turn raw data into <br></br> <strong>medical insights.</strong>",
+      "description": "Stop digging through paper files. Use our <strong>Advanced Query Builder</strong> to filter millions of records in seconds. Perfect for audits, studies, and cohort analysis.",
+      "last_3_months": "Last 3 Months",
+      "tag_oncology": "Tag: Oncology",
+      "result_abnormal": "Result: Abnormal",
+      "cohort_identified": "Cohort Identified",
+      "export": "Export for Publication"
+    },
+    "snapshot": {
+      "title": "Operational Snapshot",
+      "description": "Instant visibility into load and capacity the moment you log in.",
+      "new_patients": "New patients this month",
+      "capacity": "Capacity",
+      "beds_full": "{occupied} / {total} Beds Full",
+      "active_patients": "Patients currently active"
+    },
+    "search": {
+      "title": "Universal Search",
+      "description": "Don't scroll through lists. Find any patient by Name, AMKA (SSN), or Internal ID instantly.",
+      "filter_status": "Active vs Discharged",
+      "filter_ward": "Filter by Ward",
+      "id_label": "ID: #{id}",
+      "active": "active",
+      "discharged": "discharged"
+    }
+  },
+  "admissions-referrals": {
+    "hero": {
+      "badge": "Global Ledger",
+      "title": "The heartbeat of <br></br> <strong>patient flow.</strong>",
+      "description": "A macro-level view of every hospitalization. Track occupancy, throughput efficiency, and discharge rates in real-time.",
+      "admissions": "Admissions",
+      "active_beds": "Active Beds",
+      "discharged": "Discharged"
+    },
+    "register": {
+      "title": "The Master Register",
+      "description": "Forget scattered Excel sheets. Every admission event is logged with a status tag. Jump instantly from the log to the specific <strong>Admission Details</strong> or the <strong>Patient Master Profile</strong>.",
+      "active": "Active",
+      "discharged": "Discharged",
+      "dept_surgery": "SURG-01 • General Surgery",
+      "dept_internal": "PATH-03 • Internal Med",
+      "dept_ortho": "ORTHO-02 • Orthopedics"
+    },
+    "referrals": {
+      "title": "Referrals & Service Tickets",
+      "description": "Not every interaction is a full admission. Referrals track specific services like <strong>Blood Tests</strong> or <strong>X-Rays</strong> as individual tickets, keeping the main timeline clean.",
+      "hematology": "HEMATOLOGY",
+      "blood_test": "Full Blood Count",
+      "ref_by": "Ref by: {doctor}",
+      "imaging": "IMAGING",
+      "xray": "Chest X-Ray"
+    },
+    "filtering": {
+      "title": "Deep Filtering",
+      "desc_query": "\"Cardiology\"",
+      "desc_status": "Status: Active",
+      "role_title": "Role-Based View",
+      "role_desc": "Receptionists see the admission exists (for billing). Clinical details remain locked without medical clearance.",
+      "restricted": "Restricted"
+    }
+  },
+  "reporting-privacy": {
+    "hero": {
+      "badge": "Digital-to-Physical",
+      "title": "Paperless workflow. <br></br> <strong>Print-ready backups.</strong>",
+      "description": "Curify is digital-first, but reality-aware. Generate professional, legible PDF reports for Vitals, Meds, and Discharge Summaries instantly.",
+      "pdf_ready": "PDF READY"
+    },
+    "assets": {
+      "med_log": "Medication Log",
+      "vitals_chart": "Vitals Chart",
+      "admissions": "Admissions",
+      "export": "Export to PDF / Print"
+    },
+    "prescriptions": {
+      "title": "High-Fidelity Prescriptions",
+      "description": "It's not just \"Drug + Dose\". Capture the nuance of hospital workflows with specific flags and responsibility tracking.",
+      "morphine": "Morphine Sulfate",
+      "morphine_desc": "IV Drip • 2mg/ml",
+      "sos_flag": "SOS (Pain)",
+      "pump_flag": "Pump",
+      "timeline_start": "Start: 14:00",
+      "timeline_end": "End: 22:00",
+      "timeline_label": "Timeline",
+      "precise_title": "Precise Timeline",
+      "precise_desc": "Define exact Start/End times for infusions.",
+      "flags_title": "Special Flags",
+      "flags_desc": "'Patient Provided' (No Cost) or 'SOS' (On Demand).",
+      "resp_title": "Clear Responsibility",
+      "resp_desc": "Assign specific supervisors to high-risk lines."
+    },
+    "privacy": {
+      "badge": "Zero-Trust Model",
+      "title": "Granular Privacy",
+      "description": "Not everyone needs to see everything. Lock down sensitive files (VIPs, Psychiatric) using <strong>Access Control Lists (ACLs)</strong>.",
+      "user_spec": "User-Specific",
+      "role_based": "Role-Based",
+      "loc_based": "Location-Based",
+      "access_log": "Access Log: Patient #9921 (VIP)",
+      "reason_primary": "Reason: Primary Doctor",
+      "reason_role": "Reason: Role Restriction",
+      "reason_ward": "Reason: Wrong Ward"
+    }
+  },
+  "audit-log": {
+    "hero": {
+      "badge": "System Accountability",
+      "title": "The Flight Recorder <br></br> <strong>for your organization.</strong>",
+      "description": "Every click, every edit, every deletion. Curify captures a granular <strong>Audit Trail</strong> to ensure absolute transparency and trace root causes instantly."
+    },
+    "live": {
+      "badge": "LIVE FEED // AUDIT_STREAM_01",
+      "secure": "SECURE CONNECTION",
+      "modification": "MODIFICATION",
+      "creation": "CREATION",
+      "deletion": "DELETION",
+      "dosage": "Dosage:",
+      "created_prescription": "Created new prescription <strong>#RX-992</strong> for Patient A.",
+      "removed_file": "Removed Patient File <strong>#9912</strong>.",
+      "irreversible": "IRREVERSIBLE"
+    },
+    "metrics": {
+      "title": "Operational Velocity",
+      "modifications": "Modifications",
+      "creations": "Creations",
+      "deletions": "Deletions"
+    },
+    "search": {
+      "badge": "Forensic Search",
+      "title": "Find the needle.",
+      "actor": "Actor: Dr. Smith",
+      "action": "Action: Edit Only",
+      "date": "Date: Last 24h"
+    },
+    "diff": {
+      "badge": "The \"From \u2192 To\" Logic",
+      "title": "Not just \"Who\", but \"What\".",
+      "description": "We don't just log that a record changed. We snapshotted the <strong>state before</strong> and the <strong>state after</strong>. This is critical for medical error resolution.",
+      "before": "Before",
+      "after": "After",
+      "prescription": "Prescription #101"
+    },
+    "security": {
+      "title": "Deterrent Security",
+      "description": "Knowing every footprint is recorded prevents malicious data theft and unauthorized browsing."
+    },
+    "error": {
+      "title": "Error Resolution",
+      "description": "Spot a mistake? Trace it back to the exact timestamp and user for immediate correction/retraining."
+    }
+  },
+  "clinics-infrastructure": {
+    "hero": {
+      "badge": "Infrastructure Map",
+      "title": "Your facility's <br></br> <strong>digital twin.</strong>",
+      "description": "A complete hierarchical map of your organization. From the building level down to the individual bed, Curify tracks capacity and resources in real-time."
+    },
+    "hierarchy": {
+      "hospital": "General Hospital",
+      "cardiology": "Cardiology",
+      "icu": "ICU Wing",
+      "pediatrics": "Pediatrics"
+    },
+    "config": {
+      "title": "Clinic Configuration",
+      "description": "Define operational units like \"West Wing\" or \"Radiology\". These containers manage the staff access and patient flow.",
+      "display_name": "Display Name",
+      "icu_name": "\"ICU - North\"",
+      "direct_line": "Direct Line"
+    },
+    "interop": {
+      "badge": "Interoperability",
+      "title": "Gov. Integration ID",
+      "description": "Seamlessly map internal clinics to National Health System regulatory codes for automated reporting.",
+      "external_code": "External Code"
+    },
+    "rooms": {
+      "title": "Room Management",
+      "description": "The functional units of care. Track capacity, assign equipment, and categorize by medical need.",
+      "quick_add": "Quick Add Room",
+      "capacity_label": "Capacity",
+      "beds_unit": "Beds",
+      "cat_label": "Categorization",
+      "std_ward": "Standard Ward",
+      "incubator": "Incubator / Newborn",
+      "list_view": "Global List View",
+      "list_desc": "Top-down search across the entire organization."
+    }
+  },
+  "file-manager": {
+    "hero": {
+      "badge": "Digital Assets",
+      "title": "Your organization's <br></br> <strong>central archive.</strong>",
+      "description": "A desktop-class file manager built for the web. Organize thousands of scans, consent forms, and reports in a structured, nested hierarchy."
+    },
+    "library": {
+      "title": "Library",
+      "cardiology": "Cardiology",
+      "neurology": "Neurology"
+    },
+    "explorer": {
+      "january": "January"
+    },
+    "search": {
+      "title": "Find a needle in a haystack.",
+      "description": "The search engine scans across all patients and folders simultaneously. Use granular filters to trace documents by <strong>Uploader</strong> (Accountability) or <strong>Date Range</strong> (Specific Window).",
+      "by_patient": "By Patient",
+      "by_uploader": "By Uploader",
+      "by_file": "By File Type",
+      "by_date": "By Date",
+      "uploader_badge": "Uploader",
+      "xray_badge": "X-Ray",
+      "files_found": "{count} more files found...",
+      "patient_label": "Patient: {patient}"
+    },
+    "security": {
+      "badge": "Smart Security",
+      "title": "Global Search, Scoped Access.",
+      "description": "The Global File Finder <strong>does not bypass</strong> patient profile security. If a user is restricted from viewing a VIP patient, those files will remain invisible in the global search results. Zero leaks.",
+      "searching": "Searching \"{term}\"",
+      "count_found": "{count} Files Found",
+      "zero_results": "0 Results"
+    }
+  },
+  "protocols-templates": {
+    "hero": {
+      "badge": "Standardization",
+      "title": "Clinical standards, <br></br> <strong>automated.</strong>",
+      "description": "Don't rely on memory. Define <strong>Protocols</strong> (bundles) and <strong>Custom Templates</strong> to ensure every patient receives the exact standard of care, every time."
+    },
+    "bundle": {
+      "title": "Post-Op Protocol",
+      "apply": "1 Click Apply",
+      "medication": "MEDICATION",
+      "painkiller": "Painkiller IV",
+      "task": "TASK",
+      "dressing": "Change Dressing",
+      "nursing": "Nursing Staff",
+      "diet": "DIET",
+      "soft_foods": "Soft Foods",
+      "kitchen": "Kitchen Order"
+    },
+    "builder": {
+      "title": "No-Code Form Builder",
+      "description": "Cardiology needs EKG notes. Dermatology needs skin maps. Curify allows admins to design <strong>Custom Medical Records</strong> with a drag-and-drop interface.",
+      "custom_fields": "Custom Fields",
+      "groups": "Groups",
+      "logic": "Logic",
+      "fields_palette": "Fields",
+      "text": "Text",
+      "date_time": "Date / Time",
+      "checkbox": "Checkbox",
+      "file_upload": "File Upload",
+      "ai_field": "AI Field",
+      "canvas": "Canvas",
+      "symptoms": "Patient Symptoms",
+      "onset": "Date of Onset"
+    },
+    "behaviors": {
+      "links_title": "Public Links",
+      "links_desc": "Generate a URL for patient intake forms. Submissions directly populate the EMR profile.",
+      "singleton_title": "Singleton Forms",
+      "singleton_desc": "\"Update only\" templates. Perfect for a \"Patient Summary\" card that evolves over time.",
+      "nested_title": "Nested Helpers",
+      "nested_desc": "Build \"sub-components\" (e.g., Address Block) and reuse them inside multiple larger forms."
+    },
+    "computation": {
+      "badge": "Smart Computation",
+      "title": "The AI Field",
+      "description": "Don't ask users to do math. A special field type that runs logic based on other data points instantly.",
+      "dob": "Date of Birth",
+      "calculated": "Auto-Calculated",
+      "age": "{age} Yrs"
+    }
+  }
+}

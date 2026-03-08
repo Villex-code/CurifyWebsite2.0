@@ -8,5 +8,79 @@
     "medicationStorage": "Αποθήκευση Φαρμάκων",
     "appointmentSystem": "Σύστημα Ραντεβού",
     "dataAnalytics": "Ανάλυση Δεδομένων"
+  },
+  "hero": {
+    "badge": "Οικοσύστημα Χαρακτηριστικών",
+    "headline_light": "Απόλυτος έλεγχος στην",
+    "headline_bold": "λειτουργία σας.",
+    "description": "Εξερευνήστε την τεκμηρίωση για το λειτουργικό σύστημα που τροφοδοτεί τη σύγχρονη υγεία. Από {strong1} έως {strong2}.",
+    "iot_inventory": "IoT απογραφή",
+    "ai_diagnostics": "AI διαγνωστικά",
+    "quick_access": "Γρήγορη Πρόσβαση:",
+    "tags": {
+      "inventory": "Έξυπνη Απογραφή",
+      "prescribing": "Ηλεκτρονική Συνταγογράφηση",
+      "billing": "Τιμολόγηση",
+      "telehealth": "Τηλεϊατρική"
+    },
+    "visuals": {
+      "growth": "ΑΝΑΠΤΥΞΗ",
+      "revenue": "Έσοδα",
+      "billing": "ΤΙΜΟΛΟΓΗΣΗ",
+      "amount": "ΠΟΣΟ",
+      "workflow": "ΡΟΗ ΕΡΓΑΣΙΑΣ",
+      "active": "ΕΝΕΡΓΟ"
+    },
+    "search": {
+      "placeholder": "Βρείτε ένα χαρακτηριστικό (π.χ. 'Αναφορές')...",
+      "results": "Αποτελέσματα Αναζήτησης",
+      "suggested": "Προτεινόμενα Χαρακτηριστικά",
+      "no_results": "Δεν βρέθηκαν χαρακτηριστικά που να ταιριάζουν με \"{query}\"",
+      "press": "Πατήστε",
+      "enter": "Enter",
+      "to_select": "για επιλογή",
+      "full_docs": "Πλήρης Τεκμηρίωση"
+    }
+  },
+  "sidebar": {
+    "placeholder": "Βρείτε ένα χαρακτηριστικό..."
+  },
+  "content": {
+    "empty": {
+      "title": "Curify Operating System",
+      "description": "Επιλέξτε μια ενότητα από την πλευρική εργαλειοθήκη για να εξερευνήσετε τις δυνατότητες της πλατφόρμας.",
+      "waiting": "Αναμονή για είσοδο..."
+    },
+    "footer": {
+      "title": "Είστε έτοιμοι για βελτιστοποίηση;",
+      "description": "Ξεκινήστε να χρησιμοποιείτε το {title} στη ροή εργασίας σας.",
+      "cta": "Κλείστε ένα Demo"
+    }
+  },
+  "registry": {
+    "categories": {
+      "clinical": "Κλινικά",
+      "inventory": "Αποθέματα",
+      "financials": "Οικονομικά",
+      "administration": "Διοίκηση",
+      "administrative": "Διοικητικά",
+      "security": "Ασφάλεια"
+    },
+    "items": {
+      "task-management": "Ροή Εργασιών & Συνταγογράφησης",
+      "smart-storage": "Αποθήκευση & Απογραφή",
+      "financial-management": "Οικονομική Διαχείριση & Πληρωμές",
+      "personnel-management": "Διαχείριση Προσωπικού",
+      "analytics-bi": "Προηγμένη Ανάλυση & Αναφορές",
+      "appointment-calendar": "Διαχείριση Ραντεβού & Ημερολογίου",
+      "patient-dashboard": "Πίνακας Ελέγχου & Αναζήτηση Ασθενών",
+      "patient-profile": "Προφίλ Ασθενή & Κλινική Διαχείριση",
+      "reporting-privacy": "Αναφορές & Έλεγχοι Απορρήτου",
+      "audit-log": "Ενέργειες Προσωπικού & Αρχείο Καταγραφής",
+      "admissions-referrals": "Εισαγωγές & Παραπομπές",
+      "clinics-infrastructure": "Κλινικές & Υποδομές",
+      "file-manager": "Παγκόσμιος Διαχειριστής Αρχείων",
+      "protocols-templates": "Πρωτόκολλα & Πρότυπα"
+    }
   }
 }

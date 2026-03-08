@@ -57,7 +57,7 @@ const ContactLeft = () => {
           <div className="p-3 sm:p-4 rounded-lg">
             <div className="flex gap-3 sm:gap-4">
               <a
-                href="https://www.linkedin.com/company/curify-app/"
+                href="https://www.linkedin.com/company/curifyapp/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full text-teal-700 hover:bg-teal-100 transition-colors"

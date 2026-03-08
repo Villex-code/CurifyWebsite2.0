@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ClipboardList,
@@ -11,13 +12,13 @@ import {
   Box,
   LayoutTemplate,
   Plus,
-  CheckSquare,
   Binary,
-  ArrowDown,
   Settings,
 } from "lucide-react";
 
 const ProtocolsFeature = () => {
+  const t = useTranslations("FeatureCards.protocols-templates");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE PROTOCOL ENGINE --- */}
@@ -34,16 +35,20 @@ const ProtocolsFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <ClipboardList className="w-3 h-3" /> Standardization
+            <ClipboardList className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Clinical standards, <br />
-            <span className="text-purple-400">automated.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks: React.ReactNode) => (
+                <span className="text-purple-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Don't rely on memory. Define <strong>Protocols</strong> (bundles)
-            and <strong>Custom Templates</strong> to ensure every patient
-            receives the exact standard of care, every time.
+            {t.rich("hero.description", {
+              strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -61,9 +66,9 @@ const ProtocolsFeature = () => {
                 <ClipboardList className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold text-sm">Post-Op Protocol</h4>
+                <h4 className="font-bold text-sm">{t("bundle.title")}</h4>
                 <span className="text-[10px] text-purple-200 uppercase tracking-wide">
-                  1 Click Apply
+                  {t("bundle.apply")}
                 </span>
               </div>
             </motion.div>
@@ -83,9 +88,11 @@ const ProtocolsFeature = () => {
                   className="bg-slate-800 border border-slate-700 p-3 rounded-xl w-32"
                 >
                   <span className="text-[10px] text-teal-400 font-bold block mb-1">
-                    MEDICATION
+                    {t("bundle.medication")}
                   </span>
-                  <div className="text-xs text-white">Painkiller IV</div>
+                  <div className="text-xs text-white">
+                    {t("bundle.painkiller")}
+                  </div>
                   <div className="text-[10px] text-slate-400">500mg • 8h</div>
                 </motion.div>
               </div>
@@ -99,11 +106,13 @@ const ProtocolsFeature = () => {
                   className="bg-slate-800 border border-slate-700 p-3 rounded-xl w-32"
                 >
                   <span className="text-[10px] text-blue-400 font-bold block mb-1">
-                    TASK
+                    {t("bundle.task")}
                   </span>
-                  <div className="text-xs text-white">Change Dressing</div>
+                  <div className="text-xs text-white">
+                    {t("bundle.dressing")}
+                  </div>
                   <div className="text-[10px] text-slate-400">
-                    Nursing Staff
+                    {t("bundle.nursing")}
                   </div>
                 </motion.div>
               </div>
@@ -117,11 +126,13 @@ const ProtocolsFeature = () => {
                   className="bg-slate-800 border border-slate-700 p-3 rounded-xl w-32"
                 >
                   <span className="text-[10px] text-orange-400 font-bold block mb-1">
-                    DIET
+                    {t("bundle.diet")}
                   </span>
-                  <div className="text-xs text-white">Soft Foods</div>
+                  <div className="text-xs text-white">
+                    {t("bundle.soft_foods")}
+                  </div>
                   <div className="text-[10px] text-slate-400">
-                    Kitchen Order
+                    {t("bundle.kitchen")}
                   </div>
                 </motion.div>
               </div>
@@ -135,18 +146,18 @@ const ProtocolsFeature = () => {
         {/* Text Explanation */}
         <div className="lg:col-span-5 flex flex-col justify-center">
           <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <PenTool className="w-6 h-6 text-blue-600" /> No-Code Form Builder
+            <PenTool className="w-6 h-6 text-blue-600" /> {t("builder.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed mb-8">
-            Cardiology needs EKG notes. Dermatology needs skin maps. Curify
-            allows admins to design <strong>Custom Medical Records</strong> with
-            a drag-and-drop interface.
+            {t.rich("builder.description", {
+              strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
+            })}
           </p>
 
           <div className="flex flex-wrap gap-2">
-            <FeatureBadge icon={Settings} text="Custom Fields" />
-            <FeatureBadge icon={LayoutTemplate} text="Groups" />
-            <FeatureBadge icon={Binary} text="Logic" />
+            <FeatureBadge icon={Settings} text={t("builder.custom_fields")} />
+            <FeatureBadge icon={LayoutTemplate} text={t("builder.groups")} />
+            <FeatureBadge icon={Binary} text={t("builder.logic")} />
           </div>
         </div>
 
@@ -156,15 +167,15 @@ const ProtocolsFeature = () => {
             {/* Sidebar Palette */}
             <div className="w-1/4 bg-slate-50 rounded-xl p-3 border border-slate-100 flex flex-col gap-2">
               <div className="text-[10px] font-bold text-slate-400 uppercase mb-1">
-                Fields
+                {t("builder.fields_palette")}
               </div>
-              <DraggableItem label="Text" />
-              <DraggableItem label="Date / Time" />
-              <DraggableItem label="Checkbox" />
-              <DraggableItem label="File Upload" />
+              <DraggableItem label={t("builder.text")} />
+              <DraggableItem label={t("builder.date_time")} />
+              <DraggableItem label={t("builder.checkbox")} />
+              <DraggableItem label={t("builder.file_upload")} />
               <div className="mt-auto p-2 bg-purple-100 rounded-lg border border-purple-200">
                 <div className="flex items-center gap-1 text-[10px] font-bold text-purple-700">
-                  <Sparkles className="w-3 h-3" /> AI Field
+                  <Sparkles className="w-3 h-3" /> {t("builder.ai_field")}
                 </div>
               </div>
             </div>
@@ -172,13 +183,13 @@ const ProtocolsFeature = () => {
             {/* Canvas */}
             <div className="flex-1 bg-slate-50/50 rounded-xl border-2 border-dashed border-slate-200 relative p-4 flex flex-col gap-3">
               <div className="absolute top-2 right-2 text-[10px] text-slate-400 font-bold uppercase">
-                Canvas
+                {t("builder.canvas")}
               </div>
 
               {/* Existing Field */}
               <div className="w-full bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
                 <div className="text-xs font-bold text-slate-700 mb-1">
-                  Patient Symptoms
+                  {t("builder.symptoms")}
                 </div>
                 <div className="h-2 w-full bg-slate-100 rounded" />
               </div>
@@ -186,7 +197,7 @@ const ProtocolsFeature = () => {
               {/* Existing Field */}
               <div className="w-full bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
                 <div className="text-xs font-bold text-slate-700 mb-1">
-                  Date of Onset
+                  {t("builder.onset")}
                 </div>
                 <div className="h-2 w-1/2 bg-slate-100 rounded" />
               </div>
@@ -212,11 +223,10 @@ const ProtocolsFeature = () => {
             <Globe className="w-6 h-6" />
           </div>
           <h4 className="font-bold text-slate-900 text-lg mb-2">
-            Public Links
+            {t("behaviors.links_title")}
           </h4>
           <p className="text-sm text-slate-500 leading-relaxed">
-            Generate a URL for patient intake forms. Submissions directly
-            populate the EMR profile.
+            {t("behaviors.links_desc")}
           </p>
         </div>
 
@@ -226,11 +236,10 @@ const ProtocolsFeature = () => {
             <RefreshCw className="w-6 h-6" />
           </div>
           <h4 className="font-bold text-slate-900 text-lg mb-2">
-            Singleton Forms
+            {t("behaviors.singleton_title")}
           </h4>
           <p className="text-sm text-slate-500 leading-relaxed">
-            "Update only" templates. Perfect for a "Patient Summary" card that
-            evolves over time.
+            {t("behaviors.singleton_desc")}
           </p>
         </div>
 
@@ -240,11 +249,10 @@ const ProtocolsFeature = () => {
             <Box className="w-6 h-6" />
           </div>
           <h4 className="font-bold text-slate-900 text-lg mb-2">
-            Nested Helpers
+            {t("behaviors.nested_title")}
           </h4>
           <p className="text-sm text-slate-500 leading-relaxed">
-            Build "sub-components" (e.g., Address Block) and reuse them inside
-            multiple larger forms.
+            {t("behaviors.nested_desc")}
           </p>
         </div>
       </div>
@@ -257,12 +265,13 @@ const ProtocolsFeature = () => {
         <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-purple-300 text-xs font-bold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3 h-3" /> Smart Computation
+              <Sparkles className="w-3 h-3" /> {t("computation.badge")}
             </div>
-            <h3 className="text-3xl font-bold mb-4">The AI Field</h3>
+            <h3 className="text-3xl font-bold mb-4">
+              {t("computation.title")}
+            </h3>
             <p className="text-purple-100/80 text-lg leading-relaxed">
-              Don't ask users to do math. A special field type that runs logic
-              based on other data points instantly.
+              {t("computation.description")}
             </p>
           </div>
 
@@ -271,7 +280,7 @@ const ProtocolsFeature = () => {
             {/* Input */}
             <div className="flex-1 bg-slate-900/50 rounded-xl p-3 border border-white/5">
               <div className="text-[10px] text-slate-400 uppercase font-bold mb-1">
-                Date of Birth
+                {t("computation.dob")}
               </div>
               <div className="text-sm font-mono">14/05/1990</div>
             </div>
@@ -288,9 +297,11 @@ const ProtocolsFeature = () => {
               <div className="absolute inset-0 bg-purple-500/10 animate-pulse" />
               <div className="relative z-10">
                 <div className="text-[10px] text-purple-200 uppercase font-bold mb-1 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" /> Auto-Calculated
+                  <Sparkles className="w-3 h-3" /> {t("computation.calculated")}
                 </div>
-                <div className="text-xl font-bold text-white">34 Yrs</div>
+                <div className="text-xl font-bold text-white">
+                  {t("computation.age", { age: 34 })}
+                </div>
               </div>
             </div>
           </div>

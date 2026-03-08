@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Building2,
@@ -17,6 +18,8 @@ import {
 } from "lucide-react";
 
 const ClinicsFeature = () => {
+  const t = useTranslations("FeatureCards.clinics-infrastructure");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE DIGITAL BLUEPRINT --- */}
@@ -33,16 +36,18 @@ const ClinicsFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <Network className="w-3 h-3" /> Infrastructure Map
+            <Network className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Your facility's <br />
-            <span className="text-blue-400">digital twin.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks: React.ReactNode) => (
+                <span className="text-blue-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            A complete hierarchical map of your organization. From the building
-            level down to the individual bed, Curify tracks capacity and
-            resources in real-time.
+            {t("hero.description")}
           </p>
         </div>
 
@@ -52,7 +57,9 @@ const ClinicsFeature = () => {
             {/* Level 1: The Clinic (Parent) */}
             <div className="relative bg-slate-800 border-2 border-blue-500/50 rounded-2xl p-4 flex items-center gap-4 w-64 justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)]">
               <Building2 className="w-6 h-6 text-blue-400" />
-              <span className="text-white font-bold">General Hospital</span>
+              <span className="text-white font-bold">
+                {t("hierarchy.hospital")}
+              </span>
               {/* Connector Line */}
               <div className="absolute -bottom-8 left-1/2 w-px h-8 bg-slate-600" />
             </div>
@@ -67,7 +74,7 @@ const ClinicsFeature = () => {
                 <div className="absolute -top-8 left-1/2 w-px h-8 bg-slate-600" />
                 <div className="bg-slate-800 border border-slate-600 rounded-xl p-3 flex items-center gap-3 w-40 justify-center">
                   <span className="text-sm font-bold text-slate-200">
-                    Cardiology
+                    {t("hierarchy.cardiology")}
                   </span>
                 </div>
                 <div className="h-6 w-px bg-slate-700" />
@@ -85,7 +92,9 @@ const ClinicsFeature = () => {
               <div className="flex flex-col items-center relative">
                 <div className="absolute -top-8 left-1/2 w-px h-8 bg-slate-600" />
                 <div className="bg-slate-800 border border-teal-500 rounded-xl p-3 flex items-center gap-3 w-40 justify-center shadow-lg">
-                  <span className="text-sm font-bold text-white">ICU Wing</span>
+                  <span className="text-sm font-bold text-white">
+                    {t("hierarchy.icu")}
+                  </span>
                   <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
                 </div>
                 <div className="h-6 w-px bg-teal-500/50" />
@@ -104,7 +113,7 @@ const ClinicsFeature = () => {
                 <div className="absolute -top-8 left-1/2 w-px h-8 bg-slate-600" />
                 <div className="bg-slate-800 border border-slate-600 rounded-xl p-3 flex items-center gap-3 w-40 justify-center">
                   <span className="text-sm font-bold text-slate-200">
-                    Pediatrics
+                    {t("hierarchy.pediatrics")}
                   </span>
                 </div>
                 <div className="h-6 w-px bg-slate-700" />
@@ -128,25 +137,24 @@ const ClinicsFeature = () => {
               <Settings className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Clinic Configuration
+              {t("config.title")}
             </h3>
           </div>
           <p className="text-slate-600 leading-relaxed mb-6">
-            Define operational units like "West Wing" or "Radiology". These
-            containers manage the staff access and patient flow.
+            {t("config.description")}
           </p>
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
               <span className="text-sm font-bold text-slate-700">
-                Display Name
+                {t("config.display_name")}
               </span>
               <span className="text-xs font-mono text-slate-500">
-                "ICU - North"
+                {t("config.icu_name")}
               </span>
             </div>
             <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
               <span className="text-sm font-bold text-slate-700">
-                Direct Line
+                {t("config.direct_line")}
               </span>
               <span className="text-xs font-mono text-slate-500">
                 +30 210...
@@ -158,12 +166,11 @@ const ClinicsFeature = () => {
         {/* Government ID (Integration) */}
         <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-8 shadow-xl flex flex-col justify-center">
           <div className="flex items-center gap-2 mb-4 text-blue-400 font-bold text-xs uppercase tracking-widest">
-            <Globe className="w-4 h-4" /> Interoperability
+            <Globe className="w-4 h-4" /> {t("interop.badge")}
           </div>
-          <h4 className="text-2xl font-bold mb-4">Gov. Integration ID</h4>
+          <h4 className="text-2xl font-bold mb-4">{t("interop.title")}</h4>
           <p className="text-slate-400 text-sm mb-8">
-            Seamlessly map internal clinics to National Health System regulatory
-            codes for automated reporting.
+            {t("interop.description")}
           </p>
           <div className="bg-black/30 border border-white/10 p-4 rounded-xl flex items-center gap-4">
             <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400">
@@ -171,7 +178,7 @@ const ClinicsFeature = () => {
             </div>
             <div>
               <span className="text-[10px] text-slate-400 uppercase font-bold">
-                External Code
+                {t("interop.external_code")}
               </span>
               <div className="text-lg font-mono tracking-wider">EOPYY-9921</div>
             </div>
@@ -184,17 +191,14 @@ const ClinicsFeature = () => {
         <div className="mb-8 flex items-end justify-between">
           <div className="max-w-xl">
             <h3 className="text-2xl font-bold text-slate-900 mb-3">
-              Room Management
+              {t("rooms.title")}
             </h3>
-            <p className="text-slate-600">
-              The functional units of care. Track capacity, assign equipment,
-              and categorize by medical need.
-            </p>
+            <p className="text-slate-600">{t("rooms.description")}</p>
           </div>
           {/* Contextual Add Visual */}
           <div className="hidden md:flex items-center gap-2 bg-teal-50 text-teal-700 px-4 py-2 rounded-full text-xs font-bold border border-teal-100">
             <Plus className="w-4 h-4" />
-            <span>Quick Add Room</span>
+            <span>{t("rooms.quick_add")}</span>
           </div>
         </div>
 
@@ -206,12 +210,14 @@ const ClinicsFeature = () => {
                 <LayoutDashboard className="w-5 h-5" />
               </div>
               <span className="text-xs font-bold text-slate-400 uppercase">
-                Capacity
+                {t("rooms.capacity_label")}
               </span>
             </div>
             <div className="text-3xl font-bold text-slate-900 mb-2">
               2/4{" "}
-              <span className="text-lg text-slate-400 font-medium">Beds</span>
+              <span className="text-lg text-slate-400 font-medium">
+                {t("rooms.beds_unit")}
+              </span>
             </div>
             {/* Bed Visuals */}
             <div className="flex gap-2 mt-4">
@@ -229,20 +235,20 @@ const ClinicsFeature = () => {
                 <Shield className="w-5 h-5" />
               </div>
               <span className="text-xs font-bold text-slate-400 uppercase">
-                Categorization
+                {t("rooms.cat_label")}
               </span>
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg border border-slate-100">
                 <Bed className="w-4 h-4 text-slate-500" />
                 <span className="text-sm font-medium text-slate-700">
-                  Standard Ward
+                  {t("rooms.std_ward")}
                 </span>
               </div>
               <div className="flex items-center gap-3 p-2 bg-purple-50 rounded-lg border border-purple-100">
                 <Baby className="w-4 h-4 text-purple-600" />
                 <span className="text-sm font-bold text-purple-700">
-                  Incubator / Newborn
+                  {t("rooms.incubator")}
                 </span>
               </div>
             </div>
@@ -254,10 +260,10 @@ const ClinicsFeature = () => {
               <Search className="w-5 h-5 text-slate-400" />
             </div>
             <h4 className="font-bold text-slate-900 text-sm">
-              Global List View
+              {t("rooms.list_view")}
             </h4>
             <p className="text-xs text-slate-500 mt-1 max-w-[150px]">
-              Top-down search across the entire organization.
+              {t("rooms.list_desc")}
             </p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Folder,
@@ -18,6 +19,8 @@ import {
 } from "lucide-react";
 
 const FileManagerFeature = () => {
+  const t = useTranslations("FeatureCards.file-manager");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE MEDICAL FILE OS --- */}
@@ -33,16 +36,18 @@ const FileManagerFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <Folder className="w-3 h-3" /> Digital Assets
+            <Folder className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Your organization's <br />
-            <span className="text-orange-400">central archive.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks: React.ReactNode) => (
+                <span className="text-orange-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            A desktop-class file manager built for the web. Organize thousands
-            of scans, consent forms, and reports in a structured, nested
-            hierarchy.
+            {t("hero.description")}
           </p>
         </div>
 
@@ -51,19 +56,20 @@ const FileManagerFeature = () => {
           {/* Sidebar (Folders) */}
           <div className="w-1/3 border-r border-slate-700 p-4 flex flex-col gap-2 bg-slate-900/50">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">
-              Library
+              {t("library.title")}
             </div>
             <div className="flex items-center gap-2 text-teal-400 bg-teal-500/10 px-3 py-2 rounded-lg border border-teal-500/20">
-              <Folder className="w-4 h-4 fill-teal-500/20" /> Cardiology
+              <Folder className="w-4 h-4 fill-teal-500/20" />{" "}
+              {t("library.cardiology")}
             </div>
             <div className="flex items-center gap-2 text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors ml-4">
               <Folder className="w-4 h-4" /> 2024
             </div>
             <div className="flex items-center gap-2 text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors ml-8">
-              <Folder className="w-4 h-4" /> January
+              <Folder className="w-4 h-4" /> {t("explorer.january")}
             </div>
             <div className="flex items-center gap-2 text-slate-400 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors">
-              <Folder className="w-4 h-4" /> Neurology
+              <Folder className="w-4 h-4" /> {t("library.neurology")}
             </div>
           </div>
 
@@ -71,9 +77,12 @@ const FileManagerFeature = () => {
           <div className="flex-1 p-6">
             {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-slate-500 mb-6">
-              <span>Cardiology</span> <span className="opacity-50">/</span>
+              <span>{t("library.cardiology")}</span>{" "}
+              <span className="opacity-50">/</span>
               <span>2024</span> <span className="opacity-50">/</span>
-              <span className="text-white font-medium">January</span>
+              <span className="text-white font-medium">
+                {t("explorer.january")}
+              </span>
             </div>
 
             {/* File Grid */}
@@ -98,7 +107,7 @@ const FileManagerFeature = () => {
                       {file}
                     </span>
                   </motion.div>
-                )
+                ),
               )}
               {/* Empty Slot visual */}
               <div className="border-2 border-dashed border-slate-700 rounded-xl flex items-center justify-center opacity-50">
@@ -114,20 +123,34 @@ const FileManagerFeature = () => {
         {/* Text Side */}
         <div className="lg:col-span-5 flex flex-col justify-center">
           <h3 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <Search className="w-6 h-6 text-teal-600" /> Find a needle in a
-            haystack.
+            <Search className="w-6 h-6 text-teal-600" /> {t("search.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed mb-8">
-            The search engine scans across all patients and folders
-            simultaneously. Use granular filters to trace documents by{" "}
-            <strong>Uploader</strong> (Accountability) or{" "}
-            <strong>Date Range</strong> (Specific Window).
+            {t.rich("search.description", {
+              strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
+            })}
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <FilterTag label="By Patient" icon={User} color="blue" />
-            <FilterTag label="By Uploader" icon={ShieldCheck} color="purple" />
-            <FilterTag label="By File Type" icon={FileCheck} color="orange" />
-            <FilterTag label="By Date" icon={Calendar} color="green" />
+            <FilterTag
+              label={t("search.by_patient")}
+              icon={User}
+              color="blue"
+            />
+            <FilterTag
+              label={t("search.by_uploader")}
+              icon={ShieldCheck}
+              color="purple"
+            />
+            <FilterTag
+              label={t("search.by_file")}
+              icon={FileCheck}
+              color="orange"
+            />
+            <FilterTag
+              label={t("search.by_date")}
+              icon={Calendar}
+              color="green"
+            />
           </div>
         </div>
 
@@ -141,10 +164,10 @@ const FileManagerFeature = () => {
             </div>
             <div className="ml-auto flex gap-2">
               <span className="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-[10px] font-bold uppercase">
-                Uploader
+                {t("search.uploader_badge")}
               </span>
               <span className="px-2 py-0.5 bg-orange-100 text-orange-700 rounded text-[10px] font-bold uppercase">
-                X-Ray
+                {t("search.xray_badge")}
               </span>
             </div>
           </div>
@@ -153,16 +176,16 @@ const FileManagerFeature = () => {
           <div className="space-y-3">
             <ResultRow
               name="Chest_XRay_04.png"
-              patient="George K."
               date="Yesterday"
+              label={t("search.patient_label", { patient: "George K." })}
             />
             <ResultRow
               name="Lab_Results_Q3.pdf"
-              patient="Maria P."
               date="2 days ago"
+              label={t("search.patient_label", { patient: "Maria P." })}
             />
             <div className="p-3 rounded-xl border border-dashed border-slate-200 text-center text-xs text-slate-400">
-              34 more files found...
+              {t("search.files_found", { count: 34 })}
             </div>
           </div>
         </div>
@@ -172,16 +195,15 @@ const FileManagerFeature = () => {
       <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden">
         <div className="max-w-3xl relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-wider mb-6">
-            <Lock className="w-3 h-3" /> Smart Security
+            <Lock className="w-3 h-3" /> {t("security.badge")}
           </div>
           <h3 className="text-3xl font-bold text-slate-900 mb-4">
-            Global Search, Scoped Access.
+            {t("security.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed text-lg mb-10">
-            The Global File Finder <strong>does not bypass</strong> patient
-            profile security. If a user is restricted from viewing a VIP
-            patient, those files will remain invisible in the global search
-            results. Zero leaks.
+            {t.rich("security.description", {
+              strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -199,13 +221,13 @@ const FileManagerFeature = () => {
                   Dr. Smith
                 </div>
                 <div className="text-xs text-slate-500">
-                  Searching "Patient A"
+                  {t("security.searching", { term: "Patient A" })}
                 </div>
               </div>
             </div>
             <div className="text-right">
               <div className="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">
-                5 Files Found
+                {t("security.count_found", { count: 5 })}
               </div>
             </div>
           </div>
@@ -222,13 +244,13 @@ const FileManagerFeature = () => {
                   Nurse Bob
                 </div>
                 <div className="text-xs text-slate-400">
-                  Searching "VIP Patient"
+                  {t("security.searching", { term: "VIP Patient" })}
                 </div>
               </div>
             </div>
             <div className="text-right">
               <div className="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded flex items-center gap-1">
-                <Lock className="w-3 h-3" /> 0 Results
+                <Lock className="w-3 h-3" /> {t("security.zero_results")}
               </div>
             </div>
           </div>
@@ -257,13 +279,13 @@ const FilterTag = ({ label, icon: Icon, color }: any) => {
   );
 };
 
-const ResultRow = ({ name, patient, date }: any) => (
+const ResultRow = ({ name, date, label }: any) => (
   <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
     <div className="flex items-center gap-3">
       <FileText className="w-5 h-5 text-slate-400" />
       <div>
         <div className="text-sm font-bold text-slate-700">{name}</div>
-        <div className="text-[10px] text-slate-500">Patient: {patient}</div>
+        <div className="text-[10px] text-slate-500">{label}</div>
       </div>
     </div>
     <div className="text-xs text-slate-400">{date}</div>

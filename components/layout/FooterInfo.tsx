@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import {
   FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
   FaEnvelope,
   FaArrowRight,
   FaPhoneAlt,
@@ -45,7 +47,7 @@ export default function FooterInfo() {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
-        })
+        }),
       );
     };
     updateTime();
@@ -91,7 +93,7 @@ export default function FooterInfo() {
         RECAPTCHA_SITE_KEY,
         {
           action: "submit",
-        }
+        },
       );
 
       // 2. Send Data to Server (Same endpoint as Contact Form)
@@ -268,22 +270,9 @@ export default function FooterInfo() {
           <div className="lg:col-span-3 h-full">
             <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden h-full min-h-[320px] flex flex-col">
               <div className="divide-y divide-slate-100 flex-grow">
-                {/* 1. LinkedIn (Personal) */}
+                {/* 1. LinkedIn (Business) */}
                 <a
-                  href="https://www.linkedin.com/in/vasilis-delikouras/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 hover:bg-slate-50 transition-colors group"
-                >
-                  <FaLinkedinIn className="w-5 h-5 text-slate-400 group-hover:text-[#0077B5] transition-colors" />
-                  <span className="font-semibold text-slate-700 group-hover:text-slate-900">
-                    Vasilis Delikouras
-                  </span>
-                </a>
-
-                {/* 2. LinkedIn (Business) */}
-                <a
-                  href="https://www.linkedin.com/company/curify-app"
+                  href="https://www.linkedin.com/company/curify-app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-6 hover:bg-slate-50 transition-colors group"
@@ -294,7 +283,33 @@ export default function FooterInfo() {
                   </span>
                 </a>
 
-                {/* 3. Email */}
+                {/* 2. Instagram */}
+                <a
+                  href="https://www.instagram.com/appcurify/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-6 hover:bg-slate-50 transition-colors group"
+                >
+                  <FaInstagram className="w-5 h-5 text-slate-400 group-hover:text-[#E4405F] transition-colors" />
+                  <span className="font-semibold text-slate-700 group-hover:text-slate-900">
+                    @appcurify
+                  </span>
+                </a>
+
+                {/* 3. YouTube */}
+                <a
+                  href="https://www.youtube.com/@CurifyApp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-6 hover:bg-slate-50 transition-colors group"
+                >
+                  <FaYoutube className="w-5 h-5 text-slate-400 group-hover:text-[#FF0000] transition-colors" />
+                  <span className="font-semibold text-slate-700 group-hover:text-slate-900">
+                    Curify App
+                  </span>
+                </a>
+
+                {/* 4. Email */}
                 <a
                   href="mailto:appcurify@gmail.com"
                   className="flex items-center gap-4 p-6 hover:bg-slate-50 transition-colors group"

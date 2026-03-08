@@ -9,7 +9,7 @@ import { FEATURE_REGISTRY } from "./featuresRegistry";
 const FeaturesPageContent = () => {
   // Initialize with the first available feature
   const [activeFeature, setActiveFeature] = useState(
-    FEATURE_REGISTRY[0]?.id || ""
+    FEATURE_REGISTRY[0]?.id || "",
   );
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -27,13 +27,13 @@ const FeaturesPageContent = () => {
 
     window.addEventListener(
       "featureSelected",
-      handleFeatureSelected as EventListener
+      handleFeatureSelected as EventListener,
     );
 
     return () => {
       window.removeEventListener(
         "featureSelected",
-        handleFeatureSelected as EventListener
+        handleFeatureSelected as EventListener,
       );
     };
   }, []);
@@ -60,4 +60,3 @@ const FeaturesPageContent = () => {
 };
 
 export default FeaturesPageContent;
-

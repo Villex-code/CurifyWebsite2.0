@@ -8,5 +8,79 @@
     "medicationStorage": "Medication Storage",
     "appointmentSystem": "Appointment System",
     "dataAnalytics": "Data Analytics"
+  },
+  "hero": {
+    "badge": "Feature Ecosystem",
+    "headline_light": "Total control over",
+    "headline_bold": "your operation.",
+    "description": "Explore the documentation for the operating system that powers modern healthcare. From {strong1} to {strong2}.",
+    "iot_inventory": "IoT inventory",
+    "ai_diagnostics": "AI diagnostics",
+    "quick_access": "Quick Access:",
+    "tags": {
+      "inventory": "Smart Inventory",
+      "prescribing": "E-Prescribing",
+      "billing": "Billing",
+      "telehealth": "Telehealth"
+    },
+    "visuals": {
+      "growth": "GROWTH",
+      "revenue": "Revenue",
+      "billing": "BILLING",
+      "amount": "AMOUNT",
+      "workflow": "WORKFLOW",
+      "active": "ACTIVE"
+    },
+    "search": {
+      "placeholder": "Find a feature (e.g. 'Reports')...",
+      "results": "Search Results",
+      "suggested": "Suggested Features",
+      "no_results": "No features found matching \"{query}\"",
+      "press": "Press",
+      "enter": "Enter",
+      "to_select": "to select",
+      "full_docs": "Full Documentation"
+    }
+  },
+  "sidebar": {
+    "placeholder": "Find a feature..."
+  },
+  "content": {
+    "empty": {
+      "title": "Curify Operating System",
+      "description": "Select a module from the sidebar to explore the capabilities of the platform.",
+      "waiting": "Waiting for input..."
+    },
+    "footer": {
+      "title": "Ready to optimize?",
+      "description": "Start using {title} in your workflow.",
+      "cta": "Book a Demo"
+    }
+  },
+  "registry": {
+    "categories": {
+      "clinical": "Clinical",
+      "inventory": "Inventory",
+      "financials": "Financials",
+      "administration": "Administration",
+      "administrative": "Administrative",
+      "security": "Security"
+    },
+    "items": {
+      "task-management": "Task & Prescription Workflow",
+      "smart-storage": "Storage & Inventory",
+      "financial-management": "Financial Management & Payments",
+      "personnel-management": "Personnel & Staff Management",
+      "analytics-bi": "Advanced Analytics & Reporting",
+      "appointment-calendar": "Appointment & Calendar Management",
+      "patient-dashboard": "Patient Dashboard & Search",
+      "patient-profile": "Patient Profile & Clinical Management",
+      "reporting-privacy": "Reporting & Privacy Controls",
+      "audit-log": "Personnel Actions & Audit Log",
+      "admissions-referrals": "Admissions & Referrals",
+      "clinics-infrastructure": "Clinics & Infrastructure",
+      "file-manager": "Global File Manager",
+      "protocols-templates": "Protocols & Templates"
+    }
   }
 }

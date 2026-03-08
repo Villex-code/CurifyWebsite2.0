@@ -31,7 +31,7 @@ export async function generateMetadata({
       description: t("description"),
       type: "website",
       locale: locale,
-      url: "https://www.curify.app", // Replace with your actual URL
+      url: "https://www.curifyapp.com", // Replace with your actual URL
       siteName: "Curify",
       images: [
         {
@@ -42,10 +42,11 @@ export async function generateMetadata({
       ],
     },
     alternates: {
-      canonical: `https://www.curify.app/${locale}`,
+      canonical: `https://www.curifyapp.com/${locale}`,
       languages: {
-        en: "https://www.curify.app/en",
-        el: "https://www.curify.app/el",
+        en: "https://www.curifyapp.com/en",
+        el: "https://www.curifyapp.com/el",
+        "x-default": "https://www.curifyapp.com/el",
       },
     },
   };

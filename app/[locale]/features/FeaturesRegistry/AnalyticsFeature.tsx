@@ -14,8 +14,11 @@ import {
   LineChart,
   Target,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const AnalyticsFeature = () => {
+  const t = useTranslations("FeatureCards.advanced-analytics");
+
   return (
     <div className="space-y-16">
       {/* --- HERO: THE "TRACK EVERYTHING" DASHBOARD --- */}
@@ -32,16 +35,20 @@ const AnalyticsFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <LineChart className="w-3 h-3" /> Business Intelligence
+            <LineChart className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            If it happens in Curify, <br />
-            <span className="text-teal-400">we track it.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks) => (
+                <span className="text-teal-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Curify offers powerful <strong>initial analytics</strong> out of the
-            box. Every task, transaction, and admission is logged to give you
-            instant visibility into your facility's pulse without any setup.
+            {t.rich("hero.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -51,7 +58,7 @@ const AnalyticsFeature = () => {
           <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg border border-slate-600 pointer-events-none">
             <Filter className="w-3 h-3 text-slate-500" />
             <span className="text-xs text-slate-200 font-mono">
-              Filter: Last 30 Days
+              {t("hero.filter_label")}
             </span>
           </div>
 
@@ -72,9 +79,9 @@ const AnalyticsFeature = () => {
 
           {/* Side KPIs */}
           <div className="flex md:flex-col gap-4 w-full md:w-48 shrink-0">
-            <KpiCard label="Total Admissions" value="142" color="blue" />
-            <KpiCard label="Bed Occupancy" value="88%" color="orange" />
-            <KpiCard label="Net Revenue" value="$42.5k" color="purple" />
+            <KpiCard label={t("hero.kpi1")} value="142" color="blue" />
+            <KpiCard label={t("hero.kpi2")} value="88%" color="orange" />
+            <KpiCard label={t("hero.kpi3")} value="$42.5k" color="purple" />
           </div>
         </div>
       </div>
@@ -83,13 +90,13 @@ const AnalyticsFeature = () => {
       <div>
         <div className="mb-10 max-w-2xl">
           <h3 className="text-2xl font-bold text-slate-900 mb-3">
-            Standard Operational Intelligence
+            {t("operational.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed">
-            Identify <strong>efficiency blocks</strong> and{" "}
-            <strong>revenue leaks</strong> immediately. Our standard suite
-            covers the core pillars of your organization: Inventory, Staff, and
-            Finance.
+            {t.rich("operational.description", {
+              strong1: (chunks) => <strong>{chunks}</strong>,
+              strong2: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -97,13 +104,16 @@ const AnalyticsFeature = () => {
           {/* Inventory Intelligence */}
           <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col">
             <h3 className="font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <Layers className="w-5 h-5 text-purple-500" /> Supply Chain
+              <Layers className="w-5 h-5 text-purple-500" />{" "}
+              {t("operational.supply_chain")}
             </h3>
             <div className="flex-1 flex flex-col justify-center gap-4">
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold text-slate-500">
-                  <span>Fast Movers</span>
-                  <span className="text-green-600">Optimize Bulk Order</span>
+                  <span>{t("operational.fast_movers")}</span>
+                  <span className="text-green-600">
+                    {t("operational.optimize")}
+                  </span>
                 </div>
                 <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div className="h-full w-[85%] bg-green-500" />
@@ -111,8 +121,10 @@ const AnalyticsFeature = () => {
               </div>
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold text-slate-500">
-                  <span>Dead Stock</span>
-                  <span className="text-red-500">Liquidate</span>
+                  <span>{t("operational.dead_stock")}</span>
+                  <span className="text-red-500">
+                    {t("operational.liquidate")}
+                  </span>
                 </div>
                 <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                   <div className="h-full w-[15%] bg-red-500" />
@@ -124,7 +136,8 @@ const AnalyticsFeature = () => {
           {/* Staff Performance */}
           <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col">
             <h3 className="font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-500" /> Workforce
+              <Users className="w-5 h-5 text-blue-500" />{" "}
+              {t("operational.workforce")}
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -140,7 +153,7 @@ const AnalyticsFeature = () => {
                   </div>
                 </div>
                 <div className="px-2 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-md">
-                  50 Tasks
+                  {t("operational.tasks_count", { count: 50 })}
                 </div>
               </div>
               <div className="flex items-center justify-between opacity-60">
@@ -156,7 +169,7 @@ const AnalyticsFeature = () => {
                   </div>
                 </div>
                 <div className="px-2 py-1 bg-slate-100 text-slate-500 text-xs font-bold rounded-md">
-                  32 Tasks
+                  {t("operational.tasks_count", { count: 32 })}
                 </div>
               </div>
             </div>
@@ -165,11 +178,11 @@ const AnalyticsFeature = () => {
           {/* Profit & Loss */}
           <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-inner flex flex-col">
             <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <DollarSign className="w-5 h-5 text-teal-600" /> P&L Analysis
+              <DollarSign className="w-5 h-5 text-teal-600" />{" "}
+              {t("operational.pl_analysis")}
             </h3>
             <p className="text-xs text-slate-500 mb-6">
-              Real-time calculation of COGS (Cost of Goods Sold) per treatment
-              vs Revenue.
+              {t("operational.pl_desc")}
             </p>
             <div className="w-full h-12 bg-white rounded-xl border border-slate-200 flex overflow-hidden relative shadow-sm">
               <motion.div
@@ -178,7 +191,9 @@ const AnalyticsFeature = () => {
                 transition={{ duration: 1 }}
                 className="h-full bg-teal-500 relative group flex items-center pl-4"
               >
-                <span className="text-white font-bold text-xs">Revenue</span>
+                <span className="text-white font-bold text-xs">
+                  {t("operational.revenue")}
+                </span>
               </motion.div>
               <motion.div
                 initial={{ width: 0 }}
@@ -186,12 +201,14 @@ const AnalyticsFeature = () => {
                 transition={{ duration: 1, delay: 0.2 }}
                 className="h-full bg-red-400 relative flex items-center justify-center"
               >
-                <span className="text-white font-bold text-xs">Cost</span>
+                <span className="text-white font-bold text-xs">
+                  {t("operational.cost")}
+                </span>
               </motion.div>
             </div>
             <div className="mt-3 flex justify-end">
               <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
-                +40% Margin
+                {t("operational.margin")}
               </span>
             </div>
           </div>
@@ -206,26 +223,25 @@ const AnalyticsFeature = () => {
         <div className="relative z-10 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <div className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg text-xs font-bold uppercase tracking-wider mb-6">
-              <Target className="w-3 h-3 inline mr-1" /> On-Demand Intelligence
+              <Target className="w-3 h-3 inline mr-1" /> {t("custom.badge")}
             </div>
-            <h3 className="text-3xl font-bold mb-4">Custom Metrics Engine</h3>
+            <h3 className="text-3xl font-bold mb-4">{t("custom.title")}</h3>
             <p className="text-teal-100 leading-relaxed mb-6 text-lg">
-              Every organization has unique pain points. Curify allows you to
-              build <strong>custom workflows and analysis</strong> to find
-              specific blocks.
+              {t.rich("custom.description", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-3">
                 <Search className="w-5 h-5 text-teal-300 shrink-0 mt-1" />
                 <span className="text-teal-50 text-sm">
-                  Research specific patient cohorts (e.g., "Post-Op
-                  complications in Q3").
+                  {t("custom.research_label")}
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <BarChart3 className="w-5 h-5 text-teal-300 shrink-0 mt-1" />
                 <span className="text-teal-50 text-sm">
-                  Track niche KPIs like "Stent Success Rate" or "Birth Types".
+                  {t("custom.track_label")}
                 </span>
               </li>
             </ul>
@@ -240,10 +256,10 @@ const AnalyticsFeature = () => {
                 </div>
                 <div>
                   <span className="font-bold text-sm block">
-                    Birth Statistics
+                    {t("custom.birth_stats")}
                   </span>
                   <span className="text-[10px] text-slate-400 uppercase font-bold">
-                    Custom Report
+                    {t("custom.custom_report")}
                   </span>
                 </div>
               </div>
@@ -254,7 +270,7 @@ const AnalyticsFeature = () => {
               <div>
                 <div className="flex justify-between text-xs font-bold text-slate-600 mb-1">
                   <span>Dr. Smith</span>
-                  <span>42 Births</span>
+                  <span>{t("custom.births_count", { count: 42 })}</span>
                 </div>
                 <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden flex border border-slate-100">
                   <div className="w-[70%] bg-teal-500" /> {/* Natural */}
@@ -264,7 +280,7 @@ const AnalyticsFeature = () => {
               <div>
                 <div className="flex justify-between text-xs font-bold text-slate-600 mb-1">
                   <span>Dr. Jones</span>
-                  <span>38 Births</span>
+                  <span>{t("custom.births_count", { count: 38 })}</span>
                 </div>
                 <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden flex border border-slate-100">
                   <div className="w-[40%] bg-teal-500" /> {/* Natural */}
@@ -275,10 +291,12 @@ const AnalyticsFeature = () => {
 
             <div className="flex gap-4 mt-6 justify-center text-[10px] font-bold uppercase text-slate-500 bg-slate-50 py-2 rounded-lg">
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-teal-500" /> Natural
+                <div className="w-2 h-2 rounded-full bg-teal-500" />{" "}
+                {t("custom.natural")}
               </div>
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-orange-400" /> C-Section
+                <div className="w-2 h-2 rounded-full bg-orange-400" />{" "}
+                {t("custom.c_section")}
               </div>
             </div>
           </div>

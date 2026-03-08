@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   FileClock,
@@ -17,9 +18,12 @@ import {
   AlertTriangle,
   ArrowRight,
   Check,
+  Activity,
 } from "lucide-react";
 
 const AuditLogFeature = () => {
+  const t = useTranslations("FeatureCards.audit-log");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE BLACK BOX RECORDER --- */}
@@ -28,21 +32,25 @@ const AuditLogFeature = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-10 w-px h-full bg-gradient-to-b from-transparent via-teal-500 to-transparent opacity-50" />
           <div className="absolute top-0 right-20 w-px h-full bg-gradient-to-b from-transparent via-teal-500 to-transparent opacity-30" />
-          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-500 to-transparent opacity-20" />
+          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-20" />
         </div>
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <FileClock className="w-3 h-3" /> System Accountability
+            <FileClock className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            The Flight Recorder <br />
-            <span className="text-teal-400">for your organization.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks: React.ReactNode) => (
+                <span className="text-teal-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Every click, every edit, every deletion. Curify captures a granular{" "}
-            <strong>Audit Trail</strong> to ensure absolute transparency and
-            trace root causes instantly.
+            {t.rich("hero.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -53,11 +61,11 @@ const AuditLogFeature = () => {
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
               <span className="text-xs font-mono text-slate-400">
-                LIVE FEED // AUDIT_STREAM_01
+                {t("live.badge")}
               </span>
             </div>
             <div className="text-[10px] text-slate-500 font-mono">
-              SECURE CONNECTION
+              {t("live.secure")}
             </div>
           </div>
 
@@ -76,13 +84,13 @@ const AuditLogFeature = () => {
                 </div>
                 <div>
                   <div className="text-xs text-blue-400 font-bold">
-                    MODIFICATION
+                    {t("live.modification")}
                   </div>
                   <div className="text-[10px] text-slate-500">10:42:15 AM</div>
                 </div>
               </div>
               <div className="flex-1 bg-black/20 rounded p-2 flex items-center gap-3 text-xs font-mono">
-                <span className="text-slate-400">Dosage:</span>
+                <span className="text-slate-400">{t("live.dosage")}</span>
                 <span className="text-red-400 line-through opacity-70">
                   500mg
                 </span>
@@ -104,15 +112,17 @@ const AuditLogFeature = () => {
                 </div>
                 <div>
                   <div className="text-xs text-green-400 font-bold">
-                    CREATION
+                    {t("live.creation")}
                   </div>
                   <div className="text-[10px] text-slate-500">10:45:02 AM</div>
                 </div>
               </div>
               <div className="flex-1 text-xs text-slate-300">
-                Created new prescription{" "}
-                <span className="text-white font-bold">#RX-992</span> for
-                Patient A.
+                {t.rich("live.created_prescription", {
+                  strong: (chunks: React.ReactNode) => (
+                    <span className="text-white font-bold">{chunks}</span>
+                  ),
+                })}
               </div>
             </motion.div>
 
@@ -128,16 +138,21 @@ const AuditLogFeature = () => {
                   AD
                 </div>
                 <div>
-                  <div className="text-xs text-red-400 font-bold">DELETION</div>
+                  <div className="text-xs text-red-400 font-bold">
+                    {t("live.deletion")}
+                  </div>
                   <div className="text-[10px] text-slate-500">10:48:55 AM</div>
                 </div>
               </div>
               <div className="flex-1 text-xs text-slate-300 flex items-center gap-2">
                 <Trash2 className="w-3 h-3 text-red-400" />
-                Removed Patient File{" "}
-                <span className="text-white font-bold">#9912</span>.
+                {t.rich("live.removed_file", {
+                  strong: (chunks: React.ReactNode) => (
+                    <span className="text-white font-bold">{chunks}</span>
+                  ),
+                })}
                 <span className="bg-red-500/20 text-red-300 px-1.5 py-0.5 rounded text-[9px] border border-red-500/30">
-                  IRREVERSIBLE
+                  {t("live.irreversible")}
                 </span>
               </div>
             </motion.div>
@@ -150,25 +165,24 @@ const AuditLogFeature = () => {
         {/* Activity Metrics */}
         <div className="md:col-span-2 bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
           <h3 className="font-bold text-slate-900 mb-6 flex items-center gap-2">
-            <ActivityIcon className="w-5 h-5 text-teal-600" /> Operational
-            Velocity
+            <Activity className="w-5 h-5 text-teal-600" /> {t("metrics.title")}
           </h3>
           <div className="grid grid-cols-3 gap-4">
             <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center">
               <div className="text-xs font-bold text-slate-400 uppercase mb-1">
-                Modifications
+                {t("metrics.modifications")}
               </div>
               <div className="text-2xl font-bold text-blue-600">1,240</div>
             </div>
             <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center">
               <div className="text-xs font-bold text-slate-400 uppercase mb-1">
-                Creations
+                {t("metrics.creations")}
               </div>
               <div className="text-2xl font-bold text-green-600">856</div>
             </div>
             <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 text-center">
               <div className="text-xs font-bold text-slate-400 uppercase mb-1">
-                Deletions
+                {t("metrics.deletions")}
               </div>
               <div className="text-2xl font-bold text-red-500">12</div>
             </div>
@@ -178,20 +192,20 @@ const AuditLogFeature = () => {
         {/* Search Engine */}
         <div className="md:col-span-1 bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-inner">
           <div className="flex items-center gap-2 mb-4 text-xs font-bold text-slate-400 uppercase tracking-wide">
-            <Filter className="w-4 h-4" /> Forensic Search
+            <Filter className="w-4 h-4" /> {t("search.badge")}
           </div>
           <h4 className="text-lg font-bold text-slate-900 mb-4">
-            Find the needle.
+            {t("search.title")}
           </h4>
           <div className="space-y-2">
             <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
-              <User className="w-3 h-3 text-slate-400" /> Actor: Dr. Smith
+              <User className="w-3 h-3 text-slate-400" /> {t("search.actor")}
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
-              <Edit3 className="w-3 h-3 text-slate-400" /> Action: Edit Only
+              <Edit3 className="w-3 h-3 text-slate-400" /> {t("search.action")}
             </div>
             <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
-              <History className="w-3 h-3 text-slate-400" /> Date: Last 24h
+              <History className="w-3 h-3 text-slate-400" /> {t("search.date")}
             </div>
           </div>
         </div>
@@ -201,15 +215,15 @@ const AuditLogFeature = () => {
       <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-3xl p-8 md:p-10 shadow-sm relative overflow-hidden">
         <div className="relative z-10 max-w-xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
-            <GitCommit className="w-3 h-3" /> The "From &rarr; To" Logic
+            <GitCommit className="w-3 h-3" /> {t("diff.badge")}
           </div>
           <h3 className="text-2xl font-bold text-slate-900 mb-4">
-            Not just "Who", but "What".
+            {t("diff.title")}
           </h3>
           <p className="text-slate-600 leading-relaxed mb-8">
-            We don't just log that a record changed. We snapshotted the{" "}
-            <strong>state before</strong> and the <strong>state after</strong>.
-            This is critical for medical error resolution.
+            {t.rich("diff.description", {
+              strong: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -218,11 +232,13 @@ const AuditLogFeature = () => {
           {/* Before */}
           <div className="relative">
             <div className="absolute -top-3 left-4 bg-slate-200 text-slate-500 text-[10px] font-bold px-2 py-1 rounded uppercase">
-              Before
+              {t("diff.before")}
             </div>
             <div className="bg-slate-100 rounded-xl p-4 border border-slate-200 opacity-70 grayscale">
               <div className="flex justify-between mb-2">
-                <span className="text-xs font-bold">Prescription #101</span>
+                <span className="text-xs font-bold">
+                  {t("diff.prescription")}
+                </span>
               </div>
               <div className="text-sm font-mono text-slate-800">500mg</div>
             </div>
@@ -236,12 +252,12 @@ const AuditLogFeature = () => {
           {/* After */}
           <div className="relative">
             <div className="absolute -top-3 left-4 bg-blue-100 text-blue-600 text-[10px] font-bold px-2 py-1 rounded uppercase">
-              After
+              {t("diff.after")}
             </div>
             <div className="bg-white rounded-xl p-4 border-2 border-blue-100 shadow-lg">
               <div className="flex justify-between mb-2">
                 <span className="text-xs font-bold text-blue-900">
-                  Prescription #101
+                  {t("diff.prescription")}
                 </span>
                 <Check className="w-3 h-3 text-green-500" />
               </div>
@@ -261,10 +277,9 @@ const AuditLogFeature = () => {
             <ShieldAlert className="w-8 h-8 text-teal-400" />
           </div>
           <div>
-            <h4 className="text-lg font-bold mb-1">Deterrent Security</h4>
+            <h4 className="text-lg font-bold mb-1">{t("security.title")}</h4>
             <p className="text-slate-400 text-sm">
-              Knowing every footprint is recorded prevents malicious data theft
-              and unauthorized browsing.
+              {t("security.description")}
             </p>
           </div>
         </div>
@@ -276,12 +291,9 @@ const AuditLogFeature = () => {
           </div>
           <div>
             <h4 className="text-lg font-bold text-slate-900 mb-1">
-              Error Resolution
+              {t("error.title")}
             </h4>
-            <p className="text-slate-500 text-sm">
-              Spot a mistake? Trace it back to the exact timestamp and user for
-              immediate correction/retraining.
-            </p>
+            <p className="text-slate-500 text-sm">{t("error.description")}</p>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export default function HomeClient() {
     description: "Smart healthcare platform for medical professionals",
     sameAs: [
       "https://twitter.com/curifyapp",
-      "https://www.linkedin.com/company/curify-app/",
+      "https://www.linkedin.com/company/curifyapp/",
     ],
   };
 

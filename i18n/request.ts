@@ -37,6 +37,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
         .default,
       application: (await import(`../messages/${locale}/application.json`))
         .default,
+      FeatureCards: (await import(`../messages/${locale}/FeatureCards.json`))
+        .default,
+      MainVelocityText: (
+        await import(`../messages/${locale}/MainVelocityText.json`)
+      ).default,
     },
   };
 });

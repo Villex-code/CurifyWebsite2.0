@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { getFeatureById } from "./featuresRegistry";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface FeaturesContentProps {
   featureId: string;
@@ -21,6 +22,8 @@ interface FeaturesContentProps {
 const FeaturesContent = ({ featureId }: FeaturesContentProps) => {
   const feature = getFeatureById(featureId);
   const router = useRouter();
+  const t = useTranslations("features.content");
+  const tr = useTranslations("features.registry");
 
   // --- 1. EMPTY STATE: IDLE SYSTEM HUB ---
   if (!feature) {
@@ -90,16 +93,15 @@ const FeaturesContent = ({ featureId }: FeaturesContentProps) => {
           {/* Call to Action */}
           <div className="relative z-10 max-w-sm">
             <h3 className="text-2xl font-bold text-slate-900 mb-3">
-              Curify Operating System
+              {t("empty.title")}
             </h3>
             <p className="text-slate-500 leading-relaxed mb-8">
-              Select a module from the sidebar to explore the capabilities of
-              the platform.
+              {t("empty.description")}
             </p>
 
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 text-slate-600 rounded-full border border-slate-200 text-xs font-bold uppercase tracking-wider animate-pulse">
               <MousePointerClick className="w-4 h-4" />
-              Waiting for input...
+              {t("empty.waiting")}
             </div>
           </div>
         </div>
@@ -123,11 +125,11 @@ const FeaturesContent = ({ featureId }: FeaturesContentProps) => {
             <div className="mb-10 pb-8 border-b border-slate-100">
               <div className="flex items-center gap-3 mb-4">
                 <span className="px-3 py-1 bg-teal-50 border border-teal-100 rounded-full text-xs font-bold text-teal-700 uppercase tracking-wider">
-                  {feature.category}
+                  {tr(`categories.${feature.category.toLowerCase()}`)}
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
-                {feature.title}
+                {tr(`items.${feature.id}`)}
               </h1>
             </div>
 
@@ -138,17 +140,19 @@ const FeaturesContent = ({ featureId }: FeaturesContentProps) => {
             <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-6 bg-slate-50/50 -mx-8 -mb-12 p-8 rounded-b-[2.5rem]">
               <div>
                 <h4 className="font-bold text-slate-900 text-lg">
-                  Ready to optimize?
+                  {t("footer.title")}
                 </h4>
                 <p className="text-slate-500 text-sm mt-1">
-                  Start using {feature.title} in your workflow.
+                  {t("footer.description", {
+                    title: tr(`items.${feature.id}`),
+                  })}
                 </p>
               </div>
               <button
                 onClick={() => router.push("/contact")}
                 className="group bg-slate-900 hover:bg-teal-600 text-white px-8 py-3.5 rounded-2xl font-bold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-teal-500/20 hover:-translate-y-1"
               >
-                Book a Demo
+                {t("footer.cta")}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>

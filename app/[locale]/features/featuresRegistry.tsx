@@ -33,6 +33,8 @@ export type FeatureRegistryItem = {
 };
 
 // --- THE REGISTRY ---
+// Note: title and category strings here are for internal reference.
+// The actual UI labels are dynamically looked up in messages/ JSON files using the item id.
 export const FEATURE_REGISTRY: FeatureRegistryItem[] = [
   {
     id: "task-management",
@@ -60,7 +62,7 @@ export const FEATURE_REGISTRY: FeatureRegistryItem[] = [
   },
   {
     id: "analytics-bi",
-    category: "Clinical", // or Admin
+    category: "Clinical",
     title: "Advanced Analytics & Reporting",
     component: <AnalyticsFeature />,
   },
@@ -84,7 +86,7 @@ export const FEATURE_REGISTRY: FeatureRegistryItem[] = [
   },
   {
     id: "reporting-privacy",
-    category: "Administrative", // or Security
+    category: "Administrative",
     title: "Reporting & Privacy Controls",
     component: <ReportingFeature />,
   },
@@ -114,7 +116,7 @@ export const FEATURE_REGISTRY: FeatureRegistryItem[] = [
   },
   {
     id: "protocols-templates",
-    category: "Clinical", // or Configuration
+    category: "Clinical",
     title: "Protocols & Templates",
     component: <ProtocolsFeature />,
   },

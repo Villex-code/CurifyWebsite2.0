@@ -15,8 +15,11 @@ import {
   CheckCircle2,
   PackageSearch,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const StorageFeature = () => {
+  const t = useTranslations("FeatureCards.smart-storage");
+
   return (
     <div className="space-y-12">
       {/* --- HERO VISUAL: THE DIGITAL TWIN CABINET --- */}
@@ -39,15 +42,13 @@ const StorageFeature = () => {
               </div>
               <div>
                 <h4 className="text-white font-bold text-sm">
-                  Cabinet: ICU-North-1
+                  {t("hero.cabinet")}
                 </h4>
-                <p className="text-slate-400 text-xs">
-                  Drawer 03 • Ambient Storage
-                </p>
+                <p className="text-slate-400 text-xs">{t("hero.drawer")}</p>
               </div>
             </div>
             <div className="text-teal-400 text-xs font-mono bg-teal-500/10 px-2 py-1 rounded">
-              IoT Connected
+              {t("hero.iot")}
             </div>
           </div>
 
@@ -80,16 +81,24 @@ const StorageFeature = () => {
                           isLow
                             ? "bg-yellow-500"
                             : isExpiring
-                            ? "bg-red-500"
-                            : "bg-teal-500"
+                              ? "bg-red-500"
+                              : "bg-teal-500"
                         } shadow-lg`}
                       />
                       {/* Hover Tooltip */}
                       <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-32 bg-black text-white text-[10px] p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
-                        <p className="font-bold text-teal-400">Amoxicillin</p>
-                        <p>Qty: {isLow ? "2 (Low)" : "50"}</p>
+                        <p className="font-bold text-teal-400">
+                          {t("hero.tooltip.amoxicillin")}
+                        </p>
+                        <p>
+                          {t("hero.tooltip.qty", {
+                            qty: isLow ? `2 (${t("hero.tooltip.low")})` : "50",
+                          })}
+                        </p>
                         {isExpiring && (
-                          <p className="text-red-400">Exp: 3 Days</p>
+                          <p className="text-red-400">
+                            {t("hero.tooltip.exp")}
+                          </p>
                         )}
                       </div>
                     </>
@@ -111,19 +120,18 @@ const StorageFeature = () => {
                 <Layers className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">
-                Precision Mapping
+                {t("mapping.title")}
               </h3>
             </div>
             <p className="text-slate-600 leading-relaxed mb-6">
-              We create a 1-to-1 digital twin of your facility. Every pill has
-              an exact coordinate.
+              {t("mapping.description")}
             </p>
             <div className="flex items-center gap-2 text-sm font-mono text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-100">
-              <Box className="w-4 h-4" /> Cabinet{" "}
+              <Box className="w-4 h-4" /> {t("mapping.cabinet")}{" "}
               <ArrowRightLeft className="w-3 h-3" />
-              <Layers className="w-4 h-4" /> Drawer{" "}
+              <Layers className="w-4 h-4" /> {t("mapping.drawer")}{" "}
               <ArrowRightLeft className="w-3 h-3" />
-              <Grid3X3 className="w-4 h-4" /> Position
+              <Grid3X3 className="w-4 h-4" /> {t("mapping.position")}
             </div>
           </div>
         </div>
@@ -135,12 +143,11 @@ const StorageFeature = () => {
               <ScanBarcode className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Rapid Ingestion
+              {t("automation.title")}
             </h3>
           </div>
           <p className="text-slate-600 leading-relaxed mb-6">
-            Skip manual entry. Scan the manufacturer's barcode, and Curify
-            identifies the product instantly.
+            {t("automation.description")}
           </p>
 
           {/* Visual Scanner Animation */}
@@ -190,10 +197,10 @@ const StorageFeature = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider mb-3">
-                <Truck className="w-3 h-3" /> Logistics Automation
+                <Truck className="w-3 h-3" /> {t("logistics.badge")}
               </div>
               <h3 className="text-2xl font-bold text-white">
-                Smart Scheduled Transfers
+                {t("logistics.title")}
               </h3>
             </div>
           </div>
@@ -202,10 +209,14 @@ const StorageFeature = () => {
             {/* Step 1: Analyze */}
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-2xl">
               <div className="text-slate-400 text-xs uppercase font-bold mb-2">
-                Step 1: Analyze
+                {t("logistics.step1_title")}
               </div>
               <p className="text-sm text-slate-200">
-                System scans all <strong>Active Tasks</strong> for the next 24h.
+                {t.rich("logistics.step1_desc", {
+                  strong: (chunks) => (
+                    <strong>{t("logistics.active_tasks")}</strong>
+                  ),
+                })}
               </p>
             </div>
 
@@ -217,10 +228,10 @@ const StorageFeature = () => {
             {/* Step 2: Calculate */}
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-2xl">
               <div className="text-slate-400 text-xs uppercase font-bold mb-2">
-                Step 2: Calculate
+                {t("logistics.step2_title")}
               </div>
               <p className="text-sm text-slate-200">
-                Calculates exact dosage needed per Ward.
+                {t("logistics.step2_desc")}
               </p>
             </div>
           </div>
@@ -228,10 +239,11 @@ const StorageFeature = () => {
           <div className="mt-8 bg-teal-900/50 border border-teal-500/30 p-4 rounded-xl flex items-start gap-3">
             <CheckCircle2 className="w-5 h-5 text-teal-400 mt-0.5" />
             <div>
-              <h4 className="text-sm font-bold text-teal-100">The Result:</h4>
+              <h4 className="text-sm font-bold text-teal-100">
+                {t("logistics.result_title")}
+              </h4>
               <p className="text-sm text-teal-200/80">
-                Automatically creates a transfer order from Central Storage to
-                the Ward Cabinet. No manual counting required.
+                {t("logistics.result_desc")}
               </p>
             </div>
           </div>
@@ -247,7 +259,7 @@ const StorageFeature = () => {
               <Database className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Zero-Touch Deductions
+              {t("sync.title")}
             </h3>
           </div>
           <div className="flex items-center justify-between bg-slate-50 p-4 rounded-2xl border border-slate-100">
@@ -257,16 +269,20 @@ const StorageFeature = () => {
               </div>
               <div>
                 <p className="text-sm font-bold text-slate-700">
-                  Nurse completes task
+                  {t("sync.nurse_action")}
                 </p>
-                <p className="text-xs text-slate-500">Administered 100mg</p>
+                <p className="text-xs text-slate-500">
+                  {t("sync.administered")}
+                </p>
               </div>
             </div>
             <ArrowRightLeft className="text-slate-300 w-5 h-5" />
             <div className="text-right">
-              <p className="text-sm font-bold text-slate-700">Stock Update</p>
+              <p className="text-sm font-bold text-slate-700">
+                {t("sync.stock_update")}
+              </p>
               <div className="flex items-center justify-end gap-1 text-red-500 font-mono font-bold">
-                <TrendingDown className="w-3 h-3" /> -1 Unit
+                <TrendingDown className="w-3 h-3" /> {t("sync.unit")}
               </div>
             </div>
           </div>
@@ -275,23 +291,22 @@ const StorageFeature = () => {
         {/* Expiry Alert */}
         <div className="md:col-span-1 bg-red-50 border border-red-100 rounded-3xl p-8 shadow-sm flex flex-col justify-center">
           <div className="flex items-center gap-2 text-red-600 font-bold uppercase tracking-widest text-xs mb-4">
-            <AlertTriangle className="w-4 h-4" /> Safety First
+            <AlertTriangle className="w-4 h-4" /> {t("safety.badge")}
           </div>
           <h4 className="text-2xl font-bold text-slate-900 mb-2">
-            Expiry Alerts
+            {t("safety.title")}
           </h4>
           <p className="text-slate-600 text-sm mb-4">
-            Never administer expired drugs. High-priority warnings for items
-            nearing date.
+            {t("safety.description")}
           </p>
           <div className="bg-white p-3 rounded-xl shadow-sm border border-red-100 flex items-center gap-3">
             <PackageSearch className="w-5 h-5 text-red-400" />
             <div>
               <div className="text-xs font-bold text-slate-700">
-                Insulin Batch A
+                {t("safety.item_title")}
               </div>
               <div className="text-[10px] text-red-500 font-bold">
-                Exp: Tomorrow
+                {t("safety.item_exp")}
               </div>
             </div>
           </div>

@@ -1,67 +1,14 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 import { notFound } from "next/navigation";
+import ShareButtons from "@/components/pages/blog/ShareButtons";
 
-// Client component for social sharing
-function ShareButtons({ postTitle }: { postTitle: string }) {
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  useEffect(() => {
-    setCurrentUrl(window.location.href);
-  }, []);
-
-  return (
-    <div className="flex space-x-4">
-      <a
-        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-          postTitle,
-        )}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-teal-600"
-        aria-label="Share on Twitter"
-      >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.097 10.097 0 01-3.127 1.184A4.92 4.92 0 0016.953 2a4.928 4.928 0 00-4.928 4.928c0 .385.044.762.127 1.122-4.092-.205-7.72-2.17-10.149-5.152a4.929 4.929 0 001.523 6.574 4.887 4.887 0 01-2.23-.616v.061a4.926 4.926 0 003.95 4.827 4.917 4.917 0 01-2.224.084 4.93 4.93 0 004.6 3.42A9.87 9.87 0 012 19.539a13.944 13.944 0 007.548 2.212c9.057 0 14.009-7.503 14.009-14.01 0-.213-.005-.425-.014-.636A10.012 10.012 0 0024 4.59l-.047-.02z" />
-        </svg>
-      </a>
-      <a
-        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-          currentUrl,
-        )}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-teal-600"
-        aria-label="Share on Facebook"
-      >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-        </svg>
-      </a>
-      <a
-        href={`https://www.linkedin.com/shareArticle?mini=true&title=${encodeURIComponent(
-          postTitle,
-        )}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-teal-600"
-        aria-label="Share on LinkedIn"
-      >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-        </svg>
-      </a>
-    </div>
-  );
-}
-
-// Function to fetch a single post by slug
+// Query to fetch a single post by slug
 async function getPost(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0]{
     _id,
@@ -79,10 +26,50 @@ async function getPost(slug: string) {
       _id,
       title
     },
-    "excerpt": array::join(string::split(pt::text(body[0...1]), "")[0...200], "") + "..."
+    "excerpt": array::join(string::split(pt::text(body[0...1]), "")[0...160], "") + "..."
   }`;
 
-  return await client.fetch(query, { slug });
+  return await client.fetch(query, { slug }, { next: { revalidate: 3600 } });
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found | Curify Blog",
+    };
+  }
+
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : "/og-image.png";
+
+  return {
+    title: `${post.title} | Curify Blog`,
+    description: post.excerpt || post.title,
+    alternates: {
+      canonical: `https://www.curifyapp.com/${locale}/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || post.title,
+      type: "article",
+      url: `https://www.curifyapp.com/${locale}/blog/${slug}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
 }
 
 // Portable Text components
@@ -165,61 +152,24 @@ interface PostPageProps {
   params: Promise<{ slug: string; locale: string }>;
 }
 
-export default function PostPage({ params }: PostPageProps) {
-  const [post, setPost] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [currentSlug, setCurrentSlug] = useState<string>("");
+export default async function PostPage({ params }: PostPageProps) {
+  const { slug, locale } = await params;
+  const post = await getPost(slug);
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const { slug } = await params;
-        setCurrentSlug(slug);
-        const postData = await getPost(slug);
-        if (!postData) {
-          setError("Post not found");
-        } else {
-          setPost(postData);
-        }
-      } catch (err) {
-        console.error("Error fetching post:", err);
-        setError("Failed to load post");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, []);
+  if (!post) {
+    notFound();
+  }
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+    return new Date(dateString).toLocaleDateString(
+      locale === "el" ? "el-GR" : "en-US",
+      {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      },
+    );
   };
-
-  if (loading) {
-    return (
-      <main className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto flex items-center justify-center min-h-[50vh]">
-          <p className="text-gray-500 text-lg">Loading post...</p>
-        </div>
-      </main>
-    );
-  }
-
-  if (error || !post) {
-    return (
-      <main className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto flex items-center justify-center min-h-[50vh]">
-          <p className="text-red-500 text-lg">{error || "Post not found"}</p>
-        </div>
-      </main>
-    );
-  }
 
   return (
     <main className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
@@ -242,7 +192,7 @@ export default function PostPage({ params }: PostPageProps) {
               d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
-          Back to Blog
+          {locale === "el" ? "Επιστροφή στο Blog" : "Back to Blog"}
         </Link>
 
         <header className="mb-10">
@@ -282,7 +232,10 @@ export default function PostPage({ params }: PostPageProps) {
                   </span>
                 </div>
               )}
-              <span>By {post.author?.name || "Unknown Author"}</span>
+              <span>
+                {locale === "el" ? "Από" : "By"}{" "}
+                {post.author?.name || "Unknown Author"}
+              </span>
             </div>
             <span>•</span>
             <time dateTime={post.publishedAt}>
@@ -298,6 +251,7 @@ export default function PostPage({ params }: PostPageProps) {
               alt={post.title}
               fill
               className="object-cover"
+              priority
             />
           </div>
         )}
@@ -307,7 +261,9 @@ export default function PostPage({ params }: PostPageProps) {
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-200">
-          <h2 className="text-2xl font-bold mb-4">Share this post</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            {locale === "el" ? "Μοιραστείτε το άρθρο" : "Share this post"}
+          </h2>
           <ShareButtons postTitle={post.title} />
         </div>
       </article>

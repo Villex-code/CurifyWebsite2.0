@@ -3,7 +3,7 @@ import Script from "next/script";
 import localFont from "next/font/local";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { routing } from "../../i18n/routing";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
@@ -30,21 +30,40 @@ const playfairDisplay = localFont({
   weight: "400 900",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://curifyapp.com"),
-  title: {
-    default: "Curify - Healthcare Operating System",
-    template: "%s | Curify",
-  },
-  description:
-    "Unified healthcare management system for clinics, offices, and hospitals. Features EMR, billing, inventory, and more.",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://curifyapp.com",
-    siteName: "Curify",
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    metadataBase: new URL("https://www.curifyapp.com"),
+    title: {
+      default: t("title"),
+      template: `%s | Curify`,
+    },
+    description: t("description"),
+    keywords: t("keywords"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      type: "website",
+      locale: locale === "el" ? "el_GR" : "en_US",
+      url: `https://www.curifyapp.com/${locale}`,
+      siteName: "Curify",
+    },
+    alternates: {
+      canonical: `https://www.curifyapp.com/${locale}`,
+      languages: {
+        en: "https://www.curifyapp.com/en",
+        el: "https://www.curifyapp.com/el",
+        "x-default": "https://www.curifyapp.com/el",
+      },
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -71,12 +90,12 @@ export default async function LocaleLayout({
       {
         "@type": "Organization",
         name: "Curify",
-        url: "https://www.curify.app",
-        logo: "https://www.curify.app/logo.png",
+        url: "https://www.curifyapp.com",
+        logo: "https://www.curifyapp.com/logo.png",
         sameAs: [
-          "https://www.linkedin.com/company/curify",
-          "https://twitter.com/curify",
-          "https://www.facebook.com/curify",
+          "https://www.linkedin.com/company/curify-app/",
+          "https://www.instagram.com/appcurify/",
+          "https://www.youtube.com/@CurifyApp",
         ],
         contactPoint: {
           "@type": "ContactPoint",
@@ -97,7 +116,19 @@ export default async function LocaleLayout({
           priceCurrency: "EUR",
         },
         description:
-          "Integrated healthcare management system for clinics and hospitals.",
+          "Ολοκληρωμένο ιατρικό λογισμικό για τη διαχείριση ιατρείων, κλινικών και νοσοκομείων. Περιλαμβάνει ηλεκτρονικό φάκελο ασθενή (EHR), συνταγογράφηση και CRM.",
+        featureList: [
+          "Ηλεκτρονικός Φάκελος Ασθενή (EHR)",
+          "Ηλεκτρονική Συνταγογράφηση",
+          "Διαχείριση Ραντεβού & CRM",
+          "Smart Inventory",
+          "IoT Integration",
+        ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "156",
+        },
       },
     ],
   };
@@ -105,29 +136,37 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-N3PLR5J4');
+          `}
+        </Script>
+        {/* End Google Tag Manager */}
         {/* JSON-LD Structured Data */}
         <Script
           id="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-SJC41HFXN6"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-SJC41HFXN6');
-          `}
-        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${facultyGlyphic.variable} ${playfairDisplay.variable} antialiased`}
       >
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N3PLR5J4"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <NextIntlClientProvider messages={messages}>
           <Navbar />
           <div className="pt-8 md:pt-16 w-full h-full">{children}</div>

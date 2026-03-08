@@ -14,8 +14,11 @@ import {
   Link as LinkIcon,
   AlertCircle,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const AppointmentFeature = () => {
+  const t = useTranslations("FeatureCards.appointment-calendar");
+
   return (
     <div className="space-y-16">
       {/* --- HERO: THE INTELLIGENT CALENDAR --- */}
@@ -32,16 +35,20 @@ const AppointmentFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <Calendar className="w-3 h-3" /> Smart Scheduling
+            <Calendar className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Not just a calendar. <br />
-            <span className="text-teal-400">An operational guardrail.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks) => (
+                <span className="text-teal-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Curify's calendar is context-aware. It links patients to records,
-            prevents double-booking via Google Sync, and enforces{" "}
-            <strong>Smart Tag Limits</strong> to prevent staff burnout.
+            {t.rich("hero.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -57,7 +64,7 @@ const AppointmentFeature = () => {
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-400">
               <ShieldAlert className="w-3 h-3 text-orange-400" />
-              <span>Rule Active: Max 3 Surgeries/Day</span>
+              <span>{t("hero.rule_active")}</span>
             </div>
           </div>
 
@@ -68,7 +75,9 @@ const AppointmentFeature = () => {
               <div className="text-xs text-teal-200 font-bold mb-1">
                 09:00 AM
               </div>
-              <div className="text-sm text-white font-bold">Surgery #1</div>
+              <div className="text-sm text-white font-bold">
+                {t("hero.surgery")} #1
+              </div>
               <div className="text-[10px] text-teal-400">Appendectomy</div>
             </div>
 
@@ -77,7 +86,9 @@ const AppointmentFeature = () => {
               <div className="text-xs text-teal-200 font-bold mb-1">
                 11:30 AM
               </div>
-              <div className="text-sm text-white font-bold">Surgery #2</div>
+              <div className="text-sm text-white font-bold">
+                {t("hero.surgery")} #2
+              </div>
               <div className="text-[10px] text-teal-400">Hernia Repair</div>
             </div>
 
@@ -86,7 +97,9 @@ const AppointmentFeature = () => {
               <div className="text-xs text-teal-200 font-bold mb-1">
                 02:00 PM
               </div>
-              <div className="text-sm text-white font-bold">Surgery #3</div>
+              <div className="text-sm text-white font-bold">
+                {t("hero.surgery")} #3
+              </div>
               <div className="text-[10px] text-teal-400">
                 ACL Reconstruction
               </div>
@@ -99,7 +112,7 @@ const AppointmentFeature = () => {
                 04:00 PM
               </span>
               <span className="text-sm font-bold text-slate-300 relative z-10">
-                Add Surgery
+                {t("hero.add_surgery")}
               </span>
 
               {/* The Alert Tooltip */}
@@ -110,8 +123,8 @@ const AppointmentFeature = () => {
                 className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 bg-red-500 text-white text-xs p-2 rounded-lg shadow-xl z-20 flex items-center gap-2"
               >
                 <AlertCircle className="w-4 h-4 shrink-0" />
-                <b>Limit Reached!</b>
-                Daily max (3) exceeded.
+                <b>{t("hero.limit_reached")}</b>
+                {t("hero.daily_max")}
               </motion.div>
             </div>
           </div>
@@ -124,24 +137,26 @@ const AppointmentFeature = () => {
         <div className="lg:col-span-5 flex flex-col justify-center">
           <div className="mb-6">
             <h3 className="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <Users className="w-6 h-6 text-blue-600" /> Reception Command
+              <Users className="w-6 h-6 text-blue-600" /> {t("reception.title")}
             </h3>
             <p className="text-slate-600 leading-relaxed mb-6">
-              Managing high traffic? The <strong>Aggregate View</strong> allows
-              receptionists to overlay multiple doctors' schedules to find open
-              slots instantly.
+              {t.rich("reception.description", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm text-slate-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                 <span>
-                  <strong>Multi-Select:</strong> Toggle specific doctors on/off.
+                  <strong>{t("reception.multi_select")}</strong>{" "}
+                  {t("reception.multi_select_desc")}
                 </span>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-700">
                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                 <span>
-                  <strong>Split View:</strong> Compare schedules side-by-side.
+                  <strong>{t("reception.split_view")}</strong>{" "}
+                  {t("reception.split_view_desc")}
                 </span>
               </li>
             </ul>
@@ -161,8 +176,8 @@ const AppointmentFeature = () => {
                     i === 0
                       ? "bg-teal-500"
                       : i === 1
-                      ? "bg-blue-500"
-                      : "bg-purple-500"
+                        ? "bg-blue-500"
+                        : "bg-purple-500"
                   }`}
                 />
                 <span className="text-xs font-bold text-slate-700">{name}</span>
@@ -206,12 +221,11 @@ const AppointmentFeature = () => {
                 <RefreshCw className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">
-                2-Way Google Sync
+                {t("sync.google_title")}
               </h3>
             </div>
             <p className="text-slate-600 text-sm mb-8 leading-relaxed">
-              Personal commitments block medical slots automatically. No more
-              double-booking.
+              {t("sync.google_desc")}
             </p>
 
             <div className="flex items-center justify-center gap-6">
@@ -246,12 +260,11 @@ const AppointmentFeature = () => {
               <Bell className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Automated Reminders
+              {t("sync.reminders_title")}
             </h3>
           </div>
           <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-            Reduce no-shows. We send SMS/Email alerts to patients 24h before
-            their visit automatically.
+            {t("sync.reminders_desc")}
           </p>
 
           <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 flex items-start gap-3">
@@ -260,11 +273,12 @@ const AppointmentFeature = () => {
             </div>
             <div>
               <span className="text-xs font-bold text-slate-700 block mb-1">
-                System • Now
+                {t("sync.system_now")}
               </span>
               <p className="text-xs text-slate-500">
-                Reminder sent to <strong>George K.</strong> for appointment
-                tomorrow at 10:00 AM.
+                {t.rich("sync.reminder_msg", {
+                  strong: (chunks) => <strong>{chunks}</strong>,
+                })}
               </p>
             </div>
           </div>
@@ -277,15 +291,15 @@ const AppointmentFeature = () => {
 
         <div className="relative z-10 max-w-lg">
           <div className="flex items-center gap-2 text-teal-300 font-bold text-xs uppercase tracking-widest mb-2">
-            <LinkIcon className="w-3 h-3" /> Context Aware
+            <LinkIcon className="w-3 h-3" /> {t("linking.badge")}
           </div>
           <h3 className="text-2xl font-bold text-white mb-2">
-            Deep Patient Linking
+            {t("linking.title")}
           </h3>
           <p className="text-teal-100/80 text-sm">
-            Appointments aren't just time slots. They are linked directly to the{" "}
-            <strong>Medical File</strong>. Click the event to see history, meds,
-            and notes instantly.
+            {t.rich("linking.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -296,7 +310,7 @@ const AppointmentFeature = () => {
           <div>
             <div className="text-white font-bold text-sm">George Katsaros</div>
             <div className="text-teal-200 text-xs">
-              View Medical Profile &rarr;
+              {t("linking.view_profile")}
             </div>
           </div>
         </div>

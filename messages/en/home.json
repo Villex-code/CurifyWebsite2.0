@@ -64,7 +64,7 @@
     "systemGreeting": "Good morning, Dr. Katsaros. Ready to assist."
   },
   "coreCapabilities": {
-    "title": "A complete ecosystem <br />under one roof.",
+    "title": "A complete ecosystem <br></br>under one roof.",
     "description": "From IoT-enabled pharmacy management to integrated billing. Curify unifies every aspect of your healthcare organization into one cohesive operating system.",
     "financialOs": {
       "badge": "Financial OS",

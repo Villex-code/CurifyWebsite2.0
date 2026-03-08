@@ -16,17 +16,18 @@ export async function generateMetadata({
     description: t("description"),
     keywords: t("keywords"),
     alternates: {
-      canonical: `https://www.curify.app/${locale}/use-cases`,
+      canonical: `https://www.curifyapp.com/${locale}/use-cases`,
       languages: {
-        en: "https://www.curify.app/en/use-cases",
-        el: "https://www.curify.app/el/use-cases",
+        en: "https://www.curifyapp.com/en/use-cases",
+        el: "https://www.curifyapp.com/el/use-cases",
+        "x-default": "https://www.curifyapp.com/el/use-cases",
       },
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
       type: "website",
-      url: `https://www.curify.app/${locale}/use-cases`,
+      url: `https://www.curifyapp.com/${locale}/use-cases`,
       images: [
         {
           url: "/og-image.png",

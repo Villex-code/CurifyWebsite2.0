@@ -3,11 +3,8 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ChevronRight, LayoutGrid } from "lucide-react";
-import {
-  FEATURE_REGISTRY,
-  getCategories,
-  getFeaturesByCategory,
-} from "./featuresRegistry"; // Import from your new registry file
+import { FEATURE_REGISTRY, getCategories } from "./featuresRegistry"; // Import from your new registry file
+import { useTranslations } from "next-intl";
 
 interface FeaturesSidebarProps {
   activeFeature: string;
@@ -22,11 +19,13 @@ const FeaturesSidebar = ({
   searchQuery,
   onSearchChange,
 }: FeaturesSidebarProps) => {
+  const t = useTranslations("features.sidebar");
+  const tr = useTranslations("features.registry");
   const categories = getCategories();
 
   // Default: Open all categories initially for better discovery
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
-    new Set(categories)
+    new Set(categories),
   );
 
   const toggleCategory = (category: string) => {
@@ -46,10 +45,12 @@ const FeaturesSidebar = ({
     const query = searchQuery.toLowerCase();
     return FEATURE_REGISTRY.filter(
       (feature) =>
-        feature.title.toLowerCase().includes(query) ||
-        feature.category.toLowerCase().includes(query)
+        tr(`items.${feature.id}`).toLowerCase().includes(query) ||
+        tr(`categories.${feature.category.toLowerCase()}`)
+          .toLowerCase()
+          .includes(query),
     );
-  }, [searchQuery]);
+  }, [searchQuery, tr]);
 
   // Group filtered features
   const groupedFeatures = useMemo(() => {
@@ -71,7 +72,7 @@ const FeaturesSidebar = ({
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-teal-500 transition-colors" />
           <input
             type="text"
-            placeholder="Find a feature..."
+            placeholder={t("placeholder")}
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all text-sm shadow-sm"
@@ -94,7 +95,7 @@ const FeaturesSidebar = ({
                 onClick={() => toggleCategory(category)}
                 className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-teal-600 transition-colors mb-2"
               >
-                <span>{category}</span>
+                <span>{tr(`categories.${category.toLowerCase()}`)}</span>
                 <ChevronRight
                   className={`w-3 h-3 transition-transform duration-200 ${
                     isExpanded ? "rotate-90" : ""
@@ -131,7 +132,7 @@ const FeaturesSidebar = ({
                               isActive ? "bg-teal-500" : "bg-slate-300"
                             }`}
                           />
-                          {feature.title}
+                          {tr(`items.${feature.id}`)}
                         </button>
                       );
                     })}

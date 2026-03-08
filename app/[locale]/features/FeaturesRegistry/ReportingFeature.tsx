@@ -11,13 +11,17 @@ import {
   UserCheck,
   UserX,
   Clock,
-  Syringe,
-  AlertTriangle,
   FileBadge,
   CalendarDays,
+  Activity,
+  Syringe,
+  AlertTriangle,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const ReportingFeature = () => {
+  const t = useTranslations("FeatureCards.reporting-privacy");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE PRINT ENGINE --- */}
@@ -34,16 +38,18 @@ const ReportingFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <Printer className="w-3 h-3" /> Digital-to-Physical
+            <Printer className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Paperless workflow. <br />
-            <span className="text-blue-400">Print-ready backups.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks) => (
+                <span className="text-blue-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Curify is digital-first, but reality-aware. Generate professional,
-            legible PDF reports for Vitals, Meds, and Discharge Summaries
-            instantly.
+            {t("hero.description")}
           </p>
         </div>
 
@@ -71,7 +77,7 @@ const ReportingFeature = () => {
                 />
               ))}
               <div className="mt-8 p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-3">
-                <ActivityIcon className="w-5 h-5 text-teal-500" />
+                <Activity className="w-5 h-5 text-teal-500" />
                 <div className="space-y-1 flex-1">
                   <div className="h-1.5 w-12 bg-slate-300 rounded-full" />
                   <div className="h-1.5 w-8 bg-slate-200 rounded-full" />
@@ -80,7 +86,7 @@ const ReportingFeature = () => {
             </div>
             {/* Floating Badge */}
             <div className="absolute bottom-4 right-4 bg-teal-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
-              PDF READY
+              {t("hero.pdf_ready")}
             </div>
           </div>
         </div>
@@ -88,18 +94,24 @@ const ReportingFeature = () => {
 
       {/* --- REPORTING ASSETS (Bento) --- */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {["Medication Log", "Vitals Chart", "Admissions"].map((item, i) => (
+        {[
+          { key: "med_log", icon: FileText },
+          { key: "vitals_chart", icon: FileText },
+          { key: "admissions", icon: FileText },
+        ].map((item, i) => (
           <div
             key={i}
             className="bg-white border border-slate-200 p-6 rounded-3xl shadow-sm flex items-center gap-4 hover:border-teal-200 transition-colors group"
           >
             <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-teal-50 group-hover:text-teal-600 transition-colors">
-              <FileText className="w-6 h-6" />
+              <item.icon className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 text-sm">{item}</h4>
+              <h4 className="font-bold text-slate-900 text-sm">
+                {t(`assets.${item.key}`)}
+              </h4>
               <p className="text-xs text-slate-500 mt-1">
-                Export to PDF / Print
+                {t("assets.export")}
               </p>
             </div>
           </div>
@@ -110,12 +122,9 @@ const ReportingFeature = () => {
       <div className="bg-slate-50 rounded-[2.5rem] p-8 md:p-12 border border-slate-200">
         <div className="max-w-2xl mb-10">
           <h3 className="text-2xl font-bold text-slate-900 mb-3">
-            High-Fidelity Prescriptions
+            {t("prescriptions.title")}
           </h3>
-          <p className="text-slate-600">
-            It's not just "Drug + Dose". Capture the nuance of hospital
-            workflows with specific flags and responsibility tracking.
-          </p>
+          <p className="text-slate-600">{t("prescriptions.description")}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -126,18 +135,19 @@ const ReportingFeature = () => {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h4 className="text-lg font-bold text-slate-900">
-                    Morphine Sulfate
+                    {t("prescriptions.morphine")}
                   </h4>
                   <p className="text-xs text-slate-500 font-mono">
-                    IV Drip • 2mg/ml
+                    {t("prescriptions.morphine_desc")}
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <span className="px-2 py-1 bg-red-50 text-red-600 text-[10px] font-bold rounded border border-red-100">
-                    SOS (Pain)
+                    {t("prescriptions.sos_flag")}
                   </span>
                   <span className="px-2 py-1 bg-purple-50 text-purple-600 text-[10px] font-bold rounded border border-purple-100 flex items-center gap-1">
-                    <Syringe className="w-3 h-3" /> Pump
+                    <Syringe className="w-3 h-3" />{" "}
+                    {t("prescriptions.pump_flag")}
                   </span>
                 </div>
               </div>
@@ -145,8 +155,8 @@ const ReportingFeature = () => {
               {/* Timeline Bar */}
               <div className="space-y-2 mb-6">
                 <div className="flex justify-between text-[10px] text-slate-400 font-bold uppercase">
-                  <span>Start: 14:00</span>
-                  <span>End: 22:00</span>
+                  <span>{t("prescriptions.timeline_start")}</span>
+                  <span>{t("prescriptions.timeline_end")}</span>
                 </div>
                 <div className="h-3 w-full bg-slate-100 rounded-full overflow-hidden relative">
                   <div className="absolute left-0 top-0 bottom-0 w-2/3 bg-purple-500/20" />
@@ -171,18 +181,18 @@ const ReportingFeature = () => {
           <div className="space-y-4">
             <FeatureRow
               icon={Clock}
-              title="Precise Timeline"
-              desc="Define exact Start/End times for infusions."
+              title={t("prescriptions.precise_title")}
+              desc={t("prescriptions.precise_desc")}
             />
             <FeatureRow
               icon={AlertTriangle}
-              title="Special Flags"
-              desc="'Patient Provided' (No Cost) or 'SOS' (On Demand)."
+              title={t("prescriptions.flags_title")}
+              desc={t("prescriptions.flags_desc")}
             />
             <FeatureRow
               icon={UserCheck}
-              title="Clear Responsibility"
-              desc="Assign specific supervisors to high-risk lines."
+              title={t("prescriptions.resp_title")}
+              desc={t("prescriptions.resp_desc")}
             />
           </div>
         </div>
@@ -193,25 +203,25 @@ const ReportingFeature = () => {
         {/* Left Text */}
         <div className="flex-1 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-wider mb-6">
-            <Lock className="w-3 h-3" /> Zero-Trust Model
+            <Lock className="w-3 h-3" /> {t("privacy.badge")}
           </div>
           <h3 className="text-3xl font-bold text-white mb-4">
-            Granular Privacy
+            {t("privacy.title")}
           </h3>
           <p className="text-slate-400 leading-relaxed mb-8">
-            Not everyone needs to see everything. Lock down sensitive files
-            (VIPs, Psychiatric) using{" "}
-            <strong>Access Control Lists (ACLs)</strong>.
+            {t.rich("privacy.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
           <div className="flex gap-3 flex-wrap">
             <span className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">
-              User-Specific
+              {t("privacy.user_spec")}
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">
-              Role-Based
+              {t("privacy.role_based")}
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 text-xs border border-slate-700">
-              Location-Based
+              {t("privacy.loc_based")}
             </span>
           </div>
         </div>
@@ -219,7 +229,7 @@ const ReportingFeature = () => {
         {/* Right Visual: The Gatekeeper */}
         <div className="flex-1 bg-black/40 backdrop-blur-sm rounded-2xl border border-slate-700 p-6 relative overflow-hidden">
           <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">
-            Access Log: Patient #9921 (VIP)
+            {t("privacy.access_log")}
           </div>
 
           <div className="space-y-3">
@@ -234,7 +244,7 @@ const ReportingFeature = () => {
                     Dr. Smith
                   </div>
                   <div className="text-[10px] text-green-500/60">
-                    Reason: Primary Doctor
+                    {t("privacy.reason_primary")}
                   </div>
                 </div>
               </div>
@@ -252,7 +262,7 @@ const ReportingFeature = () => {
                     Student Nurse
                   </div>
                   <div className="text-[10px] text-red-500/60">
-                    Reason: Role Restriction
+                    {t("privacy.reason_role")}
                   </div>
                 </div>
               </div>
@@ -270,7 +280,7 @@ const ReportingFeature = () => {
                     Reception B
                   </div>
                   <div className="text-[10px] text-slate-500">
-                    Reason: Wrong Ward
+                    {t("privacy.reason_ward")}
                   </div>
                 </div>
               </div>

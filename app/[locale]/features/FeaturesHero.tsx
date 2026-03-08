@@ -19,21 +19,24 @@ import {
 
 import { FEATURE_REGISTRY } from "./featuresRegistry";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 // --- MAIN COMPONENT ---
 const FeaturesHero = () => {
+  const t = useTranslations("features.hero");
+
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col items-center justify-center  pt-32 pb-20">
       {/* --- THE SATELLITE SYSTEM (Floating Cards) --- */}
       <div className="absolute inset-0 pointer-events-none hidden lg:block max-w-[1400px] mx-auto">
         {/* Top Left: Analytics (Rotated Away Left) */}
         <FloatingSatellite x="10%" y="20%" delay={0} rotate={-25}>
-          <VisualAnalytics />
+          <VisualAnalytics t={t} />
         </FloatingSatellite>
 
         {/* Top Right: Payments (Rotated Away Right) */}
         <FloatingSatellite x="90%" y="20%" delay={0.5} rotate={25}>
-          <VisualPayments />
+          <VisualPayments t={t} />
         </FloatingSatellite>
 
         {/* Bottom Left: Patient Profile */}
@@ -43,7 +46,7 @@ const FeaturesHero = () => {
 
         {/* Bottom Right: Automation */}
         <FloatingSatellite x="85%" y="70%" delay={1.5} rotate={15}>
-          <VisualAutomation />
+          <VisualAutomation t={t} />
         </FloatingSatellite>
       </div>
 
@@ -57,28 +60,32 @@ const FeaturesHero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-teal-100 shadow-sm text-teal-700 text-xs font-bold uppercase tracking-widest mb-10">
             <Sparkles className="w-3 h-3 fill-teal-500" />
-            Feature Ecosystem
+            {t("badge")}
           </div>
 
           {/* Headline */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl text-slate-900 tracking-tight leading-none mb-8">
             <span className="font-serif italic font-light text-slate-400 block mb-2">
-              Total control over
+              {t("headline_light")}
             </span>
             <span className="font-sans font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-teal-600 to-teal-800">
-              your operation.
+              {t("headline_bold")}
             </span>
           </h1>
 
           <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed mb-16 font-light">
-            Explore the documentation for the operating system that powers
-            modern healthcare. From{" "}
-            <strong className="text-teal-700 font-medium">IoT inventory</strong>{" "}
-            to{" "}
-            <strong className="text-teal-700 font-medium">
-              AI diagnostics
-            </strong>
-            .
+            {t.rich("description", {
+              strong1: (chunks) => (
+                <strong className="text-teal-700 font-medium">
+                  {t("iot_inventory")}
+                </strong>
+              ),
+              strong2: (chunks) => (
+                <strong className="text-teal-700 font-medium">
+                  {t("ai_diagnostics")}
+                </strong>
+              ),
+            })}
           </p>
         </motion.div>
 
@@ -95,18 +102,21 @@ const FeaturesHero = () => {
           className="flex flex-wrap justify-center gap-3 mt-10"
         >
           <span className="text-xs font-bold text-slate-400 uppercase tracking-wide pt-2">
-            Quick Access:
+            {t("quick_access")}
           </span>
-          {["Smart Inventory", "E-Prescribing", "Billing", "Telehealth"].map(
-            (tag) => (
-              <button
-                key={tag}
-                className="text-sm font-medium text-slate-600 bg-white/50 border border-slate-200 px-4 py-1.5 rounded-full hover:bg-white hover:border-teal-200 hover:text-teal-700 hover:shadow-md transition-all duration-300"
-              >
-                {tag}
-              </button>
-            )
-          )}
+          {[
+            { id: "inventory", label: t("tags.inventory") },
+            { id: "prescribing", label: t("tags.prescribing") },
+            { id: "billing", label: t("tags.billing") },
+            { id: "telehealth", label: t("tags.telehealth") },
+          ].map((tag) => (
+            <button
+              key={tag.id}
+              className="text-sm font-medium text-slate-600 bg-white/50 border border-slate-200 px-4 py-1.5 rounded-full hover:bg-white hover:border-teal-200 hover:text-teal-700 hover:shadow-md transition-all duration-300"
+            >
+              {tag.label}
+            </button>
+          ))}
         </motion.div>
       </div>
     </section>
@@ -162,14 +172,14 @@ const FloatingSatellite = ({
 // ABSTRACT VISUALS (Smaller & Compact)
 // ============================================================================
 
-const VisualAnalytics = () => (
+const VisualAnalytics = ({ t }: { t: any }) => (
   <div className="flex flex-col gap-2 w-36">
     <div className="flex items-center gap-2 mb-1">
       <div className="p-1 bg-teal-50 text-teal-600 rounded-md">
         <BarChart3 className="w-3 h-3" />
       </div>
       <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wide">
-        GROWTH
+        {t("visuals.growth")}
       </span>
     </div>
     <div className="flex items-end justify-between h-12 gap-1 px-1">
@@ -188,7 +198,7 @@ const VisualAnalytics = () => (
       ))}
     </div>
     <div className="flex justify-between items-center text-[9px] text-slate-400 font-medium pt-1 border-t border-slate-100">
-      <span>Revenue</span>
+      <span>{t("visuals.revenue")}</span>
       <span className="text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded-md">
         +24%
       </span>
@@ -214,7 +224,7 @@ const VisualPatient = () => (
   </div>
 );
 
-const VisualPayments = () => (
+const VisualPayments = ({ t }: { t: any }) => (
   <div className="w-36">
     <div className="flex items-center justify-between mb-3">
       <div className="flex items-center gap-2">
@@ -222,14 +232,14 @@ const VisualPayments = () => (
           <CreditCard className="w-3 h-3" />
         </div>
         <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wide">
-          BILLING
+          {t("visuals.billing")}
         </span>
       </div>
     </div>
     <div className="bg-slate-50 rounded-lg p-2.5 flex items-center justify-between border border-slate-100">
       <div className="flex flex-col">
         <span className="text-[8px] font-bold text-slate-400 uppercase">
-          AMOUNT
+          {t("visuals.amount")}
         </span>
         <span className="text-xs font-bold text-slate-800">$2,450.00</span>
       </div>
@@ -240,14 +250,14 @@ const VisualPayments = () => (
   </div>
 );
 
-const VisualAutomation = () => (
+const VisualAutomation = ({ t }: { t: any }) => (
   <div className="w-40 flex flex-col gap-2">
     <div className="flex items-center gap-2 mb-1">
       <div className="p-1 bg-slate-100 text-slate-600 rounded-md">
         <Activity className="w-3 h-3" />
       </div>
       <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wide">
-        WORKFLOW
+        {t("visuals.workflow")}
       </span>
     </div>
     <div className="flex items-center justify-between bg-white border border-slate-100 p-2 rounded-lg shadow-sm">
@@ -259,7 +269,7 @@ const VisualAutomation = () => (
         </div>
       </div>
       <div className="px-1.5 py-0.5 bg-teal-50 text-teal-700 text-[9px] font-bold rounded">
-        ACTIVE
+        {t("visuals.active")}
       </div>
     </div>
   </div>
@@ -270,17 +280,22 @@ const VisualAutomation = () => (
 // ============================================================================
 
 const SearchInterface = () => {
+  const t = useTranslations("features.hero.search");
+  const tr = useTranslations("features.registry");
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Filter features based on query
+  // Filter features based on query - using translated content for search if needed?
+  // Current logic searches original registry. Let's keep that but display translated strings.
   const filteredFeatures = query.trim()
     ? FEATURE_REGISTRY.filter(
         (f) =>
-          f.title.toLowerCase().includes(query.toLowerCase()) ||
-          f.category.toLowerCase().includes(query.toLowerCase())
+          tr(`items.${f.id}`).toLowerCase().includes(query.toLowerCase()) ||
+          tr(`categories.${f.category.toLowerCase()}`)
+            .toLowerCase()
+            .includes(query.toLowerCase()),
       ).slice(0, 5) // Limit to top 5 results
     : [];
 
@@ -322,7 +337,7 @@ const SearchInterface = () => {
 
     // Dispatch custom event to notify parent page
     window.dispatchEvent(
-      new CustomEvent("featureSelected", { detail: { featureId } })
+      new CustomEvent("featureSelected", { detail: { featureId } }),
     );
 
     // Smooth scroll to the content section
@@ -358,7 +373,7 @@ const SearchInterface = () => {
           value={query}
           onFocus={() => setIsOpen(true)}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Find a feature (e.g. 'Reports')..."
+          placeholder={t("placeholder")}
           className="w-full h-16 px-5 bg-transparent outline-none text-lg text-slate-800 placeholder:text-slate-400 font-medium rounded-2xl"
         />
         <div className="pr-6 hidden sm:block">
@@ -380,7 +395,7 @@ const SearchInterface = () => {
           >
             <div className="p-3">
               <div className="px-4 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                {query ? "Search Results" : "Suggested Features"}
+                {query ? t("results") : t("suggested")}
               </div>
               <div className="grid grid-cols-1 gap-1">
                 {(query ? filteredFeatures : FEATURE_REGISTRY.slice(0, 5)).map(
@@ -395,29 +410,29 @@ const SearchInterface = () => {
                       </div>
                       <div className="flex-1">
                         <h4 className="text-sm font-bold text-slate-800 group-hover:text-teal-900">
-                          {feature.title}
+                          {tr(`items.${feature.id}`)}
                         </h4>
                         <p className="text-xs text-slate-500 group-hover:text-teal-700/70">
-                          {feature.category}
+                          {tr(`categories.${feature.category.toLowerCase()}`)}
                         </p>
                       </div>
                       <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-teal-500 group-hover:translate-x-1 transition-transform" />
                     </button>
-                  )
+                  ),
                 )}
                 {query && filteredFeatures.length === 0 && (
                   <div className="p-8 text-center text-slate-500">
-                    No features found matching "{query}"
+                    {t("no_results", { query })}
                   </div>
                 )}
               </div>
             </div>
             <div className="bg-slate-50/80 px-6 py-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
               <span>
-                Press <strong>Enter</strong> to select
+                {t("press")} <strong>{t("enter")}</strong> {t("to_select")}
               </span>
               <span className="flex items-center gap-1 text-teal-700 font-bold cursor-pointer hover:underline">
-                Full Documentation <ArrowRight className="w-3 h-3" />
+                {t("full_docs")} <ArrowRight className="w-3 h-3" />
               </span>
             </div>
           </motion.div>

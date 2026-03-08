@@ -17,8 +17,11 @@ import {
   FlaskConical,
   Activity,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const PatientDashboardFeature = () => {
+  const t = useTranslations("FeatureCards.patient-dashboard");
+
   return (
     <div className="space-y-16">
       {/* --- HERO VISUAL: THE RESEARCH ENGINE --- */}
@@ -32,17 +35,20 @@ const PatientDashboardFeature = () => {
 
         <div className="relative z-20 mb-10 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6">
-            <Microscope className="w-3 h-3" /> Clinical Research
+            <Microscope className="w-3 h-3" /> {t("hero.badge")}
           </div>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Turn raw data into <br />
-            <span className="text-indigo-400">medical insights.</span>
+            {t.rich("hero.title", {
+              br: () => <br />,
+              strong: (chunks) => (
+                <span className="text-indigo-400">{chunks}</span>
+              ),
+            })}
           </h3>
           <p className="text-slate-400 text-lg leading-relaxed">
-            Stop digging through paper files. Use our{" "}
-            <strong>Advanced Query Builder</strong> to filter millions of
-            records in seconds. Perfect for audits, studies, and cohort
-            analysis.
+            {t.rich("hero.description", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
         </div>
 
@@ -60,7 +66,7 @@ const PatientDashboardFeature = () => {
                 <CalendarRange className="w-4 h-4" />
               </div>
               <div className="text-sm font-mono text-slate-300">
-                Last 3 Months
+                {t("hero.last_3_months")}
               </div>
             </motion.div>
 
@@ -74,7 +80,7 @@ const PatientDashboardFeature = () => {
                 <Tags className="w-4 h-4" />
               </div>
               <div className="text-sm font-mono text-slate-300">
-                Tag: Oncology
+                {t("hero.tag_oncology")}
               </div>
             </motion.div>
 
@@ -88,7 +94,7 @@ const PatientDashboardFeature = () => {
                 <FlaskConical className="w-4 h-4" />
               </div>
               <div className="text-sm font-mono text-slate-300">
-                Result: Abnormal
+                {t("hero.result_abnormal")}
               </div>
             </motion.div>
           </div>
@@ -108,14 +114,12 @@ const PatientDashboardFeature = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10" />
             <div className="relative z-10">
               <h4 className="text-indigo-200 text-xs font-bold uppercase mb-2">
-                Cohort Identified
+                {t("hero.cohort_identified")}
               </h4>
               <div className="text-5xl font-bold mb-4">42</div>
               <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-2 rounded-lg cursor-pointer hover:bg-white/30 transition-colors">
                 <FileSpreadsheet className="w-4 h-4" />
-                <span className="text-xs font-bold">
-                  Export for Publication
-                </span>
+                <span className="text-xs font-bold">{t("hero.export")}</span>
               </div>
             </div>
           </motion.div>
@@ -126,10 +130,10 @@ const PatientDashboardFeature = () => {
       <div>
         <div className="mb-8">
           <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-            <Activity className="w-6 h-6 text-teal-600" /> Operational Snapshot
+            <Activity className="w-6 h-6 text-teal-600" /> {t("snapshot.title")}
           </h3>
           <p className="text-slate-500 text-sm mt-2">
-            Instant visibility into load and capacity the moment you log in.
+            {t("snapshot.description")}
           </p>
         </div>
 
@@ -146,7 +150,7 @@ const PatientDashboardFeature = () => {
             </div>
             <div className="text-3xl font-bold text-slate-900">148</div>
             <p className="text-xs text-slate-400 mt-1">
-              New patients this month
+              {t("snapshot.new_patients")}
             </p>
             {/* Mini Sparkline */}
             <div className="mt-4 flex items-end gap-1 h-8">
@@ -167,11 +171,13 @@ const PatientDashboardFeature = () => {
                 <BedDouble className="w-5 h-5" />
               </div>
               <span className="text-xs font-bold text-slate-400 uppercase">
-                Capacity
+                {t("snapshot.capacity")}
               </span>
             </div>
             <div className="text-3xl font-bold text-slate-900 mb-1">85%</div>
-            <p className="text-xs text-slate-400 mb-6">42 / 50 Beds Full</p>
+            <p className="text-xs text-slate-400 mb-6">
+              {t("snapshot.beds_full", { occupied: 42, total: 50 })}
+            </p>
 
             {/* Bed Grid Visualization */}
             <div className="grid grid-cols-10 gap-1">
@@ -197,7 +203,7 @@ const PatientDashboardFeature = () => {
             <div>
               <div className="text-3xl font-bold text-teal-900">82</div>
               <p className="text-xs text-teal-700/70 mt-1">
-                Patients currently active
+                {t("snapshot.active_patients")}
               </p>
             </div>
           </div>
@@ -208,18 +214,17 @@ const PatientDashboardFeature = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-5">
           <h3 className="text-xl font-bold text-slate-900 mb-3">
-            Universal Search
+            {t("search.title")}
           </h3>
           <p className="text-slate-600 text-sm leading-relaxed mb-6">
-            Don't scroll through lists. Find any patient by Name, AMKA (SSN), or
-            Internal ID instantly.
+            {t("search.description")}
           </p>
           <div className="flex flex-wrap gap-2">
             <span className="px-3 py-1 bg-slate-100 rounded-lg text-xs font-medium text-slate-600">
-              Active vs Discharged
+              {t("search.filter_status")}
             </span>
             <span className="px-3 py-1 bg-slate-100 rounded-lg text-xs font-medium text-slate-600">
-              Filter by Ward
+              {t("search.filter_ward")}
             </span>
           </div>
         </div>
@@ -260,27 +265,32 @@ const ResultRow = ({
   name: string;
   id: string;
   status: "active" | "discharged";
-}) => (
-  <div className="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-default border border-transparent hover:border-slate-100">
-    <div className="flex items-center gap-3">
-      <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs font-bold text-slate-500">
-        {name.charAt(0)}
+}) => {
+  const t = useTranslations("FeatureCards.patient-dashboard.search");
+  return (
+    <div className="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg transition-colors cursor-default border border-transparent hover:border-slate-100">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-xs font-bold text-slate-500">
+          {name.charAt(0)}
+        </div>
+        <div>
+          <div className="text-sm font-bold text-slate-700">{name}</div>
+          <div className="text-[10px] text-slate-400">
+            {t("id_label", { id: id })}
+          </div>
+        </div>
       </div>
-      <div>
-        <div className="text-sm font-bold text-slate-700">{name}</div>
-        <div className="text-[10px] text-slate-400">ID: #{id}</div>
-      </div>
+      <span
+        className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
+          status === "active"
+            ? "bg-teal-50 text-teal-600"
+            : "bg-slate-100 text-slate-500"
+        }`}
+      >
+        {t(status)}
+      </span>
     </div>
-    <span
-      className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
-        status === "active"
-          ? "bg-teal-50 text-teal-600"
-          : "bg-slate-100 text-slate-500"
-      }`}
-    >
-      {status}
-    </span>
-  </div>
-);
+  );
+};
 
 export default PatientDashboardFeature;

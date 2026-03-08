@@ -16,8 +16,11 @@ import {
   PieChart,
   Wallet,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const FinancialFeature = () => {
+  const t = useTranslations("FeatureCards.financial-management");
+
   return (
     <div className="space-y-12">
       {/* --- HERO VISUAL: THE SMART CHECKOUT --- */}
@@ -40,10 +43,12 @@ const FinancialFeature = () => {
                   <Receipt className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-white text-xs font-bold uppercase">
-                  Invoice #4092
+                  {t("hero.invoice")}
                 </span>
               </div>
-              <span className="text-slate-400 text-[10px]">Today</span>
+              <span className="text-slate-400 text-[10px]">
+                {t("hero.today")}
+              </span>
             </div>
 
             {/* Line Items (Mixed Basket) */}
@@ -53,9 +58,11 @@ const FinancialFeature = () => {
                   <Stethoscope className="w-4 h-4 text-blue-500" />
                   <div className="flex flex-col">
                     <span className="text-xs font-bold text-slate-700">
-                      Cardiology Visit
+                      {t("hero.service_title")}
                     </span>
-                    <span className="text-[10px] text-slate-400">Service</span>
+                    <span className="text-[10px] text-slate-400">
+                      {t("hero.service_type")}
+                    </span>
                   </div>
                 </div>
                 <span className="text-sm font-bold text-slate-700">$80.00</span>
@@ -65,9 +72,11 @@ const FinancialFeature = () => {
                   <Package className="w-4 h-4 text-purple-500" />
                   <div className="flex flex-col">
                     <span className="text-xs font-bold text-slate-700">
-                      Skincare Cream
+                      {t("hero.product_title")}
                     </span>
-                    <span className="text-[10px] text-slate-400">Product</span>
+                    <span className="text-[10px] text-slate-400">
+                      {t("hero.product_type")}
+                    </span>
                   </div>
                 </div>
                 <span className="text-sm font-bold text-slate-700">$25.00</span>
@@ -77,7 +86,7 @@ const FinancialFeature = () => {
             {/* Total */}
             <div className="p-4 bg-slate-50 flex justify-between items-center">
               <span className="text-xs font-bold text-slate-500 uppercase">
-                Total
+                {t("hero.total")}
               </span>
               <span className="text-xl font-bold text-slate-900">$105.00</span>
             </div>
@@ -103,9 +112,11 @@ const FinancialFeature = () => {
                   <CreditCard className="w-6 h-6 text-teal-400" />
                 </div>
               </div>
-              <p className="text-white font-bold text-lg mb-1">Processing...</p>
+              <p className="text-white font-bold text-lg mb-1">
+                {t("hero.processing")}
+              </p>
               <p className="text-slate-400 text-xs">
-                Contactless Reader Active
+                {t("hero.reader_active")}
               </p>
 
               {/* Success Check overlay */}
@@ -116,7 +127,9 @@ const FinancialFeature = () => {
                 className="absolute inset-0 bg-teal-600 flex flex-col items-center justify-center z-20"
               >
                 <CheckCircle2 className="w-10 h-10 text-white mb-2" />
-                <span className="text-white font-bold text-sm">Approved</span>
+                <span className="text-white font-bold text-sm">
+                  {t("hero.approved")}
+                </span>
               </motion.div>
             </motion.div>
           </div>
@@ -130,12 +143,15 @@ const FinancialFeature = () => {
             <div className="p-2 bg-blue-50 text-blue-600 rounded-xl">
               <Users className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-900">1. Select Recipient</h3>
+            <h3 className="font-bold text-slate-900">
+              {t("steps.step1_title")}
+            </h3>
           </div>
           <p className="text-sm text-slate-500 leading-relaxed">
-            Choose an existing <strong>Patient</strong> or bill a{" "}
-            <strong>Business</strong> entity. Supports VAT/Tax ID entry for
-            corporate clients instantly.
+            {t.rich("steps.step1_desc", {
+              strong1: (chunks) => <strong>{t("steps.patient")}</strong>,
+              strong2: (chunks) => <strong>{t("steps.business")}</strong>,
+            })}
           </p>
         </div>
 
@@ -144,12 +160,19 @@ const FinancialFeature = () => {
             <div className="p-2 bg-purple-50 text-purple-600 rounded-xl">
               <Package className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-900">2. Mixed Basket</h3>
+            <h3 className="font-bold text-slate-900">
+              {t("steps.step2_title")}
+            </h3>
           </div>
           <p className="text-sm text-slate-500 leading-relaxed">
-            Combine <strong>Medical Services</strong> (Consultations) and{" "}
-            <strong>Physical Products</strong> (Crutches, Creams) on a single
-            unified receipt.
+            {t.rich("steps.step2_desc", {
+              strong1: (chunks) => (
+                <strong>{t("steps.medical_services")}</strong>
+              ),
+              strong2: (chunks) => (
+                <strong>{t("steps.physical_products")}</strong>
+              ),
+            })}
           </p>
         </div>
 
@@ -158,12 +181,16 @@ const FinancialFeature = () => {
             <div className="p-2 bg-teal-50 text-teal-600 rounded-xl">
               <Wallet className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-slate-900">3. Finalize</h3>
+            <h3 className="font-bold text-slate-900">
+              {t("steps.step3_title")}
+            </h3>
           </div>
           <p className="text-sm text-slate-500 leading-relaxed">
-            Add comments, apply discounts, and trigger the{" "}
-            <strong>POS Terminal</strong>. Status updates from <em>Pending</em>{" "}
-            to <em>Completed</em> instantly.
+            {t.rich("steps.step3_desc", {
+              strong: (chunks) => <strong>{t("steps.pos_terminal")}</strong>,
+              em1: (chunks) => <em>{t("steps.pending")}</em>,
+              em2: (chunks) => <em>{t("steps.completed")}</em>,
+            })}
           </p>
         </div>
       </div>
@@ -174,27 +201,26 @@ const FinancialFeature = () => {
         <div className="md:col-span-7 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl">
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-300 text-xs font-bold uppercase tracking-wider mb-4">
-              <Zap className="w-3 h-3" /> Speed Feature
+              <Zap className="w-3 h-3" /> {t("automation.badge")}
             </div>
-            <h3 className="text-2xl font-bold mb-2">
-              Visit-to-Invoice Automation
-            </h3>
+            <h3 className="text-2xl font-bold mb-2">{t("automation.title")}</h3>
             <p className="text-slate-400 text-sm max-w-sm mb-8">
-              Don't type details twice. Click "Issue Receipt" on a patient visit
-              to pull context instantly.
+              {t("automation.description")}
             </p>
 
             {/* Visual Flow */}
             <div className="flex items-center gap-4">
               <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/10 text-center w-24">
                 <History className="w-5 h-5 text-blue-400 mx-auto mb-2" />
-                <span className="text-[10px] font-bold block">Visit Log</span>
+                <span className="text-[10px] font-bold block">
+                  {t("automation.visit_log")}
+                </span>
               </div>
               <ArrowRight className="w-5 h-5 text-slate-500" />
               <div className="bg-teal-500 p-3 rounded-xl shadow-lg shadow-teal-500/20 text-center w-28 transform scale-110">
                 <Receipt className="w-5 h-5 text-white mx-auto mb-2" />
                 <span className="text-[10px] font-bold block">
-                  Auto-Invoice
+                  {t("automation.auto_invoice")}
                 </span>
               </div>
             </div>
@@ -213,19 +239,18 @@ const FinancialFeature = () => {
               <PieChart className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Payment Templates
+              {t("templates.title")}
             </h3>
           </div>
           <p className="text-slate-600 text-sm mb-6">
-            Save bundles like "Annual Checkup" to auto-fill services, prices,
-            and tax rates in one click.
+            {t("templates.description")}
           </p>
           <div className="flex gap-2">
             <div className="px-3 py-1.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-lg border border-slate-200">
-              Annual Checkup
+              {t("templates.template1")}
             </div>
             <div className="px-3 py-1.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-lg border border-slate-200">
-              Vaccine Pack
+              {t("templates.template2")}
             </div>
           </div>
         </div>

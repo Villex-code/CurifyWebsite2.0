@@ -14,8 +14,11 @@ import {
   Bell,
   CalendarClock,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const TaskManagementFeature = () => {
+  const t = useTranslations("FeatureCards.task-management");
+
   return (
     <div className="space-y-12">
       {/* --- HERO VISUAL: THE OPERATIONAL HEARTBEAT --- */}
@@ -64,14 +67,16 @@ const TaskManagementFeature = () => {
               </div>
               <div>
                 <h4 className="text-white text-sm font-bold">
-                  Amoxicillin 500mg
+                  {t("hero.card1.title")}
                 </h4>
                 <span className="text-xs text-slate-400">
-                  Administered at 08:00
+                  {t("hero.card1.description")}
                 </span>
               </div>
             </div>
-            <span className="text-xs font-mono text-green-400">DONE</span>
+            <span className="text-xs font-mono text-green-400">
+              {t("hero.card1.status")}
+            </span>
           </motion.div>
 
           {/* Card 2: Active (The Pulse) */}
@@ -88,15 +93,15 @@ const TaskManagementFeature = () => {
               </div>
               <div>
                 <h4 className="text-slate-900 text-sm font-bold">
-                  Insulin (Regular)
+                  {t("hero.card2.title")}
                 </h4>
                 <span className="text-xs text-slate-500 flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> Due: 12:00 PM (Now)
+                  <Clock className="w-3 h-3" /> {t("hero.card2.due")}
                 </span>
               </div>
             </div>
             <button className="px-3 py-1.5 bg-teal-600 text-white text-xs font-bold rounded-lg shadow-sm hover:bg-teal-700 transition-colors">
-              Complete
+              {t("hero.card2.button")}
             </button>
           </motion.div>
 
@@ -113,12 +118,16 @@ const TaskManagementFeature = () => {
               </div>
               <div>
                 <h4 className="text-slate-300 text-sm font-bold">
-                  Vitals Check
+                  {t("hero.card3.title")}
                 </h4>
-                <span className="text-xs text-slate-500">Scheduled: 16:00</span>
+                <span className="text-xs text-slate-500">
+                  {t("hero.card3.scheduled")}
+                </span>
               </div>
             </div>
-            <span className="text-xs font-mono text-slate-500">PENDING</span>
+            <span className="text-xs font-mono text-slate-500">
+              {t("hero.card3.status")}
+            </span>
           </motion.div>
         </div>
       </div>
@@ -132,29 +141,30 @@ const TaskManagementFeature = () => {
               <ClipboardList className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              From Prescription to Task
+              {t("workflow.title")}
             </h3>
           </div>
           <p className="text-slate-600 leading-relaxed mb-6">
-            Tasks are automatically generated when a Doctor creates a
-            prescription. The system calculates the entire schedule based on the{" "}
-            <strong>Administration Rate</strong> and <strong>Duration</strong>.
+            {t.rich("workflow.description", {
+              strong1: (chunks) => <strong>{t("workflow.admin_rate")}</strong>,
+              strong2: (chunks) => <strong>{t("workflow.duration")}</strong>,
+            })}
           </p>
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-sm text-slate-700">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-              <span>Input: Medicine & Dosage</span>
+              <span>{t("workflow.input1")}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-slate-700">
               <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
-              <span>Input: Frequency (e.g. "Every 8 Hours")</span>
+              <span>{t("workflow.input2")}</span>
             </div>
             <div className="pl-1">
               <ArrowRight className="w-4 h-4 text-slate-400 rotate-90 my-1" />
             </div>
             <div className="flex items-center gap-2 text-sm font-bold text-teal-700 bg-teal-50 p-2 rounded-lg border border-teal-100">
               <Activity className="w-4 h-4" />
-              <span>Result: Auto-populated Task Queue</span>
+              <span>{t("workflow.result")}</span>
             </div>
           </div>
         </div>
@@ -166,12 +176,13 @@ const TaskManagementFeature = () => {
               <AlertCircle className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold text-slate-900">
-              Safety Net & Monitoring
+              {t("safety.title")}
             </h3>
           </div>
           <p className="text-slate-600 leading-relaxed mb-6">
-            The system actively monitors timestamps. If a task passes its due
-            time without action, it flags as <strong>Neglected</strong>.
+            {t.rich("safety.description", {
+              strong: (chunks) => <strong>{t("safety.neglected")}</strong>,
+            })}
           </p>
 
           <div className="grid gap-4">
@@ -180,11 +191,10 @@ const TaskManagementFeature = () => {
               <Bell className="w-5 h-5 text-red-500 mt-0.5" />
               <div>
                 <h4 className="text-sm font-bold text-red-700">
-                  Neglect Detected
+                  {t("safety.alert_title")}
                 </h4>
                 <p className="text-xs text-red-600/80 mt-1">
-                  Alert sent to Head Nurse regarding missed dose for Patient
-                  #1024.
+                  {t("safety.alert_desc")}
                 </p>
               </div>
             </div>
@@ -194,11 +204,10 @@ const TaskManagementFeature = () => {
               <History className="w-5 h-5 text-slate-500 mt-0.5" />
               <div>
                 <h4 className="text-sm font-bold text-slate-700">
-                  Full Audit Trail
+                  {t("safety.audit_title")}
                 </h4>
                 <p className="text-xs text-slate-500 mt-1">
-                  Who performed the action, exact timestamp, and any
-                  modifications logged permanently.
+                  {t("safety.audit_desc")}
                 </p>
               </div>
             </div>
@@ -209,7 +218,7 @@ const TaskManagementFeature = () => {
       {/* --- BOTTOM: TASK TYPES --- */}
       <div className="p-8 bg-gradient-to-r from-teal-50 to-blue-50 rounded-3xl border border-teal-100">
         <h3 className="text-lg font-bold text-slate-900 mb-4">
-          Supported Workflow Types
+          {t("types.title")}
         </h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex gap-4">
@@ -217,11 +226,10 @@ const TaskManagementFeature = () => {
               1
             </div>
             <div>
-              <h4 className="font-bold text-slate-800">Scheduled Tasks</h4>
-              <p className="text-sm text-slate-600">
-                Automatically appear in the queue when their time approaches
-                based on the prescription timeline.
-              </p>
+              <h4 className="font-bold text-slate-800">
+                {t("types.type1_title")}
+              </h4>
+              <p className="text-sm text-slate-600">{t("types.type1_desc")}</p>
             </div>
           </div>
           <div className="flex gap-4">
@@ -229,11 +237,10 @@ const TaskManagementFeature = () => {
               2
             </div>
             <div>
-              <h4 className="font-bold text-slate-800">Stat (One-Time)</h4>
-              <p className="text-sm text-slate-600">
-                Immediate administration logic. Allows staff to prescribe and
-                administer "on the spot" without future scheduling.
-              </p>
+              <h4 className="font-bold text-slate-800">
+                {t("types.type2_title")}
+              </h4>
+              <p className="text-sm text-slate-600">{t("types.type2_desc")}</p>
             </div>
           </div>
         </div>

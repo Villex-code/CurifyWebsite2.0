@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
@@ -16,38 +15,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-// Query to fetch blog posts
-const postsQuery = `*[_type == "post"] | order(publishedAt desc) {
-  _id,
-  title,
-  slug,
-  publishedAt,
-  "excerpt": array::join(string::split(pt::text(body[0...1]), "")[0...200], "") + "...",
-  mainImage,
-  author->{
-    name,
-    image
-  },
-  categories[]->{
-    _id,
-    title
-  }
-}`;
-
-// Query to fetch categories
-const categoriesQuery = `*[_type == "category"] {
-  _id,
-  title
-}`;
-
-async function getPosts() {
-  return await client.fetch(postsQuery);
-}
-
-async function getCategories() {
-  return await client.fetch(categoriesQuery);
-}
-
 // --- Components ---
 
 const FeaturedPost = ({ post, t }: { post: any; t: any }) => {
@@ -58,7 +25,7 @@ const FeaturedPost = ({ post, t }: { post: any; t: any }) => {
       <div className="relative w-full overflow-hidden rounded-[2.5rem] bg-white shadow-2xl shadow-slate-200/40 border border-slate-100">
         <div className="grid lg:grid-cols-2 gap-0">
           {/* Image Side */}
-          <div className="relative h-72 h-full overflow-hidden order-last lg:order-first">
+          <div className="relative h-72 lg:h-full overflow-hidden order-last lg:order-first">
             <div className="absolute inset-0 bg-slate-100" />
             {post.mainImage && (
               <Image
@@ -114,7 +81,7 @@ const FeaturedPost = ({ post, t }: { post: any; t: any }) => {
   );
 };
 
-const PostCard = ({ post }: { post: any }) => (
+const PostCard = ({ post, locale }: { post: any; locale: string }) => (
   <Link
     href={`/blog/${post.slug.current}`}
     className="group flex flex-col h-full"
@@ -145,7 +112,9 @@ const PostCard = ({ post }: { post: any }) => (
           </span>
           <span className="text-slate-400 text-xs flex items-center gap-1 font-medium">
             <Clock className="w-3.5 h-3.5" />
-            {new Date(post.publishedAt).toLocaleDateString()}
+            {new Date(post.publishedAt).toLocaleDateString(
+              locale === "el" ? "el-GR" : "en-US",
+            )}
           </span>
         </div>
 
@@ -180,19 +149,23 @@ const PostCard = ({ post }: { post: any }) => (
   </Link>
 );
 
-const BlogListingView = ({
-  posts,
-  categories,
-}: {
-  posts: any[];
-  categories: any[];
-}) => {
+interface BlogMainPageContentProps {
+  initialPosts: any[];
+  initialCategories: any[];
+  locale: string;
+}
+
+export default function BlogMainPageContent({
+  initialPosts,
+  initialCategories,
+  locale,
+}: BlogMainPageContentProps) {
   const t = useTranslations("blog");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
+    return initialPosts.filter((post) => {
       const matchesSearch =
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase());
@@ -202,19 +175,19 @@ const BlogListingView = ({
 
       return matchesSearch && matchesCategory;
     });
-  }, [posts, searchQuery, selectedCategory]);
+  }, [initialPosts, searchQuery, selectedCategory]);
 
   // Logic: Always show first filtered result as Hero, rest as grid
   const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null;
   const gridPosts = filteredPosts.length > 0 ? filteredPosts.slice(1) : [];
 
   // Logic: Only take top 5 categories
-  const topCategories = categories.slice(0, 5);
+  const topCategories = initialCategories.slice(0, 5);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-16 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-[1400px] mx-auto">
-        {/* NEW Header Layout - Split Design */}
+        {/* Header Layout - Split Design */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-slate-200/60">
           <div className="max-w-2xl">
             <h1 className="text-5xl md:text-7xl font-bold text-slate-900 tracking-tight mb-2">
@@ -227,7 +200,7 @@ const BlogListingView = ({
               {t("subtitle")}
             </p>
             <div className="mt-4 flex lg:justify-end">
-              <span className="text-sm font-bold text-teal-main uppercase tracking-widest flex items-center gap-2">
+              <span className="text-sm font-bold text-teal-600 uppercase tracking-widest flex items-center gap-2">
                 Scroll for more <ArrowRight className="w-4 h-4" />
               </span>
             </div>
@@ -243,7 +216,7 @@ const BlogListingView = ({
           <div className="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-8 space-y-10">
             {/* Search */}
             <div className="relative group">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-teal-main transition-colors" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5 group-focus-within:text-teal-600 transition-colors" />
               <input
                 type="text"
                 placeholder={t("search_placeholder")}
@@ -282,7 +255,7 @@ const BlogListingView = ({
                   )}
                 </button>
 
-                {topCategories.map((category) => (
+                {topCategories.map((category: any) => (
                   <button
                     key={category._id}
                     onClick={() => setSelectedCategory(category.title)}
@@ -290,7 +263,7 @@ const BlogListingView = ({
                       selectedCategory === category.title
                         ? "bg-teal-600 text-white shadow-lg shadow-teal-600/25"
                         : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-100"
-                      }`}
+                    }`}
                   >
                     <span>{category.title}</span>
                     {selectedCategory === category.title && (
@@ -307,7 +280,7 @@ const BlogListingView = ({
             {gridPosts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {gridPosts.map((post) => (
-                  <PostCard key={post._id} post={post} />
+                  <PostCard key={post._id} post={post} locale={locale} />
                 ))}
               </div>
             ) : (
@@ -341,59 +314,4 @@ const BlogListingView = ({
       </div>
     </div>
   );
-};
-
-export default function BlogMainPageContent() {
-  const [posts, setPosts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [postsData, categoriesData] = await Promise.all([
-          getPosts(),
-          getCategories(),
-        ]);
-        setPosts(postsData);
-        setCategories(categoriesData);
-      } catch (err) {
-        console.error("Error fetching blog data:", err);
-        setError(err instanceof Error ? err.message : "An error occurred");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-teal-600 mx-auto mb-4"></div>
-          <p className="text-slate-500 font-medium">Loading blog posts...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto px-4">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Something went wrong
-          </h1>
-          <p className="text-slate-500 mb-6">{error}</p>
-        </div>
-      </div>
-    );
-  }
-
-  return <BlogListingView posts={posts} categories={categories} />;
 }
-
