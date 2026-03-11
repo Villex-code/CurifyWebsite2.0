@@ -154,6 +154,23 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Google Ads Tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src={"https://www.googletagmanager.com/gtag/js?id=AW-16791245630"}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-16791245630');
+            `,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${facultyGlyphic.variable} ${playfairDisplay.variable} antialiased`}
