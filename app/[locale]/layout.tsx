@@ -90,16 +90,17 @@ export default async function LocaleLayout({
       {
         "@type": "Organization",
         name: "Curify",
-        url: "https://www.curifyapp.com",
+        url: "https://www.curifyapp.com/",
         logo: "https://www.curifyapp.com/logo.png",
         sameAs: [
-          "https://www.linkedin.com/company/curify-app/",
           "https://www.instagram.com/appcurify/",
+          "https://www.linkedin.com/company/curify-app/",
           "https://www.youtube.com/@CurifyApp",
+          "https://www.google.com/maps/place/Curify/@38.0366064,19.0375288,6z/data=!3m1!4b1!4m6!3m5!1s0x88658e8460622bd:0x8087b4160bd5d7d3!8m2!3d38.1465253!4d24.3244339!16s%2Fg%2F11ww_lc7xf?entry=ttu&g_ep=EgoyMDI2MDMwOS4wIKXMDSoASAFQAw%3D%3D",
         ],
         contactPoint: {
           "@type": "ContactPoint",
-          telephone: "+30-210-XXXXXXX", // Add your phone number
+          telephone: "+30 698 754 3041",
           contactType: "customer service",
           areaServed: ["GR", "US", "GB"],
           availableLanguage: ["Greek", "English"],
@@ -124,11 +125,11 @@ export default async function LocaleLayout({
           "Smart Inventory",
           "IoT Integration",
         ],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "156",
-        },
+        // aggregateRating: {
+        //   "@type": "AggregateRating",
+        //   ratingValue: "5.0",
+        //   reviewCount: "4",
+        // },
       },
     ],
   };
