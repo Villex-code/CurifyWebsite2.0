@@ -338,16 +338,28 @@ export default function FooterInfo() {
         </div>
 
         {/* --- Bottom Section: Copyright & Badges --- */}
-        <div className="mt-24 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 font-medium">
-            {t("copyright.text", { year: new Date().getFullYear() })}
-          </p>
+        <div className="mt-24 pt-8 border-t border-slate-200">
+          {/* AI Transparency Disclosure */}
+          <div className="mb-8">
+            <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-4xl">
+              <span className="font-semibold text-slate-900">
+                {t("aiTransparency.label")}:
+              </span>{" "}
+              {t("aiTransparency.text")}
+            </p>
+          </div>
 
-          <div className="flex items-center gap-6">
-            <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">
-              {t("copyright.builtWith")}
-            </span>
-            <div className="flex items-center gap-4 text-2xl">💚</div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-500 font-medium">
+              {t("copyright.text", { year: new Date().getFullYear() })}
+            </p>
+
+            <div className="flex items-center gap-6">
+              <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">
+                {t("copyright.builtWith")}
+              </span>
+              <div className="flex items-center gap-4 text-2xl">💚</div>
+            </div>
           </div>
         </div>
       </div>

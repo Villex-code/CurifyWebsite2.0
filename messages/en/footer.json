@@ -36,5 +36,9 @@
   "copyright": {
     "text": "© {year} Curify Inc. All rights reserved.",
     "builtWith": "Built With"
+  },
+  "aiTransparency": {
+    "label": "AI Transparency",
+    "text": "Curify uses Google's Gemini models to power our smart features, helping users write faster and effortlessly craft tailored patient emails."
   }
 }
