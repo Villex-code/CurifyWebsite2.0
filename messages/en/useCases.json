@@ -345,6 +345,24 @@
       "addOnsDesc": "Contact us for options.",
       "items": [
         {
+          "id": "free_demo",
+          "name": "Free Demo",
+          "subtitle": "No Credit Card Required",
+          "description": "Try out the platform with limited resources to see if it fits your needs.",
+          "priceMonthly": 0,
+          "priceYearly": 0,
+          "billedYearly": 0,
+          "features": [
+            "5 Patient Records",
+            "2 Personnel Accounts",
+            "2 Custom Templates",
+            "15 AI Requests",
+            "No Emails",
+            "No SMS"
+          ],
+          "cta": "Start Free Demo"
+        },
+        {
           "id": "starter",
           "name": "Starter",
           "subtitle": "Solo Practice",
@@ -359,7 +377,8 @@
             "IDIKA Integration (E-Prescription)",
             "Basic Patient & Staff Management",
             "Appointment Reminders",
-            "Basic Analytics"
+            "Basic Analytics",
+            "Abundant AI requests"
           ],
           "cta": "Get Started"
         },
@@ -380,27 +399,7 @@
             "AI Drug Interaction Alerts",
             "Advanced Analytics & Research"
           ],
-          "cta": "Start Free Trial",
-          "popular": true
-        },
-        {
-          "id": "enterprise",
-          "name": "Enterprise",
-          "subtitle": "Hospitals",
-          "description": "Comprehensive solution for hospitals and large facilities.",
-          "priceMonthly": 1800,
-          "priceYearly": 1620,
-          "billedYearly": 19440,
-          "features": [
-            "Everything in Professional",
-            "Unlimited User Accounts",
-            "1TB Secure Storage",
-            "PACS / Lab Systems Integration",
-            "Custom Feature Development",
-            "Dedicated Account Manager",
-            "24/7 Priority Support"
-          ],
-          "cta": "Contact Sales"
+          "cta": "Start Free Trial"
         }
       ],
       "scarcity": {
@@ -417,45 +416,38 @@
       "features": "Features",
       "soloPractice": "Solo Practice",
       "medicalCenters": "Medical Centers",
-      "hospitals": "Hospitals",
+      "hospitals": "No Credit Card",
       "customScale": "Custom Scale",
       "professional": "Professional",
-      "enterprise": "Enterprise",
-      "plus": "Plus",
+      "enterprise": "Free Demo",
+      "plus": "Enterprise",
       "chooseStarter": "Choose Starter",
       "choosePro": "Choose Pro",
-      "contactSales": "Contact Sales",
+      "contactSales": "Start Free Demo",
       "contactUs": "Contact Us",
       "categories": [
         {
           "title": "Core Platform",
           "features": [
             {
-              "name": "Monthly Price",
-              "starter": "€79",
-              "pro": "€450",
-              "ent": "€1,800",
-              "plus": "Custom"
-            },
-            {
               "name": "User Accounts",
               "starter": "5",
               "pro": "35",
-              "ent": "Unlimited",
+              "ent": "2",
               "plus": "Unlimited"
             },
             {
               "name": "Cloud Storage",
               "starter": "50GB",
               "pro": "250GB",
-              "ent": "1TB",
+              "ent": "None",
               "plus": "Custom"
             },
             {
               "name": "Active Patients",
               "starter": "Unlimited",
               "pro": "Unlimited",
-              "ent": "Unlimited",
+              "ent": "5",
               "plus": "Unlimited"
             }
           ]
@@ -467,35 +459,35 @@
               "name": "IDIKA E-Prescription",
               "starter": true,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Patient Vitals Tracking",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "AI Drug Interactions",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Custom Medical Forms",
               "starter": "15",
               "pro": "25",
-              "ent": "100",
+              "ent": "2",
               "plus": "Unlimited"
             },
             {
               "name": "Visit Models",
               "starter": "2D Only",
               "pro": "2D & 3D",
-              "ent": "2D & 3D",
+              "ent": "2D Only",
               "plus": "2D & 3D"
             }
           ]
@@ -514,35 +506,35 @@
               "name": "Pharmacy / Inventory",
               "starter": true,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Multi-Department Support",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Online DICOM Viewer",
               "starter": true,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "PACS / Lab Integration",
               "starter": false,
               "pro": false,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "IoT Cabinet Integration",
               "starter": false,
               "pro": false,
-              "ent": "Optional",
+              "ent": false,
               "plus": true
             }
           ]
@@ -554,21 +546,21 @@
               "name": "Support Level",
               "starter": "Email",
               "pro": "Priority Email/Chat",
-              "ent": "24/7 Priority",
+              "ent": "None",
               "plus": "24/7 Dedicated"
             },
             {
               "name": "Onboarding Training",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Dedicated Account Manager",
               "starter": false,
               "pro": false,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
@@ -644,13 +636,6 @@
         {
           "title": "Core Platform",
           "features": [
-            {
-              "name": "Monthly Price",
-              "starter": "€79",
-              "pro": "€450",
-              "ent": "€1,800",
-              "plus": "Custom"
-            },
             {
               "name": "User Accounts",
               "starter": "5",

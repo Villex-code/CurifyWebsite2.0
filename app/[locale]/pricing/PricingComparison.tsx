@@ -29,33 +29,34 @@ const PricingComparison = () => {
                 {t("features")}
               </div>
 
-              {/* Starter */}
-              <div className="p-6 text-center">
-                <div className="font-bold text-slate-900 text-xl">Starter</div>
-                <div className="text-slate-500 text-sm mt-1">
-                  {t("soloPractice")}
-                </div>
-              </div>
-
-              {/* Professional (Highlighted) */}
-              <div className="p-6 text-center relative bg-teal-50/50">
-                <div className="absolute top-0 left-0 w-full h-1 bg-teal-500" />
-                <div className="font-bold text-teal-700 text-xl flex items-center justify-center gap-2">
-                  {t("professional")}{" "}
-                  <Sparkles className="w-4 h-4 fill-teal-500" />
-                </div>
-                <div className="text-teal-600/80 text-sm mt-1">
-                  {t("medicalCenters")}
-                </div>
-              </div>
-
-              {/* Enterprise */}
+              {/* Free Demo (ent) */}
               <div className="p-6 text-center">
                 <div className="font-bold text-slate-900 text-xl">
                   {t("enterprise")}
                 </div>
                 <div className="text-slate-500 text-sm mt-1">
                   {t("hospitals")}
+                </div>
+              </div>
+
+              {/* Starter (Highlighted as Essentials) */}
+              <div className="p-6 text-center relative bg-teal-50/50">
+                <div className="absolute top-0 left-0 w-full h-1 bg-teal-500" />
+                <div className="font-bold text-teal-700 text-xl flex items-center justify-center gap-2">
+                  Starter <Sparkles className="w-4 h-4 fill-teal-500" />
+                </div>
+                <div className="text-teal-600/80 text-sm mt-1">
+                  {t("soloPractice")}
+                </div>
+              </div>
+
+              {/* Professional */}
+              <div className="p-6 text-center">
+                <div className="font-bold text-slate-900 text-xl">
+                  {t("professional")}
+                </div>
+                <div className="text-slate-500 text-sm mt-1">
+                  {t("medicalCenters")}
                 </div>
               </div>
 
@@ -91,19 +92,19 @@ const PricingComparison = () => {
                         {/* Optional Tooltip Icon could go here */}
                       </div>
 
-                      {/* Starter Value */}
+                      {/* Free Demo Value (ent) */}
                       <div className="p-5 flex items-center justify-center border-l border-slate-50">
-                        <StatusIcon value={feature.starter} />
-                      </div>
-
-                      {/* Pro Value (Highlighted Column) */}
-                      <div className="p-5 flex items-center justify-center bg-teal-50/10 border-x border-teal-100 group-hover:bg-teal-50/30 transition-colors">
-                        <StatusIcon value={feature.pro} highlight />
-                      </div>
-
-                      {/* Enterprise Value */}
-                      <div className="p-5 flex items-center justify-center border-r border-slate-50">
                         <StatusIcon value={feature.ent} />
+                      </div>
+
+                      {/* Starter Value (Highlighted) */}
+                      <div className="p-5 flex items-center justify-center bg-teal-50/10 border-x border-teal-100 group-hover:bg-teal-50/30 transition-colors">
+                        <StatusIcon value={feature.starter} highlight />
+                      </div>
+
+                      {/* Professional Value (pro) */}
+                      <div className="p-5 flex items-center justify-center border-r border-slate-50">
+                        <StatusIcon value={feature.pro} />
                       </div>
 
                       {/* Plus Value */}
@@ -119,6 +120,7 @@ const PricingComparison = () => {
             {/* 3. TABLE FOOTER (CTA) */}
             <div className="grid grid-cols-5 border-t border-slate-200 bg-slate-50">
               <div className="p-6" />
+              {/* Free Demo CTA */}
               <div className="p-6 px-4">
                 <button
                   onClick={() =>
@@ -126,9 +128,10 @@ const PricingComparison = () => {
                   }
                   className="w-full py-3 rounded-xl border border-slate-300 font-bold text-slate-600 hover:bg-white hover:border-slate-400 transition-all text-sm"
                 >
-                  {t("chooseStarter")}
+                  {t("contactSales")}
                 </button>
               </div>
+              {/* Starter (Highlighted) CTA */}
               <div className="p-6 px-4 bg-teal-50/30 border-x border-teal-100">
                 <button
                   onClick={() =>
@@ -136,17 +139,21 @@ const PricingComparison = () => {
                   }
                   className="w-full py-3 rounded-xl bg-teal-600 text-white font-bold shadow-lg shadow-teal-600/20 hover:bg-teal-700 transition-all text-sm"
                 >
+                  {t("chooseStarter")}
+                </button>
+              </div>
+              {/* Professional CTA */}
+              <div className="p-6 px-4 border-r border-slate-200">
+                <button
+                  onClick={() =>
+                    window.open("https://portal-staging.curifyapp.com/")
+                  }
+                  className="w-full py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-black transition-all text-sm"
+                >
                   {t("choosePro")}
                 </button>
               </div>
-              <div className="p-6 px-4 border-r border-slate-200">
-                <button
-                  onClick={() => (window.location.href = "/contact")}
-                  className="w-full py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-black transition-all text-sm"
-                >
-                  {t("contactSales")}
-                </button>
-              </div>
+              {/* Plus CTA */}
               <div className="p-6 px-4">
                 <button
                   onClick={() => (window.location.href = "/contact")}

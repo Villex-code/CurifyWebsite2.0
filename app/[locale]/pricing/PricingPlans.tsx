@@ -13,8 +13,8 @@ const PricingPlans = () => {
   // Transform plans with scarcity logic and price overrides
   const plans = Array.isArray(rawPlans)
     ? rawPlans.map((plan: any, index: number) => {
-        // Essential Plan (Index 0)
-        if (index === 0) {
+        // Essential Plan (starter ID in JSON)
+        if (plan.id === "starter") {
           return {
             ...plan,
             name: "Essential",
@@ -46,8 +46,8 @@ const PricingPlans = () => {
           };
         }
 
-        // Professional Plan (Index 1)
-        if (index === 1) {
+        // Professional Plan
+        if (plan.id === "professional") {
           return {
             ...plan,
             // name: "Professional", // Assumed from JSON
@@ -70,29 +70,14 @@ const PricingPlans = () => {
           };
         }
 
-        // Enterprise/Hospital Plan (Index 2)
-        if (index === 2) {
+        // Free Demo Plan
+        if (plan.id === "free_demo") {
           return {
             ...plan,
-            // name: "Hospital", // Assumed from JSON
-
-            // Enterprise usually custom, but we add scarcity
-            // isScarcity: true, // Removed as requested
-            // slotsTotal: 3,
-            // slotsLeft: 2,
-            // scarcityLabelKey: "exclusive",
-            // scarcityColor: "amber",
-
-            // Keep original pricing or "Custom" if it's contact sales
-            // If the original plan has prices, we can use them.
-            // If original was "Contact Us", we might need to handle numbers if intended.
-            // Assuming we keep existing logic for Enterprise price display unless overridden.
-            // But let's add a fallback if it was text-based.
-            priceMonthly: "1800", // As per user request "monthly correct 1800"
-            priceYearlyTotal: "19440", // 1620 * 12
-            priceYearlyMonthlyEquivalent: "1620", // 1800 - 10% = 1620
-
-            billedYearlyDesc: "19,440",
+            priceMonthly: "0",
+            priceYearlyTotal: "0",
+            priceYearlyMonthlyEquivalent: "0",
+            billedYearlyDesc: "0",
           };
         }
 
@@ -342,9 +327,11 @@ const PriceCard = ({
 
         <div className="text-xs text-slate-400 mt-2 font-medium min-h-[16px]">
           {!isCustomPrice && isYearly
-            ? t("billedYearly", {
-                amount: plan.billedYearlyDesc || plan.billedYearly,
-              })
+            ? plan.billedYearlyDesc === "0"
+              ? t("billedMonthly") // or simply empty
+              : t("billedYearly", {
+                  amount: plan.billedYearlyDesc || plan.billedYearly,
+                })
             : !isCustomPrice
               ? t("billedMonthly")
               : ""}

@@ -345,6 +345,24 @@
       "addOnsDesc": "Επικοινωνήστε μαζί μας για επιλογές.",
       "items": [
         {
+          "id": "free_demo",
+          "name": "Δωρεάν Δοκιμή",
+          "subtitle": "Δεν Απαιτείται Πιστωτική Κάρτα",
+          "description": "Δοκιμάστε την πλατφόρμα με περιορισμένους πόρους για να δείτε αν ταιριάζει στις ανάγκες σας.",
+          "priceMonthly": 0,
+          "priceYearly": 0,
+          "billedYearly": 0,
+          "features": [
+            "5 Καρτέλες Ασθενών",
+            "2 Λογαριασμοί Προσωπικού",
+            "2 Προσαρμοσμένα Πρότυπα",
+            "15 Αιτήματα AI",
+            "Καθόλου Email",
+            "Καθόλου SMS"
+          ],
+          "cta": "Έναρξη Δωρεάν Δοκιμής"
+        },
+        {
           "id": "starter",
           "name": "Starter",
           "subtitle": "Ατομική Πρακτική",
@@ -359,7 +377,8 @@
             "Ενσωμάτωση IDIKA (e-Συνταγογράφηση)",
             "Διαχείριση Ασθενών & Προσωπικού",
             "Υπενθυμίσεις Ραντεβού",
-            "Βασικές Αναλύσεις"
+            "Βασικές Αναλύσεις",
+            "Άφθονα αιτήματα AI"
           ],
           "cta": "Ξεκινήστε"
         },
@@ -380,27 +399,7 @@
             "Ειδοποιήσεις Αλληλεπιδράσεων Φαρμάκων AI",
             "Προηγμένες Αναλύσεις & Έρευνα"
           ],
-          "cta": "Ξεκινήστε Δωρεάν Δοκιμή",
-          "popular": true
-        },
-        {
-          "id": "enterprise",
-          "name": "Enterprise",
-          "subtitle": "Νοσοκομεία",
-          "description": "Ολοκληρωμένη λύση για νοσοκομεία και μεγάλες εγκαταστάσεις.",
-          "priceMonthly": 1800,
-          "priceYearly": 1620,
-          "billedYearly": 19440,
-          "features": [
-            "Όλα στο Professional",
-            "Απεριόριστοι Λογαριασμοί Χρηστών",
-            "5TB Ασφαλής Αποθήκευση",
-            "Ενσωμάτωση PACS / Συστημάτων Εργαστηρίου",
-            "Ανάπτυξη Προσαρμοσμένων Χαρακτηριστικών",
-            "Αφιερωμένος Διαχειριστής Λογαριασμού",
-            "Υποστήριξη 24/7 Προτεραιότητας"
-          ],
-          "cta": "Επικοινωνήστε με Πωλήσεις"
+          "cta": "Ξεκινήστε Δωρεάν Δοκιμή"
         }
       ],
       "scarcity": {
@@ -417,45 +416,38 @@
       "features": "Χαρακτηριστικά",
       "soloPractice": "Ατομική Πρακτική",
       "medicalCenters": "Ιατρικά Κέντρα",
-      "hospitals": "Νοσοκομεία",
+      "hospitals": "Χωρίς Πιστωτική",
       "customScale": "Προσαρμοσμένη Κλίμακα",
       "professional": "Professional",
-      "enterprise": "Enterprise",
-      "plus": "Plus",
+      "enterprise": "Δωρεάν Δοκιμή",
+      "plus": "Enterprise",
       "chooseStarter": "Επιλέξτε Starter",
       "choosePro": "Επιλέξτε Pro",
-      "contactSales": "Επικοινωνήστε με Πωλήσεις",
+      "contactSales": "Έναρξη Δωρεάν Δοκιμής",
       "contactUs": "Επικοινωνήστε Μαζί Μας",
       "categories": [
         {
           "title": "Βασική Πλατφόρμα",
           "features": [
             {
-              "name": "Μηνιαία Τιμή",
-              "starter": "€79",
-              "pro": "€450",
-              "ent": "€1,800",
-              "plus": "Προσαρμοσμένη"
-            },
-            {
               "name": "Λογαριασμοί Χρηστών",
               "starter": "5",
               "pro": "35",
-              "ent": "Απεριόριστοι",
+              "ent": "2",
               "plus": "Απεριόριστοι"
             },
             {
               "name": "Αποθήκευση Cloud",
               "starter": "50GB",
               "pro": "250GB",
-              "ent": "1TB",
+              "ent": "Καθόλου",
               "plus": "Προσαρμοσμένη"
             },
             {
               "name": "Ενεργοί Ασθενείς",
               "starter": "Απεριόριστοι",
               "pro": "Απεριόριστοι",
-              "ent": "Απεριόριστοι",
+              "ent": "5",
               "plus": "Απεριόριστοι"
             }
           ]
@@ -467,35 +459,35 @@
               "name": "e-Συνταγογράφηση IDIKA",
               "starter": true,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Παρακολούθηση Ζωτικών Δεικτών Ασθενούς",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Αλληλεπιδράσεις Φαρμάκων AI",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Προσαρμοσμένες Ιατρικές Φόρμες",
               "starter": "5",
               "pro": "25",
-              "ent": "100",
+              "ent": "2",
               "plus": "Απεριόριστες"
             },
             {
               "name": "Μοντέλα Επίσκεψης",
               "starter": "Μόνο 2D",
               "pro": "2D & 3D",
-              "ent": "2D & 3D",
+              "ent": "Μόνο 2D",
               "plus": "2D & 3D"
             }
           ]
@@ -514,35 +506,35 @@
               "name": "Φαρμακείο / Απόθεμα",
               "starter": true,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Υποστήριξη Πολλαπλών Τμημάτων",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Δικτυακός Προβολέας DICOM",
               "starter": true,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Ενσωμάτωση PACS / Εργαστηρίου",
               "starter": false,
               "pro": false,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Ενσωμάτωση Ντουλαπιού IoT",
               "starter": false,
               "pro": false,
-              "ent": "Προαιρετική",
+              "ent": false,
               "plus": true
             }
           ]
@@ -554,21 +546,21 @@
               "name": "Επίπεδο Υποστήριξης",
               "starter": "Email",
               "pro": "Προτεραιότητα Email/Chat",
-              "ent": "24/7 Προτεραιότητα",
+              "ent": "Καμία",
               "plus": "24/7 Αφιερωμένη"
             },
             {
               "name": "Εκπαίδευση Εισαγωγής",
               "starter": false,
               "pro": true,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
               "name": "Αφιερωμένος Διαχειριστής Λογαριασμού",
               "starter": false,
               "pro": false,
-              "ent": true,
+              "ent": false,
               "plus": true
             },
             {
@@ -601,13 +593,6 @@
         {
           "title": "Βασική Πλατφόρμα",
           "features": [
-            {
-              "name": "Μηνιαία Τιμή",
-              "starter": "€79",
-              "pro": "€450",
-              "ent": "€1,800",
-              "plus": "Προσαρμοσμένη"
-            },
             {
               "name": "Λογαριασμοί Χρηστών",
               "starter": "5",
