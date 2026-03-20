@@ -83,19 +83,35 @@ export default async function LocaleLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
-  // Structured Data for Organization & Software Application
+  // Structured Data for Organization, Software Application, and WebSite
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://www.curifyapp.com/#organization",
         name: "Curify",
         url: "https://www.curifyapp.com/",
-        logo: "https://www.curifyapp.com/logo.png",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://www.curifyapp.com/apple-touch-icon.png",
+          width: 180,
+          height: 180,
+        },
+        description:
+          locale === "el"
+            ? "Το ολιστικό σύστημα διαχείρισης για ιατρεία στην Ελλάδα. CRM, Συνταγογράφηση και IoT."
+            : "The holistic healthcare management platform for clinics and hospitals. CRM, E-prescribing, and IoT integration.",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Athens",
+          addressCountry: "GR",
+        },
         sameAs: [
           "https://www.instagram.com/appcurify/",
           "https://www.linkedin.com/company/curify-app/",
           "https://www.youtube.com/@CurifyApp",
+          "https://www.wikidata.org/wiki/Q138745738",
           "https://www.google.com/maps/place/Curify/@38.0366064,19.0375288,6z/data=!3m1!4b1!4m6!3m5!1s0x88658e8460622bd:0x8087b4160bd5d7d3!8m2!3d38.1465253!4d24.3244339!16s%2Fg%2F11ww_lc7xf?entry=ttu&g_ep=EgoyMDI2MDMwOS4wIKXMDSoASAFQAw%3D%3D",
         ],
         contactPoint: {
@@ -107,17 +123,48 @@ export default async function LocaleLayout({
         },
       },
       {
+        "@type": "WebSite",
+        "@id": `https://www.curifyapp.com/${locale}/#website`,
+        name: "Curify",
+        url: `https://www.curifyapp.com/${locale}`,
+        publisher: { "@id": "https://www.curifyapp.com/#organization" },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `https://www.curifyapp.com/${locale}/blog?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://www.curifyapp.com/${locale}/#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: locale === "el" ? "Αρχική" : "Home",
+          },
+        ],
+      },
+      {
         "@type": "SoftwareApplication",
         name: "Curify",
+        url: "https://www.curifyapp.com",
         applicationCategory: "MedicalApplication",
         operatingSystem: "Web, iOS, Android",
+        sameAs: ["https://www.wikidata.org/wiki/Q138745738"],
+        publisher: { "@id": "https://www.curifyapp.com/#organization" },
         offers: {
           "@type": "Offer",
           price: "0",
           priceCurrency: "EUR",
         },
         description:
-          "Ολοκληρωμένο ιατρικό λογισμικό για τη διαχείριση ιατρείων, κλινικών και νοσοκομείων. Περιλαμβάνει ηλεκτρονικό φάκελο ασθενή (EHR), συνταγογράφηση και CRM.",
+          locale === "el"
+            ? "Ολοκληρωμένο ιατρικό λογισμικό για τη διαχείριση ιατρείων, κλινικών και νοσοκομείων. Περιλαμβάνει ηλεκτρονικό φάκελο ασθενή (EHR), συνταγογράφηση και CRM."
+            : "Comprehensive medical software for managing practices, clinics, and hospitals. Includes electronic health records (EHR), e-prescribing, and CRM.",
         featureList: [
           "Ηλεκτρονικός Φάκελος Ασθενή (EHR)",
           "Ηλεκτρονική Συνταγογράφηση",
@@ -125,11 +172,6 @@ export default async function LocaleLayout({
           "Smart Inventory",
           "IoT Integration",
         ],
-        // aggregateRating: {
-        //   "@type": "AggregateRating",
-        //   ratingValue: "5.0",
-        //   reviewCount: "4",
-        // },
       },
     ],
   };
