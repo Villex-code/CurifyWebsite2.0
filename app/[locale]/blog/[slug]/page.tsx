@@ -146,6 +146,35 @@ const components: Partial<PortableTextReactComponents> = {
       <em className="italic text-gray-800">{children}</em>
     ),
   },
+  types: {
+    youtube: ({ value }: any) => {
+      const { url } = value;
+      const getYouTubeId = (url: string) => {
+        const regExp =
+          /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url?.match(regExp);
+        return match && match[2].length === 11 ? match[2] : null;
+      };
+      const id = getYouTubeId(url);
+
+      if (!id) {
+        return null;
+      }
+
+      return (
+        <div className="relative w-full aspect-video my-10 rounded-xl overflow-hidden shadow-lg border border-gray-100">
+          <iframe
+            src={`https://www.youtube.com/embed/${id}`}
+            title="YouTube video player"
+            className="absolute top-0 left-0 w-full h-full"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      );
+    },
+  },
 };
 
 interface PostPageProps {

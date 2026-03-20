@@ -42,5 +42,17 @@ export default defineType({
       type: "image",
       options: { hotspot: true },
     }),
+    defineArrayMember({
+      type: "object",
+      name: "youtube",
+      title: "YouTube Video",
+      fields: [
+        {
+          name: "url",
+          type: "url",
+          title: "YouTube video URL",
+        },
+      ],
+    }),
   ],
 });
