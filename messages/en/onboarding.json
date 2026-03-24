@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": {
+      "part1": "How to organize your practice in simple steps",
+      "part2": "Video Guide"
+    },
+    "subtitle": "See how Curify AI transforms your daily practice management and clinical workflows.",
+    "badge": "Onboarding"
+  },
+  "steps": {
+    "title": "Your Path to Success",
+    "badge": "Getting Started",
+    "description": "Follow these steps to set up your practice and start saving time from day one.",
+    "step1": {
+      "title": "Patient Record Structure",
+      "subtitle": "CUSTOMIZATION",
+      "description": "Customize the layout and fields of the patient records to perfectly fit your specialty.",
+      "stat": "Flexible"
+    },
+    "step2": {
+      "title": "Save Time with AI",
+      "subtitle": "CURIFY AI",
+      "description": "Discover how to automate your note-taking and drastically reduce administrative burden.",
+      "stat": "20h/week"
+    },
+    "step3": {
+      "title": "Manage Team Roles",
+      "subtitle": "TEAM ORGANIZATION",
+      "description": "Learn how to add team members and define the appropriate access levels for every collaborator.",
+      "stat": "Security"
+    }
+  },
+  "cta": {
+    "title": "Need More Help?",
+    "subtitle": "Book a quick 15-minute call with our team to get personalized assistance.",
+    "button": "Book a Call Now"
+  }
+}

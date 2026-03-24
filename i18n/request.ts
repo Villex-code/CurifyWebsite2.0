@@ -42,6 +42,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       MainVelocityText: (
         await import(`../messages/${locale}/MainVelocityText.json`)
       ).default,
+      onboarding: (await import(`../messages/${locale}/onboarding.json`)).default,
     },
   };
 });

@@ -127,7 +127,11 @@ export function UseCaseCTA() {
         </div>
 
         {/* Subtitle and CTA */}
-        <Link href="/contact">
+        <a 
+          href="https://calendly.com/appcurify/15-minute-meeting-curify" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,7 +143,7 @@ export function UseCaseCTA() {
             </p>
             <AnimatedButton />
           </motion.div>
-        </Link>
+        </a>
       </div>
     </div>
   );

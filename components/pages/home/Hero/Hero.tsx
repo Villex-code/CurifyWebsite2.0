@@ -23,12 +23,12 @@ export default function Hero() {
       </motion.div>
 
       {/* Desktop: HeroTopContent with absolute positioning and curve background */}
-      <div className="hidden md:block relative w-full h-[22rem]">
+      <div className="hidden md:block relative w-full h-[16rem] min-[800px]:h-[22rem]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="absolute top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10"
+          className="absolute top-[80%] min-[800px]:top-[90%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-10"
         >
           <motion.div
             initial={{ opacity: 0 }}

@@ -175,6 +175,12 @@ export default function FooterInfo() {
               >
                 {t("quickLinks.useCases")}
               </Link>
+              <Link
+                href="/onboarding"
+                className="block text-lg font-medium text-slate-600 hover:text-teal-main transition-colors"
+              >
+                {t("quickLinks.onboarding")}
+              </Link>
             </div>
             <div className="space-y-4">
               <Link

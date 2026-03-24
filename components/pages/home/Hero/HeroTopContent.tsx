@@ -11,7 +11,7 @@ const HeroTopContent = () => {
   const t = useTranslations("home");
 
   return (
-    <header className="w-full pb-12 md:pt-0 md:pb-20">
+    <header className="w-full pb-8 min-[800px]:pb-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ const HeroTopContent = () => {
             hidden: { filter: "blur(8px)", opacity: 0 },
             visible: { filter: "blur(0px)", opacity: 1 },
           }}
-          className="text-sm md:text-base font-bold text-teal-600 uppercase tracking-widest mb-6"
+          className="text-sm md:text-base font-bold text-teal-600 uppercase tracking-widest mb-4 min-[800px]:mb-6"
         />
 
         {/* 2. Main H1 Title 
@@ -35,7 +35,7 @@ const HeroTopContent = () => {
             - Reduced max size to 'lg:text-6xl' to accommodate long Greek words
         */}
         <div className="w-full max-w-4xl mx-auto">
-          <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight text-slate-900 mb-6 text-balance">
+          <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight text-slate-900 mb-4 min-[800px]:mb-6 text-balance">
             <TextBlurH1
               text={t("hero.title")}
               speed={1.5}
@@ -56,7 +56,7 @@ const HeroTopContent = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed px-4 text-balance"
+          className="text-base min-[800px]:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed px-4 text-balance"
         >
           {t("hero.description")}
         </motion.p>
@@ -66,7 +66,7 @@ const HeroTopContent = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center gap-4 mt-10 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center gap-4 mt-6 min-[800px]:mt-10 w-full sm:w-auto"
         >
           <Link
             href="/contact"
