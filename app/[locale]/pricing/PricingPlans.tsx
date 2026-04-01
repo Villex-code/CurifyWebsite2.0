@@ -11,79 +11,7 @@ const PricingPlans = () => {
   const [isYearly, setIsYearly] = useState(true); // Default to yearly as requested
 
   // Transform plans with scarcity logic and price overrides
-  const plans = Array.isArray(rawPlans)
-    ? rawPlans.map((plan: any, index: number) => {
-        // Essential Plan (starter ID in JSON)
-        if (plan.id === "starter") {
-          return {
-            ...plan,
-            name: "Essential",
-            // Keep original strings for reference if needed, but we override heavily
-            originalPriceMonthly: "79", // Hardcode original price to 80 as requested
-            originalPriceYearly: "858", // 519 is ~40% off, so 858/12 ~ 71.5. If monthly is 80, yearly orig ~ 960? adjusting to user request "crossed out 80"
-            // Actually, if cross out is 80 monthly, let's just ensure display logic handles it.
-
-            // New Campaign Prices
-            priceMonthly: "49",
-            priceYearlyTotal: "516", // The full billed amount
-            priceYearlyMonthlyEquivalent: "43", // 519 / 12 approx
-
-            billedYearlyDesc: "516",
-
-            isScarcity: true,
-            slotsTotal: 100,
-            slotsLeft: 32,
-            scarcityLabelKey: "partnership", // Changed to key for translation
-            scarcityColor: "amber", // Shared color theme
-
-            // Override features to update user count if it's dynamic, else we rely on t() keys
-            // Since features come from t(), we might need to map them if we cant change en.json
-            // But usually we just render what's there.
-            // If the user wants to say "15 user accounts", we might need to string replace the specific feature
-            features: plan.features.map((f: string) =>
-              f.includes("5") && f.includes("user") ? "15 user accounts" : f,
-            ),
-          };
-        }
-
-        // Professional Plan
-        if (plan.id === "professional") {
-          return {
-            ...plan,
-            // name: "Professional", // Assumed from JSON
-            originalPriceMonthly: plan.priceMonthly,
-            originalPriceYearly: plan.priceYearly,
-
-            // "Like 279" - reverting to 449 as requested
-            priceMonthly: "449",
-            priceYearlyTotal: "4490",
-            priceYearlyMonthlyEquivalent: "374", // 4490 / 12 approx
-
-            billedYearlyDesc: "4,490",
-
-            // Scarcity removed as requested
-            // isScarcity: true,
-            // slotsTotal: 9,
-            // slotsLeft: 9,
-            // scarcityLabelKey: "earlyAdopter",
-            // scarcityColor: "amber",
-          };
-        }
-
-        // Free Demo Plan
-        if (plan.id === "free_demo") {
-          return {
-            ...plan,
-            priceMonthly: "0",
-            priceYearlyTotal: "0",
-            priceYearlyMonthlyEquivalent: "0",
-            billedYearlyDesc: "0",
-          };
-        }
-
-        return plan;
-      })
-    : [];
+  const plans = Array.isArray(rawPlans) ? rawPlans : [];
 
   return (
     <section className="relative w-full py-24 ">
@@ -114,9 +42,9 @@ const PricingPlans = () => {
           </motion.p>
 
           {/* --- Toggle Switch --- */}
-          <div className="flex items-center justify-center gap-3 md:gap-4">
+          <div className="flex items-center justify-center gap-3 md:gap-4 flex-nowrap">
             <span
-              className={`text-xs md:text-sm font-semibold ${
+              className={`text-xs md:text-sm font-semibold transition-colors ${
                 !isYearly ? "text-slate-900" : "text-slate-400"
               }`}
             >
@@ -125,7 +53,11 @@ const PricingPlans = () => {
 
             <button
               onClick={() => setIsYearly(!isYearly)}
-              className="relative w-14 h-7 md:w-16 md:h-8 bg-slate-200 rounded-full p-1 transition-colors hover:bg-slate-300 focus:outline-none"
+              className={`relative w-14 h-7 md:w-16 md:h-8 rounded-full p-1 transition-colors focus:outline-none ${
+                isYearly
+                  ? "bg-teal-600 hover:bg-teal-700"
+                  : "bg-slate-200 hover:bg-slate-300"
+              }`}
             >
               <motion.div
                 className="w-5 h-5 md:w-6 md:h-6 bg-white rounded-full shadow-md"
@@ -134,55 +66,108 @@ const PricingPlans = () => {
               />
             </button>
 
-            <span
-              className={`text-xs md:text-sm font-semibold ${
-                isYearly ? "text-slate-900" : "text-slate-400"
-              }`}
-            >
-              {t("yearly")}
-              <span className="ml-1 md:ml-2 inline-block bg-teal-100 text-teal-700 text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 rounded-full uppercase tracking-wide">
+            <div className="flex items-center gap-2">
+              <span
+                className={`text-xs md:text-sm font-semibold transition-colors ${
+                  isYearly ? "text-slate-900" : "text-slate-400"
+                }`}
+              >
+                {t("yearly")}
+              </span>
+              <span
+                className={`inline-block text-[9px] md:text-[10px] font-bold px-1.5 md:px-2 py-0.5 rounded-full uppercase tracking-wide transition-all duration-300 border ${
+                  isYearly
+                    ? "bg-teal-100 text-teal-700 border-teal-200 shadow-sm"
+                    : "bg-slate-50 text-slate-400 border-slate-100 grayscale-[0.5]"
+                }`}
+              >
                 {t("savePercent")}
               </span>
-            </span>
+            </div>
           </div>
         </div>
 
-        {/* --- Pricing Grid --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          {plans.map((plan: any, index: number) => (
-            <PriceCard
-              key={plan.id}
-              plan={plan}
-              isYearly={isYearly}
-              index={index}
-            />
-          ))}
+        {/* --- Paid Pricing Grid (3 Columns) --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start mb-16">
+          {plans
+            .filter((p: any) => p.id !== "free")
+            .map((plan: any, index: number) => (
+              <PriceCard
+                key={plan.id}
+                plan={plan}
+                isYearly={isYearly}
+                index={index}
+              />
+            ))}
         </div>
 
-        {/* --- Enterprise Plus / Custom Section --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 md:mt-16 bg-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 text-center flex flex-col items-center gap-6 md:gap-8 shadow-xl"
-        >
-          <div className="max-w-2xl">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2">
-              <Building2 className="text-teal-400 w-5 h-5 md:w-6 md:h-6" />{" "}
-              {t("enterprisePlus")}
-            </h3>
-            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
-              {t("enterprisePlusDesc")}
-            </p>
-          </div>
-          <button
-            onClick={() => (window.location.href = "/contact")}
-            className="bg-white text-slate-900 px-6 md:px-8 py-3 md:py-3.5 rounded-xl font-bold hover:bg-teal-50 transition-colors shadow-lg text-sm md:text-base whitespace-nowrap cursor-pointer"
+        {/* --- Ultra-Compact Trial Ticket --- */}
+        {plans.find((p: any) => p.id === "free") && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8 relative"
           >
-            {t("contactCustom")}
-          </button>
-        </motion.div>
+            <div className="relative overflow-hidden bg-teal-600 border-2 border-dashed border-teal-50 rounded-[1.25rem] p-5 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 group transition-all duration-300 shadow-xl shadow-teal-900/10">
+              {/* Animated Background Pattern */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full -ml-12 -mb-12 blur-xl" />
+
+              <div className="flex-1 text-center md:text-left relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 border border-white/30 rounded-full text-[10px] font-bold text-white uppercase tracking-widest mb-3">
+                  <Flame className="w-3 h-3 fill-white" />{" "}
+                  {t("free_tier_label")} 🎁
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black text-white leading-tight">
+                  {plans.find((p: any) => p.id === "free").name}
+                </h3>
+                <p className="text-xs md:text-sm text-teal-50 font-medium mt-2 leading-tight opacity-90">
+                  {plans.find((p: any) => p.id === "free").description}
+                </p>
+
+                {/* Compact Trial features in a row */}
+                <div className="flex flex-wrap gap-x-6 gap-y-2 mt-5 justify-center md:justify-start">
+                  {plans
+                    .find((p: any) => p.id === "free")
+                    .features.map((f: string, i: number) => (
+                      <div
+                        key={i}
+                        className="flex items-center gap-2 text-xs font-bold text-white"
+                      >
+                        <Check
+                          className="w-3.5 h-3.5 text-teal-300"
+                          strokeWidth={4}
+                        />
+                        {f}
+                      </div>
+                    ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center md:items-end gap-3 md:gap-4 min-w-[180px] relative z-10">
+                <div className="text-center md:text-right">
+                  <div className="flex items-baseline justify-center md:justify-end gap-1">
+                    <span className="text-3xl md:text-4xl font-black text-white">
+                      €0
+                    </span>
+                    <span className="text-teal-100 font-bold text-xs uppercase tracking-wider">
+                      {t("perMonth")}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  onClick={() =>
+                    window.open("https://portal-staging.curifyapp.com/")
+                  }
+                  className="w-full md:w-auto px-10 py-3.5 bg-white text-teal-600 rounded-xl font-black hover:bg-teal-50 hover:scale-105 transition-all shadow-xl shadow-teal-900/20 text-sm md:text-base border-b-4 border-teal-700/10 active:border-b-0 active:translate-y-1 transform uppercase tracking-wide"
+                >
+                  {plans.find((p: any) => p.id === "free").cta}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* --- Add-Ons Teaser --- */}
         <div className="mt-20 text-center border-t border-slate-200 pt-10">
@@ -216,19 +201,20 @@ const PriceCard = ({
   // Map plan IDs to icons
   const getIcon = (planId: string) => {
     switch (planId) {
-      case "starter":
+      case "free":
         return User;
-      case "professional":
+      case "essentials":
         return Users;
-      case "enterprise":
+      case "experience":
         return Building2;
+      case "efficiency":
+        return Sparkles;
       default:
         return User;
     }
   };
 
   const Icon = getIcon(plan.id);
-  const isScarcity = plan.isScarcity;
 
   // Calculate display price (Monthly Equivalent for Yearly View)
   const displayPrice = isYearly
@@ -249,9 +235,7 @@ const PriceCard = ({
         ${
           plan.popular
             ? "bg-white border-teal-500 shadow-2xl shadow-teal-900/10 scale-105 z-10"
-            : isScarcity
-              ? "bg-white border-teal-600/40 shadow-xl shadow-teal-900/5 ring-1 ring-teal-500/20"
-              : "bg-white border-slate-200 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:border-teal-200"
+            : "bg-white border-slate-200 shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:border-teal-200"
         }
       `}
     >
@@ -262,11 +246,10 @@ const PriceCard = ({
         </div>
       )}
 
-      {/* Scarcity Banner (Unified Style) */}
-      {isScarcity && (
+      {plan.bestValue && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white px-3 md:px-4 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg whitespace-nowrap">
           <Flame className="w-3 h-3 md:w-3.5 md:h-3.5 fill-white" />
-          Limited {t(`scarcity.${plan.scarcityLabelKey}`)}
+          {t("bestValue")}
         </div>
       )}
 
@@ -276,9 +259,7 @@ const PriceCard = ({
           className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center mb-3 md:mb-4 ${
             plan.popular
               ? "bg-teal-50 text-teal-600"
-              : isScarcity
-                ? "bg-amber-50 text-amber-600"
-                : "bg-slate-50 text-slate-500"
+              : "bg-slate-50 text-slate-500"
           }`}
         >
           <Icon className="w-5 h-5 md:w-6 md:h-6" />
@@ -297,15 +278,6 @@ const PriceCard = ({
           {!isCustomPrice && (
             <span className="text-3xl md:text-4xl font-bold text-slate-900">
               €
-            </span>
-          )}
-
-          {/* Strikethrough Original Price */}
-          {isScarcity && !isCustomPrice && (
-            <span className="text-xl md:text-2xl font-semibold text-slate-400 line-through decoration-slate-400/50 mr-2">
-              {isYearly
-                ? "71" // 858/12 roughly. If user wants strictly 80 crossed out in monthly:
-                : plan.originalPriceMonthly}
             </span>
           )}
 
@@ -342,45 +314,16 @@ const PriceCard = ({
       <button
         onClick={() => window.open("https://portal-staging.curifyapp.com/")}
         className={`
-         w-full py-3 md:py-4 rounded-xl font-bold transition-all duration-200 mb-6 md:mb-8 text-sm md:text-base
-         ${
-           plan.popular
-             ? "bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-600/20"
-             : isScarcity
-               ? "bg-slate-900 text-white hover:bg-slate-800 shadow-lg shadow-slate-900/10"
-               : "bg-slate-100 text-slate-900 hover:bg-slate-200"
-         }
-      `}
+          w-full py-3 md:py-4 rounded-xl font-bold transition-all duration-200 mb-6 md:mb-8 text-sm md:text-base
+          ${
+            plan.popular
+              ? "bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-600/20"
+              : "bg-slate-100 text-slate-900 hover:bg-slate-200"
+          }
+        `}
       >
         {plan.cta}
       </button>
-
-      {/* Scarcity Slots & Disclaimer - Moved Below CTA */}
-      {isScarcity && plan.slotsTotal && (
-        <div className="mb-6">
-          <div className="mb-2 p-2 bg-amber-50 rounded-lg border border-amber-100">
-            <div className="flex justify-between items-center text-xs font-semibold text-amber-800 mb-1.5">
-              <span>
-                {plan.slotsLeft} {t("scarcity.slotsLeft")}
-              </span>
-              <span className="text-amber-600/70">
-                {t(`scarcity.${plan.scarcityLabelKey}`)}
-              </span>
-            </div>
-            <div className="w-full h-1.5 bg-amber-200/50 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-amber-500 rounded-full transition-all duration-1000"
-                style={{
-                  width: `${(plan.slotsLeft / plan.slotsTotal) * 100}%`,
-                }}
-              />
-            </div>
-          </div>
-          <p className="text-[10px] md:text-[11px] leading-tight text-amber-700/80 font-medium">
-            {t("scarcity.disclaimer", { slots: plan.slotsTotal })}
-          </p>
-        </div>
-      )}
 
       {/* Features List */}
       <div className="flex-1">
@@ -397,9 +340,7 @@ const PriceCard = ({
                 className={`mt-0.5 p-0.5 rounded-full ${
                   plan.popular
                     ? "bg-teal-100 text-teal-600"
-                    : isScarcity
-                      ? "bg-amber-100 text-amber-600"
-                      : "bg-slate-100 text-slate-500"
+                    : "bg-slate-100 text-slate-500"
                 }`}
               >
                 <Check className="w-2.5 h-2.5 md:w-3 md:h-3" strokeWidth={3} />

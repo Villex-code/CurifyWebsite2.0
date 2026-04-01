@@ -332,12 +332,14 @@
       "description": "Επιλέξτε το πλάνο που ταιριάζει στην εγκατάστασή σας. Κλιμακώστε προς τα πάνω ή προς τα κάτω ανά πάσα στιγμή.",
       "monthly": "Μηνιαία",
       "yearly": "Ετήσια",
-      "savePercent": "Εξοικονομήστε 10%",
-      "mostPopular": "Πιο Δημοφιλές",
+      "savePercent": "Έκπτωση έως 30%",
+      "mostPopular": "Ξεκινήστε Εδώ",
+      "bestValue": "Καλύτερη Αξία",
       "perMonth": "/μήνα",
       "billedYearly": "Χρεώνεται €{amount} ετησίως",
       "billedMonthly": "Χρεώνεται μηνιαίως",
       "whatsIncluded": "Τι περιλαμβάνεται",
+      "free_tier_label": "Δοκιμάστε το Curify",
       "enterprisePlus": "Enterprise Plus",
       "enterprisePlusDesc": "Χρειάζεστε προσαρμοσμένη λύση για μεγάλο δίκτυο νοσοκομείων ή πανεπιστημιακό ιατρικό κέντρο; Προσφέρουμε προσαρμοσμένη ανάπτυξη και ειδική υποδομή.",
       "contactCustom": "Επικοινωνήστε για Προσαρμοσμένη Προσφορά",
@@ -345,61 +347,79 @@
       "addOnsDesc": "Επικοινωνήστε μαζί μας για επιλογές.",
       "items": [
         {
-          "id": "free_demo",
-          "name": "Δωρεάν Δοκιμή",
+          "id": "free",
+          "name": "Δοκιμάστε το",
           "subtitle": "Δεν Απαιτείται Πιστωτική Κάρτα",
-          "description": "Δοκιμάστε την πλατφόρμα με περιορισμένους πόρους για να δείτε αν ταιριάζει στις ανάγκες σας.",
+          "description": "Πάρτε μια γεύση από την πλήρη ισχύ του Curify για το ιατρείο σας.",
           "priceMonthly": 0,
           "priceYearly": 0,
+          "priceYearlyMonthlyEquivalent": 0,
           "billedYearly": 0,
           "features": [
-            "5 Καρτέλες Ασθενών",
-            "2 Λογαριασμοί Προσωπικού",
-            "2 Προσαρμοσμένα Πρότυπα",
-            "15 Αιτήματα AI",
-            "Καθόλου Email",
-            "Καθόλου SMS"
+            "Διαχείριση Ασθενών",
+            "Ημερολόγιο & Ραντεβού",
+            "Και πολλά άλλα!"
           ],
-          "cta": "Έναρξη Δωρεάν Δοκιμής"
+          "cta": "Ξεκινήστε Τώρα"
         },
         {
-          "id": "starter",
-          "name": "Starter",
-          "subtitle": "Ατομική Πρακτική",
-          "description": "Ιδανικό για ανεξάρτητους ιατρούς και μικρά ιατρεία.",
-          "priceMonthly": 79,
-          "priceYearly": 71,
-          "billedYearly": 853,
+          "id": "essentials",
+          "name": "Essentials",
+          "subtitle": "Ιδανικό για Ξεκίνημα",
+          "description": "Το ιδανικό σημείο εισόδου για τους περισσότερους μεμονωμένους ιατρούς.",
+          "priceMonthly": 24.99,
+          "priceYearly": 17.99,
+          "priceYearlyMonthlyEquivalent": 17.99,
+          "billedYearly": 215.88,
+          "popular": true,
           "features": [
-            "Απεριόριστα Αρχεία Ασθενών",
-            "5 Λογαριασμοί Χρηστών",
-            "50GB Ασφαλής Αποθήκευση",
-            "Ενσωμάτωση IDIKA (e-Συνταγογράφηση)",
-            "Διαχείριση Ασθενών & Προσωπικού",
+            "3 Λογαριασμοί Χρηστών",
+            "Απεριόριστοι Ασθενείς",
             "Υπενθυμίσεις Ραντεβού",
-            "Βασικές Αναλύσεις",
-            "Άφθονα αιτήματα AI"
+            "AI Ενέργειες (Χαμηλό Όριο)",
+            "10 GB Ασφαλής Αποθήκευση",
+            "10 Προσαρμοσμένα Πρότυπα"
           ],
-          "cta": "Ξεκινήστε"
+          "cta": "Ξεκινήστε Εδώ"
         },
         {
-          "id": "professional",
-          "name": "Professional",
-          "subtitle": "Ιατρικά Κέντρα",
-          "description": "Σχεδιασμένο για αναπτυσσόμενες πρακτικές, πολυκλινικές και ιατρικά κέντρα.",
-          "priceMonthly": 450,
-          "priceYearly": 405,
-          "billedYearly": 4860,
+          "id": "experience",
+          "name": "Experience",
+          "subtitle": "Ιατρικό Κέντρο",
+          "description": "Προηγμένες λειτουργίες για κέντρα που απαιτούν υψηλότερα όρια.",
+          "priceMonthly": 54.99,
+          "priceYearly": 39.99,
+          "priceYearlyMonthlyEquivalent": 39.99,
+          "billedYearly": 479.88,
           "features": [
-            "Όλα στο Starter",
-            "35 Λογαριασμοί Χρηστών",
-            "250GB Ασφαλής Αποθήκευση",
-            "Διαχείριση Φαρμακείου & Αποθέματος",
-            "Δικτυακός Προβολέας DICOM (PAX)",
-            "Ειδοποιήσεις Αλληλεπιδράσεων Φαρμάκων AI",
-            "Προηγμένες Αναλύσεις & Έρευνα"
+            "10 Λογαριασμοί Χρηστών",
+            "Απεριόριστοι Ασθενείς",
+            "5.000 Παραστατικά (Πληρωμές)",
+            "AI Ενέργειες (Μεσαίο Όριο)",
+            "50 GB Ασφαλής Αποθήκευση",
+            "Προσαρμογή Οργανισμού"
           ],
-          "cta": "Ξεκινήστε Δωρεάν Δοκιμή"
+          "cta": "Ξεκινήστε Εδώ"
+        },
+        {
+          "id": "efficiency",
+          "name": "Efficiency",
+          "subtitle": "Καλύτερη Αξία & Κλίμακα",
+          "description": "Μέγιστη ισχύς και απόδοση για τα πιο απαιτητικά περιβάλλοντα υγείας.",
+          "priceMonthly": 134.99,
+          "priceYearly": 96.99,
+          "priceYearlyMonthlyEquivalent": 96.99,
+          "billedYearly": 1163.88,
+          "bestValue": true,
+          "features": [
+            "25 Λογαριασμοί Χρηστών",
+            "Απεριόριστοι Ασθενείς",
+            "10.000 Παραστατικά (Πληρωμές)",
+            "AI Ενέργειες (Υψηλό Όριο)",
+            "100 GB Ασφαλής Αποθήκευση",
+            "Προτεραιότητα Υποστήριξης"
+          ],
+          "cta": "Ξεκινήστε Εδώ"
         }
       ],
       "scarcity": {
@@ -414,41 +434,48 @@
       "title": "Συγκρίνετε Πλάνα",
       "description": "Λεπτομερής ανάλυση χαρακτηριστικών για κάθε στάδιο ανάπτυξης.",
       "features": "Χαρακτηριστικά",
-      "soloPractice": "Ατομική Πρακτική",
-      "medicalCenters": "Ιατρικά Κέντρα",
-      "hospitals": "Χωρίς Πιστωτική",
-      "customScale": "Προσαρμοσμένη Κλίμακα",
-      "professional": "Professional",
-      "enterprise": "Δωρεάν Δοκιμή",
-      "plus": "Enterprise",
-      "chooseStarter": "Επιλέξτε Starter",
-      "choosePro": "Επιλέξτε Pro",
-      "contactSales": "Έναρξη Δωρεάν Δοκιμής",
-      "contactUs": "Επικοινωνήστε Μαζί Μας",
+      "labelFree": "Δοκιμαστικά",
+      "labelEssentials": "Essentials",
+      "labelExperience": "Experience",
+      "labelEfficiency": "Efficiency",
+      "descFree": "Χωρίς Κάρτα",
+      "descEssentials": "Μεμονωμένοι Ιατροί",
+      "descExperience": "Ιατρικά Κέντρα",
+      "descEfficiency": "Υψηλός Όγκος",
+      "chooseEssentials": "Ξεκινήστε Εδώ",
+      "chooseExperience": "Ξεκινήστε Εδώ",
+      "chooseEfficiency": "Ξεκινήστε Εδώ",
+      "startFree": "Ξεκινήστε Τώρα",
+      "contactUs": "Επικοινωνία",
+      "addOnsLegend": "Τα χαρακτηριστικά με αυτό το εικονίδιο μπορούν να επεκταθούν μέσω πακέτων αναβάθμισης (add-ons).",
+      "aadeDisclaimerTitle": "💳 Ενεργοποίηση Πληρωμών & ΑΑΔΕ / myDATA",
+      "aadeDisclaimerText": "• Experience & Efficiency: Το τέλος ΑΑΔΕ (€30/έτος) συμπεριλαμβάνεται πλήρως.\n• Essentials: Το τέλος ΑΑΔΕ εφαρμόζεται ξεχωριστά κατά την ενεργοποίηση των Πληρωμών.",
       "categories": [
         {
           "title": "Βασική Πλατφόρμα",
           "features": [
             {
               "name": "Λογαριασμοί Χρηστών",
-              "starter": "5",
-              "pro": "35",
-              "ent": "2",
-              "plus": "Απεριόριστοι"
+              "hasAddons": true,
+              "free": "1",
+              "essentials": "3",
+              "experience": "10",
+              "efficiency": "25"
             },
             {
               "name": "Αποθήκευση Cloud",
-              "starter": "50GB",
-              "pro": "250GB",
-              "ent": "Καθόλου",
-              "plus": "Προσαρμοσμένη"
+              "hasAddons": true,
+              "free": "Καθόλου",
+              "essentials": "10GB",
+              "experience": "50GB",
+              "efficiency": "100GB"
             },
             {
               "name": "Ενεργοί Ασθενείς",
-              "starter": "Απεριόριστοι",
-              "pro": "Απεριόριστοι",
-              "ent": "5",
-              "plus": "Απεριόριστοι"
+              "free": "5",
+              "essentials": "Απεριόριστοι",
+              "experience": "Απεριόριστοι",
+              "efficiency": "Απεριόριστοι"
             }
           ]
         },
@@ -457,38 +484,40 @@
           "features": [
             {
               "name": "e-Συνταγογράφηση IDIKA",
-              "starter": true,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "free": false,
+              "essentials": true,
+              "experience": true,
+              "efficiency": true
             },
             {
-              "name": "Παρακολούθηση Ζωτικών Δεικτών Ασθενούς",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Αλληλεπιδράσεις Φαρμάκων AI",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "name": "AI Ενέργειες",
+              "hasAddons": true,
+              "free": "Trial Actions",
+              "essentials": "Χαμηλό Όριο",
+              "experience": "Μεσαίο Όριο",
+              "efficiency": "Υψηλό Όριο"
             },
             {
               "name": "Προσαρμοσμένες Ιατρικές Φόρμες",
-              "starter": "5",
-              "pro": "25",
-              "ent": "2",
-              "plus": "Απεριόριστες"
+              "free": "2",
+              "essentials": "10",
+              "experience": "25",
+              "efficiency": "125"
             },
             {
               "name": "Μοντέλα Επίσκεψης",
-              "starter": "Μόνο 2D",
-              "pro": "2D & 3D",
-              "ent": "Μόνο 2D",
-              "plus": "2D & 3D"
+              "free": "Μόνο 2D",
+              "essentials": "Μόνο 2D",
+              "experience": "2D & 3D",
+              "efficiency": "2D & 3D"
+            },
+            {
+              "name": "Τιμολόγηση & Πληρωμές",
+              "hasAddons": true,
+              "free": false,
+              "essentials": "Πρόσθετο",
+              "experience": "5.000+",
+              "efficiency": "10.000+"
             }
           ]
         },
@@ -497,45 +526,33 @@
           "features": [
             {
               "name": "Ημερολόγιο Ραντεβού",
-              "starter": true,
-              "pro": true,
-              "ent": true,
-              "plus": true
+              "free": true,
+              "essentials": true,
+              "experience": true,
+              "efficiency": true
             },
             {
               "name": "Φαρμακείο / Απόθεμα",
-              "starter": true,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "free": false,
+              "essentials": true,
+              "experience": true,
+              "efficiency": true
             },
             {
-              "name": "Υποστήριξη Πολλαπλών Τμημάτων",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "name": "Μηνιαία Μαζικά Email",
+              "hasAddons": true,
+              "free": false,
+              "essentials": "500",
+              "experience": "2.000",
+              "efficiency": "5.000"
             },
             {
-              "name": "Δικτυακός Προβολέας DICOM",
-              "starter": true,
-              "pro": true,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Ενσωμάτωση PACS / Εργαστηρίου",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Ενσωμάτωση Ντουλαπιού IoT",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
+              "name": "Μηνιαία Μαζικά SMS",
+              "hasAddons": true,
+              "free": false,
+              "essentials": "10",
+              "experience": "50",
+              "efficiency": "100"
             }
           ]
         },
@@ -544,31 +561,17 @@
           "features": [
             {
               "name": "Επίπεδο Υποστήριξης",
-              "starter": "Email",
-              "pro": "Προτεραιότητα Email/Chat",
-              "ent": "Καμία",
-              "plus": "24/7 Αφιερωμένη"
+              "free": "Κοινότητα",
+              "essentials": "Email",
+              "experience": "Priority Chat",
+              "efficiency": "Αφιερωμένη"
             },
             {
               "name": "Εκπαίδευση Εισαγωγής",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Αφιερωμένος Διαχειριστής Λογαριασμού",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Ανάπτυξη Προσαρμοσμένων Χαρακτηριστικών",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
+              "free": false,
+              "essentials": false,
+              "experience": true,
+              "efficiency": true
             }
           ]
         }
@@ -710,8 +713,8 @@
               "name": "Επίπεδο Υποστήριξης",
               "starter": "Email",
               "pro": "Προτεραιότητα Email/Chat",
-              "ent": "24/7 Προτεραιότητα",
-              "plus": "24/7 Αφιερωμένη"
+              "ent": "Προτεραιότητα",
+              "plus": "Αφιερωμένη"
             },
             {
               "name": "Εκπαίδευση Εισαγωγής",
@@ -748,7 +751,7 @@
       "trust": {
         "enterprise": "Επιχειρησιακή Ασφάλεια",
         "enterpriseDesc": "Κρυπτογράφηση επιπέδου τράπεζας και συμμόρφωση GDPR για όλα τα δεδομένα.",
-        "support": "Ειδικοί Υποστήριξης 24/7",
+        "support": "Ειδικοί Υποστήριξης",
         "supportDesc": "Ειδικοί υγείας διαθέσιμοι όποτε τους χρειάζεστε.",
         "uptime": "99.9% Uptime SLA",
         "uptimeDesc": "Αξιόπιστη υπηρεσία στην οποία μπορείτε να βασιστείτε για κρίσιμες λειτουργίες."

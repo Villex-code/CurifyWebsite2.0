@@ -332,12 +332,14 @@
       "description": "Choose the plan that fits your facility. Scale up or down at any time.",
       "monthly": "Monthly",
       "yearly": "Yearly",
-      "savePercent": "Save 10%",
-      "mostPopular": "Most Popular",
+      "savePercent": "Save up to 30%",
+      "mostPopular": "Start Here",
+      "bestValue": "Best Value",
       "perMonth": "/mo",
       "billedYearly": "Billed €{amount} yearly",
       "billedMonthly": "Billed monthly",
       "whatsIncluded": "What's included",
+      "free_tier_label": "Experience Curify",
       "enterprisePlus": "Enterprise Plus",
       "enterprisePlusDesc": "Need a custom solution for a large hospital network or university medical center? We offer tailored development and dedicated infrastructure.",
       "contactCustom": "Contact for Custom Quote",
@@ -345,61 +347,75 @@
       "addOnsDesc": "Contact us for options.",
       "items": [
         {
-          "id": "free_demo",
-          "name": "Free Demo",
+          "id": "free",
+          "name": "Try it out",
           "subtitle": "No Credit Card Required",
-          "description": "Try out the platform with limited resources to see if it fits your needs.",
+          "description": "Get a taste of Curify's full power for your practice.",
           "priceMonthly": 0,
           "priceYearly": 0,
+          "priceYearlyMonthlyEquivalent": 0,
           "billedYearly": 0,
-          "features": [
-            "5 Patient Records",
-            "2 Personnel Accounts",
-            "2 Custom Templates",
-            "15 AI Requests",
-            "No Emails",
-            "No SMS"
-          ],
-          "cta": "Start Free Demo"
+          "features": ["Check out Patients", "Calendar Events", "And more!"],
+          "cta": "Start Now"
         },
         {
-          "id": "starter",
-          "name": "Starter",
-          "subtitle": "Solo Practice",
-          "description": "Perfect for independent practitioners and small medical offices.",
-          "priceMonthly": 79,
-          "priceYearly": 71,
-          "billedYearly": 853,
+          "id": "essentials",
+          "name": "Essentials",
+          "subtitle": "Perfect for Starting",
+          "description": "The ideal entry point for most individual practitioners.",
+          "priceMonthly": 24.99,
+          "priceYearly": 17.99,
+          "priceYearlyMonthlyEquivalent": 17.99,
+          "billedYearly": 215.88,
+          "popular": true,
           "features": [
-            "Unlimited Patient Records",
-            "5 User Accounts",
-            "50GB Secure Storage",
-            "IDIKA Integration (E-Prescription)",
-            "Basic Patient & Staff Management",
+            "3 User Accounts",
+            "Unlimited Patients",
             "Appointment Reminders",
-            "Basic Analytics",
-            "Abundant AI requests"
+            "Low AI Actions",
+            "10 GB Secure Storage",
+            "10 Custom Templates"
           ],
-          "cta": "Get Started"
+          "cta": "Start Here"
         },
         {
-          "id": "professional",
-          "name": "Professional",
-          "subtitle": "Medical Centers",
-          "description": "Designed for growing practices, polyclinics, and medical centers.",
-          "priceMonthly": 450,
-          "priceYearly": 405,
-          "billedYearly": 4860,
+          "id": "experience",
+          "name": "Experience",
+          "subtitle": "Medical Center",
+          "description": "Advanced features for centers requiring higher limits and more automation.",
+          "priceMonthly": 54.99,
+          "priceYearly": 39.99,
+          "priceYearlyMonthlyEquivalent": 39.99,
+          "billedYearly": 479.88,
           "features": [
-            "Everything in Starter",
-            "35 User Accounts",
-            "250GB Secure Storage",
-            "Pharmacy & Inventory Management",
-            "DICOM Viewer (PAX)",
-            "AI Drug Interaction Alerts",
-            "Advanced Analytics & Research"
+            "10 User Accounts",
+            "Unlimited Patients",
+            "5,000 Invoices Included",
+            "Medium AI Actions",
+            "50 GB Secure Storage",
+            "Customize Organization"
           ],
-          "cta": "Start Free Trial"
+          "cta": "Start Here"
+        },
+        {
+          "id": "efficiency",
+          "name": "Efficiency",
+          "subtitle": "Best Value & Scale",
+          "description": "Maximum power and efficiency for the most demanding healthcare environments.",
+          "priceMonthly": 134.99,
+          "priceYearly": 96.99,
+          "priceYearlyMonthlyEquivalent": 96.99,
+          "billedYearly": 1163.88,
+          "bestValue": true,
+          "features": [
+            "25 User Accounts",
+            "Unlimited Patients",
+            "10,000 Invoices Included",
+            "High AI Actions",
+            "100 GB Secure Storage",
+            "Priority Support"
+          ],
+          "cta": "Start Here"
         }
       ],
       "scarcity": {
@@ -414,41 +430,48 @@
       "title": "Compare Plans",
       "description": "Detailed feature breakdown for every stage of growth.",
       "features": "Features",
-      "soloPractice": "Solo Practice",
-      "medicalCenters": "Medical Centers",
-      "hospitals": "No Credit Card",
-      "customScale": "Custom Scale",
-      "professional": "Professional",
-      "enterprise": "Free Demo",
-      "plus": "Enterprise",
-      "chooseStarter": "Choose Starter",
-      "choosePro": "Choose Pro",
-      "contactSales": "Start Free Demo",
+      "labelFree": "Try it out",
+      "labelEssentials": "Essentials",
+      "labelExperience": "Experience",
+      "labelEfficiency": "Efficiency",
+      "descFree": "No Credit Card",
+      "descEssentials": "Solo Practice",
+      "descExperience": "Medical Centers",
+      "descEfficiency": "High Volume",
+      "chooseEssentials": "Start Here",
+      "chooseExperience": "Start Here",
+      "chooseEfficiency": "Start Here",
+      "startFree": "Start Now",
       "contactUs": "Contact Us",
+      "addOnsLegend": "Features with this icon can be expanded via add-ons.",
+      "aadeDisclaimerTitle": "💳 Payments Module & AADE / myDATA Activation",
+      "aadeDisclaimerText": "• Experience & Efficiency: AADE / myDATA fee (€30/year) is fully included.\n• Essentials: AADE fee is applied separately upon activation of the Payments module.",
       "categories": [
         {
           "title": "Core Platform",
           "features": [
             {
               "name": "User Accounts",
-              "starter": "5",
-              "pro": "35",
-              "ent": "2",
-              "plus": "Unlimited"
+              "hasAddons": true,
+              "free": "1",
+              "essentials": "3",
+              "experience": "10",
+              "efficiency": "25"
             },
             {
               "name": "Cloud Storage",
-              "starter": "50GB",
-              "pro": "250GB",
-              "ent": "None",
-              "plus": "Custom"
+              "hasAddons": true,
+              "free": "None",
+              "essentials": "10GB",
+              "experience": "50GB",
+              "efficiency": "100GB"
             },
             {
               "name": "Active Patients",
-              "starter": "Unlimited",
-              "pro": "Unlimited",
-              "ent": "5",
-              "plus": "Unlimited"
+              "free": "5",
+              "essentials": "Unlimited",
+              "experience": "Unlimited",
+              "efficiency": "Unlimited"
             }
           ]
         },
@@ -457,38 +480,40 @@
           "features": [
             {
               "name": "IDIKA E-Prescription",
-              "starter": true,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "free": false,
+              "essentials": true,
+              "experience": true,
+              "efficiency": true
             },
             {
-              "name": "Patient Vitals Tracking",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "AI Drug Interactions",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "name": "AI Actions",
+              "hasAddons": true,
+              "free": "Trial Actions",
+              "essentials": "Low Limits",
+              "experience": "Medium Limits",
+              "efficiency": "High Limits"
             },
             {
               "name": "Custom Medical Forms",
-              "starter": "15",
-              "pro": "25",
-              "ent": "2",
-              "plus": "Unlimited"
+              "free": "2",
+              "essentials": "10",
+              "experience": "25",
+              "efficiency": "125"
             },
             {
               "name": "Visit Models",
-              "starter": "2D Only",
-              "pro": "2D & 3D",
-              "ent": "2D Only",
-              "plus": "2D & 3D"
+              "free": "2D Only",
+              "essentials": "2D Only",
+              "experience": "2D & 3D",
+              "efficiency": "2D & 3D"
+            },
+            {
+              "name": "Invoicing & Payments",
+              "hasAddons": true,
+              "free": false,
+              "essentials": "Add-on",
+              "experience": "5,000+",
+              "efficiency": "10,000+"
             }
           ]
         },
@@ -497,45 +522,33 @@
           "features": [
             {
               "name": "Appointment Calendar",
-              "starter": true,
-              "pro": true,
-              "ent": true,
-              "plus": true
+              "free": true,
+              "essentials": true,
+              "experience": true,
+              "efficiency": true
             },
             {
               "name": "Pharmacy / Inventory",
-              "starter": true,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "free": false,
+              "essentials": true,
+              "experience": true,
+              "efficiency": true
             },
             {
-              "name": "Multi-Department Support",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
+              "name": "Monthly Bulk Emails",
+              "hasAddons": true,
+              "free": false,
+              "essentials": "500",
+              "experience": "2,000",
+              "efficiency": "5,000"
             },
             {
-              "name": "Online DICOM Viewer",
-              "starter": true,
-              "pro": true,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "PACS / Lab Integration",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "IoT Cabinet Integration",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
+              "name": "Monthly Bulk SMS",
+              "hasAddons": true,
+              "free": false,
+              "essentials": "10",
+              "experience": "50",
+              "efficiency": "100"
             }
           ]
         },
@@ -544,31 +557,17 @@
           "features": [
             {
               "name": "Support Level",
-              "starter": "Email",
-              "pro": "Priority Email/Chat",
-              "ent": "None",
-              "plus": "24/7 Dedicated"
+              "free": "Community",
+              "essentials": "Email",
+              "experience": "Priority Chat",
+              "efficiency": "Dedicated"
             },
             {
               "name": "Onboarding Training",
-              "starter": false,
-              "pro": true,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Dedicated Account Manager",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
-            },
-            {
-              "name": "Custom Feature Dev",
-              "starter": false,
-              "pro": false,
-              "ent": false,
-              "plus": true
+              "free": false,
+              "essentials": false,
+              "experience": true,
+              "efficiency": true
             }
           ]
         }
@@ -753,8 +752,8 @@
               "name": "Support Level",
               "starter": "Email",
               "pro": "Priority Email/Chat",
-              "ent": "24/7 Priority",
-              "plus": "24/7 Dedicated"
+              "ent": "Priority",
+              "plus": "Dedicated"
             },
             {
               "name": "Onboarding Training",
@@ -850,7 +849,7 @@
         },
         {
           "id": "phone-support",
-          "name": "24/7 Phone Support"
+          "name": "Phone Support"
         },
         {
           "id": "email-support",
@@ -884,7 +883,7 @@
       "trust": {
         "enterprise": "Enterprise Security",
         "enterpriseDesc": "Bank-level encryption and GDPR compliance for all data.",
-        "support": "24/7 Expert Support",
+        "support": "Expert Support",
         "supportDesc": "Healthcare specialists available whenever you need them.",
         "uptime": "99.9% Uptime SLA",
         "uptimeDesc": "Reliable service you can count on for critical operations."
